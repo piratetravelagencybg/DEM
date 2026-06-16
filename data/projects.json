@@ -1,0 +1,74 @@
+[
+  {
+    "id": "1",
+    "slug": "kuhnya-s-ostrov-sofia",
+    "title": "Кухня с остров",
+    "category": "kuhni",
+    "city": "София",
+    "description": "Модерна кухня с централен остров, изработена от МДФ гланц в бяло и дъб натурал. Оборудвана с вградена техника Bosch, подово осветление и гранитен плот.",
+    "materials": "МДФ гланц, плот гранит",
+    "duration": "5 седмици",
+    "images": ["/images/projects/project1.png"],
+    "featured": true
+  },
+  {
+    "id": "2",
+    "slug": "garderob-sistema-plovdiv",
+    "title": "Гардеробна система",
+    "category": "garderob",
+    "city": "Благоевград",
+    "description": "Вградена гардеробна система с плъзгащи врати огледало, вградено LED осветление и множество отделения за съхранение.",
+    "materials": "ПДЧ Egger, огледало, LED",
+    "duration": "2 седмици",
+    "images": ["/images/projects/project2.png"],
+    "featured": true
+  },
+  {
+    "id": "3",
+    "slug": "dnevna-po-poruchka-varna",
+    "title": "Дневна по поръчка",
+    "category": "dnevni",
+    "city": "Дупница",
+    "description": "Цялостна дневна стая с ТВ секция, библиотека и вградено осветление. Изработена в тъмно дъбово дърво с меден акцент.",
+    "materials": "МДФ фурнир дъб, метален акцент",
+    "duration": "4 седмици",
+    "images": ["/images/projects/project3.png"],
+    "featured": true
+  },
+  {
+    "id": "4",
+    "slug": "spalna-tapicirano-leglo-burgas",
+    "title": "Спалня с тапицирано легло",
+    "category": "spalni",
+    "city": "Благоевград",
+    "description": "Цялостна спалня с тапицирано легло в сиво кадифе, нощни шкафчета и вграден гардероб. Минималистичен дизайн с топли тонове.",
+    "materials": "МДФ, кадифена тапицерия, ПДЧ Egger",
+    "duration": "5 седмици",
+    "images": ["/images/projects/project4.png"],
+    "featured": true
+  },
+  {
+    "id": "5",
+    "slug": "ofis-blagoevgrad",
+    "title": "Офис обзавеждане",
+    "category": "ofis",
+    "city": "Благоевград",
+    "description": "Цялостно офис обзавеждане за счетоводна кантора — бюра, архивни шкафове и рецепция по поръчка.",
+    "materials": "ПДЧ Egger, МДФ",
+    "duration": "3 седмици",
+    "images": ["/images/projects/project1.png"],
+    "featured": false
+  },
+  {
+    "id": "6",
+    "slug": "kuhnya-klasicheska-sandanski",
+    "title": "Класическа кухня",
+    "category": "kuhni",
+    "city": "Сандански",
+    "description": "Класическа кухня в крем и злато с фрезовани врати, кварцов плот и вградена абсорбатор колона.",
+    "materials": "МДФ профил, кварц Silestone",
+    "duration": "6 седмици",
+    "images": ["/images/projects/project2.png"],
+    "featured": false
+  }
+]
