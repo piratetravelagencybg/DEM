@@ -1,4 +1,4 @@
-User-agent: *
+﻿User-agent: *
 Allow: /
 
 # AI crawlers — explicitly welcomed for GEO visibility
@@ -19,4 +19,4 @@ Allow: /
 User-agent: Applebot-Extended
 Allow: /
 
-Sitemap: https://domexpertmebel.bg/sitemap.xml
+Sitemap: https://domexpertmebel.com/sitemap.xml

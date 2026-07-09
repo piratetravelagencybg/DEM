@@ -109,12 +109,12 @@ export default function Header() {
             {/* Right side */}
             <div className="flex items-center gap-3">
               <a
-                href="tel:+359888123456"
+                href="tel:+359876081199"
                 className="hidden md:flex items-center gap-2 text-sm font-medium transition-colors"
                 style={{ color: scrolled ? '#2C2C2C' : 'rgba(255,255,255,0.85)' }}
               >
                 <Phone size={15} style={{ color: scrolled ? '#8B6F47' : 'rgba(255,255,255,0.7)' }} />
-                0888 123 456
+                0876 081 199
               </a>
               <Link href="/контакти/" className="hidden lg:block btn-primary text-sm py-2.5">
                 Консултация

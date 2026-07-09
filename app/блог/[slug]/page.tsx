@@ -186,11 +186,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: { absolute: `${post.title} | Dom Expert Мебел` },
     description: post.description,
-    alternates: { canonical: `https://domexpertmebel.bg/блог/${params.slug}/` },
+    alternates: { canonical: `https://domexpertmebel.com/блог/${params.slug}/` },
     openGraph: {
       type: 'article',
       publishedTime: post.date,
-      images: [{ url: `https://domexpertmebel.bg${post.image}`, width: 1200, height: 630, alt: post.title }],
+      images: [{ url: `https://domexpertmebel.com${post.image}`, width: 1200, height: 630, alt: post.title }],
     },
   }
 }
@@ -206,25 +206,25 @@ export default function BlogPostPage({ params }: Props) {
     '@type': 'Article',
     headline: post.title,
     description: post.description,
-    image: [`https://domexpertmebel.bg${post.image}`],
+    image: [`https://domexpertmebel.com${post.image}`],
     datePublished: post.date,
     dateModified: post.date,
     author: {
       '@type': 'Organization',
       name: 'Dom Expert Мебел',
-      url: 'https://domexpertmebel.bg',
+      url: 'https://domexpertmebel.com',
     },
     publisher: {
       '@type': 'Organization',
       name: 'Dom Expert Мебел',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://domexpertmebel.bg/images/logo-icon.png',
+        url: 'https://domexpertmebel.com/images/logo-icon.png',
       },
     },
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': `https://domexpertmebel.bg/блог/${params.slug}/`,
+      '@id': `https://domexpertmebel.com/блог/${params.slug}/`,
     },
   }
 
@@ -235,9 +235,9 @@ export default function BlogPostPage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
       />
       <BreadcrumbSchema items={[
-        { name: 'Начало', url: 'https://domexpertmebel.bg/' },
-        { name: 'Блог', url: 'https://domexpertmebel.bg/блог/' },
-        { name: post.title, url: `https://domexpertmebel.bg/блог/${params.slug}/` },
+        { name: 'Начало', url: 'https://domexpertmebel.com/' },
+        { name: 'Блог', url: 'https://domexpertmebel.com/блог/' },
+        { name: post.title, url: `https://domexpertmebel.com/блог/${params.slug}/` },
       ]} />
       <div className="pt-24">
         {/* Hero */}

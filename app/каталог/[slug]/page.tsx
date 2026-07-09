@@ -28,8 +28,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!product) return {}
   return {
     title: { absolute: `${product.title} — ${product.price} лв. | Dom Expert Мебел` },
-    description: `${product.title} на цена ${product.price} лв. ${product.description.slice(0, 90)}. Доставка 3-5 дни, гаранция 2 год. Тел: 0888 123 456`,
-    alternates: { canonical: `https://domexpertmebel.bg/каталог/${product.slug}/` },
+    description: `${product.title} на цена ${product.price} лв. ${product.description.slice(0, 90)}. Доставка 3-5 дни, гаранция 2 год. Тел: 0876 081 199`,
+    alternates: { canonical: `https://domexpertmebel.com/каталог/${product.slug}/` },
   }
 }
 
@@ -46,7 +46,7 @@ export default function ProductPage({ params }: Props) {
     '@type': 'Product',
     name: product.title,
     description: product.description,
-    image: [`https://domexpertmebel.bg${product.images[0]}`],
+    image: [`https://domexpertmebel.com${product.images[0]}`],
     sku: product.sku,
     brand: {
       '@type': 'Brand',
@@ -62,9 +62,9 @@ export default function ProductPage({ params }: Props) {
       seller: {
         '@type': 'Organization',
         name: 'Dom Expert Мебел',
-        url: 'https://domexpertmebel.bg',
+        url: 'https://domexpertmebel.com',
       },
-      url: `https://domexpertmebel.bg/каталог/${product.slug}/`,
+      url: `https://domexpertmebel.com/каталог/${product.slug}/`,
     },
   }
 
@@ -75,9 +75,9 @@ export default function ProductPage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
       />
       <BreadcrumbSchema items={[
-        { name: 'Начало', url: 'https://domexpertmebel.bg/' },
-        { name: 'Онлайн магазин', url: 'https://domexpertmebel.bg/каталог/' },
-        { name: product.title, url: `https://domexpertmebel.bg/каталог/${product.slug}/` },
+        { name: 'Начало', url: 'https://domexpertmebel.com/' },
+        { name: 'Онлайн магазин', url: 'https://domexpertmebel.com/каталог/' },
+        { name: product.title, url: `https://domexpertmebel.com/каталог/${product.slug}/` },
       ]} />
 
       {/* ── Hero / Product section ── */}

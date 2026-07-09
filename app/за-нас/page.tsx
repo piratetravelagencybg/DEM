@@ -10,13 +10,13 @@ import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
 export const metadata: Metadata = {
   title: { absolute: 'За нас | Мебели по поръчка Благоевград — Dom Expert Мебел' },
   description:
-    'Семейна работилница с 10+ години опит в мебели по поръчка в Благоевград. 500+ реализирани кухни, гардероби и спални. Безплатна консултация. Тел: 0888 123 456',
-  alternates: { canonical: 'https://domexpertmebel.bg/за-нас/' },
+    'Семейна работилница с 10+ години опит в мебели по поръчка в Благоевград. 500+ реализирани кухни, гардероби и спални. Безплатна консултация. Тел: 0876 081 199',
+  alternates: { canonical: 'https://domexpertmebel.com/за-нас/' },
   openGraph: {
     title: 'За Нас – Мебели по Поръчка Благоевград | Dom Expert Мебел',
     description:
       'Семейна работилница с 10+ години опит в мебели по поръчка и кухни по поръчка – Благоевград. 500+ реализирани проекта.',
-    url: 'https://domexpertmebel.bg/за-нас/',
+    url: 'https://domexpertmebel.com/за-нас/',
     type: 'website',
     locale: 'bg_BG',
     siteName: 'Dom Expert Мебел',
@@ -37,13 +37,13 @@ export const metadata: Metadata = {
 const localBusinessSchema = {
   '@context': 'https://schema.org',
   '@type': ['LocalBusiness', 'FurnitureStore'],
-  '@id': 'https://domexpertmebel.bg/#business',
+  '@id': 'https://domexpertmebel.com/#business',
   name: 'Dom Expert Мебел',
   description:
     'Семейна фирма за мебели по поръчка в Благоевград. Кухни, гардероби, спални и офис мебели с 10+ години опит.',
-  url: 'https://domexpertmebel.bg',
-  telephone: '+359888123456',
-  email: 'office@domexpertmebel.bg',
+  url: 'https://domexpertmebel.com',
+  telephone: '+359876081199',
+  email: 'office@domexpertmebel.com',
   foundingDate: '2014',
   address: {
     '@type': 'PostalAddress',
@@ -63,7 +63,7 @@ const localBusinessSchema = {
   ],
   priceRange: '$$',
   areaServed: ['Благоевград', 'София', 'Дупница', 'Сандански', 'Банско', 'Разлог'],
-  image: 'https://domexpertmebel.bg/images/hero/hero.png',
+  image: 'https://domexpertmebel.com/images/hero/hero.png',
   // TODO: Replace with actual social profile URLs
   sameAs: ['https://www.facebook.com/domexpertmebel', 'https://www.instagram.com/domexpertmebel'],
 }
@@ -71,13 +71,13 @@ const localBusinessSchema = {
 const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
-  '@id': 'https://domexpertmebel.bg/#organization',
+  '@id': 'https://domexpertmebel.com/#organization',
   name: 'Dom Expert Мебел',
-  url: 'https://domexpertmebel.bg',
-  logo: 'https://domexpertmebel.bg/images/logo-icon.png',
+  url: 'https://domexpertmebel.com',
+  logo: 'https://domexpertmebel.com/images/logo-icon.png',
   contactPoint: {
     '@type': 'ContactPoint',
-    telephone: '+359888123456',
+    telephone: '+359876081199',
     contactType: 'customer service',
     areaServed: 'BG',
     availableLanguage: 'Bulgarian',
@@ -171,8 +171,8 @@ export default function AboutPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
       />
       <BreadcrumbSchema items={[
-        { name: 'Начало', url: 'https://domexpertmebel.bg/' },
-        { name: 'За нас', url: 'https://domexpertmebel.bg/за-нас/' },
+        { name: 'Начало', url: 'https://domexpertmebel.com/' },
+        { name: 'За нас', url: 'https://domexpertmebel.com/за-нас/' },
       ]} />
 
       <article>
@@ -394,10 +394,10 @@ export default function AboutPage() {
 
                 <address className="not-italic space-y-3" style={{ fontSize: '0.88rem' }}>
                   <a
-                    href="tel:+359888123456"
+                    href="tel:+359876081199"
                     className="flex items-center gap-3 font-body transition-colors"
                     style={{ color: 'rgba(255,255,255,0.7)' }}
-                    aria-label="Телефон 0888 123 456"
+                    aria-label="Телефон 0876 081 199"
                   >
                     <span
                       style={{
@@ -409,14 +409,14 @@ export default function AboutPage() {
                         <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
                       </svg>
                     </span>
-                    0888 123 456
+                    0876 081 199
                   </a>
 
                   <a
-                    href="mailto:office@domexpertmebel.bg"
+                    href="mailto:office@domexpertmebel.com"
                     className="flex items-center gap-3 font-body transition-colors break-all"
                     style={{ color: 'rgba(255,255,255,0.7)' }}
-                    aria-label="Имейл office@domexpertmebel.bg"
+                    aria-label="Имейл office@domexpertmebel.com"
                   >
                     <span
                       style={{
@@ -429,7 +429,7 @@ export default function AboutPage() {
                         <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
                       </svg>
                     </span>
-                    office@domexpertmebel.bg
+                    office@domexpertmebel.com
                   </a>
 
                   <div className="flex items-start gap-3 font-body" style={{ color: 'rgba(255,255,255,0.7)' }}>
@@ -663,7 +663,7 @@ export default function AboutPage() {
                 Поискай безплатна консултация →
               </Link>
               <a
-                href="tel:+359888123456"
+                href="tel:+359876081199"
                 className="inline-flex items-center gap-2 font-body font-semibold rounded-full transition-all duration-200 hover:-translate-y-0.5"
                 style={{
                   border: '1.5px solid rgba(255,255,255,0.25)',
@@ -673,9 +673,9 @@ export default function AboutPage() {
                   background: 'rgba(255,255,255,0.05)',
                   backdropFilter: 'blur(8px)',
                 }}
-                aria-label="Обадете ни се на 0888 123 456"
+                aria-label="Обадете ни се на 0876 081 199"
               >
-                📞 0888 123 456
+                📞 0876 081 199
               </a>
             </div>
 

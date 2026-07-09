@@ -6,8 +6,8 @@ const service = services.find((s) => s.id === 'montaj')!
 
 export const metadata: Metadata = {
   title: { absolute: 'Монтаж на мебели Благоевград и София | Dom Expert Мебел' },
-  description: 'Професионален монтаж на мебели в Благоевград и София. Бърза реакция до 24-48 часа, гаранция, почистване след работа. Тел: 0888 123 456',
-  alternates: { canonical: 'https://domexpertmebel.bg/услуги/монтаж/' },
+  description: 'Професионален монтаж на мебели в Благоевград и София. Бърза реакция до 24-48 часа, гаранция, почистване след работа. Тел: 0876 081 199',
+  alternates: { canonical: 'https://domexpertmebel.com/услуги/монтаж/' },
 }
 
 export default function MontajPage() {

@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+﻿import type { Metadata } from 'next'
 import { Cormorant_Garamond, DM_Sans } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/layout/Header'
@@ -19,7 +19,7 @@ const dmSans = DM_Sans({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://domexpertmebel.bg'),
+  metadataBase: new URL('https://domexpertmebel.com'),
   title: {
     default: 'Мебели по поръчка Благоевград и София | Dom Expert Мебел',
     template: '%s | Dom Expert Мебел',
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'bg_BG',
-    url: 'https://domexpertmebel.bg',
+    url: 'https://domexpertmebel.com',
     siteName: 'Dom Expert Мебел',
     images: [{ url: '/images/hero/hero.png', width: 1200, height: 630, alt: 'Dom Expert Мебел' }],
   },

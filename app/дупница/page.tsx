@@ -7,16 +7,16 @@ import FAQSchema from '@/components/seo/FAQSchema'
 
 export const metadata: Metadata = {
   title: { absolute: 'Мебели по поръчка Дупница | Dom Expert Мебел' },
-  description: 'Мебели по поръчка в Дупница. Кухни, гардероби, спални от местна семейна фирма. Безплатна консултация и 3D проект. Монтаж. Тел: 0888 123 456',
-  alternates: { canonical: 'https://domexpertmebel.bg/дупница/' },
+  description: 'Мебели по поръчка в Дупница. Кухни, гардероби, спални от местна семейна фирма. Безплатна консултация и 3D проект. Монтаж. Тел: 0876 081 199',
+  alternates: { canonical: 'https://domexpertmebel.com/дупница/' },
 }
 
 const localSchema = {
   '@context': 'https://schema.org',
   '@type': ['LocalBusiness', 'FurnitureStore'],
   name: 'Dom Expert Мебел — Дупница',
-  url: 'https://domexpertmebel.bg/дупница/',
-  telephone: '+359888123456',
+  url: 'https://domexpertmebel.com/дупница/',
+  telephone: '+359876081199',
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Дупница',
@@ -35,7 +35,7 @@ const localSchema = {
 const faqItems = [
   {
     question: 'Правите ли мебели по поръчка в Дупница?',
-    answer: 'Да, обслужваме клиенти в Дупница и Кюстендилска област. Идваме на оглед, правим безплатен 3D проект и организираме монтажа. Свържете се с нас на 0888 123 456.',
+    answer: 'Да, обслужваме клиенти в Дупница и Кюстендилска област. Идваме на оглед, правим безплатен 3D проект и организираме монтажа. Свържете се с нас на 0876 081 199.',
   },
   {
     question: 'Колко струват мебелите по поръчка в Дупница?',
@@ -43,7 +43,7 @@ const faqItems = [
   },
   {
     question: 'Идвате ли на оглед в Дупница?',
-    answer: 'Да, идваме на оглед в Дупница безплатно и без задължения. Уговаряме удобно за вас време. Обадете се на 0888 123 456 или попълнете формата.',
+    answer: 'Да, идваме на оглед в Дупница безплатно и без задължения. Уговаряме удобно за вас време. Обадете се на 0876 081 199 или попълнете формата.',
   },
   {
     question: 'Колко отнема производството и монтажът в Дупница?',
@@ -66,8 +66,8 @@ export default function DupnicaPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localSchema) }} />
       <FAQSchema items={faqItems} />
       <BreadcrumbSchema items={[
-        { name: 'Начало', url: 'https://domexpertmebel.bg/' },
-        { name: 'Мебели Дупница', url: 'https://domexpertmebel.bg/дупница/' },
+        { name: 'Начало', url: 'https://domexpertmebel.com/' },
+        { name: 'Мебели Дупница', url: 'https://domexpertmebel.com/дупница/' },
       ]} />
 
       {/* ── Hero ── */}
@@ -140,8 +140,8 @@ export default function DupnicaPage() {
                 ))}
               </div>
 
-              <a href="tel:+359888123456" className="btn-primary inline-flex items-center gap-2">
-                <Phone size={16} /> 0888 123 456
+              <a href="tel:+359876081199" className="btn-primary inline-flex items-center gap-2">
+                <Phone size={16} /> 0876 081 199
               </a>
 
               <div className="grid grid-cols-2 gap-2.5 pt-2">

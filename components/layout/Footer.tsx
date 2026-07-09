@@ -1,4 +1,4 @@
-import Link from 'next/link'
+﻿import Link from 'next/link'
 import Image from 'next/image'
 import { Phone, Mail, MapPin, Clock, Facebook, Instagram, Youtube } from 'lucide-react'
 
@@ -152,14 +152,14 @@ export default function Footer() {
             <ul className="space-y-4 mb-7">
               <li className="flex items-start gap-3">
                 <Phone size={15} className="text-walnut flex-shrink-0 mt-0.5" />
-                <a href="tel:+359888123456" className="font-body hover:text-sand transition-colors" style={{ fontSize: '0.875rem', color: 'rgba(255,255,255,0.45)' }}>
-                  0888 123 456
+                <a href="tel:+359876081199" className="font-body hover:text-sand transition-colors" style={{ fontSize: '0.875rem', color: 'rgba(255,255,255,0.45)' }}>
+                  0876 081 199
                 </a>
               </li>
               <li className="flex items-start gap-3">
                 <Mail size={15} className="text-walnut flex-shrink-0 mt-0.5" />
-                <a href="mailto:office@domexpertmebel.bg" className="font-body hover:text-sand transition-colors break-all" style={{ fontSize: '0.82rem', color: 'rgba(255,255,255,0.45)' }}>
-                  office@domexpertmebel.bg
+                <a href="mailto:office@domexpertmebel.com" className="font-body hover:text-sand transition-colors break-all" style={{ fontSize: '0.82rem', color: 'rgba(255,255,255,0.45)' }}>
+                  office@domexpertmebel.com
                 </a>
               </li>
               <li className="flex items-start gap-3">

@@ -1,9 +1,9 @@
-import type { MetadataRoute } from 'next'
+﻿import type { MetadataRoute } from 'next'
 import projects from '@/data/projects.json'
 import products from '@/data/products.json'
 import services from '@/data/services.json'
 
-const BASE = 'https://domexpertmebel.bg'
+const BASE = 'https://domexpertmebel.com'
 
 const SITE_LAUNCH = new Date('2026-07-09')
 const BLOG_DATES: Record<string, string> = {

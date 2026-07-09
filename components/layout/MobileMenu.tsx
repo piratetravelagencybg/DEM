@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useEffect } from 'react'
 import Link from 'next/link'
@@ -111,17 +111,17 @@ export default function MobileMenu({ open, onClose, navLinks }: MobileMenuProps)
             >
               <div className="flex gap-3 mb-4">
                 <a
-                  href="tel:+359888123456"
+                  href="tel:+359876081199"
                   className="flex-1 flex items-center gap-2 bg-cream rounded-[10px] px-4 py-3 border border-light-tan"
                 >
                   <Phone size={16} className="text-walnut flex-shrink-0" />
                   <div>
-                    <div className="font-body font-bold text-charcoal text-sm">0888 123 456</div>
+                    <div className="font-body font-bold text-charcoal text-sm">0876 081 199</div>
                     <div className="font-body text-warm-gray text-[0.65rem]">Обади се сега</div>
                   </div>
                 </a>
                 <a
-                  href="mailto:office@domexpertmebel.bg"
+                  href="mailto:office@domexpertmebel.com"
                   className="w-12 h-12 flex items-center justify-center bg-cream rounded-[10px] border border-light-tan flex-shrink-0"
                 >
                   <Mail size={18} className="text-walnut" />

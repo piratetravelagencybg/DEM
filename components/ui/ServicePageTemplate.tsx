@@ -1,4 +1,4 @@
-import Image from 'next/image'
+﻿import Image from 'next/image'
 import Link from 'next/link'
 import { CheckCircle, ChevronDown } from 'lucide-react'
 import QuoteForm from '@/components/ui/QuoteForm'
@@ -24,9 +24,9 @@ export default function ServicePageTemplate({ title, subtitle, heroImage, featur
     <>
       <FAQSchema items={faq} />
       <BreadcrumbSchema items={[
-        { name: 'Начало', url: 'https://domexpertmebel.bg/' },
-        { name: 'Услуги', url: 'https://domexpertmebel.bg/услуги/' },
-        { name: title, url: `https://domexpertmebel.bg/услуги/${slug}/` },
+        { name: 'Начало', url: 'https://domexpertmebel.com/' },
+        { name: 'Услуги', url: 'https://domexpertmebel.com/услуги/' },
+        { name: title, url: `https://domexpertmebel.com/услуги/${slug}/` },
       ]} />
 
       {/* ── Hero ── */}

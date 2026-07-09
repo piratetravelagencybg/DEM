@@ -1,14 +1,14 @@
-export default function LocalBusinessSchema() {
+﻿export default function LocalBusinessSchema() {
   const schema = {
     '@context': 'https://schema.org',
     '@type': ['LocalBusiness', 'FurnitureStore'],
-    '@id': 'https://domexpertmebel.bg/#business',
+    '@id': 'https://domexpertmebel.com/#business',
     name: 'Dom Expert Мебел',
     alternateName: 'ДомЕксперт Мебел',
     description: 'Семейна фирма за мебели по поръчка в Благоевград и София. Кухни, гардероби, спални и офис мебели с 10+ години опит.',
-    url: 'https://domexpertmebel.bg',
-    telephone: '+359888123456',
-    email: 'office@domexpertmebel.bg',
+    url: 'https://domexpertmebel.com',
+    telephone: '+359876081199',
+    email: 'office@domexpertmebel.com',
     foundingDate: '2014',
     address: {
       '@type': 'PostalAddress',
@@ -39,8 +39,8 @@ export default function LocalBusinessSchema() {
       { '@type': 'City', name: 'Банско' },
       { '@type': 'City', name: 'Разлог' },
     ],
-    image: 'https://domexpertmebel.bg/images/hero/hero.png',
-    logo: 'https://domexpertmebel.bg/images/logo-icon.png',
+    image: 'https://domexpertmebel.com/images/hero/hero.png',
+    logo: 'https://domexpertmebel.com/images/logo-icon.png',
     // TODO: Replace with actual social profile URLs
     sameAs: [
       'https://www.facebook.com/domexpertmebel',

@@ -6,8 +6,8 @@ const service = services.find((s) => s.id === 'kuhni')!
 
 export const metadata: Metadata = {
   title: { absolute: 'Кухни по поръчка Благоевград и София | Dom Expert Мебел' },
-  description: 'Изработваме кухни по поръчка в Благоевград и София. МДФ, гланц, ПДЧ. Безплатен 3D проект, монтаж и гаранция 2 год. Тел: 0888 123 456',
-  alternates: { canonical: 'https://domexpertmebel.bg/услуги/кухни-по-поръчка/' },
+  description: 'Изработваме кухни по поръчка в Благоевград и София. МДФ, гланц, ПДЧ. Безплатен 3D проект, монтаж и гаранция 2 год. Тел: 0876 081 199',
+  alternates: { canonical: 'https://domexpertmebel.com/услуги/кухни-по-поръчка/' },
 }
 
 export default function KuhniPage() {

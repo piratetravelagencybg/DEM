@@ -6,8 +6,8 @@ import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
 
 export const metadata: Metadata = {
   title: { absolute: 'Контакти | Dom Expert Мебел — Благоевград и София' },
-  description: 'Свържете се с Dom Expert Мебел за безплатна консултация и оферта за мебели по поръчка. Тел: 0888 123 456 | office@domexpertmebel.bg | Благоевград',
-  alternates: { canonical: 'https://domexpertmebel.bg/контакти/' },
+  description: 'Свържете се с Dom Expert Мебел за безплатна консултация и оферта за мебели по поръчка. Тел: 0876 081 199 | office@domexpertmebel.com | Благоевград',
+  alternates: { canonical: 'https://domexpertmebel.com/контакти/' },
 }
 
 export default function ContactsPage() {
@@ -15,8 +15,8 @@ export default function ContactsPage() {
     <>
       <LocalBusinessSchema />
       <BreadcrumbSchema items={[
-        { name: 'Начало', url: 'https://domexpertmebel.bg/' },
-        { name: 'Контакти', url: 'https://domexpertmebel.bg/контакти/' },
+        { name: 'Начало', url: 'https://domexpertmebel.com/' },
+        { name: 'Контакти', url: 'https://domexpertmebel.com/контакти/' },
       ]} />
       <div className="pt-24">
         <section className="section-py bg-cream">
@@ -36,8 +36,8 @@ export default function ContactsPage() {
               {/* GEO key facts */}
               <ul className="mt-4 space-y-1 font-body text-sm text-warm-gray">
                 <li>• Работно време: Понеделник–Петък, 09:00–18:00</li>
-                <li>• Телефон: <a href="tel:+359888123456" className="text-walnut hover:underline">0888 123 456</a></li>
-                <li>• Имейл: <a href="mailto:office@domexpertmebel.bg" className="text-walnut hover:underline">office@domexpertmebel.bg</a></li>
+                <li>• Телефон: <a href="tel:+359876081199" className="text-walnut hover:underline">0876 081 199</a></li>
+                <li>• Имейл: <a href="mailto:office@domexpertmebel.com" className="text-walnut hover:underline">office@domexpertmebel.com</a></li>
                 <li>• Адрес: Благоевград, България</li>
                 <li>• Обслужваме: Благоевград, София, Дупница, Сандански, Банско, Разлог</li>
               </ul>
@@ -48,8 +48,8 @@ export default function ContactsPage() {
               <div className="space-y-8">
                 <div className="space-y-4">
                   {[
-                    { icon: Phone, label: 'Телефон', value: '0888 123 456', href: 'tel:+359888123456' },
-                    { icon: Mail, label: 'Имейл', value: 'office@domexpertmebel.bg', href: 'mailto:office@domexpertmebel.bg' },
+                    { icon: Phone, label: 'Телефон', value: '0876 081 199', href: 'tel:+359876081199' },
+                    { icon: Mail, label: 'Имейл', value: 'office@domexpertmebel.com', href: 'mailto:office@domexpertmebel.com' },
                     { icon: MapPin, label: 'Адрес', value: 'Благоевград, България', href: null },
                     { icon: Clock, label: 'Работно време', value: 'Понеделник — Петък: 09:00 — 18:00', href: null },
                   ].map(({ icon: Icon, label, value, href }) => (

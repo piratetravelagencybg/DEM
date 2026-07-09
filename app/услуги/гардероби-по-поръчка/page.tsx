@@ -6,8 +6,8 @@ const service = services.find((s) => s.id === 'garderob')!
 
 export const metadata: Metadata = {
   title: { absolute: 'Гардероби по поръчка Благоевград и София | Dom Expert Мебел' },
-  description: 'Вградени гардероби по поръчка в Благоевград и София. Плъзгащи врати, LED осветление. Точни размери. Безплатен 3D проект. Тел: 0888 123 456',
-  alternates: { canonical: 'https://domexpertmebel.bg/услуги/гардероби-по-поръчка/' },
+  description: 'Вградени гардероби по поръчка в Благоевград и София. Плъзгащи врати, LED осветление. Точни размери. Безплатен 3D проект. Тел: 0876 081 199',
+  alternates: { canonical: 'https://domexpertmebel.com/услуги/гардероби-по-поръчка/' },
 }
 
 export default function GarderobPage() {

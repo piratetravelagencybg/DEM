@@ -30,7 +30,7 @@ export default function CTABar() {
         >
           {/* Phone button */}
           <a
-            href="tel:+359888123456"
+            href="tel:+359876081199"
             style={{ flex: 1, display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none' }}
           >
             <div
@@ -49,7 +49,7 @@ export default function CTABar() {
             </div>
             <div style={{ minWidth: 0 }}>
               <div style={{ fontFamily: 'var(--font-body)', fontWeight: 700, fontSize: '0.88rem', color: '#2C2C2C', lineHeight: 1.2, letterSpacing: '-0.01em' }}>
-                0888 123 456
+                0876 081 199
               </div>
               <div style={{ fontFamily: 'var(--font-body)', fontSize: '0.62rem', color: '#8B7E76', marginTop: 1 }}>
                 Обади се сега
@@ -95,8 +95,8 @@ export default function CTABar() {
               </div>
               <div className="text-center sm:text-left">
                 <p className="font-body text-sm mb-1" style={{ color: 'rgba(250,250,247,0.55)' }}>Обадете се ни</p>
-                <a href="tel:+359888123456" className="font-display text-white text-3xl font-semibold hover:text-walnut transition-colors">
-                  0888 123 456
+                <a href="tel:+359876081199" className="font-display text-white text-3xl font-semibold hover:text-walnut transition-colors">
+                  0876 081 199
                 </a>
                 <p className="font-body text-xs mt-1" style={{ color: 'rgba(250,250,247,0.45)' }}>Пон – Пет. 09:00 – 18:00</p>
               </div>

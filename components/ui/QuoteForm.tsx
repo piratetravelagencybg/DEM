@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
@@ -31,7 +31,7 @@ export default function QuoteForm({ defaultService = '' }: { defaultService?: st
     const body = encodeURIComponent(
       `Ime: ${data.name}\nTelefon: ${data.phone}\nEmail: ${data.email || '—'}\nGrad: ${data.city}\nUsluga: ${data.service}\n\n${data.message}`
     )
-    window.location.href = `mailto:office@domexpertmebel.bg?subject=${subject}&body=${body}`
+    window.location.href = `mailto:office@domexpertmebel.com?subject=${subject}&body=${body}`
     setSubmitted(true)
   }
 
@@ -65,7 +65,7 @@ export default function QuoteForm({ defaultService = '' }: { defaultService?: st
           <input
             {...register('phone')}
             type="tel"
-            placeholder="0888 123 456"
+            placeholder="0876 081 199"
             className="w-full px-4 py-3 border border-light-tan rounded-btn bg-white text-charcoal placeholder:text-warm-gray/60 focus:outline-none focus:border-walnut transition-colors text-sm"
           />
           {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone.message}</p>}

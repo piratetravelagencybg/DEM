@@ -4,7 +4,7 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: { absolute: 'Политика за поверителност | Dom Expert Мебел' },
   description: 'Политика за поверителност и защита на личните данни на Dom Expert Мебел съгласно GDPR.',
-  alternates: { canonical: 'https://domexpertmebel.bg/политика-за-поверителност/' },
+  alternates: { canonical: 'https://domexpertmebel.com/политика-за-поверителност/' },
   robots: { index: false },
 }
 
@@ -28,12 +28,12 @@ export default function PrivacyPolicyPage() {
           <section>
             <h2 className="font-display font-semibold text-charcoal text-xl mb-3">1. Администратор на лични данни</h2>
             <p>
-              <strong className="text-charcoal">Dom Expert Мебел</strong> (ДомЕксперт Мебел) е администратор на личните данни, събирани чрез уебсайта <strong>domexpertmebel.bg</strong>.
+              <strong className="text-charcoal">Dom Expert Мебел</strong> (ДомЕксперт Мебел) е администратор на личните данни, събирани чрез уебсайта <strong>domexpertmebel.com</strong>.
             </p>
             <p>За въпроси, свързани с личните данни, можете да се свържете с нас на:</p>
             <ul className="list-disc pl-5 space-y-1">
-              <li>Имейл: <a href="mailto:office@domexpertmebel.bg" className="text-walnut hover:underline">office@domexpertmebel.bg</a></li>
-              <li>Телефон: <a href="tel:+359888123456" className="text-walnut hover:underline">0888 123 456</a></li>
+              <li>Имейл: <a href="mailto:office@domexpertmebel.com" className="text-walnut hover:underline">office@domexpertmebel.com</a></li>
+              <li>Телефон: <a href="tel:+359876081199" className="text-walnut hover:underline">0876 081 199</a></li>
               <li>Адрес: Благоевград, България</li>
             </ul>
           </section>

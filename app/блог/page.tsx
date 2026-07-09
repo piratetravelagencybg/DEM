@@ -7,7 +7,7 @@ import Badge from '@/components/ui/Badge'
 export const metadata: Metadata = {
   title: { absolute: 'Блог за мебели и интериор | Dom Expert Мебел' },
   description: 'Полезни съвети за кухни и гардероби по поръчка, интериорен дизайн и обзавеждане на дома. Ценови наръчници и практически идеи от Dom Expert Мебел.',
-  alternates: { canonical: 'https://domexpertmebel.bg/блог/' },
+  alternates: { canonical: 'https://domexpertmebel.com/блог/' },
 }
 
 const posts = [

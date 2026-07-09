@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${project.title} — ${project.city}`,
     description: project.description,
-    alternates: { canonical: `https://domexpertmebel.bg/проекти/${project.slug}/` },
+    alternates: { canonical: `https://domexpertmebel.com/проекти/${project.slug}/` },
   }
 }
 
@@ -34,9 +34,9 @@ export default function ProjectPage({ params }: Props) {
   return (
     <>
       <BreadcrumbSchema items={[
-        { name: 'Начало', url: 'https://domexpertmebel.bg/' },
-        { name: 'Проекти', url: 'https://domexpertmebel.bg/проекти/' },
-        { name: project.title, url: `https://domexpertmebel.bg/проекти/${project.slug}/` },
+        { name: 'Начало', url: 'https://domexpertmebel.com/' },
+        { name: 'Проекти', url: 'https://domexpertmebel.com/проекти/' },
+        { name: project.title, url: `https://domexpertmebel.com/проекти/${project.slug}/` },
       ]} />
 
       <div className="pt-24">

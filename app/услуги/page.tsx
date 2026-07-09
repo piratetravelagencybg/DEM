@@ -8,8 +8,8 @@ import services from '@/data/services.json'
 
 export const metadata: Metadata = {
   title: { absolute: 'Услуги — Мебели по поръчка Благоевград | Dom Expert Мебел' },
-  description: 'Кухни, гардероби, спални, дневни, офис мебели и монтаж по поръчка в Благоевград и София. Безплатна консултация и 3D проект. Тел: 0888 123 456',
-  alternates: { canonical: 'https://domexpertmebel.bg/услуги/' },
+  description: 'Кухни, гардероби, спални, дневни, офис мебели и монтаж по поръчка в Благоевград и София. Безплатна консултация и 3D проект. Тел: 0876 081 199',
+  alternates: { canonical: 'https://domexpertmebel.com/услуги/' },
 }
 
 export default function ServicesPage() {

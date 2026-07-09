@@ -7,16 +7,16 @@ import FAQSchema from '@/components/seo/FAQSchema'
 
 export const metadata: Metadata = {
   title: { absolute: 'Мебели по поръчка София | Dom Expert Мебел' },
-  description: 'Мебели по поръчка в София. Кухни, гардероби, спални от семейна фирма с 10+ г. опит. Безплатна консултация и 3D проект. Тел: 0888 123 456',
-  alternates: { canonical: 'https://domexpertmebel.bg/софия/' },
+  description: 'Мебели по поръчка в София. Кухни, гардероби, спални от семейна фирма с 10+ г. опит. Безплатна консултация и 3D проект. Тел: 0876 081 199',
+  alternates: { canonical: 'https://domexpertmebel.com/софия/' },
 }
 
 const localSchema = {
   '@context': 'https://schema.org',
   '@type': ['LocalBusiness', 'FurnitureStore'],
   name: 'Dom Expert Мебел — София',
-  url: 'https://domexpertmebel.bg/софия/',
-  telephone: '+359888123456',
+  url: 'https://domexpertmebel.com/софия/',
+  telephone: '+359876081199',
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'София',
@@ -72,8 +72,8 @@ export default function SofiaPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localSchema) }} />
       <FAQSchema items={faqItems} />
       <BreadcrumbSchema items={[
-        { name: 'Начало', url: 'https://domexpertmebel.bg/' },
-        { name: 'Мебели София', url: 'https://domexpertmebel.bg/софия/' },
+        { name: 'Начало', url: 'https://domexpertmebel.com/' },
+        { name: 'Мебели София', url: 'https://domexpertmebel.com/софия/' },
       ]} />
 
       {/* ── Hero ── */}
@@ -146,8 +146,8 @@ export default function SofiaPage() {
                 ))}
               </div>
 
-              <a href="tel:+359888123456" className="btn-primary inline-flex items-center gap-2">
-                <Phone size={16} /> 0888 123 456
+              <a href="tel:+359876081199" className="btn-primary inline-flex items-center gap-2">
+                <Phone size={16} /> 0876 081 199
               </a>
 
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-2">

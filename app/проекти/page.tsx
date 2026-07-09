@@ -8,7 +8,7 @@ import projects from '@/data/projects.json'
 export const metadata: Metadata = {
   title: { absolute: 'Реализирани проекти — Мебели по поръчка | Dom Expert Мебел' },
   description: 'Разгледайте нашето портфолио от реализирани проекти на мебели по поръчка в Благоевград, София и региона. Кухни, гардероби, спални, офис мебели.',
-  alternates: { canonical: 'https://domexpertmebel.bg/проекти/' },
+  alternates: { canonical: 'https://domexpertmebel.com/проекти/' },
 }
 
 const categories = [

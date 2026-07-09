@@ -6,8 +6,8 @@ const service = services.find((s) => s.id === 'dnevni')!
 
 export const metadata: Metadata = {
   title: { absolute: 'Дневни по поръчка Благоевград и София | Dom Expert Мебел' },
-  description: 'Мебели за дневна по поръчка в Благоевград и София. ТВ секции, стелажи, холни маси. Индивидуален дизайн и безплатен 3D проект. Тел: 0888 123 456',
-  alternates: { canonical: 'https://domexpertmebel.bg/услуги/дневни-по-поръчка/' },
+  description: 'Мебели за дневна по поръчка в Благоевград и София. ТВ секции, стелажи, холни маси. Индивидуален дизайн и безплатен 3D проект. Тел: 0876 081 199',
+  alternates: { canonical: 'https://domexpertmebel.com/услуги/дневни-по-поръчка/' },
 }
 
 export default function DnevniPage() {

@@ -8,17 +8,17 @@ import FAQSchema from '@/components/seo/FAQSchema'
 
 export const metadata: Metadata = {
   title: { absolute: 'Мебели по поръчка Благоевград | Dom Expert Мебел' },
-  description: 'Мебели по поръчка в Благоевград. Кухни, гардероби, спални — семейна фирма с 10+ г. опит и конкурентни цени. Безплатна консултация. Тел: 0888 123 456',
-  alternates: { canonical: 'https://domexpertmebel.bg/благоевград/' },
+  description: 'Мебели по поръчка в Благоевград. Кухни, гардероби, спални — семейна фирма с 10+ г. опит и конкурентни цени. Безплатна консултация. Тел: 0876 081 199',
+  alternates: { canonical: 'https://domexpertmebel.com/благоевград/' },
 }
 
 const localSchema = {
   '@context': 'https://schema.org',
   '@type': ['LocalBusiness', 'FurnitureStore'],
-  '@id': 'https://domexpertmebel.bg/#business',
+  '@id': 'https://domexpertmebel.com/#business',
   name: 'Dom Expert Мебел — Благоевград',
-  url: 'https://domexpertmebel.bg',
-  telephone: '+359888123456',
+  url: 'https://domexpertmebel.com',
+  telephone: '+359876081199',
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Благоевград',
@@ -52,7 +52,7 @@ const faqItems = [
   },
   {
     question: 'Идвате ли на оглед в Благоевград безплатно?',
-    answer: 'Да, огледът и консултацията в Благоевград са напълно безплатни и без задължения. Позвънете на 0888 123 456 или попълнете формата, за да уговорим удобно за вас време.',
+    answer: 'Да, огледът и консултацията в Благоевград са напълно безплатни и без задължения. Позвънете на 0876 081 199 или попълнете формата, за да уговорим удобно за вас време.',
   },
 ]
 
@@ -78,8 +78,8 @@ export default function BlagoevgradPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localSchema) }} />
       <FAQSchema items={faqItems} />
       <BreadcrumbSchema items={[
-        { name: 'Начало', url: 'https://domexpertmebel.bg/' },
-        { name: 'Мебели Благоевград', url: 'https://domexpertmebel.bg/благоевград/' },
+        { name: 'Начало', url: 'https://domexpertmebel.com/' },
+        { name: 'Мебели Благоевград', url: 'https://domexpertmebel.com/благоевград/' },
       ]} />
 
       {/* ── Hero ── */}
@@ -153,8 +153,8 @@ export default function BlagoevgradPage() {
                 ))}
               </div>
 
-              <a href="tel:+359888123456" className="btn-primary inline-flex items-center gap-2">
-                <Phone size={16} /> Обадете се: 0888 123 456
+              <a href="tel:+359876081199" className="btn-primary inline-flex items-center gap-2">
+                <Phone size={16} /> Обадете се: 0876 081 199
               </a>
 
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-2">
