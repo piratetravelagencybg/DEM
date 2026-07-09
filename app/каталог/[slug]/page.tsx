@@ -104,7 +104,7 @@ export default function ProductPage({ params }: Props) {
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-14 items-start">
 
             {/* ── LEFT: IMAGES ── */}
-            <div className="sticky top-24">
+            <div className="lg:sticky lg:top-24">
               {/* Main image */}
               <div
                 className="relative overflow-hidden rounded-2xl"
