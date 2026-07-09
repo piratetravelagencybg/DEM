@@ -108,53 +108,34 @@ function FeaturedCard({ s }: { s: (typeof services)[0] }) {
   )
 }
 
-/* ── Small card (image + text below) ───────────────────────── */
-function SmallCard({ s, imgHeight = 160 }: { s: (typeof services)[0]; imgHeight?: number }) {
+/* ── Small card (full image + title overlay) ────────────────── */
+function SmallCard({ s }: { s: (typeof services)[0] }) {
   return (
     <Link
       href={s.href}
-      className="group flex flex-col overflow-hidden h-full"
-      style={{
-        borderRadius: 16,
-        background: 'white',
-        border: '1px solid #EDE5DA',
-        boxShadow: '0 2px 12px rgba(0,0,0,0.05)',
-        transition: 'box-shadow 0.25s, transform 0.25s',
-      }}
+      className="group relative block overflow-hidden h-full"
+      style={{ borderRadius: 16 }}
     >
-      {/* Image */}
-      <div className="relative flex-shrink-0 overflow-hidden" style={{ height: imgHeight }}>
-        <Image
-          src={s.image}
-          alt={s.title}
-          fill
-          className="object-cover transition-transform duration-600 ease-out group-hover:scale-105"
-          sizes="(max-width: 768px) 50vw, 33vw"
-        />
-      </div>
-
-      {/* Text */}
-      <div className="flex items-center justify-between gap-2 px-4 py-3">
-        <div>
-          <h3
-            className="font-display font-semibold text-charcoal leading-tight"
-            style={{ fontSize: '0.95rem' }}
-          >
-            {s.title}
-          </h3>
-          <p
-            className="font-body text-warm-gray mt-0.5 leading-snug"
-            style={{ fontSize: '0.75rem' }}
-          >
-            {s.desc}
-          </p>
-        </div>
-        <div
-          className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-250 group-hover:bg-walnut"
-          style={{ background: 'rgba(139,111,71,0.12)' }}
+      <Image
+        src={s.image}
+        alt={s.title}
+        fill
+        className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+        sizes="(max-width: 768px) 50vw, 33vw"
+      />
+      {/* Bottom gradient */}
+      <div
+        className="absolute inset-0"
+        style={{ background: 'linear-gradient(to top, rgba(10,6,2,0.82) 0%, rgba(10,6,2,0.18) 45%, rgba(10,6,2,0.0) 70%)' }}
+      />
+      {/* Title */}
+      <div className="absolute bottom-0 left-0 right-0 p-3 md:p-4">
+        <h3
+          className="font-display font-bold text-white leading-tight"
+          style={{ fontSize: 'clamp(0.85rem, 2vw, 1rem)', textShadow: '0 1px 6px rgba(0,0,0,0.4)' }}
         >
-          <ArrowRight size={13} style={{ color: '#8B6F47' }} className="group-hover:text-white transition-colors" />
-        </div>
+          {s.title}
+        </h3>
       </div>
     </Link>
   )
@@ -215,8 +196,9 @@ export default function ServicesGrid() {
                 initial={{ opacity: 0, y: 14 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.45, delay: 0.12 + i * 0.06 }}
+                style={{ height: 150 }}
               >
-                <SmallCard s={s} imgHeight={130} />
+                <SmallCard s={s} />
               </motion.div>
             ))}
           </div>
@@ -253,7 +235,7 @@ export default function ServicesGrid() {
               animate={inView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.12 + i * 0.1 }}
             >
-              <SmallCard s={s} imgHeight={200} />
+              <SmallCard s={s} />
             </motion.div>
           ))}
 
@@ -265,7 +247,7 @@ export default function ServicesGrid() {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.28 + i * 0.08 }}
             >
-              <SmallCard s={s} imgHeight={165} />
+              <SmallCard s={s} />
             </motion.div>
           ))}
         </div>
