@@ -14,12 +14,13 @@ interface ServicePageProps {
   title: string
   subtitle: string
   heroImage: string
+  gallery?: string[]
   features: string[]
   faq: ServiceFAQ[]
   slug: string
 }
 
-export default function ServicePageTemplate({ title, subtitle, heroImage, features, faq, slug }: ServicePageProps) {
+export default function ServicePageTemplate({ title, subtitle, heroImage, gallery = [], features, faq, slug }: ServicePageProps) {
   return (
     <>
       <FAQSchema items={faq} />
@@ -173,6 +174,52 @@ export default function ServicePageTemplate({ title, subtitle, heroImage, featur
           </div>
         </div>
       </section>
+
+      {/* ── Photo gallery strip ── */}
+      {gallery.length > 0 && (
+        <section className="section-py" style={{ backgroundColor: 'var(--color-cream)' }}>
+          <div className="container-main">
+            <div className="text-center mb-8">
+              <span className="eyebrow-pill">Галерия</span>
+              <h2 className="font-display font-bold heading-gradient" style={{ fontSize: 'clamp(1.6rem, 4vw, 2.2rem)' }}>
+                Наши реализации
+              </h2>
+            </div>
+            <div
+              className="grid gap-3"
+              style={{
+                gridTemplateColumns: gallery.length >= 3
+                  ? 'repeat(3, 1fr)'
+                  : `repeat(${gallery.length}, 1fr)`,
+              }}
+            >
+              {gallery.map((src, i) => (
+                <div
+                  key={i}
+                  className="relative overflow-hidden"
+                  style={{
+                    borderRadius: 16,
+                    aspectRatio: i === 0 && gallery.length >= 3 ? '4/3' : '3/4',
+                    ...(i === 0 && gallery.length >= 3 ? {
+                      gridColumn: 'span 2',
+                      gridRow: 'span 1',
+                      aspectRatio: '16/9',
+                    } : {}),
+                  }}
+                >
+                  <Image
+                    src={src}
+                    alt={`${title} — пример ${i + 1}`}
+                    fill
+                    className="object-cover hover:scale-105 transition-transform duration-700"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ── FAQ ── */}
       <section className="section-py" style={{ backgroundColor: 'var(--color-warm-white)' }}>

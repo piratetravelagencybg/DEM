@@ -16,6 +16,7 @@ export default function OfisMebeliPage() {
       title={service.title}
       subtitle="Офис обзавеждане по поръчка за вашия бизнес. Бюра, шкафове, конферентни маси и рецепции с корпоративен дизайн."
       heroImage={service.image}
+      gallery={service.gallery}
       features={service.features}
       faq={service.faq}
       slug={service.slug}

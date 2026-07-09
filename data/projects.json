@@ -8,7 +8,7 @@
     "description": "Модерна кухня с централен остров, изработена от МДФ гланц в бяло и дъб натурал. Оборудвана с вградена техника Bosch, подово осветление и гранитен плот.",
     "materials": "МДФ гланц, плот гранит",
     "duration": "5 седмици",
-    "images": ["/images/projects/project1.png"],
+    "images": ["/images/real/kuhnya-03.png"],
     "featured": true
   },
   {
@@ -20,7 +20,7 @@
     "description": "Вградена гардеробна система с плъзгащи врати огледало, вградено LED осветление и множество отделения за съхранение.",
     "materials": "ПДЧ Egger, огледало, LED",
     "duration": "2 седмици",
-    "images": ["/images/projects/project2.png"],
+    "images": ["/images/real/garderob-02.png"],
     "featured": true
   },
   {
@@ -32,7 +32,7 @@
     "description": "Цялостна дневна стая с ТВ секция, библиотека и вградено осветление. Изработена в тъмно дъбово дърво с меден акцент.",
     "materials": "МДФ фурнир дъб, метален акцент",
     "duration": "4 седмици",
-    "images": ["/images/projects/project3.png"],
+    "images": ["/images/real/dnevna-03.png"],
     "featured": true
   },
   {
@@ -44,7 +44,7 @@
     "description": "Цялостна спалня с тапицирано легло в сиво кадифе, нощни шкафчета и вграден гардероб. Минималистичен дизайн с топли тонове.",
     "materials": "МДФ, кадифена тапицерия, ПДЧ Egger",
     "duration": "5 седмици",
-    "images": ["/images/projects/project4.png"],
+    "images": ["/images/real/spalna-09.png"],
     "featured": true
   },
   {
@@ -56,7 +56,7 @@
     "description": "Цялостно офис обзавеждане за счетоводна кантора — бюра, архивни шкафове и рецепция по поръчка.",
     "materials": "ПДЧ Egger, МДФ",
     "duration": "3 седмици",
-    "images": ["/images/projects/project1.png"],
+    "images": ["/images/real/office-corner.png"],
     "featured": false
   },
   {
@@ -68,7 +68,7 @@
     "description": "Класическа кухня в крем и злато с фрезовани врати, кварцов плот и вградена абсорбатор колона.",
     "materials": "МДФ профил, кварц Silestone",
     "duration": "6 седмици",
-    "images": ["/images/projects/project2.png"],
+    "images": ["/images/real/kuhnya-06.png"],
     "featured": false
   }
 ]

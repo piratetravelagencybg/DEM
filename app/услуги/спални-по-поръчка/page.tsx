@@ -16,6 +16,7 @@ export default function SpalniPage() {
       title={service.title}
       subtitle="Спални комплекти по поръчка — тапицирани легла, нощни шкафчета и гардероби, проектирани за вашето пространство."
       heroImage={service.image}
+      gallery={service.gallery}
       features={service.features}
       faq={service.faq}
       slug={service.slug}

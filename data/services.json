@@ -5,7 +5,14 @@
     "title": "Кухни по поръчка",
     "shortDescription": "Модерни и класически кухни, изработени по вашия проект",
     "icon": "ChefHat",
-    "image": "/images/services/kuhnya.png",
+    "image": "/images/real/kuhnya-04.png",
+    "gallery": [
+      "/images/real/kuhnya-01.png",
+      "/images/real/kuhnya-02.png",
+      "/images/real/kuhnya-03.png",
+      "/images/real/kuhnya-05.png",
+      "/images/real/kuhnya-06.png"
+    ],
     "features": ["МДФ, ПДЧ, гланц", "Безплатен 3D проект", "Монтаж included", "Гаранция 2 г."],
     "faq": [
       {
@@ -32,7 +39,12 @@
     "title": "Гардероби по поръчка",
     "shortDescription": "Вградени гардероби и гардеробни системи за всяко пространство",
     "icon": "Package",
-    "image": "/images/services/garderob.png",
+    "image": "/images/real/garderob-02.png",
+    "gallery": [
+      "/images/real/garderob-01.png",
+      "/images/real/garderob-03.png",
+      "/images/real/spalna-07.png"
+    ],
     "features": ["Вградени и корпусни", "Плъзгащи врати", "LED осветление", "По ваши размери"],
     "faq": [
       {
@@ -59,7 +71,14 @@
     "title": "Спални по поръчка",
     "shortDescription": "Легла, нощни шкафчета и цялостни спални комплекти по ваш дизайн",
     "icon": "Bed",
-    "image": "/images/services/spalna.png",
+    "image": "/images/real/spalna-08.png",
+    "gallery": [
+      "/images/real/spalna-01.png",
+      "/images/real/spalna-03.png",
+      "/images/real/spalna-05.png",
+      "/images/real/spalna-06.png",
+      "/images/real/spalna-09.png"
+    ],
     "features": ["Тапицирани и дървени легла", "Вградено осветление", "Матрак included (по заявка)", "Цялостен дизайн"],
     "faq": [
       {
@@ -86,7 +105,12 @@
     "title": "Дневни по поръчка",
     "shortDescription": "ТВ секции, стелажи и мебели за дневната стая по ваш проект",
     "icon": "Tv",
-    "image": "/images/services/kuhnya.png",
+    "image": "/images/real/dnevna-01.png",
+    "gallery": [
+      "/images/real/dnevna-02.png",
+      "/images/real/dnevna-03.png",
+      "/images/real/dnevna-04.png"
+    ],
     "features": ["ТВ секции", "Стелажи и библиотеки", "Холни маси", "Индивидуален дизайн"],
     "faq": [
       {
@@ -113,7 +137,11 @@
     "title": "Офис мебели",
     "shortDescription": "Бюра, шкафове и офис обзавеждане по поръчка за вашия бизнес",
     "icon": "Briefcase",
-    "image": "/images/services/garderob.png",
+    "image": "/images/real/office-corner.png",
+    "gallery": [
+      "/images/real/bedroom-modern.png",
+      "/images/real/kuhnya-05.png"
+    ],
     "features": ["Бюра и ергономия", "Конферентни маси", "Архивни шкафове", "Корпоративен дизайн"],
     "faq": [
       {
@@ -140,7 +168,12 @@
     "title": "Монтаж",
     "shortDescription": "Професионален монтаж на всички видове мебели с гаранция",
     "icon": "Wrench",
-    "image": "/images/services/spalna.png",
+    "image": "/images/real/kuhnya-06.png",
+    "gallery": [
+      "/images/real/kuhnya-01.png",
+      "/images/real/garderob-01.png",
+      "/images/real/spalna-02.png"
+    ],
     "features": ["Прецизен монтаж", "Почистване след работа", "Гаранция", "Бърза реакция"],
     "faq": [
       {

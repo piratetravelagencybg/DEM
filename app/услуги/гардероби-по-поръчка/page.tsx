@@ -16,6 +16,7 @@ export default function GarderobPage() {
       title={service.title}
       subtitle="Вградени гардероби и гардеробни системи по поръчка за всяко пространство. Плъзгащи врати, LED осветление и множество опции."
       heroImage={service.image}
+      gallery={service.gallery}
       features={service.features}
       faq={service.faq}
       slug={service.slug}

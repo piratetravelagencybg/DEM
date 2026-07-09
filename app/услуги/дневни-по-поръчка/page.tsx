@@ -16,6 +16,7 @@ export default function DnevniPage() {
       title={service.title}
       subtitle="ТВ секции, стелажи и мебели за дневната стая по ваш проект. Функционален дизайн и прецизна изработка."
       heroImage={service.image}
+      gallery={service.gallery}
       features={service.features}
       faq={service.faq}
       slug={service.slug}

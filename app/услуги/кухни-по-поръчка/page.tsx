@@ -16,6 +16,7 @@ export default function KuhniPage() {
       title={service.title}
       subtitle="Изработваме кухни по поръчка, съобразени с вашия стил и пространство. Безплатен 3D проект, монтаж и гаранция."
       heroImage={service.image}
+      gallery={service.gallery}
       features={service.features}
       faq={service.faq}
       slug={service.slug}

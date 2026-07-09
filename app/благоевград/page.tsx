@@ -21,6 +21,7 @@ const localSchema = {
   telephone: '+359876081199',
   address: {
     '@type': 'PostalAddress',
+    streetAddress: 'ул. Стамболийски 52',
     addressLocality: 'Благоевград',
     postalCode: '2700',
     addressRegion: 'Благоевград',

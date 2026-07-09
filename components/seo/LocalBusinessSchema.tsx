@@ -12,6 +12,7 @@
     foundingDate: '2014',
     address: {
       '@type': 'PostalAddress',
+      streetAddress: 'ул. Стамболийски 52',
       addressLocality: 'Благоевград',
       postalCode: '2700',
       addressRegion: 'Благоевград',

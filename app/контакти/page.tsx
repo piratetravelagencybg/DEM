@@ -38,7 +38,7 @@ export default function ContactsPage() {
                 <li>• Работно време: Понеделник–Петък, 09:00–18:00</li>
                 <li>• Телефон: <a href="tel:+359876081199" className="text-walnut hover:underline">0876 081 199</a></li>
                 <li>• Имейл: <a href="mailto:office@domexpertmebel.com" className="text-walnut hover:underline">office@domexpertmebel.com</a></li>
-                <li>• Адрес: Благоевград, България</li>
+                <li>• Адрес: ул. Стамболийски 52, Благоевград</li>
                 <li>• Обслужваме: Благоевград, София, Дупница, Сандански, Банско, Разлог</li>
               </ul>
             </div>
@@ -50,7 +50,7 @@ export default function ContactsPage() {
                   {[
                     { icon: Phone, label: 'Телефон', value: '0876 081 199', href: 'tel:+359876081199' },
                     { icon: Mail, label: 'Имейл', value: 'office@domexpertmebel.com', href: 'mailto:office@domexpertmebel.com' },
-                    { icon: MapPin, label: 'Адрес', value: 'Благоевград, България', href: null },
+                    { icon: MapPin, label: 'Адрес', value: 'ул. Стамболийски 52, Благоевград', href: null },
                     { icon: Clock, label: 'Работно време', value: 'Понеделник — Петък: 09:00 — 18:00', href: null },
                   ].map(({ icon: Icon, label, value, href }) => (
                     <div key={label} className="flex items-start gap-4 bg-warm-white p-4 rounded-card">
@@ -75,7 +75,7 @@ export default function ContactsPage() {
                     <MapPin size={32} className="mx-auto mb-2 text-walnut" />
                     {/* TODO: Replace with actual Google Maps embed */}
                     <p>Google Maps</p>
-                    <p className="text-xs mt-1">Благоевград, България</p>
+                    <p className="text-xs mt-1">ул. Стамболийски 52, Благоевград</p>
                   </div>
                 </div>
               </div>
