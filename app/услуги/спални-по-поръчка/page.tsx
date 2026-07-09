@@ -5,8 +5,8 @@ import services from '@/data/services.json'
 const service = services.find((s) => s.id === 'spalni')!
 
 export const metadata: Metadata = {
-  title: 'Спални по поръчка Благоевград | Dom Expert Мебел',
-  description: 'Спални по поръчка в Благоевград и София. Легла, нощни шкафчета, тапицерия. 3D проект безплатно. Тел: 0888 123 456',
+  title: { absolute: 'Спални по поръчка Благоевград и София | Dom Expert Мебел' },
+  description: 'Спални по поръчка в Благоевград и София. Тапицирани легла, нощни шкафчета, цялостни комплекти. Безплатен 3D проект. Тел: 0888 123 456',
   alternates: { canonical: 'https://domexpertmebel.bg/услуги/спални-по-поръчка/' },
 }
 

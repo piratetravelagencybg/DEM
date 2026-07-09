@@ -6,8 +6,8 @@ import CTABar from '@/components/home/CTABar'
 import projects from '@/data/projects.json'
 
 export const metadata: Metadata = {
-  title: 'Реализирани проекти — Мебели по поръчка',
-  description: 'Разгледайте нашето портфолио от реализирани проекти на мебели по поръчка в Благоевград, София и региона. Кухни, гардероби, спални.',
+  title: { absolute: 'Реализирани проекти — Мебели по поръчка | Dom Expert Мебел' },
+  description: 'Разгледайте нашето портфолио от реализирани проекти на мебели по поръчка в Благоевград, София и региона. Кухни, гардероби, спални, офис мебели.',
   alternates: { canonical: 'https://domexpertmebel.bg/проекти/' },
 }
 
@@ -26,6 +26,7 @@ export default function ProjectsPage() {
       <div className="pt-24 section-py bg-cream">
         <div className="container-main">
           <SectionHeader
+            level={1}
             eyebrow="Портфолио"
             title="Реализирани проекти"
             subtitle="Всеки проект е уникален — вижте резултатите от нашата работа."

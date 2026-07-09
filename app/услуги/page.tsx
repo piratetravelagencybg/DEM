@@ -7,8 +7,8 @@ import CTABar from '@/components/home/CTABar'
 import services from '@/data/services.json'
 
 export const metadata: Metadata = {
-  title: 'Нашите услуги — Мебели по поръчка',
-  description: 'Кухни, гардероби, спални, дневни, офис мебели и монтаж по поръчка в Благоевград и София. Безплатна консултация.',
+  title: { absolute: 'Услуги — Мебели по поръчка Благоевград | Dom Expert Мебел' },
+  description: 'Кухни, гардероби, спални, дневни, офис мебели и монтаж по поръчка в Благоевград и София. Безплатна консултация и 3D проект. Тел: 0888 123 456',
   alternates: { canonical: 'https://domexpertmebel.bg/услуги/' },
 }
 
@@ -18,6 +18,7 @@ export default function ServicesPage() {
       <div className="pt-24 section-py bg-cream">
         <div className="container-main">
           <SectionHeader
+            level={1}
             eyebrow="Какво правим"
             title="Нашите услуги"
             subtitle="От кухни до офис мебели — всичко по поръчка с безплатен 3D проект и монтаж."

@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { ArrowLeft, Clock, Calendar } from 'lucide-react'
 import Badge from '@/components/ui/Badge'
 import CTABar from '@/components/home/CTABar'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
 
 interface Props {
   params: { slug: string }
@@ -183,9 +184,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = posts[params.slug]
   if (!post) return {}
   return {
-    title: post.title,
+    title: { absolute: `${post.title} | Dom Expert Мебел` },
     description: post.description,
     alternates: { canonical: `https://domexpertmebel.bg/блог/${params.slug}/` },
+    openGraph: {
+      type: 'article',
+      publishedTime: post.date,
+      images: [{ url: `https://domexpertmebel.bg${post.image}`, width: 1200, height: 630, alt: post.title }],
+    },
   }
 }
 
@@ -195,8 +201,44 @@ export default function BlogPostPage({ params }: Props) {
 
   const sections = post.content.split('\n\n').filter(Boolean)
 
+  const articleSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: post.title,
+    description: post.description,
+    image: [`https://domexpertmebel.bg${post.image}`],
+    datePublished: post.date,
+    dateModified: post.date,
+    author: {
+      '@type': 'Organization',
+      name: 'Dom Expert Мебел',
+      url: 'https://domexpertmebel.bg',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Dom Expert Мебел',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://domexpertmebel.bg/images/logo-icon.png',
+      },
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `https://domexpertmebel.bg/блог/${params.slug}/`,
+    },
+  }
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      <BreadcrumbSchema items={[
+        { name: 'Начало', url: 'https://domexpertmebel.bg/' },
+        { name: 'Блог', url: 'https://domexpertmebel.bg/блог/' },
+        { name: post.title, url: `https://domexpertmebel.bg/блог/${params.slug}/` },
+      ]} />
       <div className="pt-24">
         {/* Hero */}
         <div className="relative h-72 lg:h-96">

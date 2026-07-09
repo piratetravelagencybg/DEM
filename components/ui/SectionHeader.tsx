@@ -6,9 +6,11 @@ interface SectionHeaderProps {
   subtitle?: string
   align?: 'left' | 'center'
   className?: string
+  level?: 1 | 2
 }
 
-export default function SectionHeader({ eyebrow, title, subtitle, align = 'center', className }: SectionHeaderProps) {
+export default function SectionHeader({ eyebrow, title, subtitle, align = 'center', className, level = 2 }: SectionHeaderProps) {
+  const Tag = `h${level}` as 'h1' | 'h2'
   return (
     <div className={cn('mb-12', align === 'center' && 'text-center', className)}>
       {eyebrow && (
@@ -16,7 +18,7 @@ export default function SectionHeader({ eyebrow, title, subtitle, align = 'cente
           {eyebrow}
         </span>
       )}
-      <h2 className="section-title">{title}</h2>
+      <Tag className="section-title">{title}</Tag>
       {subtitle && (
         <p className="mt-4 text-warm-gray font-body text-base leading-relaxed max-w-2xl mx-auto">
           {subtitle}

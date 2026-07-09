@@ -5,8 +5,8 @@ import SectionHeader from '@/components/ui/SectionHeader'
 import Badge from '@/components/ui/Badge'
 
 export const metadata: Metadata = {
-  title: 'Блог за мебели и интериор | Dom Expert Мебел',
-  description: 'Полезни съвети за избор на мебели по поръчка, интериорен дизайн и обзавеждане на дома. Статии от Dom Expert Мебел.',
+  title: { absolute: 'Блог за мебели и интериор | Dom Expert Мебел' },
+  description: 'Полезни съвети за кухни и гардероби по поръчка, интериорен дизайн и обзавеждане на дома. Ценови наръчници и практически идеи от Dom Expert Мебел.',
   alternates: { canonical: 'https://domexpertmebel.bg/блог/' },
 }
 
@@ -56,6 +56,7 @@ export default function BlogPage() {
     <div className="pt-24 section-py bg-cream">
       <div className="container-main">
         <SectionHeader
+          level={1}
           eyebrow="Блог"
           title="Съвети и вдъхновение"
           subtitle="Полезни статии за мебели по поръчка, интериорен дизайн и обзавеждане на дома."

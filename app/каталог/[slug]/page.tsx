@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowLeft, CheckCircle, ShoppingBag, Truck, Shield } from 'lucide-react'
 import QuoteForm from '@/components/ui/QuoteForm'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
 import products from '@/data/products.json'
 
 interface Props {
@@ -26,8 +27,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const product = products.find((p) => p.slug === params.slug)
   if (!product) return {}
   return {
-    title: `${product.title} — ${product.price} лв. | Dom Expert Мебел`,
-    description: product.description,
+    title: { absolute: `${product.title} — ${product.price} лв. | Dom Expert Мебел` },
+    description: `${product.title} на цена ${product.price} лв. ${product.description.slice(0, 90)}. Доставка 3-5 дни, гаранция 2 год. Тел: 0888 123 456`,
     alternates: { canonical: `https://domexpertmebel.bg/каталог/${product.slug}/` },
   }
 }
@@ -40,8 +41,44 @@ export default function ProductPage({ params }: Props) {
     ? Math.round((1 - product.price / product.comparePrice) * 100)
     : null
 
+  const productSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: product.title,
+    description: product.description,
+    image: [`https://domexpertmebel.bg${product.images[0]}`],
+    sku: product.sku,
+    brand: {
+      '@type': 'Brand',
+      name: 'Dom Expert Мебел',
+    },
+    offers: {
+      '@type': 'Offer',
+      price: product.price,
+      priceCurrency: 'BGN',
+      availability: product.inStock
+        ? 'https://schema.org/InStock'
+        : 'https://schema.org/BackOrder',
+      seller: {
+        '@type': 'Organization',
+        name: 'Dom Expert Мебел',
+        url: 'https://domexpertmebel.bg',
+      },
+      url: `https://domexpertmebel.bg/каталог/${product.slug}/`,
+    },
+  }
+
   return (
     <div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+      />
+      <BreadcrumbSchema items={[
+        { name: 'Начало', url: 'https://domexpertmebel.bg/' },
+        { name: 'Онлайн магазин', url: 'https://domexpertmebel.bg/каталог/' },
+        { name: product.title, url: `https://domexpertmebel.bg/каталог/${product.slug}/` },
+      ]} />
 
       {/* ── Hero / Product section ── */}
       <section
@@ -83,7 +120,7 @@ export default function ProductPage({ params }: Props) {
               >
                 <Image
                   src={product.images[0]}
-                  alt={product.title}
+                  alt={`${product.title} — ${CATEGORY_LABELS[product.category] || product.category} от Dom Expert Мебел`}
                   fill
                   className="object-cover"
                   priority

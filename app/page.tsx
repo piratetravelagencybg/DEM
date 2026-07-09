@@ -11,8 +11,8 @@ import CTABar from '@/components/home/CTABar'
 import LocalBusinessSchema from '@/components/seo/LocalBusinessSchema'
 
 export const metadata: Metadata = {
-  title: 'Мебели по поръчка Благоевград и София | Dom Expert Мебел',
-  description: 'Семейна фирма за мебели по поръчка. Кухни, гардероби, спални, офис мебели. Безплатна консултация и 3D проект. Работим в Благоевград, София и региона.',
+  title: { absolute: 'Мебели по поръчка Благоевград и София | Dom Expert Мебел' },
+  description: 'Семейна фирма за мебели по поръчка в Благоевград и София. Кухни, гардероби, спални, офис мебели. Безплатна консултация и 3D проект. Тел: 0888 123 456',
   alternates: { canonical: 'https://domexpertmebel.bg/' },
   openGraph: {
     title: 'Мебели по поръчка | Dom Expert Мебел — Благоевград & София',

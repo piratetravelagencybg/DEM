@@ -1,13 +1,22 @@
 User-agent: *
 Allow: /
 
+# AI crawlers — explicitly welcomed for GEO visibility
 User-agent: GPTBot
 Allow: /
-
+User-agent: OAI-SearchBot
+Allow: /
 User-agent: ClaudeBot
 Allow: /
-
+User-agent: Claude-SearchBot
+Allow: /
 User-agent: PerplexityBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+User-agent: Bingbot
+Allow: /
+User-agent: Applebot-Extended
 Allow: /
 
 Sitemap: https://domexpertmebel.bg/sitemap.xml

@@ -2,10 +2,11 @@ import type { Metadata } from 'next'
 import { Phone, Mail, MapPin, Clock } from 'lucide-react'
 import QuoteForm from '@/components/ui/QuoteForm'
 import LocalBusinessSchema from '@/components/seo/LocalBusinessSchema'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
 
 export const metadata: Metadata = {
-  title: 'Контакти | Dom Expert Мебел — Благоевград и София',
-  description: 'Свържете се с Dom Expert Мебел за безплатна консултация и оферта. Тел: 0888 123 456 | office@domexpertmebel.bg',
+  title: { absolute: 'Контакти | Dom Expert Мебел — Благоевград и София' },
+  description: 'Свържете се с Dom Expert Мебел за безплатна консултация и оферта за мебели по поръчка. Тел: 0888 123 456 | office@domexpertmebel.bg | Благоевград',
   alternates: { canonical: 'https://domexpertmebel.bg/контакти/' },
 }
 
@@ -13,24 +14,38 @@ export default function ContactsPage() {
   return (
     <>
       <LocalBusinessSchema />
+      <BreadcrumbSchema items={[
+        { name: 'Начало', url: 'https://domexpertmebel.bg/' },
+        { name: 'Контакти', url: 'https://domexpertmebel.bg/контакти/' },
+      ]} />
       <div className="pt-24">
         <section className="section-py bg-cream">
           <div className="container-main">
+
+            {/* Key facts block for AI/GEO */}
+            <div className="max-w-3xl mx-auto mb-10">
+              <span className="inline-block font-body text-xs font-semibold tracking-widest uppercase text-walnut mb-3">
+                Свържете се
+              </span>
+              <h1 className="font-display font-semibold text-charcoal" style={{ fontSize: 'var(--text-h1)' }}>
+                Свържете се с нас
+              </h1>
+              <p className="font-body text-warm-gray mt-4 leading-relaxed">
+                Dom Expert Мебел е на ваше разположение за безплатна консултация, оглед на място и изготвяне на оферта. Отговаряме в рамките на 24 часа.
+              </p>
+              {/* GEO key facts */}
+              <ul className="mt-4 space-y-1 font-body text-sm text-warm-gray">
+                <li>• Работно време: Понеделник–Петък, 09:00–18:00</li>
+                <li>• Телефон: <a href="tel:+359888123456" className="text-walnut hover:underline">0888 123 456</a></li>
+                <li>• Имейл: <a href="mailto:office@domexpertmebel.bg" className="text-walnut hover:underline">office@domexpertmebel.bg</a></li>
+                <li>• Адрес: Благоевград, България</li>
+                <li>• Обслужваме: Благоевград, София, Дупница, Сандански, Банско, Разлог</li>
+              </ul>
+            </div>
+
             <div className="grid lg:grid-cols-2 gap-16">
               {/* Left: Info */}
               <div className="space-y-8">
-                <div>
-                  <span className="inline-block font-body text-xs font-semibold tracking-widest uppercase text-walnut mb-3">
-                    Свържете се
-                  </span>
-                  <h1 className="font-display font-semibold text-charcoal" style={{ fontSize: 'var(--text-h1)' }}>
-                    Свържете се с нас
-                  </h1>
-                  <p className="font-body text-warm-gray mt-4 leading-relaxed">
-                    Готови сме да отговорим на всичките ви въпроси. Безплатна консултация и оценка.
-                  </p>
-                </div>
-
                 <div className="space-y-4">
                   {[
                     { icon: Phone, label: 'Телефон', value: '0888 123 456', href: 'tel:+359888123456' },
@@ -58,6 +73,7 @@ export default function ContactsPage() {
                 <div className="rounded-card overflow-hidden h-56 bg-light-tan flex items-center justify-center">
                   <div className="text-center text-warm-gray font-body text-sm">
                     <MapPin size={32} className="mx-auto mb-2 text-walnut" />
+                    {/* TODO: Replace with actual Google Maps embed */}
                     <p>Google Maps</p>
                     <p className="text-xs mt-1">Благоевград, България</p>
                   </div>

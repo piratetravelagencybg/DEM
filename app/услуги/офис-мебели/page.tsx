@@ -5,8 +5,8 @@ import services from '@/data/services.json'
 const service = services.find((s) => s.id === 'ofis')!
 
 export const metadata: Metadata = {
-  title: 'Офис мебели по поръчка Благоевград | Dom Expert Мебел',
-  description: 'Офис обзавеждане по поръчка в Благоевград и София. Бюра, шкафове, конферентни маси. Тел: 0888 123 456',
+  title: { absolute: 'Офис мебели по поръчка Благоевград и София | Dom Expert Мебел' },
+  description: 'Офис обзавеждане по поръчка в Благоевград и София. Бюра, шкафове, конферентни маси, рецепции. Корпоративен дизайн. Тел: 0888 123 456',
   alternates: { canonical: 'https://domexpertmebel.bg/услуги/офис-мебели/' },
 }
 

@@ -2,14 +2,15 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { CheckCircle2, Shield, Users, MapPin, Award } from 'lucide-react'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
 
 // ─────────────────────────────────────────────
 // SEO – metadata
 // ─────────────────────────────────────────────
 export const metadata: Metadata = {
-  title: 'За Нас – Мебели по Поръчка Благоевград',
+  title: { absolute: 'За нас | Мебели по поръчка Благоевград — Dom Expert Мебел' },
   description:
-    'Семейна работилница с 10+ години опит в производство на мебели по поръчка и кухни по поръчка в Благоевград. 500+ реализирани проекта. Безплатна консултация.',
+    'Семейна работилница с 10+ години опит в мебели по поръчка в Благоевград. 500+ реализирани кухни, гардероби и спални. Безплатна консултация. Тел: 0888 123 456',
   alternates: { canonical: 'https://domexpertmebel.bg/за-нас/' },
   openGraph: {
     title: 'За Нас – Мебели по Поръчка Благоевград | Dom Expert Мебел',
@@ -63,7 +64,8 @@ const localBusinessSchema = {
   priceRange: '$$',
   areaServed: ['Благоевград', 'София', 'Дупница', 'Сандански', 'Банско', 'Разлог'],
   image: 'https://domexpertmebel.bg/images/hero/hero.png',
-  sameAs: ['https://www.facebook.com', 'https://www.instagram.com'],
+  // TODO: Replace with actual social profile URLs
+  sameAs: ['https://www.facebook.com/domexpertmebel', 'https://www.instagram.com/domexpertmebel'],
 }
 
 const organizationSchema = {
@@ -168,6 +170,10 @@ export default function AboutPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
       />
+      <BreadcrumbSchema items={[
+        { name: 'Начало', url: 'https://domexpertmebel.bg/' },
+        { name: 'За нас', url: 'https://domexpertmebel.bg/за-нас/' },
+      ]} />
 
       <article>
 
