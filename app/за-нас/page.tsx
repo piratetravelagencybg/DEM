@@ -173,7 +173,7 @@ export default function AboutPage() {
 
         {/* ══ 3. STORY + IMAGE ══ */}
         <section
-          style={{ backgroundColor: 'var(--color-cream)', padding: '72px 0' }}
+          style={{ backgroundColor: 'var(--color-cream)', padding: '56px 0' }}
           aria-labelledby="story-heading"
         >
           <div className="container-main">
@@ -190,24 +190,24 @@ export default function AboutPage() {
                   Семеен бизнес с над 10 години традиция
                 </h2>
                 <div className="space-y-4">
-                  <p className="font-body leading-relaxed" style={{ fontSize: '1rem', color: '#5A5450' }}>
+                  <p className="font-body leading-relaxed" style={{ fontSize: '1.02rem', color: '#3C3830', lineHeight: 1.75 }}>
                     Всичко започна с просто желание — да правим мебели, каквито сами бихме искали у дома.
                     Преди над 10 години основахме Dom Expert Мебел като малка семейна работилница с ясна цел:{' '}
-                    <strong style={{ color: '#3C2A18', fontWeight: 600 }}>качество, честност и внимание към всеки детайл.</strong>
+                    <strong style={{ color: '#1C1208', fontWeight: 700 }}>качество, честност и внимание към всеки детайл.</strong>
                   </p>
-                  <p className="font-body leading-relaxed" style={{ fontSize: '1rem', color: '#5A5450' }}>
+                  <p className="font-body leading-relaxed" style={{ fontSize: '1.02rem', color: '#3C3830', lineHeight: 1.75 }}>
                     С годините израснахме — разширихме екипа и оборудвахме работилницата с модерни машини.
                     Собственикът участва лично в повечето проекти и е постоянна контактна точка.
                   </p>
-                  <p className="font-body leading-relaxed" style={{ fontSize: '1rem', color: '#5A5450' }}>
+                  <p className="font-body leading-relaxed" style={{ fontSize: '1.02rem', color: '#3C3830', lineHeight: 1.75 }}>
                     Специализирани сме основно в{' '}
-                    <strong style={{ color: '#3C2A18', fontWeight: 600 }}>кухни по поръчка</strong>, но правим
+                    <strong style={{ color: '#1C1208', fontWeight: 700 }}>кухни по поръчка</strong>, но правим
                     и гардероби, спални и офис мебели. Всеки проект минава през 3D визуализация.
                   </p>
                 </div>
                 <ul className="space-y-2.5 mt-6">
                   {facts.map((fact) => (
-                    <li key={fact} className="flex items-start gap-3 font-body" style={{ fontSize: '0.9rem', color: '#5A5450' }}>
+                    <li key={fact} className="flex items-start gap-3 font-body" style={{ fontSize: '0.95rem', color: '#3C3830' }}>
                       <CheckCircle2 size={15} style={{ color: '#8B6F47', flexShrink: 0, marginTop: 3 }} />
                       {fact}
                     </li>
@@ -243,7 +243,7 @@ export default function AboutPage() {
         </section>
 
         {/* ══ 4. FULL-WIDTH IMAGE ══ */}
-        <section style={{ backgroundColor: 'var(--color-cream)', paddingBottom: 72 }}>
+        <section style={{ backgroundColor: 'var(--color-cream)', paddingBottom: 56 }}>
           <div className="container-main">
             <div className="relative overflow-hidden rounded-2xl" style={{ aspectRatio: '21/9' }}>
               <Image
@@ -262,11 +262,11 @@ export default function AboutPage() {
 
         {/* ══ 5. VALUES ══ */}
         <section
-          style={{ backgroundColor: 'var(--color-warm-white)', padding: '72px 0' }}
+          style={{ backgroundColor: 'var(--color-warm-white)', padding: '56px 0' }}
           aria-labelledby="why-heading"
         >
           <div className="container-main">
-            <div className="text-center mb-10">
+            <div className="text-center mb-8">
               <span className="eyebrow-pill">Защо да ни изберете</span>
               <h2
                 id="why-heading"
@@ -277,7 +277,7 @@ export default function AboutPage() {
               </h2>
             </div>
 
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
               {whyUs.map(({ Icon, title, desc }, i) => (
                 <div
                   key={title}
@@ -312,7 +312,7 @@ export default function AboutPage() {
 
         {/* ══ 6. PROCESS + PHOTO ══ */}
         <section
-          style={{ backgroundColor: '#1A1208', padding: '72px 0' }}
+          style={{ backgroundColor: '#2A1E14', padding: '56px 0' }}
           aria-labelledby="process-heading"
         >
           <div className="container-main">
@@ -345,22 +345,22 @@ export default function AboutPage() {
                     key={step.num}
                     className="flex items-start gap-5"
                     style={{
-                      paddingBottom: i < 3 ? 24 : 0,
-                      marginBottom: i < 3 ? 24 : 0,
-                      borderBottom: i < 3 ? '1px solid rgba(255,255,255,0.07)' : 'none',
+                      paddingBottom: i < 3 ? 20 : 0,
+                      marginBottom: i < 3 ? 20 : 0,
+                      borderBottom: i < 3 ? '1px solid rgba(255,255,255,0.12)' : 'none',
                     }}
                   >
                     <div className="font-display font-bold flex-shrink-0"
-                      style={{ fontSize: '2rem', color: 'rgba(196,168,130,0.22)', lineHeight: 1, width: 46, paddingTop: 2 }}>
+                      style={{ fontSize: '1.6rem', color: '#C4A882', lineHeight: 1, width: 42, paddingTop: 3, opacity: 0.6 }}>
                       {step.num}
                     </div>
                     <div>
                       <h3 className="font-display font-semibold"
-                        style={{ fontSize: '1.02rem', color: 'white', lineHeight: 1.2, marginBottom: 6 }}>
+                        style={{ fontSize: '1.05rem', color: 'white', lineHeight: 1.2, marginBottom: 5 }}>
                         {step.title}
                       </h3>
                       <p className="font-body leading-relaxed"
-                        style={{ fontSize: '0.86rem', color: 'rgba(255,255,255,0.48)' }}>
+                        style={{ fontSize: '0.88rem', color: 'rgba(255,255,255,0.68)', lineHeight: 1.6 }}>
                         {step.desc}
                       </p>
                     </div>
@@ -384,7 +384,7 @@ export default function AboutPage() {
         </section>
 
         {/* ══ 7. DIPTYCH ══ */}
-        <section style={{ backgroundColor: 'var(--color-cream)', padding: '72px 0' }}>
+        <section style={{ backgroundColor: 'var(--color-cream)', padding: '56px 0' }}>
           <div className="container-main">
             <div className="text-center mb-8">
               <span className="eyebrow-pill">Реализации</span>
@@ -418,7 +418,7 @@ export default function AboutPage() {
 
         {/* ══ 8. CTA ══ */}
         <section
-          style={{ backgroundColor: 'var(--color-warm-white)', padding: '72px 0' }}
+          style={{ backgroundColor: 'var(--color-warm-white)', padding: '56px 0' }}
           aria-label="Покана за действие"
         >
           <div className="container-main" style={{ maxWidth: 640, textAlign: 'center' }}>
