@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { CheckCircle2, Shield, Users, MapPin, Award } from 'lucide-react'
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import AnimatedStats from '@/components/about/AnimatedStats'
 
 export const metadata: Metadata = {
   title: { absolute: 'За нас | Мебели по поръчка Благоевград — Dom Expert Мебел' },
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://domexpertmebel.com/за-нас/' },
   openGraph: {
     title: 'За Нас – Мебели по Поръчка Благоевград | Dom Expert Мебел',
-    description: 'Семейна работилница с 10+ години опит в мебели по поръчка – Благоевград. 500+ реализирани проекта.',
+    description: 'Семейна работилница с 10+ години опит – Благоевград. 500+ реализирани проекта.',
     url: 'https://domexpertmebel.com/за-нас/',
     type: 'website',
     locale: 'bg_BG',
@@ -67,10 +68,10 @@ const organizationSchema = {
 }
 
 const whyUs = [
-  { Icon: Shield,  title: 'Качество без компромис',  desc: 'Материали Egger, Blum и Hafele. 2-годишна гаранция на всички изделия.' },
-  { Icon: Users,   title: 'Индивидуален подход',     desc: 'Всеки проект е уникален — съобразен с вашето пространство и бюджет.' },
-  { Icon: MapPin,  title: 'Местен и достъпен',       desc: 'Семейна фирма от Благоевград. Собственикът участва лично в проектите.' },
-  { Icon: Award,   title: 'Гарантиран резултат',     desc: '500+ реализирани проекта. Стоим зад всяко изделие с гаранция.' },
+  { Icon: Shield, title: 'Качество без компромис', desc: 'Материали Egger, Blum и Hafele. 2-годишна гаранция на всички изделия.' },
+  { Icon: Users,  title: 'Индивидуален подход',    desc: 'Всеки проект е уникален — съобразен с пространството и бюджета.' },
+  { Icon: MapPin, title: 'Местен и достъпен',      desc: 'Семейна фирма от Благоевград. Собственикът участва лично.' },
+  { Icon: Award,  title: 'Гарантиран резултат',    desc: '500+ реализирани проекта. Гаранция и следпродажбено обслужване.' },
 ]
 
 const process = [
@@ -81,7 +82,7 @@ const process = [
 ]
 
 const facts = [
-  'Работим с материали Egger, Blum, Hafele — водещи европейски марки',
+  'Материали Egger, Blum, Hafele — водещи европейски марки',
   '2-годишна гаранция на всички изработени мебели',
   'Безплатен 3D проект при сключен договор',
   'Собствена транспортна и монтажна бригада',
@@ -99,12 +100,10 @@ export default function AboutPage() {
 
       <article>
 
-        {/* ══════════════════════════════════
-            1. HERO — full-bleed image, text overlay
-        ══════════════════════════════════ */}
+        {/* ══ 1. HERO ══ */}
         <section
           aria-label="Представяне"
-          style={{ position: 'relative', minHeight: '90vh', display: 'flex', flexDirection: 'column' }}
+          style={{ position: 'relative', minHeight: '88vh', display: 'flex', flexDirection: 'column' }}
         >
           <Image
             src="/images/real/kuhnya-04.png"
@@ -114,62 +113,53 @@ export default function AboutPage() {
             sizes="100vw"
             priority
           />
-          {/* Gradient: transparent top → very dark bottom */}
           <div style={{
             position: 'absolute', inset: 0,
-            background: 'linear-gradient(to bottom, rgba(8,5,2,0.35) 0%, rgba(8,5,2,0.20) 40%, rgba(8,5,2,0.78) 80%, rgba(8,5,2,0.92) 100%)',
+            background: 'linear-gradient(to bottom, rgba(8,5,2,0.32) 0%, rgba(8,5,2,0.18) 35%, rgba(8,5,2,0.75) 75%, rgba(8,5,2,0.92) 100%)',
           }} />
 
-          <div style={{ position: 'relative', zIndex: 10, flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', padding: '5.5rem var(--container-px, 1.25rem) 4rem' }}>
-
-            {/* Top breadcrumb */}
+          <div style={{
+            position: 'relative', zIndex: 10, flex: 1,
+            display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
+            padding: '5.5rem max(1.25rem, calc((100vw - 1120px) / 2)) 4rem',
+          }}>
             <nav aria-label="Навигационна следа">
-              <ol className="flex items-center gap-2 font-body" style={{ fontSize: '0.78rem', color: 'rgba(255,255,255,0.55)' }}>
-                <li><Link href="/" style={{ color: 'rgba(255,255,255,0.7)' }} className="hover:underline underline-offset-2">Начало</Link></li>
-                <li aria-hidden="true">/</li>
+              <ol className="flex items-center gap-2 font-body" style={{ fontSize: '0.78rem', color: 'rgba(255,255,255,0.5)' }}>
+                <li><Link href="/" style={{ color: 'rgba(255,255,255,0.65)' }} className="hover:underline underline-offset-2">Начало</Link></li>
+                <li>/</li>
                 <li aria-current="page">За нас</li>
               </ol>
             </nav>
-
-            {/* Bottom title */}
-            <div style={{ maxWidth: 1120, margin: '0 auto', width: '100%' }}>
-              <span
-                className="font-body font-semibold"
-                style={{
-                  display: 'inline-block',
-                  fontSize: '0.65rem', letterSpacing: '0.16em', textTransform: 'uppercase',
-                  color: '#C4A882', background: 'rgba(196,168,130,0.12)',
-                  border: '1px solid rgba(196,168,130,0.25)',
-                  borderRadius: 100, padding: '5px 14px', marginBottom: 20,
-                }}
-              >
+            <div>
+              <span className="font-body font-semibold" style={{
+                display: 'inline-block', fontSize: '0.62rem', letterSpacing: '0.16em', textTransform: 'uppercase',
+                color: '#C4A882', background: 'rgba(196,168,130,0.12)', border: '1px solid rgba(196,168,130,0.25)',
+                borderRadius: 100, padding: '5px 14px', marginBottom: 20,
+              }}>
                 За нас
               </span>
               <h1
                 className="font-display font-bold text-white"
-                style={{ fontSize: 'clamp(2.4rem, 7vw, 5rem)', lineHeight: 1.04, maxWidth: '16ch', marginBottom: '1.25rem' }}
+                style={{ fontSize: 'clamp(2.5rem, 7.5vw, 5.5rem)', lineHeight: 1.03, maxWidth: '15ch', marginBottom: '1.1rem' }}
               >
                 Мебели с душа и точност
               </h1>
-              <p
-                className="font-body"
-                style={{ fontSize: 'clamp(0.95rem, 2vw, 1.1rem)', color: 'rgba(255,255,255,0.68)', maxWidth: '46ch', lineHeight: 1.65, marginBottom: '2rem' }}
-              >
-                Семейна работилница от Благоевград — над 10 години опит,
-                500+ реализирани кухни, гардероби и спални.
+              <p className="font-body" style={{
+                fontSize: 'clamp(0.95rem, 2vw, 1.1rem)', color: 'rgba(255,255,255,0.65)',
+                maxWidth: '44ch', lineHeight: 1.6, marginBottom: '2rem',
+              }}>
+                Семейна работилница от Благоевград — над 10 години опит, 500+ реализирани кухни, гардероби и спални.
               </p>
               <div className="flex flex-wrap gap-3">
-                <Link
-                  href="/контакти/"
+                <Link href="/контакти/"
                   className="inline-flex items-center gap-2 font-body font-semibold text-white rounded-full transition-all hover:-translate-y-0.5"
-                  style={{ background: '#8B6F47', fontSize: '0.88rem', padding: '12px 26px', boxShadow: '0 6px 28px rgba(139,111,71,0.55)' }}
+                  style={{ background: '#8B6F47', fontSize: '0.9rem', padding: '12px 26px', boxShadow: '0 6px 28px rgba(139,111,71,0.55)' }}
                 >
                   Безплатна консултация →
                 </Link>
-                <Link
-                  href="/проекти/"
+                <Link href="/проекти/"
                   className="inline-flex items-center font-body font-semibold rounded-full transition-all hover:-translate-y-0.5"
-                  style={{ border: '1px solid rgba(255,255,255,0.28)', color: 'rgba(255,255,255,0.88)', fontSize: '0.88rem', padding: '12px 26px', background: 'rgba(255,255,255,0.06)', backdropFilter: 'blur(8px)' }}
+                  style={{ border: '1px solid rgba(255,255,255,0.26)', color: 'rgba(255,255,255,0.88)', fontSize: '0.9rem', padding: '12px 26px', background: 'rgba(255,255,255,0.06)', backdropFilter: 'blur(8px)' }}
                 >
                   Нашите проекти
                 </Link>
@@ -178,282 +168,199 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* ══════════════════════════════════
-            2. STORY + STATS — editorial split
-        ══════════════════════════════════ */}
+        {/* ══ 2. ANIMATED STATS ══ */}
+        <AnimatedStats />
+
+        {/* ══ 3. STORY + IMAGE ══ */}
         <section
-          style={{ backgroundColor: 'var(--color-cream)', padding: '100px 0' }}
+          style={{ backgroundColor: 'var(--color-cream)', padding: '72px 0' }}
           aria-labelledby="story-heading"
         >
           <div className="container-main">
-            <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+            <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
 
-              {/* Left: story */}
+              {/* Text */}
               <div>
                 <span className="eyebrow-pill">Нашата история</span>
                 <h2
                   id="story-heading"
-                  className="font-display font-bold heading-gradient leading-[1.1] mt-2 mb-7"
-                  style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)' }}
+                  className="font-display font-bold heading-gradient leading-[1.1] mt-2 mb-6"
+                  style={{ fontSize: 'clamp(1.7rem, 3.8vw, 2.4rem)' }}
                 >
                   Семеен бизнес с над 10 години традиция
                 </h2>
-                <div className="space-y-5">
+                <div className="space-y-4">
                   <p className="font-body leading-relaxed" style={{ fontSize: '1rem', color: '#5A5450' }}>
-                    Всичко започна с едно просто желание — да правим мебели, каквито сами бихме искали
-                    у дома. Преди над 10 години основахме Dom Expert Мебел в Благоевград като малка
-                    семейна работилница, с ясна цел:{' '}
+                    Всичко започна с просто желание — да правим мебели, каквито сами бихме искали у дома.
+                    Преди над 10 години основахме Dom Expert Мебел като малка семейна работилница с ясна цел:{' '}
                     <strong style={{ color: '#3C2A18', fontWeight: 600 }}>качество, честност и внимание към всеки детайл.</strong>
                   </p>
                   <p className="font-body leading-relaxed" style={{ fontSize: '1rem', color: '#5A5450' }}>
-                    С годините израснахме — разширихме екипа и оборудвахме работилницата с модерни
-                    машини. Но ценностите ни останаха същите. Собственикът участва лично в
-                    повечето проекти и е постоянна контактна точка за всеки клиент.
+                    С годините израснахме — разширихме екипа и оборудвахме работилницата с модерни машини.
+                    Собственикът участва лично в повечето проекти и е постоянна контактна точка.
                   </p>
                   <p className="font-body leading-relaxed" style={{ fontSize: '1rem', color: '#5A5450' }}>
-                    Специализирали сме се основно в{' '}
-                    <strong style={{ color: '#3C2A18', fontWeight: 600 }}>кухни по поръчка</strong>,
-                    но правим и гардероби, спални и офис мебели. Всеки проект минава
-                    през 3D визуализация — клиентът вижда резултата преди финалното решение.
+                    Специализирани сме основно в{' '}
+                    <strong style={{ color: '#3C2A18', fontWeight: 600 }}>кухни по поръчка</strong>, но правим
+                    и гардероби, спални и офис мебели. Всеки проект минава през 3D визуализация.
                   </p>
                 </div>
-                <ul className="space-y-3 mt-8">
+                <ul className="space-y-2.5 mt-6">
                   {facts.map((fact) => (
-                    <li key={fact} className="flex items-start gap-3 font-body" style={{ fontSize: '0.92rem', color: '#5A5450' }}>
-                      <CheckCircle2 size={16} style={{ color: '#8B6F47', flexShrink: 0, marginTop: 3 }} aria-hidden="true" />
+                    <li key={fact} className="flex items-start gap-3 font-body" style={{ fontSize: '0.9rem', color: '#5A5450' }}>
+                      <CheckCircle2 size={15} style={{ color: '#8B6F47', flexShrink: 0, marginTop: 3 }} />
                       {fact}
                     </li>
                   ))}
                 </ul>
               </div>
 
-              {/* Right: large elegant stats */}
-              <div style={{ paddingTop: '1rem' }}>
-                {[
-                  { n: '500+', l: 'реализирани проекта', sub: 'Кухни, гардероби, спални и офис мебели' },
-                  { n: '10+',  l: 'години опит',          sub: 'Основани 2014 г. в Благоевград' },
-                  { n: '100%', l: 'доволни клиенти',      sub: 'Гаранция на всички изделия' },
-                ].map((s, i) => (
-                  <div
-                    key={s.l}
-                    style={{
-                      paddingBottom: i < 2 ? 40 : 0,
-                      marginBottom: i < 2 ? 40 : 0,
-                      borderBottom: i < 2 ? '1px solid #EDE5DA' : 'none',
-                    }}
-                  >
-                    <div
-                      className="font-display font-bold"
-                      style={{ fontSize: 'clamp(3.5rem, 7vw, 5.5rem)', color: '#8B6F47', lineHeight: 1 }}
-                    >
-                      {s.n}
-                    </div>
-                    <div
-                      className="font-body font-semibold"
-                      style={{ fontSize: '1rem', color: '#2C2520', marginTop: 8, textTransform: 'none' }}
-                    >
-                      {s.l}
-                    </div>
-                    <div
-                      className="font-body"
-                      style={{ fontSize: '0.82rem', color: '#9B9490', marginTop: 4 }}
-                    >
-                      {s.sub}
-                    </div>
-                  </div>
-                ))}
+              {/* Photo */}
+              <div className="relative rounded-2xl overflow-hidden" style={{ aspectRatio: '4/5' }}>
+                <Image
+                  src="/images/real/spalna-01.png"
+                  alt="Спалня по поръчка — Dom Expert Мебел Благоевград"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 45vw"
+                />
+                <div style={{
+                  position: 'absolute', inset: 0,
+                  background: 'linear-gradient(to top, rgba(12,8,4,0.7) 0%, transparent 55%)',
+                }} />
+                <div style={{ position: 'absolute', bottom: 22, left: 22, right: 22 }}>
+                  <p className="font-body font-semibold text-white" style={{ fontSize: '0.85rem' }}>
+                    ул. Стамболийски 52, Благоевград
+                  </p>
+                  <p style={{ fontSize: '0.72rem', color: 'rgba(255,255,255,0.5)', marginTop: 4 }}>
+                    Пон–Пет 09:00–18:00 · 0876 081 199
+                  </p>
+                </div>
               </div>
 
             </div>
           </div>
         </section>
 
-        {/* ══════════════════════════════════
-            3. FULL-WIDTH SHOWCASE IMAGE
-        ══════════════════════════════════ */}
-        <section aria-label="Реализация" style={{ backgroundColor: 'var(--color-cream)', paddingBottom: 80 }}>
+        {/* ══ 4. FULL-WIDTH IMAGE ══ */}
+        <section style={{ backgroundColor: 'var(--color-cream)', paddingBottom: 72 }}>
           <div className="container-main">
-            <div
-              className="relative overflow-hidden"
-              style={{ borderRadius: 24, aspectRatio: '21/9' }}
-            >
+            <div className="relative overflow-hidden rounded-2xl" style={{ aspectRatio: '21/9' }}>
               <Image
-                src="/images/real/spalna-08.png"
-                alt="Спалня по поръчка — реализация на Dom Expert Мебел Благоевград"
+                src="/images/real/kuhnya-06.png"
+                alt="Кухня по поръчка — реализация Dom Expert Мебел Благоевград"
                 fill
                 className="object-cover"
                 sizes="100vw"
               />
             </div>
-            <p
-              className="font-body text-center"
-              style={{ fontSize: '0.78rem', color: '#A09890', marginTop: 14, fontStyle: 'italic' }}
-            >
-              Спалня по поръчка — реализация на Dom Expert Мебел, Благоевград
+            <p className="font-body text-center" style={{ fontSize: '0.75rem', color: '#A09890', marginTop: 12, fontStyle: 'italic' }}>
+              Кухня по поръчка — реализация на Dom Expert Мебел, Благоевград
             </p>
           </div>
         </section>
 
-        {/* ══════════════════════════════════
-            4. VALUES — clean 2-col layout
-        ══════════════════════════════════ */}
+        {/* ══ 5. VALUES ══ */}
         <section
-          style={{ backgroundColor: 'var(--color-warm-white)', padding: '100px 0' }}
+          style={{ backgroundColor: 'var(--color-warm-white)', padding: '72px 0' }}
           aria-labelledby="why-heading"
         >
           <div className="container-main">
-            <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+            <div className="text-center mb-10">
+              <span className="eyebrow-pill">Защо да ни изберете</span>
+              <h2
+                id="why-heading"
+                className="font-display font-bold heading-gradient leading-[1.1] mt-2"
+                style={{ fontSize: 'clamp(1.7rem, 3.8vw, 2.4rem)' }}
+              >
+                Производство с грижа за детайла
+              </h2>
+            </div>
 
-              {/* Left heading */}
-              <div>
-                <span className="eyebrow-pill">Защо да ни изберете</span>
-                <h2
-                  id="why-heading"
-                  className="font-display font-bold heading-gradient leading-[1.1] mt-2 mb-5"
-                  style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)' }}
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+              {whyUs.map(({ Icon, title, desc }, i) => (
+                <div
+                  key={title}
+                  style={{
+                    background: i === 0 ? 'linear-gradient(145deg, #2C2318, #1A1208)' : 'white',
+                    borderRadius: 18,
+                    padding: '24px 20px',
+                    border: i === 0 ? '1px solid rgba(196,168,130,0.15)' : '1px solid #EDE5DA',
+                    boxShadow: i === 0 ? '0 8px 32px rgba(0,0,0,0.15)' : '0 2px 10px rgba(0,0,0,0.04)',
+                  }}
                 >
-                  Производство с грижа за детайла
-                </h2>
-                <p className="font-body leading-relaxed" style={{ fontSize: '1rem', color: '#6A6460', maxWidth: '38ch' }}>
-                  Изграждаме всеки проект като да е за собствения ни дом —
-                  без съкращения, без компромиси с качеството.
-                </p>
-                <Link
-                  href="/контакти/"
-                  className="inline-flex items-center gap-2 font-body font-semibold text-white rounded-full transition-all hover:-translate-y-0.5 mt-8"
-                  style={{ background: '#8B6F47', fontSize: '0.88rem', padding: '12px 26px', boxShadow: '0 6px 24px rgba(139,111,71,0.4)' }}
-                >
-                  Поискай оферта →
-                </Link>
-              </div>
-
-              {/* Right: 4 values, clean */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-10">
-                {whyUs.map(({ Icon, title, desc }) => (
-                  <div key={title}>
-                    <div
-                      style={{
-                        width: 44, height: 44, borderRadius: 12,
-                        background: 'rgba(139,111,71,0.1)',
-                        display: 'flex', alignItems: 'center', justifyContent: 'center',
-                        marginBottom: 14,
-                      }}
-                      aria-hidden="true"
-                    >
-                      <Icon size={19} style={{ color: '#8B6F47' }} />
-                    </div>
-                    <h3
-                      className="font-display font-semibold"
-                      style={{ fontSize: '1.05rem', color: '#2C2520', lineHeight: 1.25, marginBottom: 8 }}
-                    >
-                      {title}
-                    </h3>
-                    <p className="font-body leading-relaxed" style={{ fontSize: '0.87rem', color: '#7A7470' }}>
-                      {desc}
-                    </p>
+                  <div style={{
+                    width: 42, height: 42, borderRadius: 12,
+                    background: i === 0 ? 'rgba(196,168,130,0.14)' : 'rgba(139,111,71,0.1)',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 14,
+                  }}>
+                    <Icon size={18} style={{ color: i === 0 ? '#C4A882' : '#8B6F47' }} />
                   </div>
-                ))}
-              </div>
-
+                  <h3 className="font-display font-semibold mb-2"
+                    style={{ fontSize: '1rem', lineHeight: 1.25, color: i === 0 ? 'white' : '#2C2520' }}>
+                    {title}
+                  </h3>
+                  <p className="font-body leading-relaxed"
+                    style={{ fontSize: '0.84rem', color: i === 0 ? 'rgba(255,255,255,0.6)' : '#6A6460' }}>
+                    {desc}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
 
-        {/* ══════════════════════════════════
-            5. PHOTO DIPTYCH
-        ══════════════════════════════════ */}
-        <section aria-label="Реализирани проекти" style={{ backgroundColor: 'var(--color-warm-white)', paddingBottom: 100 }}>
-          <div className="container-main">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="relative overflow-hidden rounded-2xl" style={{ aspectRatio: '3/4' }}>
-                <Image
-                  src="/images/real/kuhnya-03.png"
-                  alt="Кухня по поръчка — реализация Dom Expert Мебел"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 640px) 100vw, 50vw"
-                />
-              </div>
-              <div className="relative overflow-hidden rounded-2xl" style={{ aspectRatio: '3/4' }}>
-                <Image
-                  src="/images/real/garderob-02.png"
-                  alt="Гардероб по поръчка — реализация Dom Expert Мебел"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 640px) 100vw, 50vw"
-                />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ══════════════════════════════════
-            6. PROCESS — clean numbered list
-        ══════════════════════════════════ */}
+        {/* ══ 6. PROCESS + PHOTO ══ */}
         <section
-          style={{ backgroundColor: '#1A1208', padding: '100px 0' }}
+          style={{ backgroundColor: '#1A1208', padding: '72px 0' }}
           aria-labelledby="process-heading"
         >
           <div className="container-main">
-            <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+            <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
 
-              {/* Left heading */}
+              {/* Left */}
               <div>
-                <span
-                  className="font-body font-semibold"
-                  style={{
-                    display: 'inline-block',
-                    fontSize: '0.65rem', letterSpacing: '0.16em', textTransform: 'uppercase',
-                    color: '#C4A882', background: 'rgba(196,168,130,0.1)',
-                    border: '1px solid rgba(196,168,130,0.2)',
-                    borderRadius: 100, padding: '5px 14px', marginBottom: 20,
-                  }}
-                >
+                <span className="font-body font-semibold" style={{
+                  display: 'inline-block', fontSize: '0.62rem', letterSpacing: '0.16em', textTransform: 'uppercase',
+                  color: '#C4A882', background: 'rgba(196,168,130,0.1)', border: '1px solid rgba(196,168,130,0.2)',
+                  borderRadius: 100, padding: '5px 14px', marginBottom: 20,
+                }}>
                   Как работим
                 </span>
                 <h2
                   id="process-heading"
                   className="font-display font-bold"
                   style={{
-                    fontSize: 'clamp(1.8rem, 4vw, 2.6rem)',
-                    background: 'linear-gradient(135deg, #FFFFFF 0%, #E8D5BA 60%, #C4A882 100%)',
+                    fontSize: 'clamp(1.7rem, 3.8vw, 2.4rem)',
+                    background: 'linear-gradient(135deg, #fff 0%, #E8D5BA 60%, #C4A882 100%)',
                     WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
-                    backgroundClip: 'text', lineHeight: 1.1, marginBottom: '1.25rem',
+                    backgroundClip: 'text', lineHeight: 1.1, marginBottom: '1.5rem',
                   }}
                 >
                   От идея до монтаж
                 </h2>
-                <p className="font-body leading-relaxed" style={{ fontSize: '0.97rem', color: 'rgba(255,255,255,0.55)', maxWidth: '36ch' }}>
-                  Процесът е ясен и прозрачен — знаете какво се случва на всяка стъпка.
-                </p>
-              </div>
 
-              {/* Right steps */}
-              <div>
                 {process.map((step, i) => (
                   <div
                     key={step.num}
-                    className="flex items-start gap-6"
+                    className="flex items-start gap-5"
                     style={{
-                      paddingBottom: i < 3 ? 36 : 0,
-                      marginBottom: i < 3 ? 36 : 0,
+                      paddingBottom: i < 3 ? 24 : 0,
+                      marginBottom: i < 3 ? 24 : 0,
                       borderBottom: i < 3 ? '1px solid rgba(255,255,255,0.07)' : 'none',
                     }}
                   >
-                    <div
-                      className="font-display font-bold flex-shrink-0"
-                      style={{ fontSize: 'clamp(2rem,4vw,3rem)', color: 'rgba(196,168,130,0.25)', lineHeight: 1, width: 56 }}
-                    >
+                    <div className="font-display font-bold flex-shrink-0"
+                      style={{ fontSize: '2rem', color: 'rgba(196,168,130,0.22)', lineHeight: 1, width: 46, paddingTop: 2 }}>
                       {step.num}
                     </div>
-                    <div style={{ paddingTop: 4 }}>
-                      <h3
-                        className="font-display font-semibold"
-                        style={{ fontSize: '1.08rem', color: 'white', lineHeight: 1.2, marginBottom: 8 }}
-                      >
+                    <div>
+                      <h3 className="font-display font-semibold"
+                        style={{ fontSize: '1.02rem', color: 'white', lineHeight: 1.2, marginBottom: 6 }}>
                         {step.title}
                       </h3>
-                      <p className="font-body leading-relaxed" style={{ fontSize: '0.88rem', color: 'rgba(255,255,255,0.52)' }}>
+                      <p className="font-body leading-relaxed"
+                        style={{ fontSize: '0.86rem', color: 'rgba(255,255,255,0.48)' }}>
                         {step.desc}
                       </p>
                     </div>
@@ -461,50 +368,88 @@ export default function AboutPage() {
                 ))}
               </div>
 
+              {/* Right: photo */}
+              <div className="relative rounded-2xl overflow-hidden" style={{ aspectRatio: '4/5' }}>
+                <Image
+                  src="/images/real/kuhnya-03.png"
+                  alt="Процес на изработка на кухня по поръчка — Dom Expert Мебел"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 45vw"
+                />
+              </div>
+
             </div>
           </div>
         </section>
 
-        {/* ══════════════════════════════════
-            7. CTA — centered, dark
-        ══════════════════════════════════ */}
+        {/* ══ 7. DIPTYCH ══ */}
+        <section style={{ backgroundColor: 'var(--color-cream)', padding: '72px 0' }}>
+          <div className="container-main">
+            <div className="text-center mb-8">
+              <span className="eyebrow-pill">Реализации</span>
+              <h2
+                className="font-display font-bold heading-gradient leading-[1.1] mt-2"
+                style={{ fontSize: 'clamp(1.7rem, 3.8vw, 2.4rem)' }}
+              >
+                Нашата работа говори сама
+              </h2>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="relative overflow-hidden rounded-2xl" style={{ aspectRatio: '3/4' }}>
+                <Image src="/images/real/garderob-02.png" alt="Гардероб по поръчка — Dom Expert Мебел"
+                  fill className="object-cover" sizes="(max-width: 640px) 100vw, 50vw" />
+              </div>
+              <div className="relative overflow-hidden rounded-2xl" style={{ aspectRatio: '3/4' }}>
+                <Image src="/images/real/dnevna-02.png" alt="Дневна по поръчка — Dom Expert Мебел"
+                  fill className="object-cover" sizes="(max-width: 640px) 100vw, 50vw" />
+              </div>
+            </div>
+            <div className="text-center mt-7">
+              <Link href="/проекти/"
+                className="inline-flex items-center gap-2 font-body font-semibold text-white rounded-full transition-all hover:-translate-y-0.5"
+                style={{ background: '#8B6F47', fontSize: '0.88rem', padding: '12px 28px', boxShadow: '0 6px 24px rgba(139,111,71,0.4)' }}
+              >
+                Виж всички проекти →
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* ══ 8. CTA ══ */}
         <section
-          style={{ backgroundColor: 'var(--color-cream)', padding: '100px 0' }}
+          style={{ backgroundColor: 'var(--color-warm-white)', padding: '72px 0' }}
           aria-label="Покана за действие"
         >
-          <div className="container-main" style={{ maxWidth: 680, textAlign: 'center' }}>
+          <div className="container-main" style={{ maxWidth: 640, textAlign: 'center' }}>
             <span className="eyebrow-pill">Следваща стъпка</span>
             <h2
-              className="font-display font-bold heading-gradient leading-[1.1] mt-2 mb-5"
-              style={{ fontSize: 'clamp(1.8rem, 5vw, 3rem)' }}
+              className="font-display font-bold heading-gradient leading-[1.1] mt-2 mb-4"
+              style={{ fontSize: 'clamp(1.7rem, 4.5vw, 2.8rem)' }}
             >
               Готови да направим вашата мечтана кухня?
             </h2>
-            <p className="font-body leading-relaxed mb-8" style={{ fontSize: '1rem', color: '#6A6460' }}>
-              Свържете се с нас за безплатна консултация и 3D проект.
-              Без задължения — просто разговор за вашите идеи.
+            <p className="font-body leading-relaxed mb-7" style={{ fontSize: '1rem', color: '#6A6460' }}>
+              Свържете се с нас за безплатна консултация и 3D проект. Без задължения.
             </p>
             <div className="flex flex-wrap gap-3 justify-center">
-              <Link
-                href="/контакти/"
+              <Link href="/контакти/"
                 className="inline-flex items-center gap-2 font-body font-semibold text-white rounded-full transition-all hover:-translate-y-0.5"
-                style={{ background: '#8B6F47', fontSize: '0.92rem', padding: '14px 32px', boxShadow: '0 8px 32px rgba(139,111,71,0.45)' }}
+                style={{ background: '#8B6F47', fontSize: '0.9rem', padding: '13px 30px', boxShadow: '0 6px 24px rgba(139,111,71,0.45)' }}
               >
                 Поискай безплатна консултация →
               </Link>
-              <a
-                href="tel:+359876081199"
+              <a href="tel:+359876081199"
                 className="inline-flex items-center gap-2 font-body font-semibold rounded-full transition-all hover:-translate-y-0.5"
-                style={{ border: '1.5px solid rgba(139,111,71,0.3)', color: '#8B6F47', fontSize: '0.92rem', padding: '14px 32px', background: 'white' }}
+                style={{ border: '1.5px solid rgba(139,111,71,0.3)', color: '#8B6F47', fontSize: '0.9rem', padding: '13px 30px', background: 'white' }}
               >
                 📞 0876 081 199
               </a>
             </div>
-            <p className="font-body mt-10" style={{ fontSize: '0.8rem', color: '#B0A8A0' }}>
-              Разгледайте{' '}
-              <Link href="/" style={{ color: '#8B6F47' }} className="hover:underline underline-offset-2">нашите услуги</Link>
-              {' '}или{' '}
-              <Link href="/проекти/" style={{ color: '#8B6F47' }} className="hover:underline underline-offset-2">завършените проекти</Link>.
+            <p className="font-body mt-8" style={{ fontSize: '0.78rem', color: '#B0A8A0' }}>
+              <Link href="/" style={{ color: '#8B6F47' }} className="hover:underline underline-offset-2">Нашите услуги</Link>
+              {' · '}
+              <Link href="/проекти/" style={{ color: '#8B6F47' }} className="hover:underline underline-offset-2">Завършени проекти</Link>
             </p>
           </div>
         </section>
