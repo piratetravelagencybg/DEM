@@ -435,45 +435,6 @@ export default function ProductPage({ params }: Props) {
         </section>
       )}
 
-      {/* ══════════════════════════════════════
-          STICKY MOBILE CTA
-      ══════════════════════════════════════ */}
-      <div
-        className="lg:hidden fixed bottom-0 left-0 right-0 z-50"
-        style={{
-          background: 'white',
-          borderTop: '1px solid #EDE5DA',
-          padding: '12px 16px',
-          paddingBottom: 'calc(12px + env(safe-area-inset-bottom))',
-          boxShadow: '0 -4px 24px rgba(0,0,0,0.1)',
-        }}
-      >
-        <div className="flex gap-2.5 items-center">
-          <div>
-            <div className="font-display font-bold text-charcoal" style={{ fontSize: '1.3rem', lineHeight: 1 }}>{product.price} лв.</div>
-            {product.comparePrice && (
-              <div className="font-body line-through" style={{ fontSize: '0.72rem', color: '#A09890' }}>{product.comparePrice} лв.</div>
-            )}
-          </div>
-          <a
-            href="#поръчка"
-            className="flex-1 flex items-center justify-center gap-2 font-body font-bold text-white rounded-xl transition-all"
-            style={{ background: 'linear-gradient(135deg, #9B7E55, #7A5C35)', fontSize: '0.92rem', padding: '13px 20px', boxShadow: '0 4px 18px rgba(139,111,71,0.45)' }}
-          >
-            <ShoppingBag size={16} /> Поръчай сега
-          </a>
-          <a
-            href="tel:+359876081199"
-            className="flex items-center justify-center rounded-xl"
-            style={{ background: '#F5F0E8', border: '1.5px solid rgba(139,111,71,0.25)', width: 46, height: 46, flexShrink: 0 }}
-          >
-            <Phone size={17} style={{ color: '#8B6F47' }} />
-          </a>
-        </div>
-      </div>
-
-      {/* Bottom padding to compensate for sticky bar on mobile */}
-      <div className="lg:hidden" style={{ height: 80 }} />
     </div>
   )
 }
