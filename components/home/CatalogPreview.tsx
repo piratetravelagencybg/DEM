@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { ArrowRight, Star } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import products from '@/data/products.json'
@@ -15,7 +15,7 @@ const categoryLabels: Record<string, string> = {
 }
 
 export default function CatalogPreview() {
-  const preview = products.slice(0, 4)
+  const preview = products.slice(0, 6)
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
 
@@ -28,26 +28,114 @@ export default function CatalogPreview() {
           initial={{ opacity: 0, y: 18 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
-          className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8 md:mb-10"
+          className="flex items-end justify-between gap-4 mb-7"
         >
           <div>
             <span className="eyebrow-pill">Каталог</span>
-            <h2 className="font-display font-bold heading-gradient leading-[1.1]" style={{ fontSize: 'clamp(2rem, 5.5vw, 3rem)' }}>
+            <h2
+              className="font-display font-bold heading-gradient leading-[1.1]"
+              style={{ fontSize: 'clamp(1.8rem, 5vw, 2.8rem)' }}
+            >
               Готови решения
             </h2>
           </div>
           <Link
             href="/каталог/"
-            className="inline-flex items-center gap-2 font-body font-semibold text-walnut hover:text-walnut-dark transition-colors flex-shrink-0"
-            style={{ fontSize: '0.9rem' }}
+            className="hidden sm:inline-flex items-center gap-1.5 font-body font-semibold text-walnut flex-shrink-0 hover:opacity-75 transition-opacity"
+            style={{ fontSize: '0.88rem' }}
           >
-            Виж целия каталог <ArrowRight size={15} />
+            Виж всички <ArrowRight size={14} />
           </Link>
         </motion.div>
 
-        {/* Product grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
-          {preview.map((product, i) => {
+        {/* ── MOBILE: horizontal scroll ── */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="md:hidden -mx-5 px-5"
+        >
+          <div
+            className="flex gap-3 overflow-x-auto pb-3"
+            style={{ scrollbarWidth: 'none', scrollSnapType: 'x mandatory' }}
+          >
+            {preview.map((product, i) => {
+              const discount = product.comparePrice
+                ? Math.round((1 - product.price / product.comparePrice) * 100)
+                : null
+              const catLabel = categoryLabels[product.category] ?? product.category
+
+              return (
+                <Link
+                  key={product.id}
+                  href={`/каталог/${product.slug}/`}
+                  className="group flex-shrink-0 bg-white overflow-hidden"
+                  style={{
+                    width: 170,
+                    borderRadius: 16,
+                    border: '1px solid #EDE5DA',
+                    scrollSnapAlign: 'start',
+                  }}
+                >
+                  {/* Square image */}
+                  <div className="relative overflow-hidden" style={{ aspectRatio: '1/1', background: '#F5F0E8' }}>
+                    <Image
+                      src={product.images[0]}
+                      alt={product.title}
+                      fill
+                      className="object-cover transition-transform duration-600 group-hover:scale-105"
+                      sizes="170px"
+                    />
+                    {/* Category */}
+                    <span
+                      className="absolute top-2.5 left-2.5 font-body font-semibold"
+                      style={{
+                        fontSize: '0.58rem', letterSpacing: '0.05em',
+                        background: 'rgba(255,255,255,0.92)', color: '#5C5652',
+                        padding: '3px 8px', borderRadius: 100,
+                      }}
+                    >
+                      {catLabel}
+                    </span>
+                    {discount && (
+                      <span
+                        className="absolute top-2.5 right-2.5 font-body font-bold text-white"
+                        style={{ fontSize: '0.58rem', background: '#C0512A', padding: '3px 7px', borderRadius: 100 }}
+                      >
+                        -{discount}%
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Info */}
+                  <div style={{ padding: '10px 12px 12px' }}>
+                    <h3
+                      className="font-body font-bold text-charcoal leading-snug mb-2"
+                      style={{ fontSize: '0.82rem' }}
+                    >
+                      {product.title}
+                    </h3>
+                    <div className="flex items-center justify-between gap-1">
+                      <span className="font-display font-bold text-charcoal" style={{ fontSize: '1rem' }}>
+                        {product.price} лв.
+                      </span>
+                      <span
+                        className="font-body font-semibold text-white flex-shrink-0"
+                        style={{ background: '#8B6F47', borderRadius: 8, padding: '5px 10px', fontSize: '0.72rem' }}
+                      >
+                        Заяви →
+                      </span>
+                    </div>
+                  </div>
+                </Link>
+              )
+            })}
+          </div>
+        </motion.div>
+
+        {/* ── DESKTOP: 4-col grid ── */}
+        <div className="hidden md:grid grid-cols-4 gap-4">
+          {preview.slice(0, 4).map((product, i) => {
             const discount = product.comparePrice
               ? Math.round((1 - product.price / product.comparePrice) * 100)
               : null
@@ -56,80 +144,52 @@ export default function CatalogPreview() {
             return (
               <motion.div
                 key={product.id}
-                initial={{ opacity: 0, y: 24 }}
+                initial={{ opacity: 0, y: 20 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.45, delay: i * 0.09 }}
+                transition={{ duration: 0.45, delay: i * 0.08 }}
               >
                 <Link
                   href={`/каталог/${product.slug}/`}
-                  className="group flex flex-col bg-white overflow-hidden"
-                  style={{
-                    borderRadius: 18,
-                    border: '1px solid #EDE5DA',
-                    boxShadow: '0 2px 12px rgba(0,0,0,0.05)',
-                    transition: 'box-shadow 0.3s, transform 0.3s',
-                    height: '100%',
-                  }}
+                  className="group block bg-white overflow-hidden"
+                  style={{ borderRadius: 18, border: '1px solid #EDE5DA', boxShadow: '0 2px 12px rgba(0,0,0,0.05)' }}
                 >
-                  {/* Image */}
-                  <div
-                    className="relative overflow-hidden flex-shrink-0"
-                    style={{ aspectRatio: '4 / 5', background: '#F5F0E8' }}
-                  >
+                  {/* Square image */}
+                  <div className="relative overflow-hidden" style={{ aspectRatio: '1/1', background: '#F5F0E8' }}>
                     <Image
                       src={product.images[0]}
                       alt={product.title}
                       fill
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
-                      sizes="(max-width: 640px) 50vw, 25vw"
+                      sizes="25vw"
                     />
-
-                    {/* Category badge */}
                     <span
                       className="absolute top-3 left-3 font-body font-semibold"
                       style={{
-                        fontSize: '0.62rem',
-                        letterSpacing: '0.06em',
-                        background: 'rgba(255,255,255,0.92)',
-                        color: '#5C5652',
-                        padding: '4px 10px',
-                        borderRadius: 100,
-                        backdropFilter: 'blur(8px)',
-                        border: '1px solid rgba(0,0,0,0.06)',
+                        fontSize: '0.62rem', letterSpacing: '0.06em',
+                        background: 'rgba(255,255,255,0.92)', color: '#5C5652',
+                        padding: '4px 10px', borderRadius: 100, backdropFilter: 'blur(8px)',
                       }}
                     >
                       {catLabel}
                     </span>
-
-                    {/* Sale badge */}
                     {discount && (
                       <span
                         className="absolute top-3 right-3 font-body font-bold text-white"
-                        style={{
-                          fontSize: '0.62rem',
-                          background: '#C0512A',
-                          padding: '4px 8px',
-                          borderRadius: 100,
-                        }}
+                        style={{ fontSize: '0.62rem', background: '#C0512A', padding: '4px 8px', borderRadius: 100 }}
                       >
                         -{discount}%
                       </span>
                     )}
-
                     {/* Hover overlay */}
                     <div
                       className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                      style={{ background: 'rgba(12,8,4,0.35)', backdropFilter: 'blur(2px)' }}
+                      style={{ background: 'rgba(12,8,4,0.32)', backdropFilter: 'blur(2px)' }}
                     >
                       <span
                         className="font-body font-semibold text-white"
                         style={{
-                          background: 'rgba(255,255,255,0.15)',
-                          border: '1px solid rgba(255,255,255,0.35)',
-                          borderRadius: 100,
-                          padding: '8px 20px',
-                          fontSize: '0.82rem',
-                          backdropFilter: 'blur(8px)',
+                          background: 'rgba(255,255,255,0.14)', border: '1px solid rgba(255,255,255,0.35)',
+                          borderRadius: 100, padding: '8px 20px', fontSize: '0.82rem', backdropFilter: 'blur(8px)',
                         }}
                       >
                         Виж детайли →
@@ -137,56 +197,28 @@ export default function CatalogPreview() {
                     </div>
                   </div>
 
-                  {/* Product info */}
-                  <div style={{ padding: '14px 16px 16px', flex: 1, display: 'flex', flexDirection: 'column' }}>
-                    {/* Stars */}
-                    <div className="flex items-center gap-0.5 mb-2">
-                      {[1,2,3,4,5].map(s => (
-                        <Star key={s} size={11} style={{ color: '#C4A882', fill: '#C4A882' }} />
-                      ))}
-                      <span className="font-body ml-1" style={{ fontSize: '0.68rem', color: '#8B7E76' }}>5.0</span>
-                    </div>
-
+                  {/* Info */}
+                  <div style={{ padding: '14px 16px 16px' }}>
                     <h3
-                      className="font-body font-bold text-charcoal leading-snug mb-1"
-                      style={{ fontSize: '0.9rem' }}
+                      className="font-body font-bold text-charcoal leading-snug mb-3"
+                      style={{ fontSize: '0.92rem' }}
                     >
                       {product.title}
                     </h3>
-
-                    <p
-                      className="font-body line-clamp-2 mb-3"
-                      style={{ fontSize: '0.78rem', color: '#7A7068', lineHeight: 1.4, flex: 1 }}
-                    >
-                      {product.description}
-                    </p>
-
-                    {/* Price + CTA */}
-                    <div className="flex items-center justify-between gap-2 mt-auto">
+                    <div className="flex items-center justify-between gap-2">
                       <div>
-                        <span
-                          className="font-display font-bold text-charcoal"
-                          style={{ fontSize: '1.1rem', letterSpacing: '-0.02em' }}
-                        >
+                        <span className="font-display font-bold text-charcoal" style={{ fontSize: '1.1rem' }}>
                           {product.price} лв.
                         </span>
                         {product.comparePrice && (
-                          <span
-                            className="font-body line-through ml-1.5"
-                            style={{ fontSize: '0.8rem', color: '#A09890' }}
-                          >
+                          <span className="font-body line-through ml-1.5" style={{ fontSize: '0.8rem', color: '#A09890' }}>
                             {product.comparePrice} лв.
                           </span>
                         )}
                       </div>
                       <span
                         className="font-body font-semibold text-white flex-shrink-0"
-                        style={{
-                          background: '#8B6F47',
-                          borderRadius: 10,
-                          padding: '6px 13px',
-                          fontSize: '0.78rem',
-                        }}
+                        style={{ background: '#8B6F47', borderRadius: 10, padding: '6px 14px', fontSize: '0.78rem' }}
                       >
                         Заяви →
                       </span>
@@ -198,11 +230,11 @@ export default function CatalogPreview() {
           })}
         </div>
 
-        {/* Bottom link row */}
+        {/* Bottom CTA */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.5, delay: 0.4 }}
+          transition={{ duration: 0.5, delay: 0.35 }}
           className="flex justify-center mt-8"
         >
           <Link
