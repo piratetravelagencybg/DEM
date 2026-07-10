@@ -9,6 +9,12 @@ export const metadata: Metadata = {
   title: { absolute: 'Мебели по поръчка Сандански | Dom Expert Мебел' },
   description: 'Мебели по поръчка в Сандански. Кухни, гардероби, спални с безплатна консултация и 3D проект. Монтаж в Сандански и Петричко. Тел: 0876 081 199',
   alternates: { canonical: 'https://domexpertmebel.com/сандански/' },
+  openGraph: {
+    url: 'https://domexpertmebel.com/сандански/',
+    title: 'Мебели по поръчка Сандански | Dom Expert Мебел',
+    description: 'Мебели по поръчка в Сандански. Кухни, гардероби, спални с безплатна консултация и 3D проект.',
+    images: [{ url: '/images/real/kuhnya-05.png', width: 1200, height: 630, alt: 'Мебели по поръчка Сандански — Dom Expert Мебел' }],
+  },
 }
 
 const localSchema = {

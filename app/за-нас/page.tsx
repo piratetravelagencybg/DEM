@@ -142,7 +142,7 @@ export default function AboutPage() {
                 className="font-display font-bold text-white"
                 style={{ fontSize: 'clamp(2.5rem, 7.5vw, 5.5rem)', lineHeight: 1.03, maxWidth: '15ch', marginBottom: '1.1rem' }}
               >
-                Мебели с душа и точност
+                Семейна фирма за мебели по поръчка в Благоевград
               </h1>
               <p className="font-body" style={{
                 fontSize: 'clamp(0.95rem, 2vw, 1.1rem)', color: 'rgba(255,255,255,0.65)',

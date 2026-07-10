@@ -120,7 +120,7 @@ export default function Testimonials() {
                     className="font-body"
                     style={{ fontSize: '0.68rem', color: i === 0 ? 'rgba(255,255,255,0.42)' : '#A09890' }}
                   >
-                    {t.city}&nbsp;·&nbsp;✓ Верифициран
+                    {t.city}&nbsp;·&nbsp;Клиент на Dom Expert Мебел
                   </div>
                 </div>
               </div>

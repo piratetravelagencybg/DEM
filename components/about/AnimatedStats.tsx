@@ -10,7 +10,8 @@ const stats = [
 ]
 
 function Counter({ target, suffix, duration = 1600 }: { target: number; suffix: string; duration?: number }) {
-  const [count, setCount] = useState(0)
+  const start = Math.round(target * 0.8)
+  const [count, setCount] = useState(start)
   const spanRef = useRef<HTMLSpanElement>(null)
   const inView = useInView(spanRef, { once: true })
 
@@ -21,11 +22,11 @@ function Counter({ target, suffix, duration = 1600 }: { target: number; suffix: 
     const easeOut = (t: number) => 1 - Math.pow(1 - t, 3)
     const timer = setInterval(() => {
       frame++
-      setCount(Math.round(easeOut(frame / totalFrames) * target))
+      setCount(Math.round(start + (target - start) * easeOut(frame / totalFrames)))
       if (frame >= totalFrames) clearInterval(timer)
     }, duration / totalFrames)
     return () => clearInterval(timer)
-  }, [inView, target, duration])
+  }, [inView, target, duration, start])
 
   return <span ref={spanRef}>{count}{suffix}</span>
 }

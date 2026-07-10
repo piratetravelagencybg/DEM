@@ -10,6 +10,12 @@ export const metadata: Metadata = {
   title: { absolute: 'Мебели по поръчка Благоевград | Dom Expert Мебел' },
   description: 'Мебели по поръчка в Благоевград. Кухни, гардероби, спални — семейна фирма с 10+ г. опит и конкурентни цени. Безплатна консултация. Тел: 0876 081 199',
   alternates: { canonical: 'https://domexpertmebel.com/благоевград/' },
+  openGraph: {
+    url: 'https://domexpertmebel.com/благоевград/',
+    title: 'Мебели по поръчка Благоевград | Dom Expert Мебел',
+    description: 'Мебели по поръчка в Благоевград. Кухни, гардероби, спални — семейна фирма с 10+ г. опит.',
+    images: [{ url: '/images/real/kuhnya-02.png', width: 1200, height: 630, alt: 'Мебели по поръчка Благоевград — Dom Expert Мебел' }],
+  },
 }
 
 const localSchema = {

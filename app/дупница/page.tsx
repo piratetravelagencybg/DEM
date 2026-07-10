@@ -9,6 +9,12 @@ export const metadata: Metadata = {
   title: { absolute: 'Мебели по поръчка Дупница | Dom Expert Мебел' },
   description: 'Мебели по поръчка в Дупница. Кухни, гардероби, спални от местна семейна фирма. Безплатна консултация и 3D проект. Монтаж. Тел: 0876 081 199',
   alternates: { canonical: 'https://domexpertmebel.com/дупница/' },
+  openGraph: {
+    url: 'https://domexpertmebel.com/дупница/',
+    title: 'Мебели по поръчка Дупница | Dom Expert Мебел',
+    description: 'Мебели по поръчка в Дупница. Кухни, гардероби, спални от местна семейна фирма.',
+    images: [{ url: '/images/real/dnevna-03.png', width: 1200, height: 630, alt: 'Мебели по поръчка Дупница — Dom Expert Мебел' }],
+  },
 }
 
 const localSchema = {
