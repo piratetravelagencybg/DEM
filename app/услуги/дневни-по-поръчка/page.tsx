@@ -12,6 +12,7 @@ export const metadata: Metadata = {
     url: 'https://domexpertmebel.com/услуги/дневни-по-поръчка/',
     title: 'Дневни по поръчка Благоевград и София | Dom Expert Мебел',
     description: 'Мебели за дневна по поръчка в Благоевград и София. ТВ секции, стелажи, холни маси. Безплатен 3D проект.',
+    images: [{ url: '/images/real/dnevna-01.png', width: 1200, height: 630, alt: 'Дневни по поръчка — Dom Expert Мебел' }],
   },
 }
 

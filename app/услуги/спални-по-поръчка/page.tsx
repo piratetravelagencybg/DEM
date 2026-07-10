@@ -12,6 +12,7 @@ export const metadata: Metadata = {
     url: 'https://domexpertmebel.com/услуги/спални-по-поръчка/',
     title: 'Спални по поръчка Благоевград и София | Dom Expert Мебел',
     description: 'Спални по поръчка в Благоевград и София. Тапицирани легла, нощни шкафчета, цялостни комплекти. Безплатен 3D проект.',
+    images: [{ url: '/images/real/spalna-01.png', width: 1200, height: 630, alt: 'Спални по поръчка — Dom Expert Мебел' }],
   },
 }
 

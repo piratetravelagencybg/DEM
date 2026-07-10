@@ -12,6 +12,7 @@ export const metadata: Metadata = {
     url: 'https://domexpertmebel.com/услуги/кухни-по-поръчка/',
     title: 'Кухни по поръчка Благоевград и София | Dom Expert Мебел',
     description: 'Изработваме кухни по поръчка в Благоевград и София. МДФ, гланц, ПДЧ. Безплатен 3D проект, монтаж и гаранция 2 год.',
+    images: [{ url: '/images/real/kuhnya-01.png', width: 1200, height: 630, alt: 'Кухни по поръчка — Dom Expert Мебел' }],
   },
 }
 

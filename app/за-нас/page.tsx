@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'bg_BG',
     siteName: 'Dom Expert Мебел',
-    images: [{ url: '/images/real/kuhnya-04.png', width: 1200, height: 630, alt: 'Dom Expert Мебел' }],
+    images: [{ url: '/images/real/kuhnya-05.png', width: 1200, height: 630, alt: 'Dom Expert Мебел — мебели по поръчка Благоевград' }],
   },
 }
 

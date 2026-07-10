@@ -12,6 +12,7 @@ export const metadata: Metadata = {
     url: 'https://domexpertmebel.com/услуги/монтаж/',
     title: 'Монтаж на мебели Благоевград и София | Dom Expert Мебел',
     description: 'Професионален монтаж на мебели в Благоевград и София. Бърза реакция до 24-48 часа, гаранция.',
+    images: [{ url: '/images/real/kuhnya-06.png', width: 1200, height: 630, alt: 'Монтаж на мебели — Dom Expert Мебел' }],
   },
 }
 

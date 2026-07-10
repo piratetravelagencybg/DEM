@@ -7,6 +7,15 @@ import Badge from '@/components/ui/Badge'
 import CTABar from '@/components/home/CTABar'
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
 
+const MONTHS = [
+  'януари', 'февруари', 'март', 'април', 'май', 'юни',
+  'юли', 'август', 'септември', 'октомври', 'ноември', 'декември',
+]
+function formatDate(iso: string): string {
+  const [year, month, day] = iso.split('-')
+  return `${day} ${MONTHS[parseInt(month) - 1]} ${year}`
+}
+
 interface Props {
   params: { slug: string }
 }
@@ -26,7 +35,7 @@ const posts: Record<string, {
     category: 'Кухни',
     date: '2025-06-01',
     readTime: '5 мин',
-    image: '/images/services/kuhnya.png',
+    image: '/images/real/kuhnya-01.png',
     content: `Изборът на кухня по поръчка е важно решение, което ще определи облика на дома ви за години напред. Преди да се срещнете с мебелна фирма, отговорете на тези ключови въпроси.
 
 ## 1. Какъв е размерът на кухненското ви пространство?
@@ -63,7 +72,7 @@ const posts: Record<string, {
     category: 'Гардероби',
     date: '2025-05-15',
     readTime: '4 мин',
-    image: '/images/services/garderob.png',
+    image: '/images/real/garderob-01.png',
     content: `Въпросът "гардероб по поръчка или готов?" е един от най-честите, които получаваме. Отговорът зависи от конкретната ситуация.
 
 ## Готов гардероб: плюсове и минуси
@@ -105,7 +114,7 @@ const posts: Record<string, {
     category: 'Съвети',
     date: '2025-04-20',
     readTime: '6 мин',
-    image: '/images/hero/hero.png',
+    image: '/images/real/kuhnya-04.png',
     content: `Цените на мебелите по поръчка в България варират значително в зависимост от материалите, размерите и производителя.
 
 ## Кухни по поръчка
@@ -145,7 +154,7 @@ const posts: Record<string, {
     category: 'Съвети',
     date: '2025-03-10',
     readTime: '5 мин',
-    image: '/images/services/spalna.png',
+    image: '/images/real/dnevna-01.png',
     content: `Малкото пространство не означава компромис с комфорта. Ето как мебелите по поръчка могат да трансформират малкия апартамент.
 
 ## 1. Вградени шкафове вместо свободностоящи
@@ -306,7 +315,7 @@ export default function BlogPostPage({ params }: Props) {
             <div className="flex items-center gap-4 mb-6">
               <Badge variant="walnut">{post.category}</Badge>
               <span className="flex items-center gap-1.5 text-warm-gray text-sm font-body">
-                <Calendar size={14} /> {post.date}
+                <Calendar size={14} /> {formatDate(post.date)}
               </span>
               <span className="flex items-center gap-1.5 text-warm-gray text-sm font-body">
                 <Clock size={14} /> {post.readTime} четене
