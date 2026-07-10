@@ -30,7 +30,6 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'bg_BG',
-    url: 'https://domexpertmebel.com',
     siteName: 'Dom Expert Мебел',
     images: [{ url: '/images/hero/hero.png', width: 1200, height: 630, alt: 'Dom Expert Мебел' }],
   },

@@ -11,6 +11,7 @@ const BLOG_DATES: Record<string, string> = {
   'garderob-po-poruchka-ili-gotov': '2025-05-15',
   'tseni-mebeli-po-poruchka-balgariya': '2025-04-20',
   'mebeli-malak-apartament': '2025-03-10',
+  'mebeli-po-poruchka-tendentsii-2026': '2026-07-10',
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {

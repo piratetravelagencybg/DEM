@@ -47,6 +47,15 @@ const posts = [
     image: '/images/services/spalna.png',
     readTime: '5 мин',
   },
+  {
+    slug: 'mebeli-po-poruchka-tendentsii-2026',
+    title: 'Мебели по поръчка 2026 — тенденции и цени в България',
+    description: 'Актуални тенденции при мебелите по поръчка в България за 2026 г. Цени, материали и защо все повече хора избират мебели по поръчка пред готови.',
+    category: 'Съвети',
+    date: '2026-07-10',
+    image: '/images/real/kuhnya-04.png',
+    readTime: '5 мин',
+  },
 ]
 
 export default function BlogPage() {

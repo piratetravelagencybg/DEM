@@ -13,7 +13,7 @@
   },
   {
     "id": "2",
-    "slug": "garderob-sistema-plovdiv",
+    "slug": "garderob-sistema-blagoevgrad",
     "title": "Гардеробна система",
     "category": "garderob",
     "city": "Благоевград",
@@ -25,7 +25,7 @@
   },
   {
     "id": "3",
-    "slug": "dnevna-po-poruchka-varna",
+    "slug": "dnevna-po-poruchka-dupnitsa",
     "title": "Дневна по поръчка",
     "category": "dnevni",
     "city": "Дупница",
@@ -37,7 +37,7 @@
   },
   {
     "id": "4",
-    "slug": "spalna-tapicirano-leglo-burgas",
+    "slug": "spalna-tapicirano-leglo-blagoevgrad",
     "title": "Спалня с тапицирано легло",
     "category": "spalni",
     "city": "Благоевград",

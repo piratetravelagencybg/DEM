@@ -45,7 +45,7 @@ export default function Testimonials() {
             <span style={{ color: '#C4A882', fontSize: '0.78rem', letterSpacing: 2 }}>★★★★★</span>
             <span className="font-body font-semibold" style={{ fontSize: '0.78rem', color: '#3C3530' }}>5.0</span>
             <span style={{ width: 1, height: 14, background: '#EAE0D4' }} />
-            <span className="font-body" style={{ fontSize: '0.72rem', color: '#9B9490' }}>500+ отзива</span>
+            <span className="font-body" style={{ fontSize: '0.72rem', color: '#9B9490' }}>Доволни клиенти</span>
           </div>
         </motion.div>
 

@@ -127,12 +127,16 @@ export default function ProjectsGallery() {
               transition: animated ? TRANS : 'none',
             }}
           >
-            {tripled.map((project, i) => (
+            {tripled.map((project, i) => {
+            const isClone = i < N || i >= N * 2
+            return (
               <Link
                 key={`${project.id}-${i}`}
                 href={`/проекти/${project.slug}/`}
                 className="group relative flex-shrink-0 overflow-hidden rounded-[20px]"
                 style={{ width: CARD_W, height: 480 }}
+                aria-hidden={isClone || undefined}
+                tabIndex={isClone ? -1 : undefined}
               >
                 <Image
                   src={project.images[0]}
@@ -168,7 +172,8 @@ export default function ProjectsGallery() {
                   </div>
                 </div>
               </Link>
-            ))}
+            )
+          })}
           </div>
         </motion.div>
 

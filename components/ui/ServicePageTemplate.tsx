@@ -209,7 +209,7 @@ export default function ServicePageTemplate({ title, subtitle, heroImage, galler
                 >
                   <Image
                     src={src}
-                    alt={`${title} — пример ${i + 1}`}
+                    alt={`${title} по поръчка — реализация ${i + 1} — Dom Expert Мебел, Благоевград`}
                     fill
                     className="object-cover hover:scale-105 transition-transform duration-700"
                     sizes="(max-width: 768px) 100vw, 33vw"

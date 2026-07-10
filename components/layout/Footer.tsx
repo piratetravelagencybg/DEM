@@ -1,6 +1,6 @@
 ﻿import Link from 'next/link'
 import Image from 'next/image'
-import { Phone, Mail, MapPin, Clock, Facebook, Instagram, Youtube } from 'lucide-react'
+import { Phone, Mail, MapPin, Clock, Facebook, Instagram } from 'lucide-react'
 
 const services = [
   { label: 'Кухни по поръчка', href: '/услуги/кухни-по-поръчка/' },
@@ -69,9 +69,8 @@ export default function Footer() {
 
             <div className="flex gap-2.5">
               {[
-                { icon: Facebook, href: 'https://facebook.com', label: 'Facebook' },
-                { icon: Instagram, href: 'https://instagram.com', label: 'Instagram' },
-                { icon: Youtube, href: 'https://youtube.com', label: 'YouTube' },
+                { icon: Facebook, href: 'https://www.facebook.com/domexpertmebel', label: 'Facebook' },
+                { icon: Instagram, href: 'https://www.instagram.com/domexpertmebel', label: 'Instagram' },
               ].map(({ icon: Icon, href, label }) => (
                 <a
                   key={label}
