@@ -8,6 +8,11 @@ export const metadata: Metadata = {
   title: { absolute: 'Гардероби по поръчка Благоевград и София | Dom Expert Мебел' },
   description: 'Вградени гардероби по поръчка в Благоевград и София. Плъзгащи врати, LED осветление. Точни размери. Безплатен 3D проект. Тел: 0876 081 199',
   alternates: { canonical: 'https://domexpertmebel.com/услуги/гардероби-по-поръчка/' },
+  openGraph: {
+    url: 'https://domexpertmebel.com/услуги/гардероби-по-поръчка/',
+    title: 'Гардероби по поръчка Благоевград и София | Dom Expert Мебел',
+    description: 'Вградени гардероби по поръчка в Благоевград и София. Плъзгащи врати, LED осветление. Безплатен 3D проект.',
+  },
 }
 
 export default function GarderobPage() {

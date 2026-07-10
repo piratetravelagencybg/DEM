@@ -8,6 +8,11 @@ export const metadata: Metadata = {
   title: { absolute: 'Офис мебели по поръчка Благоевград и София | Dom Expert Мебел' },
   description: 'Офис обзавеждане по поръчка в Благоевград и София. Бюра, шкафове, конферентни маси, рецепции. Корпоративен дизайн. Тел: 0876 081 199',
   alternates: { canonical: 'https://domexpertmebel.com/услуги/офис-мебели/' },
+  openGraph: {
+    url: 'https://domexpertmebel.com/услуги/офис-мебели/',
+    title: 'Офис мебели по поръчка Благоевград и София | Dom Expert Мебел',
+    description: 'Офис обзавеждане по поръчка в Благоевград и София. Бюра, шкафове, конферентни маси. Корпоративен дизайн.',
+  },
 }
 
 export default function OfisMebeliPage() {

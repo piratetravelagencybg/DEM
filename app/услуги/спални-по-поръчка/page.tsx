@@ -8,6 +8,11 @@ export const metadata: Metadata = {
   title: { absolute: 'Спални по поръчка Благоевград и София | Dom Expert Мебел' },
   description: 'Спални по поръчка в Благоевград и София. Тапицирани легла, нощни шкафчета, цялостни комплекти. Безплатен 3D проект. Тел: 0876 081 199',
   alternates: { canonical: 'https://domexpertmebel.com/услуги/спални-по-поръчка/' },
+  openGraph: {
+    url: 'https://domexpertmebel.com/услуги/спални-по-поръчка/',
+    title: 'Спални по поръчка Благоевград и София | Dom Expert Мебел',
+    description: 'Спални по поръчка в Благоевград и София. Тапицирани легла, нощни шкафчета, цялостни комплекти. Безплатен 3D проект.',
+  },
 }
 
 export default function SpalniPage() {

@@ -10,11 +10,16 @@ interface ServiceFAQ {
   answer: string
 }
 
+interface GalleryItem {
+  src: string
+  alt: string
+}
+
 interface ServicePageProps {
   title: string
   subtitle: string
   heroImage: string
-  gallery?: string[]
+  gallery?: GalleryItem[]
   features: string[]
   faq: ServiceFAQ[]
   slug: string
@@ -193,7 +198,7 @@ export default function ServicePageTemplate({ title, subtitle, heroImage, galler
                   : `repeat(${gallery.length}, 1fr)`,
               }}
             >
-              {gallery.map((src, i) => (
+              {gallery.map((item, i) => (
                 <div
                   key={i}
                   className="relative overflow-hidden"
@@ -208,8 +213,8 @@ export default function ServicePageTemplate({ title, subtitle, heroImage, galler
                   }}
                 >
                   <Image
-                    src={src}
-                    alt={`${title} по поръчка — реализация ${i + 1} — Dom Expert Мебел, Благоевград`}
+                    src={item.src}
+                    alt={item.alt}
                     fill
                     className="object-cover hover:scale-105 transition-transform duration-700"
                     sizes="(max-width: 768px) 100vw, 33vw"

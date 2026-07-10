@@ -69,8 +69,8 @@ export default function Footer() {
 
             <div className="flex gap-2.5">
               {[
-                { icon: Facebook, href: 'https://www.facebook.com/domexpertmebel', label: 'Facebook' },
-                { icon: Instagram, href: 'https://www.instagram.com/domexpertmebel', label: 'Instagram' },
+                { icon: Facebook, href: 'https://www.facebook.com/profile.php?id=61591180911065', label: 'Facebook' },
+                { icon: Instagram, href: 'https://www.instagram.com/domexpertmebel/', label: 'Instagram' },
               ].map(({ icon: Icon, href, label }) => (
                 <a
                   key={label}
