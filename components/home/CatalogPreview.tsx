@@ -5,17 +5,10 @@ import Image from 'next/image'
 import { ArrowRight } from 'lucide-react'
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
-import products from '@/data/products.json'
-
-const categoryLabels: Record<string, string> = {
-  stolove: 'Столове',
-  masi: 'Маси',
-  divani: 'Дивани',
-  'tv-shkafove': 'ТВ шкафове',
-}
+import { formatPrice, getAllMbxProducts, getCategoryLabel } from '@/lib/mbx'
 
 export default function CatalogPreview() {
-  const preview = products.slice(0, 6)
+  const preview = getAllMbxProducts().slice(0, 6)
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
 
@@ -59,16 +52,13 @@ export default function CatalogPreview() {
             className="flex gap-3 overflow-x-auto pb-3"
             style={{ scrollbarWidth: 'none', scrollSnapType: 'x mandatory' }}
           >
-            {preview.map((product, i) => {
-              const discount = product.comparePrice
-                ? Math.round((1 - product.price / product.comparePrice) * 100)
-                : null
-              const catLabel = categoryLabels[product.category] ?? product.category
+            {preview.map((product) => {
+              const catLabel = getCategoryLabel(product.categoryHierarchy[0] || product.categoryText)
 
               return (
                 <Link
-                  key={product.id}
-                  href={`/каталог/${product.slug}/`}
+                  key={product.slug}
+                  href={`/produkt/${product.slug}/`}
                   className="group flex-shrink-0 bg-white overflow-hidden"
                   style={{
                     width: 170,
@@ -80,8 +70,8 @@ export default function CatalogPreview() {
                   {/* Square image */}
                   <div className="relative overflow-hidden" style={{ aspectRatio: '1/1', background: '#F5F0E8' }}>
                     <Image
-                      src={product.images[0]}
-                      alt={product.title}
+                      src={product.imageUrl || '/images/hero/hero.png'}
+                      alt={product.productName}
                       fill
                       className="object-cover transition-transform duration-600 group-hover:scale-105"
                       sizes="170px"
@@ -97,14 +87,6 @@ export default function CatalogPreview() {
                     >
                       {catLabel}
                     </span>
-                    {discount && (
-                      <span
-                        className="absolute top-2.5 right-2.5 font-body font-bold text-white"
-                        style={{ fontSize: '0.58rem', background: '#C0512A', padding: '3px 7px', borderRadius: 100 }}
-                      >
-                        -{discount}%
-                      </span>
-                    )}
                   </div>
 
                   {/* Info */}
@@ -113,11 +95,11 @@ export default function CatalogPreview() {
                       className="font-body font-bold text-charcoal leading-snug mb-2"
                       style={{ fontSize: '0.82rem' }}
                     >
-                      {product.title}
+                      {product.productName}
                     </h3>
                     <div className="flex items-center justify-between gap-1">
                       <span className="font-display font-bold text-charcoal" style={{ fontSize: '1rem' }}>
-                        {product.price} лв.
+                        {formatPrice(product.priceVat)}
                       </span>
                       <span
                         className="font-body font-semibold text-white flex-shrink-0"
@@ -136,28 +118,25 @@ export default function CatalogPreview() {
         {/* ── DESKTOP: 4-col grid ── */}
         <div className="hidden md:grid grid-cols-4 gap-4">
           {preview.slice(0, 4).map((product, i) => {
-            const discount = product.comparePrice
-              ? Math.round((1 - product.price / product.comparePrice) * 100)
-              : null
-            const catLabel = categoryLabels[product.category] ?? product.category
+            const catLabel = getCategoryLabel(product.categoryHierarchy[0] || product.categoryText)
 
             return (
               <motion.div
-                key={product.id}
+                key={product.slug}
                 initial={{ opacity: 0, y: 20 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.45, delay: i * 0.08 }}
               >
                 <Link
-                  href={`/каталог/${product.slug}/`}
+                  href={`/produkt/${product.slug}/`}
                   className="group block bg-white overflow-hidden"
                   style={{ borderRadius: 18, border: '1px solid #EDE5DA', boxShadow: '0 2px 12px rgba(0,0,0,0.05)' }}
                 >
                   {/* Square image */}
                   <div className="relative overflow-hidden" style={{ aspectRatio: '1/1', background: '#F5F0E8' }}>
                     <Image
-                      src={product.images[0]}
-                      alt={product.title}
+                      src={product.imageUrl || '/images/hero/hero.png'}
+                      alt={product.productName}
                       fill
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
                       sizes="25vw"
@@ -172,14 +151,6 @@ export default function CatalogPreview() {
                     >
                       {catLabel}
                     </span>
-                    {discount && (
-                      <span
-                        className="absolute top-3 right-3 font-body font-bold text-white"
-                        style={{ fontSize: '0.62rem', background: '#C0512A', padding: '4px 8px', borderRadius: 100 }}
-                      >
-                        -{discount}%
-                      </span>
-                    )}
                     {/* Hover overlay */}
                     <div
                       className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
@@ -203,18 +174,13 @@ export default function CatalogPreview() {
                       className="font-body font-bold text-charcoal leading-snug mb-3"
                       style={{ fontSize: '0.92rem' }}
                     >
-                      {product.title}
+                      {product.productName}
                     </h3>
                     <div className="flex items-center justify-between gap-2">
                       <div>
                         <span className="font-display font-bold text-charcoal" style={{ fontSize: '1.1rem' }}>
-                          {product.price} лв.
+                          {formatPrice(product.priceVat)}
                         </span>
-                        {product.comparePrice && (
-                          <span className="font-body line-through ml-1.5" style={{ fontSize: '0.8rem', color: '#A09890' }}>
-                            {product.comparePrice} лв.
-                          </span>
-                        )}
                       </div>
                       <span
                         className="font-body font-semibold text-white flex-shrink-0"
