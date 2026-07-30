@@ -35,7 +35,7 @@ const posts: Record<string, {
     category: 'Кухни',
     date: '2025-06-01',
     readTime: '5 мин',
-    image: '/images/real/kuhnya-01.png',
+    image: '/images/real/kuhnya-01.webp',
     content: `Изборът на кухня по поръчка е важно решение, което ще определи облика на дома ви за години напред. Преди да се срещнете с мебелна фирма, отговорете на тези ключови въпроси.
 
 ## 1. Какъв е размерът на кухненското ви пространство?
@@ -72,7 +72,7 @@ const posts: Record<string, {
     category: 'Гардероби',
     date: '2025-05-15',
     readTime: '4 мин',
-    image: '/images/real/garderob-01.png',
+    image: '/images/real/garderob-01.webp',
     content: `Въпросът "гардероб по поръчка или готов?" е един от най-честите, които получаваме. Отговорът зависи от конкретната ситуация.
 
 ## Готов гардероб: плюсове и минуси
@@ -114,7 +114,7 @@ const posts: Record<string, {
     category: 'Съвети',
     date: '2025-04-20',
     readTime: '6 мин',
-    image: '/images/real/kuhnya-04.png',
+    image: '/images/real/kuhnya-04.webp',
     content: `Цените на мебелите по поръчка в България варират значително в зависимост от материалите, размерите и производителя.
 
 ## Кухни по поръчка
@@ -154,7 +154,7 @@ const posts: Record<string, {
     category: 'Съвети',
     date: '2025-03-10',
     readTime: '5 мин',
-    image: '/images/real/dnevna-01.png',
+    image: '/images/real/dnevna-01.webp',
     content: `Малкото пространство не означава компромис с комфорта. Ето как мебелите по поръчка могат да трансформират малкия апартамент.
 
 ## 1. Вградени шкафове вместо свободностоящи
@@ -189,7 +189,7 @@ const posts: Record<string, {
     category: 'Съвети',
     date: '2026-07-10',
     readTime: '5 мин',
-    image: '/images/real/kuhnya-04.png',
+    image: '/images/real/kuhnya-04.webp',
     content: `През 2026 година все повече български семейства избират мебели по поръчка вместо готови решения от магазина. Причините са няколко — нестандартни пространства в новото строителство, желание за индивидуалност и разочарование от качеството на масовото производство.
 
 ## Водещи тенденции при мебелите по поръчка за 2026
@@ -279,7 +279,7 @@ export default function BlogPostPage({ params }: Props) {
       name: 'Dom Expert Мебел',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://domexpertmebel.com/images/logo-icon.png',
+        url: 'https://domexpertmebel.com/images/logo-icon.webp',
       },
     },
     mainEntityOfPage: {

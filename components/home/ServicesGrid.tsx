@@ -11,38 +11,38 @@ const services = [
     title: 'Кухни по поръчка',
     href: '/услуги/кухни-по-поръчка/',
     desc: 'Модерни и класически кухни по ваш проект и вкус.',
-    image: '/images/real/kuhnya-02.png',
+    image: '/images/real/kuhnya-02.webp',
     tag: 'Най-търсено',
   },
   {
     title: 'Гардероби',
     href: '/услуги/гардероби-по-поръчка/',
     desc: 'Вградени гардероби за всяко пространство',
-    image: '/images/real/garderob-01.png',
+    image: '/images/real/garderob-01.webp',
   },
   {
     title: 'Спални',
     href: '/услуги/спални-по-поръчка/',
     desc: 'Легла и спални комплекти по дизайн',
-    image: '/images/real/spalna-08.png',
+    image: '/images/real/spalna-08.webp',
   },
   {
     title: 'Дневни',
     href: '/услуги/дневни-по-поръчка/',
     desc: 'ТВ секции, стелажи и холни мебели',
-    image: '/images/real/dnevna-01.png',
+    image: '/images/real/dnevna-01.webp',
   },
   {
     title: 'Офис мебели',
     href: '/услуги/офис-мебели/',
     desc: 'Бюра и офис обзавеждане за бизнеса',
-    image: '/images/real/office-corner.png',
+    image: '/images/real/office-corner.webp',
   },
   {
     title: 'Монтаж',
     href: '/услуги/монтаж/',
     desc: 'Прецизен монтаж с гаранция',
-    image: '/images/real/kuhnya-05.png',
+    image: '/images/real/kuhnya-05.webp',
   },
 ]
 
@@ -60,7 +60,6 @@ function FeaturedCard({ s }: { s: (typeof services)[0] }) {
         fill
         className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
         sizes="(max-width: 768px) 100vw, 66vw"
-        priority
       />
 
       {/* Strong bottom gradient only — image stays visible up top */}

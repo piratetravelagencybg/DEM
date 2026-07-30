@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     url: 'https://domexpertmebel.com/сандански/',
     title: 'Мебели по поръчка Сандански | Dom Expert Мебел',
     description: 'Мебели по поръчка в Сандански. Кухни, гардероби, спални с безплатна консултация и 3D проект.',
-    images: [{ url: '/images/real/kuhnya-05.png', width: 1200, height: 630, alt: 'Мебели по поръчка Сандански — Dom Expert Мебел' }],
+    images: [{ url: '/images/real/kuhnya-05.webp', width: 1200, height: 630, alt: 'Мебели по поръчка Сандански — Dom Expert Мебел' }],
   },
 }
 

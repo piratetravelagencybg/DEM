@@ -1,4 +1,4 @@
-﻿import Link from 'next/link'
+import Link from 'next/link'
 import Image from 'next/image'
 import { Phone, Mail, MapPin, Clock, Facebook, Instagram } from 'lucide-react'
 
@@ -29,7 +29,7 @@ const locations = [
 function FooterLogo() {
   return (
     <Image
-      src="/images/logo-icon.png"
+      src="/images/logo-icon.webp"
       alt="ДомЕксперт лого"
       width={1024}
       height={559}

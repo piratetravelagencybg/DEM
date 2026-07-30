@@ -1,7 +1,7 @@
 ﻿import type { MetadataRoute } from 'next'
 import projects from '@/data/projects.json'
 import services from '@/data/services.json'
-import { getAllMbxProducts } from '@/lib/mbx'
+import { getAllMbxCatalogProducts } from '@/lib/mbx-catalog'
 
 const BASE = 'https://domexpertmebel.com'
 
@@ -43,8 +43,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: SITE_LAUNCH,
   }))
 
-  const productPages = getAllMbxProducts().map((p) => ({
-    url: `${BASE}/produkt/${p.slug}/`,
+  const productPages = getAllMbxCatalogProducts().map((p) => ({
+    url: `${BASE}/каталог/${p.slug}/`,
     priority: 0.6,
     changeFrequency: 'monthly' as const,
     lastModified: SITE_LAUNCH,

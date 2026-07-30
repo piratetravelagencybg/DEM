@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
-import { getAllMbxProducts } from '@/lib/mbx'
+import { getAllMbxCatalogProducts } from '@/lib/mbx-catalog'
+import { getCatalogCategoryId } from '@/lib/product-display'
 import CatalogClient, { CATEGORIES, SORT_OPTIONS } from './CatalogClient'
 import CTABar from '@/components/home/CTABar'
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
@@ -28,12 +29,12 @@ function normalizeSort(sort?: string) {
   return SORT_OPTIONS.some((item) => item.id === normalized) ? normalized : 'default'
 }
 
-function filterProducts(products: ReturnType<typeof getAllMbxProducts>, category: string) {
+function filterProducts(products: ReturnType<typeof getAllMbxCatalogProducts>, category: string) {
   if (category === 'all') return products
-  return products.filter((product) => (product.categoryHierarchy[0] || product.categoryText).toLowerCase().includes(category))
+  return products.filter((product) => getCatalogCategoryId(product.categoryHierarchy, product.categoryText) === category)
 }
 
-function sortProducts(products: ReturnType<typeof getAllMbxProducts>, sort: string) {
+function sortProducts(products: ReturnType<typeof getAllMbxCatalogProducts>, sort: string) {
   const list = [...products]
   switch (sort) {
     case 'price-asc':
@@ -47,7 +48,7 @@ function sortProducts(products: ReturnType<typeof getAllMbxProducts>, sort: stri
   }
 }
 
-function paginateProducts(products: ReturnType<typeof getAllMbxProducts>, page: number, pageSize: number) {
+function paginateProducts(products: ReturnType<typeof getAllMbxCatalogProducts>, page: number, pageSize: number) {
   const totalProducts = products.length
   const totalPages = Math.max(1, Math.ceil(totalProducts / pageSize))
   const safePage = Math.min(Math.max(page, 1), totalPages)
@@ -61,10 +62,10 @@ function paginateProducts(products: ReturnType<typeof getAllMbxProducts>, page: 
   }
 }
 
-function buildCategoryCounts(products: ReturnType<typeof getAllMbxProducts>) {
+function buildCategoryCounts(products: ReturnType<typeof getAllMbxCatalogProducts>) {
   const counts: Record<string, number> = { all: products.length }
   CATEGORIES.slice(1).forEach((category) => {
-    counts[category.id] = products.filter((p) => (p.categoryHierarchy[0] || p.categoryText).toLowerCase().includes(category.id)).length
+    counts[category.id] = products.filter((product) => getCatalogCategoryId(product.categoryHierarchy, product.categoryText) === category.id).length
   })
   return counts
 }
@@ -75,7 +76,7 @@ export default function CatalogPage({ searchParams }: { searchParams: CatalogQue
   const page = Number(searchParams.page ?? '1')
   const pageSize = 36
 
-  const allProducts = getAllMbxProducts()
+  const allProducts = getAllMbxCatalogProducts()
   const categoryCounts = buildCategoryCounts(allProducts)
   const filtered = filterProducts(allProducts, activeCategory)
   const sorted = sortProducts(filtered, sortBy)

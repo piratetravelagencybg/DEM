@@ -5,13 +5,13 @@
     "title": "Кухни по поръчка",
     "shortDescription": "Модерни и класически кухни, изработени по вашия проект",
     "icon": "ChefHat",
-    "image": "/images/real/kuhnya-04.png",
+    "image": "/images/real/kuhnya-04.webp",
     "gallery": [
-      { "src": "/images/real/kuhnya-01.png", "alt": "Кухня по поръчка МДФ гланц бяло — Dom Expert Мебел, Благоевград" },
-      { "src": "/images/real/kuhnya-02.png", "alt": "Модерна кухня с остров по поръчка — Dom Expert Мебел" },
-      { "src": "/images/real/kuhnya-03.png", "alt": "Кухня с гранитен плот по поръчка — Dom Expert Мебел" },
-      { "src": "/images/real/kuhnya-05.png", "alt": "Ъглова кухня по поръчка ПДЧ дъб — Dom Expert Мебел, Благоевград" },
-      { "src": "/images/real/kuhnya-06.png", "alt": "Класическа кухня по поръчка — Dom Expert Мебел" }
+      { "src": "/images/real/kuhnya-01.webp", "alt": "Кухня по поръчка МДФ гланц бяло — Dom Expert Мебел, Благоевград" },
+      { "src": "/images/real/kuhnya-02.webp", "alt": "Модерна кухня с остров по поръчка — Dom Expert Мебел" },
+      { "src": "/images/real/kuhnya-03.webp", "alt": "Кухня с гранитен плот по поръчка — Dom Expert Мебел" },
+      { "src": "/images/real/kuhnya-05.webp", "alt": "Ъглова кухня по поръчка ПДЧ дъб — Dom Expert Мебел, Благоевград" },
+      { "src": "/images/real/kuhnya-06.webp", "alt": "Класическа кухня по поръчка — Dom Expert Мебел" }
     ],
     "features": ["МДФ, ПДЧ, гланц", "Безплатен 3D проект", "Монтаж included", "Гаранция 2 г."],
     "faq": [
@@ -39,11 +39,11 @@
     "title": "Гардероби по поръчка",
     "shortDescription": "Вградени гардероби и гардеробни системи за всяко пространство",
     "icon": "Package",
-    "image": "/images/real/garderob-02.png",
+    "image": "/images/real/garderob-02.webp",
     "gallery": [
-      { "src": "/images/real/garderob-01.png", "alt": "Вграден гардероб с плъзгащи врати по поръчка — Dom Expert Мебел" },
-      { "src": "/images/real/garderob-03.png", "alt": "Гардеробна система по поръчка с LED осветление — Dom Expert Мебел" },
-      { "src": "/images/real/spalna-07.png", "alt": "Спалня с вграден гардероб по поръчка — Dom Expert Мебел, Благоевград" }
+      { "src": "/images/real/garderob-01.webp", "alt": "Вграден гардероб с плъзгащи врати по поръчка — Dom Expert Мебел" },
+      { "src": "/images/real/garderob-03.webp", "alt": "Гардеробна система по поръчка с LED осветление — Dom Expert Мебел" },
+      { "src": "/images/real/spalna-07.webp", "alt": "Спалня с вграден гардероб по поръчка — Dom Expert Мебел, Благоевград" }
     ],
     "features": ["Вградени и корпусни", "Плъзгащи врати", "LED осветление", "По ваши размери"],
     "faq": [
@@ -71,13 +71,13 @@
     "title": "Спални по поръчка",
     "shortDescription": "Легла, нощни шкафчета и цялостни спални комплекти по ваш дизайн",
     "icon": "Bed",
-    "image": "/images/real/spalna-08.png",
+    "image": "/images/real/spalna-08.webp",
     "gallery": [
-      { "src": "/images/real/spalna-01.png", "alt": "Спалня по поръчка с тапицирано легло — Dom Expert Мебел, Благоевград" },
-      { "src": "/images/real/spalna-03.png", "alt": "Модерна спалня по поръчка в дъб натурал — Dom Expert Мебел" },
-      { "src": "/images/real/spalna-05.png", "alt": "Спалня с вградено осветление по поръчка — Dom Expert Мебел" },
-      { "src": "/images/real/spalna-06.png", "alt": "Спален комплект по поръчка с нощни шкафчета — Dom Expert Мебел" },
-      { "src": "/images/real/spalna-09.png", "alt": "Минималистична спалня по поръчка — Dom Expert Мебел, Благоевград" }
+      { "src": "/images/real/spalna-01.webp", "alt": "Спалня по поръчка с тапицирано легло — Dom Expert Мебел, Благоевград" },
+      { "src": "/images/real/spalna-03.webp", "alt": "Модерна спалня по поръчка в дъб натурал — Dom Expert Мебел" },
+      { "src": "/images/real/spalna-05.webp", "alt": "Спалня с вградено осветление по поръчка — Dom Expert Мебел" },
+      { "src": "/images/real/spalna-06.webp", "alt": "Спален комплект по поръчка с нощни шкафчета — Dom Expert Мебел" },
+      { "src": "/images/real/spalna-09.webp", "alt": "Минималистична спалня по поръчка — Dom Expert Мебел, Благоевград" }
     ],
     "features": ["Тапицирани и дървени легла", "Вградено осветление", "Матрак included (по заявка)", "Цялостен дизайн"],
     "faq": [
@@ -105,11 +105,11 @@
     "title": "Дневни по поръчка",
     "shortDescription": "ТВ секции, стелажи и мебели за дневната стая по ваш проект",
     "icon": "Tv",
-    "image": "/images/real/dnevna-01.png",
+    "image": "/images/real/dnevna-01.webp",
     "gallery": [
-      { "src": "/images/real/dnevna-02.png", "alt": "Дневна по поръчка с ТВ секция — Dom Expert Мебел" },
-      { "src": "/images/real/dnevna-03.png", "alt": "ТВ секция по поръчка в тъмен дъб — Dom Expert Мебел, Благоевград" },
-      { "src": "/images/real/dnevna-04.png", "alt": "Стелаж по поръчка за дневна стая — Dom Expert Мебел" }
+      { "src": "/images/real/dnevna-02.webp", "alt": "Дневна по поръчка с ТВ секция — Dom Expert Мебел" },
+      { "src": "/images/real/dnevna-03.webp", "alt": "ТВ секция по поръчка в тъмен дъб — Dom Expert Мебел, Благоевград" },
+      { "src": "/images/real/dnevna-04.webp", "alt": "Стелаж по поръчка за дневна стая — Dom Expert Мебел" }
     ],
     "features": ["ТВ секции", "Стелажи и библиотеки", "Холни маси", "Индивидуален дизайн"],
     "faq": [
@@ -137,10 +137,10 @@
     "title": "Офис мебели",
     "shortDescription": "Бюра, шкафове и офис обзавеждане по поръчка за вашия бизнес",
     "icon": "Briefcase",
-    "image": "/images/real/office-corner.png",
+    "image": "/images/real/office-corner.webp",
     "gallery": [
-      { "src": "/images/real/bedroom-modern.png", "alt": "Офис обзавеждане по поръчка за бизнес — Dom Expert Мебел, Благоевград" },
-      { "src": "/images/real/kuhnya-05.png", "alt": "Бюра и шкафове по поръчка корпоративен дизайн — Dom Expert Мебел" }
+      { "src": "/images/real/bedroom-modern.webp", "alt": "Офис обзавеждане по поръчка за бизнес — Dom Expert Мебел, Благоевград" },
+      { "src": "/images/real/kuhnya-05.webp", "alt": "Бюра и шкафове по поръчка корпоративен дизайн — Dom Expert Мебел" }
     ],
     "features": ["Бюра и ергономия", "Конферентни маси", "Архивни шкафове", "Корпоративен дизайн"],
     "faq": [
@@ -168,11 +168,11 @@
     "title": "Монтаж",
     "shortDescription": "Професионален монтаж на всички видове мебели с гаранция",
     "icon": "Wrench",
-    "image": "/images/real/kuhnya-06.png",
+    "image": "/images/real/kuhnya-06.webp",
     "gallery": [
-      { "src": "/images/real/kuhnya-01.png", "alt": "Монтаж на кухня по поръчка — Dom Expert Мебел, Благоевград" },
-      { "src": "/images/real/garderob-01.png", "alt": "Монтаж на гардероб по поръчка — Dom Expert Мебел" },
-      { "src": "/images/real/spalna-02.png", "alt": "Монтаж на спалня по поръчка — Dom Expert Мебел, Благоевград" }
+      { "src": "/images/real/kuhnya-01.webp", "alt": "Монтаж на кухня по поръчка — Dom Expert Мебел, Благоевград" },
+      { "src": "/images/real/garderob-01.webp", "alt": "Монтаж на гардероб по поръчка — Dom Expert Мебел" },
+      { "src": "/images/real/spalna-02.webp", "alt": "Монтаж на спалня по поръчка — Dom Expert Мебел, Благоевград" }
     ],
     "features": ["Прецизен монтаж", "Почистване след работа", "Гаранция", "Бърза реакция"],
     "faq": [

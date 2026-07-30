@@ -1,4 +1,4 @@
-﻿import type { Metadata } from 'next'
+import type { Metadata } from 'next'
 import { Cormorant_Garamond, DM_Sans } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/layout/Header'
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'bg_BG',
     siteName: 'Dom Expert Мебел',
-    images: [{ url: '/images/hero/hero.png', width: 1200, height: 630, alt: 'Dom Expert Мебел' }],
+    images: [{ url: '/images/hero/hero.webp', width: 1200, height: 630, alt: 'Dom Expert Мебел' }],
   },
   twitter: {
     card: 'summary_large_image',

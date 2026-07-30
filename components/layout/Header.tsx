@@ -45,7 +45,7 @@ export default function Header() {
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2.5 flex-shrink-0">
               <Image
-                src="/images/logo-icon.png"
+                src="/images/logo-icon.webp"
                 alt="ДомЕксперт лого"
                 width={1024}
                 height={559}

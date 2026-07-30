@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 
 export default function Hero() {
   return (
@@ -10,12 +11,20 @@ export default function Hero() {
         minHeight: '100svh',
         display: 'flex',
         flexDirection: 'column',
-        backgroundImage: `url('/images/hero/hero.png')`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
+        backgroundColor: '#1A1208',
       }}
     >
+      <Image
+        src="/images/hero/hero.webp"
+        alt="Мебели по поръчка от ДомЕксперт"
+        fill
+        priority
+        fetchPriority="high"
+        sizes="100vw"
+        quality={78}
+        className="object-cover"
+      />
+
       {/* Overlay — dark only at top & bottom, clear in the middle so the image shines */}
       <div style={{
         position: 'absolute',

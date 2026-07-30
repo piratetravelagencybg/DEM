@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     url: 'https://domexpertmebel.com/дупница/',
     title: 'Мебели по поръчка Дупница | Dom Expert Мебел',
     description: 'Мебели по поръчка в Дупница. Кухни, гардероби, спални от местна семейна фирма.',
-    images: [{ url: '/images/real/dnevna-03.png', width: 1200, height: 630, alt: 'Мебели по поръчка Дупница — Dom Expert Мебел' }],
+    images: [{ url: '/images/real/dnevna-03.webp', width: 1200, height: 630, alt: 'Мебели по поръчка Дупница — Dom Expert Мебел' }],
   },
 }
 

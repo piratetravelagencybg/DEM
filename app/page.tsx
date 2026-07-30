@@ -9,6 +9,7 @@ import CatalogPreview from '@/components/home/CatalogPreview'
 import Testimonials from '@/components/home/Testimonials'
 import CTABar from '@/components/home/CTABar'
 import LocalBusinessSchema from '@/components/seo/LocalBusinessSchema'
+import { getAllMbxCatalogProducts } from '@/lib/mbx-catalog'
 
 export const metadata: Metadata = {
   title: { absolute: 'Мебели по поръчка Благоевград и София | Dom Expert Мебел' },
@@ -22,6 +23,8 @@ export const metadata: Metadata = {
 }
 
 export default function HomePage() {
+  const catalogPreview = getAllMbxCatalogProducts().slice(0, 6)
+
   return (
     <>
       <LocalBusinessSchema />
@@ -31,7 +34,7 @@ export default function HomePage() {
       <Visualization3D />
       <ProcessSteps />
       <ProjectsGallery />
-      <CatalogPreview />
+      <CatalogPreview products={catalogPreview} />
       <Testimonials />
       <CTABar />
     </>

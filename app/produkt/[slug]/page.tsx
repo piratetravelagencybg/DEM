@@ -3,22 +3,26 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Phone, ShoppingBag, CheckCircle2, Package, Truck, ArrowLeft } from 'lucide-react'
-import { buildProductMetadata, formatPrice, getAllMbxProducts, getAvailabilityLabel, getAvailabilitySchema, getCategoryLabel, getMbxGroupById } from '@/lib/mbx'
+import { buildProductMetadata, formatPrice, getAllMbxProducts, getAvailabilityLabel, getAvailabilitySchema, getCategoryLabel, getMbxGroupById, getMbxProductBySlug } from '@/lib/mbx'
+import ProductGallery from '@/components/product/ProductGallery'
 
 interface Props { params: { slug: string } }
 
+export const dynamicParams = true
+export const revalidate = 86400
+
 export function generateStaticParams() {
-  return getAllMbxProducts().map((product) => ({ slug: product.slug }))
+  return []
 }
 
 export function generateMetadata({ params }: Props): Metadata {
-  const product = getAllMbxProducts().find((entry) => entry.slug === params.slug)
+  const product = getMbxProductBySlug(params.slug)
   if (!product) return {}
   return buildProductMetadata(product)
 }
 
 export default function ProductPage({ params }: Props) {
-  const product = getAllMbxProducts().find((entry) => entry.slug === params.slug)
+  const product = getMbxProductBySlug(params.slug)
   if (!product) notFound()
 
   const group = getMbxGroupById(product.itemGroupId)
@@ -40,7 +44,7 @@ export default function ProductPage({ params }: Props) {
       price: product.priceVat ?? 0,
       priceCurrency: 'EUR',
       availability: getAvailabilitySchema(product.availability),
-      url: `https://domexpertmebel.com/produkt/${product.slug}/`,
+      url: `https://domexpertmebel.com/каталог/${product.slug}/`,
       seller: { '@type': 'Organization', name: 'Dom Expert Мебел' },
     },
   }
@@ -60,25 +64,11 @@ export default function ProductPage({ params }: Props) {
 
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-14 items-start">
             <div className="lg:sticky lg:top-24">
-              <div className="relative overflow-hidden rounded-2xl" style={{ aspectRatio: '1', background: '#F5F0E8', boxShadow: '0 16px 48px rgba(0,0,0,0.10)' }}>
-                <Image
-                  src={product.imageUrl || '/images/hero/hero.png'}
-                  alt={product.productName}
-                  fill
-                  className="object-cover"
-                  priority
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                />
-              </div>
-              {product.imageAlternatives.length > 1 && (
-                <div className="flex gap-2 mt-3 overflow-x-auto">
-                  {product.imageAlternatives.map((img, index) => (
-                    <div key={`${img}-${index}`} className="relative rounded-xl overflow-hidden flex-shrink-0" style={{ width: 74, height: 74, background: '#F5F0E8', border: '1px solid #EDE5DA' }}>
-                      <Image src={img} alt={`${product.productName} — снимка ${index + 1}`} fill className="object-cover" sizes="74px" />
-                    </div>
-                  ))}
-                </div>
-              )}
+              <ProductGallery
+                productName={product.productName}
+                primaryImage={product.imageUrl}
+                images={product.imageAlternatives}
+              />
             </div>
 
             <div>
@@ -149,9 +139,9 @@ export default function ProductPage({ params }: Props) {
             <h2 className="font-display font-bold heading-gradient mb-6" style={{ fontSize: 'clamp(1.3rem, 3vw, 1.8rem)' }}>Подобни продукти</h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
               {related.map((entry) => (
-                <Link key={entry.slug} href={`/produkt/${entry.slug}/`} className="group block bg-white rounded-xl overflow-hidden transition-all hover:-translate-y-1" style={{ border: '1px solid #EDE5DA' }}>
+                <Link key={entry.slug} href={`/каталог/${entry.slug}/`} className="group block bg-white rounded-xl overflow-hidden transition-all hover:-translate-y-1" style={{ border: '1px solid #EDE5DA' }}>
                   <div className="relative overflow-hidden" style={{ aspectRatio: '1', background: '#F5F0E8' }}>
-                    <Image src={entry.imageUrl || '/images/hero/hero.png'} alt={entry.productName} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width:768px) 50vw, 25vw" />
+                    <Image src={entry.imageUrl || '/images/hero/hero.webp'} alt={entry.productName} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width:768px) 50vw, 25vw" />
                   </div>
                   <div style={{ padding: '12px 14px 14px' }}>
                     <h3 className="font-body font-bold text-charcoal leading-snug mb-2" style={{ fontSize: '0.84rem' }}>{entry.productName}</h3>

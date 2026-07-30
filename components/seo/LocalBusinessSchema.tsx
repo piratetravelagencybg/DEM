@@ -1,4 +1,4 @@
-﻿export default function LocalBusinessSchema() {
+export default function LocalBusinessSchema() {
   const schema = {
     '@context': 'https://schema.org',
     '@type': ['LocalBusiness', 'FurnitureStore'],
@@ -41,8 +41,8 @@
       { '@type': 'City', name: 'Банско' },
       { '@type': 'City', name: 'Разлог' },
     ],
-    image: 'https://domexpertmebel.com/images/hero/hero.png',
-    logo: 'https://domexpertmebel.com/images/logo-icon.png',
+    image: 'https://domexpertmebel.com/images/hero/hero.webp',
+    logo: 'https://domexpertmebel.com/images/logo-icon.webp',
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: 'Мебели по поръчка',

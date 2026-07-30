@@ -1,5 +1,18 @@
 import type { Metadata } from 'next'
 import mbxImport from '@/data/mbx-import.json'
+import {
+  formatPrice,
+  getPrimaryCategory as getPrimaryCategoryFromValues,
+} from '@/lib/product-display'
+
+export {
+  formatPrice,
+  formatPriceBgn,
+  getAvailabilityLabel,
+  getAvailabilitySchema,
+  getCategoryLabel,
+  getCategorySlug,
+} from '@/lib/product-display'
 
 export type MbxVariant = {
   itemId: string
@@ -38,82 +51,35 @@ export type MbxImportData = {
 }
 
 const importData = mbxImport as MbxImportData
-
-const DEFAULT_CATEGORY = 'other'
-
-function normalizeCategory(value: string) {
-  return value
-    .toLowerCase()
-    .replace(/[^а-яa-z0-9]+/g, '-')
-    .replace(/-+/g, '-')
-    .replace(/^-|-$/g, '')
-}
+const activeProducts = importData.products.filter((product) => product.active)
+const productsBySlug = new Map(activeProducts.map((product) => [product.slug, product]))
+const activeGroups = importData.groups.filter((group) => group.variants.some((variant) => variant.active))
+const groupsById = new Map(activeGroups.map((group) => [group.groupId, group]))
 
 export function getAllMbxProducts() {
-  return importData.products.filter((product) => product.active)
+  return activeProducts
 }
 
 export function getMbxProductBySlug(slug: string) {
-  return getAllMbxProducts().find((product) => product.slug === slug)
+  return productsBySlug.get(slug)
 }
 
 export function getMbxGroups() {
-  return importData.groups.filter((group) => group.variants.some((variant) => variant.active))
+  return activeGroups
 }
 
 export function getMbxGroupById(groupId: string) {
-  return getMbxGroups().find((group) => group.groupId === groupId)
+  return groupsById.get(groupId)
 }
 
 export function getPrimaryCategory(product: MbxVariant) {
-  const category = product.categoryHierarchy[0] || product.categoryText.split('>')[0] || ''
-  return category || DEFAULT_CATEGORY
-}
-
-export function getCategorySlug(category: string) {
-  return normalizeCategory(category)
-}
-
-export function getCategoryLabel(category: string) {
-  const labels: Record<string, string> = {
-    спалня: 'Спални',
-    легло: 'Легла',
-    гардероб: 'Гардероби',
-    нощно: 'Нощни шкафчета',
-    детски: 'Детски мебели',
-    дневна: 'Дневни',
-    тв: 'ТВ шкафове',
-    хол: 'Холни маси',
-    офис: 'Офис мебели',
-    антре: 'Антре',
-    колекция: 'Колекции',
-    кухня: 'Кухни',
-  }
-  return labels[normalizeCategory(category)] || category || 'Продукти'
-}
-
-export function formatPrice(value: number | null) {
-  if (value === null || value === undefined || Number.isNaN(value)) return '—'
-  return `${value.toFixed(2).replace('.', ',')} €`
-}
-
-export function formatPriceBgn(value: number | null) {
-  if (value === null || value === undefined || Number.isNaN(value)) return '—'
-  return `${value.toFixed(2).replace('.', ',')} €`
-}
-
-export function getAvailabilityLabel(availability: string) {
-  return availability === 'on_order' ? 'По поръчка' : 'В наличност'
-}
-
-export function getAvailabilitySchema(availability: string) {
-  return availability === 'on_order' ? 'https://schema.org/PreOrder' : 'https://schema.org/InStock'
+  return getPrimaryCategoryFromValues(product.categoryHierarchy, product.categoryText)
 }
 
 export function buildProductMetadata(product: MbxVariant): Metadata {
   const title = `${product.productName} | Dom Expert Мебел`
   const description = `${product.productName} — реални варианти, цена ${formatPrice(product.priceVat)} и наличност. Поръчайте от Dom Expert Мебел.`
-  const canonical = `https://domexpertmebel.com/produkt/${product.slug}/`
+  const canonical = `https://domexpertmebel.com/каталог/${product.slug}/`
   return {
     title: { absolute: title },
     description,

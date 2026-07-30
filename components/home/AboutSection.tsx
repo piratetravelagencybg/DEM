@@ -38,7 +38,7 @@ export default function AboutSection() {
         >
           {/* Background image */}
           <Image
-            src="/images/real/spalna-08.png"
+            src="/images/real/spalna-08.webp"
             alt="Спалня по поръчка Dom Expert Мебел"
             fill
             className="object-cover"

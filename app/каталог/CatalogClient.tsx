@@ -1,16 +1,19 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight, Package, ShoppingBag } from 'lucide-react'
-import type { MbxVariant } from '@/lib/mbx'
-import { formatPrice, getAvailabilityLabel, getCategoryLabel } from '@/lib/mbx'
+import type { MbxCatalogProduct } from '@/lib/mbx-catalog'
+import { formatPrice, getAvailabilityLabel, getCategoryLabel } from '@/lib/product-display'
 
 export const CATEGORIES = [
   { id: 'all', label: 'Всички' },
-  { id: 'спалня', label: 'Спални' },
-  { id: 'гардероб', label: 'Гардероби' },
-  { id: 'маса', label: 'Маси' },
-  { id: 'стол', label: 'Столове' },
-  { id: 'тв', label: 'ТВ шкафове' },
+  { id: 'bedroom', label: 'Спални' },
+  { id: 'children', label: 'Детски' },
+  { id: 'living', label: 'Дневни' },
+  { id: 'office', label: 'Офис' },
+  { id: 'hallway', label: 'Антре' },
+  { id: 'collections', label: 'Колекции' },
+  { id: 'bathroom', label: 'Баня' },
+  { id: 'other', label: 'Други' },
 ]
 
 export const SORT_OPTIONS = [
@@ -30,14 +33,14 @@ function buildCatalogHref({ category, sort, page }: { category: string; sort: st
 }
 
 type ProductCardProps = {
-  product: MbxVariant
+  product: MbxCatalogProduct
 }
 
 function ProductCard({ product }: ProductCardProps) {
   return (
-    <Link href={`/produkt/${product.slug}/`} className="group flex flex-col bg-white overflow-hidden transition-all duration-300 hover:-translate-y-1" style={{ borderRadius: 16, border: '1px solid #EDE5DA', boxShadow: '0 2px 10px rgba(0,0,0,0.05)' }}>
+    <Link href={`/каталог/${product.slug}/`} className="group flex flex-col bg-white overflow-hidden transition-all duration-300 hover:-translate-y-1" style={{ borderRadius: 16, border: '1px solid #EDE5DA', boxShadow: '0 2px 10px rgba(0,0,0,0.05)' }}>
       <div className="relative overflow-hidden flex-shrink-0" style={{ aspectRatio: '1', background: 'var(--color-cream)' }}>
-        <Image src={product.imageUrl || '/images/hero/hero.png'} alt={product.productName} fill className="object-cover transition-transform duration-500 group-hover:scale-105" sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw" />
+        <Image src={product.imageUrl || '/images/hero/hero.webp'} alt={product.productName} fill className="object-cover transition-transform duration-500 group-hover:scale-105" sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw" />
         <div className="absolute inset-0 flex items-end justify-center pb-3 transition-opacity duration-300 opacity-0 group-hover:opacity-100" style={{ background: 'linear-gradient(to top, rgba(10,7,4,0.65) 0%, transparent 55%)' }}>
           <span className="font-body font-semibold text-white flex items-center gap-1" style={{ fontSize: '0.76rem' }}>Виж <ArrowRight size={12} /></span>
         </div>
@@ -59,7 +62,7 @@ function ProductCard({ product }: ProductCardProps) {
 }
 
 type CatalogClientProps = {
-  products: MbxVariant[]
+  products: MbxCatalogProduct[]
   activeCategory: string
   sortBy: string
   categoryCounts: Record<string, number>

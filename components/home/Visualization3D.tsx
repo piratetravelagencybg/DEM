@@ -51,7 +51,7 @@ export default function Visualization3D() {
           style={{ height: 250 }}
         >
           <Image
-            src="/images/services/kuhnya.png"
+            src="/images/services/kuhnya.webp"
             alt="3D визуализация на кухня"
             fill
             className="object-cover"
@@ -169,7 +169,7 @@ export default function Visualization3D() {
           style={{ minHeight: 480 }}
         >
           <Image
-            src="/images/services/kuhnya.png"
+            src="/images/services/kuhnya.webp"
             alt="3D визуализация на кухня по поръчка"
             fill
             className="object-cover"

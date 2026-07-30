@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     url: 'https://domexpertmebel.com/благоевград/',
     title: 'Мебели по поръчка Благоевград | Dom Expert Мебел',
     description: 'Мебели по поръчка в Благоевград. Кухни, гардероби, спални — семейна фирма с 10+ г. опит.',
-    images: [{ url: '/images/real/kuhnya-02.png', width: 1200, height: 630, alt: 'Мебели по поръчка Благоевград — Dom Expert Мебел' }],
+    images: [{ url: '/images/real/kuhnya-02.webp', width: 1200, height: 630, alt: 'Мебели по поръчка Благоевград — Dom Expert Мебел' }],
   },
 }
 

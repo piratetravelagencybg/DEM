@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'bg_BG',
     siteName: 'Dom Expert Мебел',
-    images: [{ url: '/images/real/kuhnya-05.png', width: 1200, height: 630, alt: 'Dom Expert Мебел — мебели по поръчка Благоевград' }],
+    images: [{ url: '/images/real/kuhnya-05.webp', width: 1200, height: 630, alt: 'Dom Expert Мебел — мебели по поръчка Благоевград' }],
   },
 }
 
@@ -47,7 +47,7 @@ const localBusinessSchema = {
   }],
   priceRange: '$$',
   areaServed: ['Благоевград','София','Дупница','Сандански','Банско','Разлог'],
-  image: 'https://domexpertmebel.com/images/real/kuhnya-04.png',
+  image: 'https://domexpertmebel.com/images/real/kuhnya-04.webp',
   sameAs: ['https://www.facebook.com/domexpertmebel','https://www.instagram.com/domexpertmebel'],
 }
 
@@ -57,7 +57,7 @@ const organizationSchema = {
   '@id': 'https://domexpertmebel.com/#organization',
   name: 'Dom Expert Мебел',
   url: 'https://domexpertmebel.com',
-  logo: 'https://domexpertmebel.com/images/logo-icon.png',
+  logo: 'https://domexpertmebel.com/images/logo-icon.webp',
   contactPoint: {
     '@type': 'ContactPoint',
     telephone: '+359876081199',
@@ -106,7 +106,7 @@ export default function AboutPage() {
           style={{ position: 'relative', minHeight: '88vh', display: 'flex', flexDirection: 'column' }}
         >
           <Image
-            src="/images/real/kuhnya-04.png"
+            src="/images/real/kuhnya-04.webp"
             alt="Кухня по поръчка — Dom Expert Мебел Благоевград"
             fill
             className="object-cover"
@@ -218,7 +218,7 @@ export default function AboutPage() {
               {/* Photo */}
               <div className="relative rounded-2xl overflow-hidden" style={{ aspectRatio: '4/5' }}>
                 <Image
-                  src="/images/real/spalna-01.png"
+                  src="/images/real/spalna-01.webp"
                   alt="Спалня по поръчка — Dom Expert Мебел Благоевград"
                   fill
                   className="object-cover"
@@ -247,7 +247,7 @@ export default function AboutPage() {
           <div className="container-main">
             <div className="relative overflow-hidden rounded-2xl" style={{ aspectRatio: '21/9' }}>
               <Image
-                src="/images/real/kuhnya-06.png"
+                src="/images/real/kuhnya-06.webp"
                 alt="Кухня по поръчка — реализация Dom Expert Мебел Благоевград"
                 fill
                 className="object-cover"
@@ -371,7 +371,7 @@ export default function AboutPage() {
               {/* Right: photo */}
               <div className="relative rounded-2xl overflow-hidden" style={{ aspectRatio: '4/5' }}>
                 <Image
-                  src="/images/real/kuhnya-03.png"
+                  src="/images/real/kuhnya-03.webp"
                   alt="Процес на изработка на кухня по поръчка — Dom Expert Мебел"
                   fill
                   className="object-cover"
@@ -397,11 +397,11 @@ export default function AboutPage() {
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="relative overflow-hidden rounded-2xl" style={{ aspectRatio: '3/4' }}>
-                <Image src="/images/real/garderob-02.png" alt="Гардероб по поръчка — Dom Expert Мебел"
+                <Image src="/images/real/garderob-02.webp" alt="Гардероб по поръчка — Dom Expert Мебел"
                   fill className="object-cover" sizes="(max-width: 640px) 100vw, 50vw" />
               </div>
               <div className="relative overflow-hidden rounded-2xl" style={{ aspectRatio: '3/4' }}>
-                <Image src="/images/real/dnevna-02.png" alt="Дневна по поръчка — Dom Expert Мебел"
+                <Image src="/images/real/dnevna-02.webp" alt="Дневна по поръчка — Dom Expert Мебел"
                   fill className="object-cover" sizes="(max-width: 640px) 100vw, 50vw" />
               </div>
             </div>

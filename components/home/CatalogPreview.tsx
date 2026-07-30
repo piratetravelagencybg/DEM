@@ -5,10 +5,11 @@ import Image from 'next/image'
 import { ArrowRight } from 'lucide-react'
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { formatPrice, getAllMbxProducts, getCategoryLabel } from '@/lib/mbx'
+import type { MbxCatalogProduct } from '@/lib/mbx-catalog'
+import { formatPrice, getCategoryLabel } from '@/lib/product-display'
 
-export default function CatalogPreview() {
-  const preview = getAllMbxProducts().slice(0, 6)
+export default function CatalogPreview({ products }: { products: MbxCatalogProduct[] }) {
+  const preview = products
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
 
@@ -58,7 +59,7 @@ export default function CatalogPreview() {
               return (
                 <Link
                   key={product.slug}
-                  href={`/produkt/${product.slug}/`}
+                  href={`/каталог/${product.slug}/`}
                   className="group flex-shrink-0 bg-white overflow-hidden"
                   style={{
                     width: 170,
@@ -70,7 +71,7 @@ export default function CatalogPreview() {
                   {/* Square image */}
                   <div className="relative overflow-hidden" style={{ aspectRatio: '1/1', background: '#F5F0E8' }}>
                     <Image
-                      src={product.imageUrl || '/images/hero/hero.png'}
+                      src={product.imageUrl || '/images/hero/hero.webp'}
                       alt={product.productName}
                       fill
                       className="object-cover transition-transform duration-600 group-hover:scale-105"
@@ -128,14 +129,14 @@ export default function CatalogPreview() {
                 transition={{ duration: 0.45, delay: i * 0.08 }}
               >
                 <Link
-                  href={`/produkt/${product.slug}/`}
+                  href={`/каталог/${product.slug}/`}
                   className="group block bg-white overflow-hidden"
                   style={{ borderRadius: 18, border: '1px solid #EDE5DA', boxShadow: '0 2px 12px rgba(0,0,0,0.05)' }}
                 >
                   {/* Square image */}
                   <div className="relative overflow-hidden" style={{ aspectRatio: '1/1', background: '#F5F0E8' }}>
                     <Image
-                      src={product.imageUrl || '/images/hero/hero.png'}
+                      src={product.imageUrl || '/images/hero/hero.webp'}
                       alt={product.productName}
                       fill
                       className="object-cover transition-transform duration-700 group-hover:scale-105"

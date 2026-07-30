@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     url: 'https://domexpertmebel.com/блог/',
     title: 'Блог за мебели и интериор | Dom Expert Мебел',
     description: 'Полезни съвети за кухни и гардероби по поръчка, интериорен дизайн и обзавеждане на дома.',
-    images: [{ url: '/images/real/kuhnya-04.png', width: 1200, height: 630, alt: 'Блог Dom Expert Мебел' }],
+    images: [{ url: '/images/real/kuhnya-04.webp', width: 1200, height: 630, alt: 'Блог Dom Expert Мебел' }],
   },
 }
 
@@ -33,7 +33,7 @@ const posts = [
     description: 'Преди да поръчате кухня по поръчка, задайте си тези 7 въпроса за да вземете правилното решение.',
     category: 'Кухни',
     date: '2025-06-01',
-    image: '/images/real/kuhnya-01.png',
+    image: '/images/real/kuhnya-01.webp',
     readTime: '5 мин',
   },
   {
@@ -42,7 +42,7 @@ const posts = [
     description: 'Сравняваме плюсовете и минусите на гардероб по поръчка спрямо готов, за да вземете правилното решение.',
     category: 'Гардероби',
     date: '2025-05-15',
-    image: '/images/real/garderob-01.png',
+    image: '/images/real/garderob-01.webp',
     readTime: '4 мин',
   },
   {
@@ -51,7 +51,7 @@ const posts = [
     description: 'Пълно ръководство за цените на мебели по поръчка в България — кухни, гардероби, спални.',
     category: 'Съвети',
     date: '2025-04-20',
-    image: '/images/real/kuhnya-04.png',
+    image: '/images/real/kuhnya-04.webp',
     readTime: '6 мин',
   },
   {
@@ -60,7 +60,7 @@ const posts = [
     description: 'Практични идеи за обзавеждане на малък апартамент — как мебелите по поръчка спестяват пространство.',
     category: 'Съвети',
     date: '2025-03-10',
-    image: '/images/real/dnevna-01.png',
+    image: '/images/real/dnevna-01.webp',
     readTime: '5 мин',
   },
   {
@@ -69,7 +69,7 @@ const posts = [
     description: 'Актуални тенденции при мебелите по поръчка в България за 2026 г. Цени, материали и защо все повече хора избират мебели по поръчка пред готови.',
     category: 'Съвети',
     date: '2026-07-10',
-    image: '/images/real/kuhnya-05.png',
+    image: '/images/real/kuhnya-05.webp',
     readTime: '5 мин',
   },
 ]
