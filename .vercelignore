@@ -1,7 +1,8 @@
 .next/
 out/
 node_modules/
-.git/
+.git
+.git/**
 .vercel/
 .env*
 *.tsbuildinfo
@@ -11,3 +12,4 @@ logo and disign/
 pictures for custome furniture/
 pictures for online store/
 dokuments/
+public/images/**/*.png
