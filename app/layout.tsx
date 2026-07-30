@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Cormorant_Garamond, DM_Sans } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/layout/Header'
@@ -20,6 +20,7 @@ const dmSans = DM_Sans({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://domexpertmebel.com'),
+  applicationName: 'Dom Expert Мебел',
   title: {
     default: 'Мебели по поръчка Благоевград и София | Dom Expert Мебел',
     template: '%s | Dom Expert Мебел',
@@ -27,6 +28,15 @@ export const metadata: Metadata = {
   description: 'Семейна фирма за мебели по поръчка. Кухни, гардероби, спални, офис мебели. Безплатна консултация и 3D проект. Работим в Благоевград, София и региона.',
   keywords: ['мебели по поръчка', 'кухни по поръчка', 'гардероби по поръчка', 'Благоевград', 'София'],
   authors: [{ name: 'Dom Expert Мебел' }],
+  manifest: '/site.webmanifest',
+  icons: {
+    icon: [
+      { url: '/favicon.png', sizes: '512x512', type: 'image/png' },
+      { url: '/icon-192.png', sizes: '192x192', type: 'image/png' },
+    ],
+    shortcut: '/favicon.png',
+    apple: [{ url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
+  },
   openGraph: {
     type: 'website',
     locale: 'bg_BG',
@@ -39,6 +49,16 @@ export const metadata: Metadata = {
   verification: {
     google: 'x5xQdqBdODlXpaSyVftbqIMvjO0yuPo_D31lm-JCS4U',
   },
+}
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  viewportFit: 'cover',
+  themeColor: '#241D17',
+  colorScheme: 'light',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
