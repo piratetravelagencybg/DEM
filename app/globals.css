@@ -186,6 +186,11 @@
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 .no-scrollbar::-webkit-scrollbar { display: none; }
 
+/* Native mobile catalog sort menu */
+.catalog-sort summary { list-style: none; }
+.catalog-sort summary::-webkit-details-marker { display: none; }
+.catalog-sort[open] .catalog-sort-chevron { transform: rotate(180deg); }
+
 /* Scrollbar */
 ::-webkit-scrollbar { width: 5px; }
 ::-webkit-scrollbar-track { background: var(--color-cream); }

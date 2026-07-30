@@ -4,83 +4,79 @@ import { Phone, Shield, ArrowRight } from 'lucide-react'
 export default function CTABar() {
   return (
     <>
-      {/* ─── MOBILE: modern floating pill ─── */}
+      {/* Compact mobile contact dock */}
       <div
         className="md:hidden fixed z-[100]"
         style={{
-          bottom: 20,
+          bottom: 'max(10px, env(safe-area-inset-bottom))',
           left: '50%',
           transform: 'translateX(-50%)',
-          width: 'calc(100% - 28px)',
-          maxWidth: 400,
+          width: 'calc(100% - 20px)',
+          maxWidth: 390,
         }}
       >
         <div
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: 10,
-            background: 'rgba(255,255,255,0.96)',
+            gap: 6,
+            background: 'rgba(255,255,255,0.94)',
             backdropFilter: 'blur(20px)',
             WebkitBackdropFilter: 'blur(20px)',
-            borderRadius: 22,
-            padding: '10px 10px 10px 14px',
-            boxShadow: '0 8px 40px rgba(0,0,0,0.18), 0 2px 12px rgba(0,0,0,0.08), 0 0 0 1px rgba(255,255,255,0.7)',
+            borderRadius: 18,
+            padding: 6,
+            border: '1px solid rgba(224,213,201,0.9)',
+            boxShadow: '0 10px 34px rgba(31,24,18,0.18), 0 2px 8px rgba(31,24,18,0.06)',
           }}
         >
-          {/* Phone button */}
           <a
             href="tel:+359876081199"
-            style={{ flex: 1, display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none' }}
+            aria-label="Позвъни на 0876 081 199"
+            style={{ flex: 1, minWidth: 0, display: 'flex', alignItems: 'center', gap: 8, padding: '4px 7px', textDecoration: 'none' }}
           >
             <div
               style={{
-                width: 40,
-                height: 40,
-                borderRadius: 14,
-                background: 'rgba(139,111,71,0.1)',
+                width: 34,
+                height: 34,
+                borderRadius: 12,
+                background: '#F1E9DE',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 flexShrink: 0,
               }}
             >
-              <Phone size={17} style={{ color: '#8B6F47' }} />
+              <Phone size={15} style={{ color: '#8B6F47' }} />
             </div>
             <div style={{ minWidth: 0 }}>
-              <div style={{ fontFamily: 'var(--font-body)', fontWeight: 700, fontSize: '0.88rem', color: '#2C2C2C', lineHeight: 1.2, letterSpacing: '-0.01em' }}>
+              <div style={{ fontFamily: 'var(--font-body)', fontWeight: 700, fontSize: '0.76rem', color: '#2C2C2C', lineHeight: 1.15, letterSpacing: '-0.01em', whiteSpace: 'nowrap' }}>
                 0876 081 199
               </div>
-              <div style={{ fontFamily: 'var(--font-body)', fontSize: '0.62rem', color: '#8B7E76', marginTop: 1 }}>
-                Обади се сега
+              <div style={{ fontFamily: 'var(--font-body)', fontSize: '0.56rem', color: '#8B7E76', marginTop: 2 }}>
+                Позвъни директно
               </div>
             </div>
           </a>
-
-          {/* Divider */}
-          <div style={{ width: 1, height: 32, background: '#E8DDD0', flexShrink: 0 }} />
-
-          {/* Заявка button */}
           <Link
             href="/контакти/"
             style={{
               display: 'flex',
               alignItems: 'center',
               gap: 6,
-              background: '#8B6F47',
+              background: '#2C241D',
               color: 'white',
-              borderRadius: 16,
-              padding: '11px 18px',
+              borderRadius: 13,
+              padding: '11px 14px',
               fontFamily: 'var(--font-body)',
-              fontWeight: 600,
-              fontSize: '0.86rem',
-              boxShadow: '0 4px 18px rgba(139,111,71,0.5)',
+              fontWeight: 700,
+              fontSize: '0.78rem',
+              boxShadow: '0 5px 16px rgba(44,36,29,0.24)',
               flexShrink: 0,
               whiteSpace: 'nowrap',
               textDecoration: 'none',
             }}
           >
-            Заявка <ArrowRight size={14} />
+            Запитване <ArrowRight size={13} />
           </Link>
         </div>
       </div>

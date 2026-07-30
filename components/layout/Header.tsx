@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { Phone, ShoppingBag } from 'lucide-react'
+import { Menu, Phone, ShoppingBag } from 'lucide-react'
 import MobileMenu from './MobileMenu'
 
 const navLinks = [
@@ -32,14 +32,14 @@ export default function Header() {
       <header
         className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
         style={{
-          background: scrolled ? 'rgba(245,240,232,0.96)' : 'rgba(26,18,8,0.84)',
+          background: scrolled ? 'rgba(250,248,244,0.96)' : 'rgba(31,25,20,0.94)',
           backdropFilter: 'blur(18px)',
           WebkitBackdropFilter: 'blur(18px)',
           boxShadow: scrolled ? '0 2px 20px rgba(0,0,0,0.07)' : 'none',
           borderBottom: `1px solid ${scrolled ? 'rgba(232,221,208,0.9)' : 'rgba(255,255,255,0.09)'}`,
         }}
       >
-        <div className="px-5 md:px-6 lg:px-8 max-w-[1280px] mx-auto">
+        <div className="px-4 sm:px-6 lg:px-8 max-w-[1280px] mx-auto">
           <div className="flex items-center justify-between h-16 lg:h-20">
 
             {/* Logo */}
@@ -50,16 +50,15 @@ export default function Header() {
                 width={1024}
                 height={559}
                 style={{
-                  width: 'auto',
-                  height: '34px',
                   flexShrink: 0,
                   filter: scrolled ? 'brightness(0)' : 'invert(1)',
                   transition: 'filter 0.3s',
                 }}
+                className="h-[30px] w-auto sm:h-[34px]"
               />
               <div>
                 <div
-                  className="font-display font-semibold text-lg leading-tight transition-colors duration-300"
+                  className="font-display font-semibold text-[1.02rem] sm:text-lg leading-tight transition-colors duration-300"
                   style={{ color: textColor }}
                 >
                   ДомЕксперт
@@ -123,16 +122,16 @@ export default function Header() {
               {/* Mobile hamburger */}
               <button
                 onClick={() => setMenuOpen(true)}
-                className="lg:hidden flex flex-col items-center justify-center gap-[5px] w-10 h-10 rounded-[10px] transition-all duration-300"
+                className="lg:hidden flex items-center justify-center w-11 h-11 rounded-full transition-all duration-300"
                 style={scrolled
-                  ? { background: 'white', border: '1px solid #E8DDD0', boxShadow: '0 2px 8px rgba(0,0,0,0.06)' }
-                  : { background: 'rgba(255,255,255,0.12)', border: '1px solid rgba(255,255,255,0.25)', backdropFilter: 'blur(8px)' }
+                  ? { background: '#FFFFFF', border: '1px solid #E8DDD0', boxShadow: '0 4px 14px rgba(33,25,18,0.08)', color: '#2C2C2C' }
+                  : { background: 'rgba(255,255,255,0.10)', border: '1px solid rgba(255,255,255,0.22)', backdropFilter: 'blur(8px)', color: 'white' }
                 }
                 aria-label="Отвори менюто"
+                aria-expanded={menuOpen}
+                aria-controls="mobile-navigation"
               >
-                <span className="w-[18px] h-[1.5px] rounded-full block" style={{ background: scrolled ? '#2C2C2C' : 'white' }} />
-                <span className="w-[14px] h-[1.5px] rounded-full block self-start ml-[4px]" style={{ background: scrolled ? '#2C2C2C' : 'white' }} />
-                <span className="w-[18px] h-[1.5px] rounded-full block" style={{ background: scrolled ? '#2C2C2C' : 'white' }} />
+                <Menu size={21} strokeWidth={1.8} />
               </button>
             </div>
           </div>

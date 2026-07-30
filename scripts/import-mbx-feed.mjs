@@ -98,7 +98,7 @@ function extractImages(item) {
 }
 
 function getCatalogImageUrl(value) {
-  return value.replace('/image_1920', '/image_512')
+  return value.replace('/image_1920', '/image_1024')
 }
 
 async function importFeed() {
