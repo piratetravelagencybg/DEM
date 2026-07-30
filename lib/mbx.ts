@@ -88,7 +88,7 @@ export function buildProductMetadata(product: MbxVariant): Metadata {
       title,
       description,
       url: canonical,
-      images: [{ url: product.imageUrl || '/images/hero/hero.png', alt: product.productName }],
+      images: [{ url: product.imageUrl || '/images/hero/hero.webp', alt: product.productName }],
     },
   }
 }

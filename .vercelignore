@@ -1,0 +1,13 @@
+.next/
+out/
+node_modules/
+.git/
+.vercel/
+.env*
+*.tsbuildinfo
+*.zip
+mbx-feed.xml
+logo and disign/
+pictures for custome furniture/
+pictures for online store/
+dokuments/
