@@ -10,17 +10,14 @@ import Testimonials from '@/components/home/Testimonials'
 import CTABar from '@/components/home/CTABar'
 import LocalBusinessSchema from '@/components/seo/LocalBusinessSchema'
 import { getAllMbxCatalogProducts } from '@/lib/mbx-catalog'
+import { createPageMetadata } from '@/lib/seo'
 
-export const metadata: Metadata = {
-  title: { absolute: 'Мебели по поръчка Благоевград и София | Dom Expert Мебел' },
+export const metadata: Metadata = createPageMetadata({
+  title: 'Мебели по поръчка Благоевград и София | Dom Expert Мебел',
   description: 'Семейна фирма за мебели по поръчка в Благоевград и София. Кухни, гардероби, спални, офис мебели. Безплатна консултация и 3D проект. Тел: 0876 081 199',
-  alternates: { canonical: 'https://domexpertmebel.com/' },
-  openGraph: {
-    title: 'Мебели по поръчка | Dom Expert Мебел — Благоевград & София',
-    description: 'Семейна фирма за мебели по поръчка. Безплатна консултация и 3D проект.',
-    url: 'https://domexpertmebel.com/',
-  },
-}
+  path: '/',
+  imageAlt: 'Мебели по поръчка от Dom Expert Мебел',
+})
 
 export default function HomePage() {
   const catalogPreview = getAllMbxCatalogProducts().slice(0, 6)

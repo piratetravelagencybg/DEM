@@ -1,7 +1,9 @@
 ﻿import type { MetadataRoute } from 'next'
 import projects from '@/data/projects.json'
 import services from '@/data/services.json'
-import { getAllMbxCatalogProducts } from '@/lib/mbx-catalog'
+import { getAllMbxProducts } from '@/lib/mbx'
+import { getCatalogCategoryId, getCatalogProductTypeId, PRODUCT_TYPES } from '@/lib/product-display'
+import { buildCatalogHref, CATEGORIES } from '@/lib/catalog-routing'
 
 const BASE = 'https://domexpertmebel.com'
 
@@ -43,12 +45,31 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: SITE_LAUNCH,
   }))
 
-  const productPages = getAllMbxCatalogProducts().map((p) => ({
+  const products = getAllMbxProducts()
+  const productPages = products.map((p) => ({
     url: `${BASE}/каталог/${p.slug}/`,
     priority: 0.6,
     changeFrequency: 'monthly' as const,
-    lastModified: SITE_LAUNCH,
+    lastModified: Number.isNaN(Date.parse(p.lastUpdate)) ? SITE_LAUNCH : new Date(p.lastUpdate),
   }))
+
+  const categoryHubPages = CATEGORIES.slice(1)
+    .filter((category) => products.some((product) => getCatalogCategoryId(product.categoryHierarchy, product.categoryText) === category.id))
+    .map((category) => ({
+      url: BASE + buildCatalogHref({ category: category.id }),
+      priority: 0.72,
+      changeFrequency: 'weekly' as const,
+      lastModified: SITE_LAUNCH,
+    }))
+
+  const typeHubPages = PRODUCT_TYPES.slice(1)
+    .filter((type) => products.some((product) => getCatalogProductTypeId(product.productName, product.categoryHierarchy, product.categoryText) === type.id))
+    .map((type) => ({
+      url: BASE + buildCatalogHref({ type: type.id }),
+      priority: 0.72,
+      changeFrequency: 'weekly' as const,
+      lastModified: SITE_LAUNCH,
+    }))
 
   const blogSlugs = Object.keys(BLOG_DATES)
   const blogPages = blogSlugs.map((slug) => ({
@@ -58,7 +79,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(BLOG_DATES[slug]),
   }))
 
-  return [...staticPages, ...servicePages, ...projectPages, ...productPages, ...blogPages].map((page) => ({
+  return [...staticPages, ...servicePages, ...projectPages, ...categoryHubPages, ...typeHubPages, ...productPages, ...blogPages].map((page) => ({
     url: page.url,
     lastModified: page.lastModified,
     changeFrequency: page.changeFrequency,

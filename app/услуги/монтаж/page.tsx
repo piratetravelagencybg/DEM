@@ -1,20 +1,24 @@
 import type { Metadata } from 'next'
 import ServicePageTemplate from '@/components/ui/ServicePageTemplate'
 import services from '@/data/services.json'
+import { completePageMetadata } from '@/lib/seo'
 
 const service = services.find((s) => s.id === 'montaj')!
 
-export const metadata: Metadata = {
+export const metadata: Metadata = completePageMetadata({
   title: { absolute: 'Монтаж на мебели Благоевград и София | Dom Expert Мебел' },
   description: 'Професионален монтаж на мебели в Благоевград и София. Бърза реакция до 24-48 часа, гаранция, почистване след работа. Тел: 0876 081 199',
   alternates: { canonical: 'https://domexpertmebel.com/услуги/монтаж/' },
   openGraph: {
+    type: 'website',
+    locale: 'bg_BG',
+    siteName: 'Dom Expert Мебел',
     url: 'https://domexpertmebel.com/услуги/монтаж/',
     title: 'Монтаж на мебели Благоевград и София | Dom Expert Мебел',
     description: 'Професионален монтаж на мебели в Благоевград и София. Бърза реакция до 24-48 часа, гаранция.',
     images: [{ url: '/images/real/kuhnya-06.webp', width: 1200, height: 630, alt: 'Монтаж на мебели — Dom Expert Мебел' }],
   },
-}
+})
 
 export default function MontajPage() {
   return (

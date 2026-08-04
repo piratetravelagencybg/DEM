@@ -41,10 +41,16 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'bg_BG',
     siteName: 'Dom Expert Мебел',
+    title: 'Мебели по поръчка Благоевград и София | Dom Expert Мебел',
+    description: 'Семейна фирма за мебели по поръчка. Кухни, гардероби, спални и офис мебели с безплатна консултация и 3D проект.',
+    url: 'https://domexpertmebel.com/',
     images: [{ url: '/images/hero/hero.webp', width: 1200, height: 630, alt: 'Dom Expert Мебел' }],
   },
   twitter: {
     card: 'summary_large_image',
+    title: 'Мебели по поръчка | Dom Expert Мебел',
+    description: 'Мебели по поръчка в Благоевград, София и региона.',
+    images: ['/images/hero/hero.webp'],
   },
   verification: {
     google: 'x5xQdqBdODlXpaSyVftbqIMvjO0yuPo_D31lm-JCS4U',

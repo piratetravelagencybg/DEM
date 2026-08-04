@@ -1,12 +1,13 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { createPageMetadata } from '@/lib/seo'
 
-export const metadata: Metadata = {
-  title: { absolute: 'Политика за поверителност | Dom Expert Мебел' },
-  description: 'Политика за поверителност и защита на личните данни на Dom Expert Мебел съгласно GDPR.',
-  alternates: { canonical: 'https://domexpertmebel.com/политика-за-поверителност/' },
-  robots: { index: false },
-}
+export const metadata: Metadata = createPageMetadata({
+  title: 'Политика за поверителност | Dom Expert Мебел',
+  description: 'Политика за поверителност и защита на личните данни на Dom Expert Мебел съгласно GDPR. Научете как събираме, използваме и защитаваме информацията.',
+  path: '/политика-за-поверителност/',
+  index: false,
+})
 
 export default function PrivacyPolicyPage() {
   return (

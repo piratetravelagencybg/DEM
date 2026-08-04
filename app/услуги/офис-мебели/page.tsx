@@ -1,20 +1,24 @@
 import type { Metadata } from 'next'
 import ServicePageTemplate from '@/components/ui/ServicePageTemplate'
 import services from '@/data/services.json'
+import { completePageMetadata } from '@/lib/seo'
 
 const service = services.find((s) => s.id === 'ofis')!
 
-export const metadata: Metadata = {
-  title: { absolute: 'Офис мебели по поръчка Благоевград и София | Dom Expert Мебел' },
+export const metadata: Metadata = completePageMetadata({
+  title: { absolute: 'Офис мебели по поръчка | Dom Expert Мебел' },
   description: 'Офис обзавеждане по поръчка в Благоевград и София. Бюра, шкафове, конферентни маси, рецепции. Корпоративен дизайн. Тел: 0876 081 199',
   alternates: { canonical: 'https://domexpertmebel.com/услуги/офис-мебели/' },
   openGraph: {
+    type: 'website',
+    locale: 'bg_BG',
+    siteName: 'Dom Expert Мебел',
     url: 'https://domexpertmebel.com/услуги/офис-мебели/',
-    title: 'Офис мебели по поръчка Благоевград и София | Dom Expert Мебел',
+    title: 'Офис мебели по поръчка | Dom Expert Мебел',
     description: 'Офис обзавеждане по поръчка в Благоевград и София. Бюра, шкафове, конферентни маси. Корпоративен дизайн.',
     images: [{ url: '/images/real/office-corner.webp', width: 1200, height: 630, alt: 'Офис мебели по поръчка — Dom Expert Мебел' }],
   },
-}
+})
 
 export default function OfisMebeliPage() {
   return (

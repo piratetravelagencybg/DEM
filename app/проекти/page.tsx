@@ -4,12 +4,15 @@ import Image from 'next/image'
 import SectionHeader from '@/components/ui/SectionHeader'
 import CTABar from '@/components/home/CTABar'
 import projects from '@/data/projects.json'
+import { createPageMetadata } from '@/lib/seo'
 
-export const metadata: Metadata = {
-  title: { absolute: 'Реализирани проекти — Мебели по поръчка | Dom Expert Мебел' },
+export const metadata: Metadata = createPageMetadata({
+  title: 'Реализирани проекти | Dom Expert Мебел',
   description: 'Разгледайте нашето портфолио от реализирани проекти на мебели по поръчка в Благоевград, София и региона. Кухни, гардероби, спални, офис мебели.',
-  alternates: { canonical: 'https://domexpertmebel.com/проекти/' },
-}
+  path: '/проекти/',
+  image: projects[0]?.images[0],
+  imageAlt: 'Реализирани проекти на Dom Expert Мебел',
+})
 
 const categories = [
   { id: 'all', label: 'Всички' },

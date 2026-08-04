@@ -31,8 +31,9 @@ function FooterLogo() {
     <Image
       src="/images/logo-icon.webp"
       alt="ДомЕксперт лого"
-      width={1024}
-      height={559}
+      width={64}
+      height={35}
+      sizes="64px"
       style={{
         width: 'auto',
         height: '34px',

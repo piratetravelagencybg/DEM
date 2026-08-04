@@ -1,5 +1,25 @@
 const DEFAULT_CATEGORY = 'other'
 
+export const PRODUCT_TYPES = [
+  { id: 'all', label: 'Всички видове' },
+  { id: 'wardrobes', label: 'Гардероби' },
+  { id: 'beds', label: 'Легла' },
+  { id: 'bedroom-sets', label: 'Спални комплекти' },
+  { id: 'nightstands', label: 'Нощни шкафчета' },
+  { id: 'dressers', label: 'Скринове и ракли' },
+  { id: 'cabinets', label: 'Шкафове и витрини' },
+  { id: 'shelving', label: 'Етажерки и полици' },
+  { id: 'tv-units', label: 'ТВ модули и секции' },
+  { id: 'desks', label: 'Бюра и тоалетки' },
+  { id: 'tables', label: 'Маси' },
+  { id: 'hallway-furniture', label: 'Портманта и шкафове за обувки' },
+  { id: 'mirrors', label: 'Огледала' },
+  { id: 'accessories', label: 'Аксесоари и допълнения' },
+  { id: 'other', label: 'Други мебели' },
+] as const
+
+export type ProductTypeId = (typeof PRODUCT_TYPES)[number]['id']
+
 function normalizeCategory(value: string) {
   return value
     .toLowerCase()
@@ -13,16 +33,59 @@ export function getPrimaryCategory(categoryHierarchy: string[], categoryText: st
 }
 
 export function getCatalogCategoryId(categoryHierarchy: string[], categoryText: string) {
-  const category = getPrimaryCategory(categoryHierarchy, categoryText).toLowerCase()
+  const category = [categoryText, ...categoryHierarchy].join(' ').toLowerCase()
 
-  if (category.includes('спалня')) return 'bedroom'
   if (category.includes('детска')) return 'children'
-  if (category.includes('дневна')) return 'living'
+  if (category.includes('спалня') || category.includes('спални')) return 'bedroom'
+  if (category.includes('дневна') || category.includes('секции egger')) return 'living'
   if (category.includes('офис')) return 'office'
-  if (category.includes('антре')) return 'hallway'
-  if (category.includes('колекц')) return 'collections'
+  if (category.includes('антре') || category.includes('портманта')) return 'hallway'
   if (category.includes('баня')) return 'bathroom'
+  if (category.includes('колекц')) return 'collections'
   return 'other'
+}
+
+export function getCatalogProductTypeId(
+  productName: string,
+  _categoryHierarchy: string[],
+  _categoryText: string,
+): ProductTypeId {
+  const value = productName.toLowerCase()
+
+  if (/спален\s+комплект|комплект\s+за\s+спалня/.test(value)) return 'bedroom-sets'
+  if (/нощн[оияе]*\s+шкаф/.test(value)) return 'nightstands'
+  if (/шкаф\s+за\s+обув|портмант|закачалк/.test(value)) return 'hallway-furniture'
+  if (/(^|[\s>,-])(тв|tv)([\s>,-]|$)|тв\s*модул|секци[яи]/.test(value)) return 'tv-units'
+  if (/гардероб/.test(value)) return 'wardrobes'
+  if (/тапициран[оияе]*\s+легло|детск[оияе]*\s+легло|бебешк[оияе]*\s+легло|легло|креват/.test(value)) return 'beds'
+  if (/матрак|подматрач|табла|чекмедже\s+за\s+легло|контейнер\s+за\s+легло/.test(value)) return 'accessories'
+  if (/скрин|ракла|комод/.test(value)) return 'dressers'
+  if (/бюро|тоалетк/.test(value)) return 'desks'
+  if (/етажерк|рафт|полица|стелаж|библиотек/.test(value)) return 'shelving'
+  if (/холн[а-я]*\s+маса|трапезн[а-я]*\s+маса|масичк|маса/.test(value)) return 'tables'
+  if (/огледало|огледaло/.test(value)) return 'mirrors'
+  if (/колона\s+за\s+баня|комплект\s+за\s+баня/.test(value)) return 'cabinets'
+  if (/шкаф|витрин/.test(value)) return 'cabinets'
+  if (/аксесоар|контейнер|чекмедже|механизъм|рамка|осветление|пано|врата|паспарту|плот|органайзер|кутия\s+за\s+играчки/.test(value)) return 'accessories'
+  return 'other'
+}
+
+export function getProductTypeLabel(typeId: string) {
+  return PRODUCT_TYPES.find((type) => type.id === typeId)?.label || 'Мебели'
+}
+
+export function getRoomLabel(categoryId: string) {
+  const labels: Record<string, string> = {
+    bedroom: 'спалнята',
+    children: 'детската стая',
+    living: 'дневната',
+    office: 'офиса',
+    hallway: 'антрето',
+    collections: 'дома',
+    bathroom: 'банята',
+    other: 'дома',
+  }
+  return labels[categoryId] || 'дома'
 }
 
 export function getCategorySlug(category: string) {
@@ -36,6 +99,11 @@ export function getCategoryLabel(category: string) {
     ['легло', 'Легла'],
     ['гардероб', 'Гардероби'],
     ['нощн', 'Нощни шкафчета'],
+    ['скрин', 'Скринове'],
+    ['шкаф', 'Шкафове'],
+    ['матрак', 'Матраци'],
+    ['бюро', 'Бюра'],
+    ['етажерк', 'Етажерки'],
     ['детск', 'Детски мебели'],
     ['дневна', 'Дневни'],
     ['тв', 'ТВ шкафове'],

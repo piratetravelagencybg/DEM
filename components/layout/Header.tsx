@@ -3,8 +3,10 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import dynamic from 'next/dynamic'
 import { Menu, Phone, ShoppingBag } from 'lucide-react'
-import MobileMenu from './MobileMenu'
+
+const MobileMenu = dynamic(() => import('./MobileMenu'), { ssr: false })
 
 const navLinks = [
   { label: 'Услуги', href: '/услуги/' },
@@ -47,8 +49,9 @@ export default function Header() {
               <Image
                 src="/images/logo-icon.webp"
                 alt="ДомЕксперт лого"
-                width={1024}
-                height={559}
+                width={64}
+                height={35}
+                sizes="64px"
                 style={{
                   flexShrink: 0,
                   filter: scrolled ? 'brightness(0)' : 'invert(1)',
@@ -138,7 +141,7 @@ export default function Header() {
         </div>
       </header>
 
-      <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} navLinks={navLinks} />
+      {menuOpen && <MobileMenu open onClose={() => setMenuOpen(false)} navLinks={navLinks} />}
     </>
   )
 }

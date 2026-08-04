@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-labelledby="title desc">
+  <title id="title">Продуктова снимка</title>
+  <desc id="desc">Неутрална илюстрация, показвана когато продуктовата снимка не е достъпна.</desc>
+  <rect width="800" height="600" fill="#f5f0e8"/>
+  <rect x="255" y="115" width="290" height="345" rx="14" fill="#eee5d8" stroke="#9a7c52" stroke-width="10"/>
+  <path d="M400 120v335M285 460v28M515 460v28" fill="none" stroke="#9a7c52" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="378" cy="292" r="7" fill="#9a7c52"/>
+  <circle cx="422" cy="292" r="7" fill="#9a7c52"/>
+  <path d="M310 515h180" fill="none" stroke="#d8c8b3" stroke-width="8" stroke-linecap="round"/>
+</svg>

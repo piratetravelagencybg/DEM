@@ -6,6 +6,7 @@ import { ArrowLeft, Clock, Calendar } from 'lucide-react'
 import Badge from '@/components/ui/Badge'
 import CTABar from '@/components/home/CTABar'
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import { createPageMetadata, prepareSeoDescription } from '@/lib/seo'
 
 const MONTHS = [
   'януари', 'февруари', 'март', 'април', 'май', 'юни',
@@ -243,14 +244,19 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = posts[params.slug]
   if (!post) return {}
+  const baseMetadata = createPageMetadata({
+    title: post.title + ' | Dom Expert Мебел',
+    description: prepareSeoDescription(post.description, 'Прочетете практични съвети и насоки от екипа на Dom Expert Мебел.'),
+    path: '/блог/' + params.slug + '/',
+    image: post.image,
+    imageAlt: post.title,
+  })
   return {
-    title: { absolute: `${post.title} | Dom Expert Мебел` },
-    description: post.description,
-    alternates: { canonical: `https://domexpertmebel.com/блог/${params.slug}/` },
+    ...baseMetadata,
     openGraph: {
+      ...baseMetadata.openGraph,
       type: 'article',
       publishedTime: post.date,
-      images: [{ url: `https://domexpertmebel.com${post.image}`, width: 1200, height: 630, alt: post.title }],
     },
   }
 }

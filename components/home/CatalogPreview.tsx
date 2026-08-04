@@ -1,12 +1,12 @@
 'use client'
 
 import Link from 'next/link'
-import Image from 'next/image'
 import { ArrowRight } from 'lucide-react'
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import type { MbxCatalogProduct } from '@/lib/mbx-catalog'
 import { formatPrice, getCategoryLabel } from '@/lib/product-display'
+import SafeProductImage from '@/components/product/SafeProductImage'
 
 export default function CatalogPreview({ products }: { products: MbxCatalogProduct[] }) {
   const preview = products
@@ -68,13 +68,12 @@ export default function CatalogPreview({ products }: { products: MbxCatalogProdu
                     scrollSnapAlign: 'start',
                   }}
                 >
-                  {/* Square image */}
-                  <div className="relative overflow-hidden" style={{ aspectRatio: '1/1', background: '#F5F0E8' }}>
-                    <Image
-                      src={product.imageUrl || '/images/hero/hero.webp'}
+                  <div className="relative overflow-hidden p-2" style={{ aspectRatio: '4/3', background: '#F5F0E8' }}>
+                    <SafeProductImage
+                      src={product.imageUrl}
                       alt={product.productName}
                       fill
-                      className="object-cover transition-transform duration-600 group-hover:scale-105"
+                      className="object-contain transition-transform duration-600 group-hover:scale-[1.02]"
                       sizes="170px"
                     />
                     {/* Category */}
@@ -133,14 +132,13 @@ export default function CatalogPreview({ products }: { products: MbxCatalogProdu
                   className="group block bg-white overflow-hidden"
                   style={{ borderRadius: 18, border: '1px solid #EDE5DA', boxShadow: '0 2px 12px rgba(0,0,0,0.05)' }}
                 >
-                  {/* Square image */}
-                  <div className="relative overflow-hidden" style={{ aspectRatio: '1/1', background: '#F5F0E8' }}>
-                    <Image
-                      src={product.imageUrl || '/images/hero/hero.webp'}
+                  <div className="relative overflow-hidden p-3" style={{ aspectRatio: '4/3', background: '#F5F0E8' }}>
+                    <SafeProductImage
+                      src={product.imageUrl}
                       alt={product.productName}
                       fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
-                      sizes="25vw"
+                      className="object-contain transition-transform duration-700 group-hover:scale-[1.02]"
+                      sizes="(max-width: 640px) 85vw, (max-width: 1024px) 45vw, 300px"
                     />
                     <span
                       className="absolute top-3 left-3 font-body font-semibold"

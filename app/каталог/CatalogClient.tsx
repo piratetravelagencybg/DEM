@@ -1,36 +1,11 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight, Check, ChevronDown, ShoppingBag, SlidersHorizontal } from 'lucide-react'
 import type { MbxCatalogProduct } from '@/lib/mbx-catalog'
-import { formatPrice, getAvailabilityLabel, getCategoryLabel } from '@/lib/product-display'
+import { formatPrice, getAvailabilityLabel, getCategoryLabel, PRODUCT_TYPES } from '@/lib/product-display'
+import { buildCatalogHref, CATEGORIES, SORT_OPTIONS } from '@/lib/catalog-routing'
+import SafeProductImage from '@/components/product/SafeProductImage'
 
-export const CATEGORIES = [
-  { id: 'all', label: 'Всички' },
-  { id: 'bedroom', label: 'Спални' },
-  { id: 'children', label: 'Детски' },
-  { id: 'living', label: 'Дневни' },
-  { id: 'office', label: 'Офис' },
-  { id: 'hallway', label: 'Антре' },
-  { id: 'collections', label: 'Колекции' },
-  { id: 'bathroom', label: 'Баня' },
-  { id: 'other', label: 'Други' },
-]
-
-export const SORT_OPTIONS = [
-  { id: 'default', label: 'По подразбиране' },
-  { id: 'price-asc', label: 'Цена: ниска към висока' },
-  { id: 'price-desc', label: 'Цена: висока към ниска' },
-  { id: 'name', label: 'По азбучен ред' },
-]
-
-function buildCatalogHref({ category, sort, page }: { category: string; sort: string; page: number }) {
-  const params = new URLSearchParams()
-  if (category && category !== 'all') params.set('category', category)
-  if (sort && sort !== 'default') params.set('sort', sort)
-  if (page > 1) params.set('page', String(page))
-  const query = params.toString()
-  return query ? `/каталог/?${query}` : '/каталог/'
-}
+export { CATEGORIES, SORT_OPTIONS }
 
 type ProductCardProps = {
   product: MbxCatalogProduct
@@ -44,14 +19,14 @@ function ProductCard({ product, priority = false }: ProductCardProps) {
       className="group flex min-w-0 flex-col overflow-hidden rounded-[18px] border border-[#EAE1D6] bg-white transition-all duration-300 hover:-translate-y-1 hover:border-[#D8C7B1]"
       style={{ boxShadow: '0 5px 18px rgba(45,34,25,0.065)' }}
     >
-      <div className="relative aspect-[16/9] flex-shrink-0 overflow-hidden bg-[#F7F3ED]">
-        <Image
-          src={product.imageUrl || '/images/hero/hero.webp'}
+      <div className="relative aspect-[4/3] flex-shrink-0 overflow-hidden bg-[#F7F3ED] p-2 sm:p-3">
+        <SafeProductImage
+          src={product.imageUrl}
           alt={product.productName}
           fill
           priority={priority}
-          className="object-cover transition-transform duration-500 group-hover:scale-[1.025]"
-          sizes="(max-width: 519px) calc(100vw - 32px), (max-width: 640px) 46vw, (max-width: 1024px) 32vw, 24vw"
+          className="object-contain transition-transform duration-500 group-hover:scale-[1.02]"
+          sizes="(max-width: 519px) calc(100vw - 32px), (max-width: 640px) 46vw, (max-width: 1024px) 32vw, 300px"
         />
         <span
           className="absolute left-2 top-2 z-10 rounded-full px-2 py-1 font-body text-[0.56rem] font-semibold leading-none text-white shadow-sm sm:left-2.5 sm:top-2.5 sm:text-[0.62rem]"
@@ -88,18 +63,28 @@ function ProductCard({ product, priority = false }: ProductCardProps) {
 type CatalogClientProps = {
   products: MbxCatalogProduct[]
   activeCategory: string
+  activeType: string
   sortBy: string
   categoryCounts: Record<string, number>
+  typeCounts: Record<string, number>
   totalProducts: number
   page: number
   totalPages: number
 }
 
-export default function CatalogClient({ products, activeCategory, sortBy, categoryCounts, totalProducts, page, totalPages }: CatalogClientProps) {
+export default function CatalogClient({ products, activeCategory, activeType, sortBy, categoryCounts, typeCounts, totalProducts, page, totalPages }: CatalogClientProps) {
   const visibleCategories = CATEGORIES.filter((category) => category.id === 'all' || (categoryCounts[category.id] ?? 0) > 0)
+  const visibleTypes = PRODUCT_TYPES.filter((type) => type.id === 'all' || type.id === activeType || (typeCounts[type.id] ?? 0) > 0)
   const activeCategoryLabel = CATEGORIES.find((category) => category.id === activeCategory)?.label ?? 'Всички'
+  const activeTypeLabel = PRODUCT_TYPES.find((type) => type.id === activeType)?.label ?? 'Всички видове'
   const selectedSortLabel = SORT_OPTIONS.find((option) => option.id === sortBy)?.label ?? 'По подразбиране'
   const formattedTotal = totalProducts.toLocaleString('bg-BG')
+  const allPageNumbers = Array.from({ length: totalPages }, (_, index) => index + 1)
+  const compactPageNumbers = allPageNumbers.filter((pageNumber) => (
+    pageNumber === 1
+    || pageNumber === totalPages
+    || Math.abs(pageNumber - page) <= 1
+  ))
 
   return (
     <div>
@@ -119,12 +104,12 @@ export default function CatalogClient({ products, activeCategory, sortBy, catego
                 Мебели по поръчка и готови модели
               </h1>
               <p className="mt-2 font-body text-[0.83rem] leading-relaxed text-warm-gray sm:text-[0.95rem]">
-                <span className="md:hidden">{categoryCounts.all.toLocaleString('bg-BG')} модела · актуални цени и наличности</span>
+                <span className="md:hidden">{formattedTotal} модела · актуални цени и наличности</span>
                 <span className="hidden md:inline">Реални продукти от MBX · Варианти, цени и наличност · Показани {Math.min(products.length, totalProducts)} от {formattedTotal}</span>
               </p>
             </div>
             <div className="hidden flex-shrink-0 items-center gap-6 border-l border-walnut/20 pl-8 md:flex">
-              {[{ n: `${categoryCounts.all.toLocaleString('bg-BG')}+`, l: 'Продукта' }, { n: 'Синхр.', l: 'От MBX' }, { n: 'EUR', l: 'Цена' }].map((stat) => (
+              {[{ n: `${formattedTotal}+`, l: 'Продукта' }, { n: 'Синхр.', l: 'От MBX' }, { n: 'EUR', l: 'Цена' }].map((stat) => (
                 <div key={stat.l} className="text-center">
                   <div className="font-display text-[1.6rem] font-bold leading-none text-walnut">{stat.n}</div>
                   <div className="mt-0.5 font-body text-[0.62rem] uppercase tracking-[0.1em] text-[#9B9490]">{stat.l}</div>
@@ -143,7 +128,8 @@ export default function CatalogClient({ products, activeCategory, sortBy, catego
               return (
                 <Link
                   key={category.id}
-                  href={buildCatalogHref({ category: category.id, sort: sortBy, page: 1 })}
+                  rel={sortBy !== 'default' ? 'nofollow' : undefined}
+                  href={buildCatalogHref({ category: category.id, type: activeType, sort: sortBy, page: 1 })}
                   className="flex flex-shrink-0 items-center rounded-full px-3.5 py-2 font-body text-[0.76rem] font-semibold leading-none transition-colors"
                   style={{
                     background: active ? '#2C241D' : '#F8F5F0',
@@ -158,9 +144,32 @@ export default function CatalogClient({ products, activeCategory, sortBy, catego
             })}
           </div>
 
+          <div className="no-scrollbar flex items-center gap-2 overflow-x-auto border-b border-[#EEE6DC] bg-[#FCFAF7] px-4 py-2">
+            <span className="flex-shrink-0 font-body text-[0.63rem] font-bold uppercase tracking-[0.08em] text-walnut">Вид</span>
+            {visibleTypes.map((type) => {
+              const active = activeType === type.id
+              return (
+                <Link
+                  key={type.id}
+                  rel={sortBy !== 'default' ? 'nofollow' : undefined}
+                  href={buildCatalogHref({ category: activeCategory, type: type.id, sort: sortBy, page: 1 })}
+                  className="flex flex-shrink-0 items-center rounded-full border px-3 py-1.5 font-body text-[0.7rem] font-semibold leading-none transition-colors"
+                  style={{
+                    background: active ? '#8B6F47' : '#FFFFFF',
+                    color: active ? '#FFFFFF' : '#5A5450',
+                    borderColor: active ? '#8B6F47' : '#E5DACE',
+                  }}
+                >
+                  {type.label}
+                  {type.id !== 'all' && <span className="ml-1.5 text-[0.59rem] opacity-65">{typeCounts[type.id] ?? 0}</span>}
+                </Link>
+              )
+            })}
+          </div>
+
           <div className="container-main flex h-12 items-center justify-between gap-3">
             <div className="min-w-0 font-body">
-              <span className="block truncate text-[0.73rem] font-semibold text-charcoal">{activeCategoryLabel}</span>
+              <span className="block truncate text-[0.73rem] font-semibold text-charcoal">{activeCategoryLabel} · {activeTypeLabel}</span>
               <span className="block text-[0.59rem] text-warm-gray">{formattedTotal} продукта</span>
             </div>
 
@@ -176,7 +185,8 @@ export default function CatalogClient({ products, activeCategory, sortBy, catego
                   return (
                     <Link
                       key={option.id}
-                      href={buildCatalogHref({ category: activeCategory, sort: option.id, page: 1 })}
+                      rel={option.id !== 'default' ? 'nofollow' : undefined}
+                      href={buildCatalogHref({ category: activeCategory, type: activeType, sort: option.id, page: 1 })}
                       className="flex items-center justify-between rounded-xl px-3 py-2.5 font-body text-[0.78rem] font-medium transition-colors hover:bg-[#F7F2EB]"
                       style={{ color: selected ? '#8B6F47' : '#4E4843', background: selected ? '#F5EFE7' : undefined }}
                     >
@@ -197,7 +207,8 @@ export default function CatalogClient({ products, activeCategory, sortBy, catego
               return (
                 <Link
                   key={category.id}
-                  href={buildCatalogHref({ category: category.id, sort: sortBy, page: 1 })}
+                  rel={sortBy !== 'default' ? 'nofollow' : undefined}
+                  href={buildCatalogHref({ category: category.id, type: activeType, sort: sortBy, page: 1 })}
                   className="flex-shrink-0 rounded-full px-3.5 py-1.5 font-body text-[0.8rem] font-medium transition-all duration-200"
                   style={{ background: active ? '#8B6F47' : 'transparent', color: active ? '#FFFFFF' : '#5A5450', border: `1px solid ${active ? '#8B6F47' : '#DDD4C8'}`, boxShadow: active ? '0 3px 10px rgba(139,111,71,0.22)' : 'none' }}
                 >
@@ -213,7 +224,8 @@ export default function CatalogClient({ products, activeCategory, sortBy, catego
               return (
                 <Link
                   key={option.id}
-                  href={buildCatalogHref({ category: activeCategory, sort: option.id, page: 1 })}
+                  rel={option.id !== 'default' ? 'nofollow' : undefined}
+                  href={buildCatalogHref({ category: activeCategory, type: activeType, sort: option.id, page: 1 })}
                   className="whitespace-nowrap rounded-full px-3 py-1.5 font-body text-[0.8rem] font-medium transition-all duration-200"
                   style={{ background: selected ? '#F8F3EB' : '#FFFFFF', color: selected ? '#8B6F47' : '#5A5450', border: `1px solid ${selected ? '#8B6F47' : '#DDD4C8'}` }}
                 >
@@ -223,26 +235,82 @@ export default function CatalogClient({ products, activeCategory, sortBy, catego
             })}
           </div>
         </div>
+
+        <div className="container-main no-scrollbar hidden items-center gap-2 overflow-x-auto border-t border-[#EEE6DC] py-2.5 lg:flex">
+          <span className="mr-1 flex-shrink-0 font-body text-[0.68rem] font-bold uppercase tracking-[0.09em] text-walnut">Вид мебел</span>
+          {visibleTypes.map((type) => {
+            const active = activeType === type.id
+            return (
+              <Link
+                key={type.id}
+                rel={sortBy !== 'default' ? 'nofollow' : undefined}
+                href={buildCatalogHref({ category: activeCategory, type: type.id, sort: sortBy, page: 1 })}
+                className="flex-shrink-0 rounded-full border px-3 py-1.5 font-body text-[0.76rem] font-medium transition-colors"
+                style={{
+                  background: active ? '#2C241D' : '#FFFFFF',
+                  color: active ? '#FFFFFF' : '#5A5450',
+                  borderColor: active ? '#2C241D' : '#DDD4C8',
+                }}
+              >
+                {type.label}
+                {type.id !== 'all' && <span className="ml-1 text-[0.65rem] opacity-60">{typeCounts[type.id] ?? 0}</span>}
+              </Link>
+            )
+          })}
+        </div>
       </div>
 
       <section className="container-main pb-8 pt-4 md:py-10" aria-label="Продукти">
         <div className="grid grid-cols-1 gap-3 min-[520px]:grid-cols-2 md:grid-cols-3 md:gap-4 lg:grid-cols-4">
-          {products.map((product, index) => <ProductCard key={product.slug} product={product} priority={index < 2} />)}
+          {products.map((product, index) => <ProductCard key={product.slug} product={product} priority={index === 0} />)}
         </div>
       </section>
 
       <div className="container-main pb-24 md:pb-10">
         <div className="flex flex-col items-center justify-between gap-3 rounded-2xl border border-[#EDE5DA] bg-white p-4 sm:flex-row">
           <div className="font-body text-sm text-slate-600">Страница {page} от {totalPages} — общо {formattedTotal} продукта</div>
-          <div className="flex items-center gap-2">
+          <nav className="flex flex-wrap items-center justify-center gap-2" aria-label="Страници на каталога">
             {page > 1 && (
-              <Link href={buildCatalogHref({ category: activeCategory, sort: sortBy, page: page - 1 })} className="rounded-full border border-[#EDE5DA] bg-white px-4 py-2 font-body font-semibold text-[#5A5450] hover:bg-[#F8F3EB]">Назад</Link>
+              <Link rel={sortBy !== 'default' ? 'nofollow' : undefined} href={buildCatalogHref({ category: activeCategory, type: activeType, sort: sortBy, page: page - 1 })} className="rounded-full border border-[#EDE5DA] bg-white px-4 py-2 font-body font-semibold text-[#5A5450] hover:bg-[#F8F3EB]">Назад</Link>
             )}
+            {compactPageNumbers.map((pageNumber) => (
+              pageNumber === page
+                ? <span key={pageNumber} aria-current="page" className="flex h-9 min-w-9 items-center justify-center rounded-full bg-walnut px-3 font-body text-sm font-bold text-white">{pageNumber}</span>
+                : <Link
+                    key={pageNumber}
+                    rel={sortBy !== 'default' ? 'nofollow' : undefined}
+                    href={buildCatalogHref({ category: activeCategory, type: activeType, sort: sortBy, page: pageNumber })}
+                    className="flex h-9 min-w-9 items-center justify-center rounded-full border border-[#E5DACE] bg-white px-3 font-body text-sm font-semibold text-[#5A5450] hover:bg-[#F8F3EB]"
+                  >
+                    {pageNumber}
+                  </Link>
+            ))}
             {page < totalPages && (
-              <Link href={buildCatalogHref({ category: activeCategory, sort: sortBy, page: page + 1 })} className="rounded-full border border-[#EDE5DA] bg-white px-4 py-2 font-body font-semibold text-[#5A5450] hover:bg-[#F8F3EB]">Напред</Link>
+              <Link rel={sortBy !== 'default' ? 'nofollow' : undefined} href={buildCatalogHref({ category: activeCategory, type: activeType, sort: sortBy, page: page + 1 })} className="rounded-full border border-[#EDE5DA] bg-white px-4 py-2 font-body font-semibold text-[#5A5450] hover:bg-[#F8F3EB]">Напред</Link>
             )}
-          </div>
+          </nav>
         </div>
+        {totalPages > 6 && (
+          <details className="mt-3 rounded-2xl border border-[#EDE5DA] bg-white">
+            <summary className="cursor-pointer select-none px-4 py-3 font-body text-sm font-semibold text-walnut">
+              Отиди директно на страница
+            </summary>
+            <nav className="grid grid-cols-6 gap-2 border-t border-[#EEE6DC] p-4 sm:grid-cols-10 md:grid-cols-12" aria-label="Всички страници">
+              {allPageNumbers.map((pageNumber) => (
+                pageNumber === page
+                  ? <span key={pageNumber} aria-current="page" className="flex h-8 items-center justify-center rounded-lg bg-walnut font-body text-xs font-bold text-white">{pageNumber}</span>
+                  : <Link
+                      key={pageNumber}
+                      rel={sortBy !== 'default' ? 'nofollow' : undefined}
+                      href={buildCatalogHref({ category: activeCategory, type: activeType, sort: sortBy, page: pageNumber })}
+                      className="flex h-8 items-center justify-center rounded-lg border border-[#E5DACE] font-body text-xs font-semibold text-[#5A5450] hover:bg-[#F8F3EB]"
+                    >
+                      {pageNumber}
+                    </Link>
+              ))}
+            </nav>
+          </details>
+        )}
       </div>
     </div>
   )

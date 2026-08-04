@@ -5,7 +5,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { ArrowRight, ChevronRight, Phone, ShoppingBag, X } from 'lucide-react'
-import { AnimatePresence, motion } from 'framer-motion'
 
 interface MobileMenuProps {
   open: boolean
@@ -35,34 +34,23 @@ export default function MobileMenu({ open, onClose, navLinks }: MobileMenuProps)
   }, [open, onClose])
 
   const isActive = (href: string) => href === '/' ? pathname === '/' : pathname.startsWith(href)
+  if (!open) return null
 
   return (
-    <AnimatePresence>
-      {open && (
-        <>
-          <motion.button
+    <>
+          <button
             type="button"
             aria-label="Затвори менюто"
-            key="menu-backdrop"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
             className="fixed inset-0 z-[250] bg-[#17120E]/60 backdrop-blur-[3px] lg:hidden"
             onClick={onClose}
           />
 
-          <motion.aside
+          <aside
             id="mobile-navigation"
             role="dialog"
             aria-modal="true"
             aria-label="Основна навигация"
-            key="mobile-navigation"
-            initial={{ x: '105%', opacity: 0.6 }}
-            animate={{ x: 0, opacity: 1 }}
-            exit={{ x: '105%', opacity: 0.7 }}
-            transition={{ duration: 0.32, ease: [0.32, 0.72, 0, 1] }}
-            className="fixed right-2 top-2 bottom-2 z-[300] flex flex-col overflow-hidden lg:hidden"
+            className="fixed bottom-2 right-2 top-2 z-[300] flex flex-col overflow-hidden animate-[slideInMenu_0.28s_ease-out] lg:hidden"
             style={{
               width: 'min(calc(100vw - 16px), 390px)',
               borderRadius: 24,
@@ -76,8 +64,9 @@ export default function MobileMenu({ open, onClose, navLinks }: MobileMenuProps)
                 <Image
                   src="/images/logo-icon.webp"
                   alt="ДомЕксперт"
-                  width={1024}
-                  height={559}
+                  width={64}
+                  height={35}
+                  sizes="64px"
                   className="h-8 w-auto"
                   style={{ filter: 'brightness(0)' }}
                 />
@@ -97,11 +86,7 @@ export default function MobileMenu({ open, onClose, navLinks }: MobileMenuProps)
             </div>
 
             <nav className="flex-1 overflow-y-auto px-3.5 pb-4 pt-3">
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.05, duration: 0.28 }}
-              >
+              <div>
                 <Link
                   href="/каталог/"
                   onClick={onClose}
@@ -119,19 +104,14 @@ export default function MobileMenu({ open, onClose, navLinks }: MobileMenuProps)
                   </div>
                   <ArrowRight size={18} className="text-[#CDBA9D] transition-transform group-hover:translate-x-1" />
                 </Link>
-              </motion.div>
+              </div>
 
               <p className="mb-1.5 px-2 font-body text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-[#9A8F85]">Навигация</p>
               <div className="overflow-hidden rounded-[18px] border border-[#E8DDD0] bg-white/75">
                 {links.map((link, index) => {
                   const active = isActive(link.href)
                   return (
-                    <motion.div
-                      key={link.href}
-                      initial={{ opacity: 0, x: 16 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.035 + 0.08, duration: 0.25 }}
-                    >
+                    <div key={link.href}>
                       <Link
                         href={link.href}
                         onClick={onClose}
@@ -147,18 +127,13 @@ export default function MobileMenu({ open, onClose, navLinks }: MobileMenuProps)
                         <span className="flex-1 font-body text-[0.95rem] font-semibold text-charcoal">{link.label}</span>
                         <ChevronRight size={16} className="text-[#B7A99A] transition-transform group-hover:translate-x-0.5 group-hover:text-walnut" />
                       </Link>
-                    </motion.div>
+                    </div>
                   )
                 })}
               </div>
             </nav>
 
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.22, duration: 0.28 }}
-              className="border-t border-[#E8DDD0] bg-white/90 p-3.5"
-            >
+            <div className="border-t border-[#E8DDD0] bg-white/90 p-3.5">
               <div className="flex gap-2.5">
                 <a
                   href="tel:+359876081199"
@@ -180,10 +155,8 @@ export default function MobileMenu({ open, onClose, navLinks }: MobileMenuProps)
                   Запитване <ArrowRight size={14} />
                 </Link>
               </div>
-            </motion.div>
-          </motion.aside>
-        </>
-      )}
-    </AnimatePresence>
+            </div>
+          </aside>
+    </>
   )
 }

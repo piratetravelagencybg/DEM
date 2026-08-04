@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { useEffect, useMemo, useState } from 'react'
 import { ZoomIn, X } from 'lucide-react'
 
-const FALLBACK_IMAGE = '/images/hero/hero.webp'
+const FALLBACK_IMAGE = '/images/product-placeholder.svg'
 
 type ProductGalleryProps = {
   productName: string
@@ -52,8 +52,8 @@ export default function ProductGallery({ productName, primaryImage, images }: Pr
       <button
         type="button"
         onClick={() => setIsOpen(true)}
-        className="group relative block w-full overflow-hidden rounded-2xl text-left"
-        style={{ aspectRatio: '1', background: '#F5F0E8', boxShadow: '0 16px 48px rgba(0,0,0,0.10)' }}
+        className="group relative block w-full overflow-hidden rounded-2xl p-2 text-left sm:p-4"
+        style={{ aspectRatio: '4 / 3', background: '#F5F0E8', boxShadow: '0 16px 48px rgba(0,0,0,0.10)' }}
         aria-label={`Отвори голяма снимка на ${productName}`}
       >
         <Image
@@ -61,10 +61,10 @@ export default function ProductGallery({ productName, primaryImage, images }: Pr
           src={activeImage}
           alt={productName}
           fill
-          className="object-cover transition-transform duration-300 group-hover:scale-[1.01]"
+          className="object-contain transition-transform duration-300 group-hover:scale-[1.01]"
           priority
           quality={85}
-          sizes="(max-width: 1024px) 100vw, 50vw"
+          sizes="(max-width: 1024px) calc(100vw - 32px), 620px"
           onError={() => markImageAsFailed(activeImage)}
         />
         <span className="absolute bottom-3 right-3 inline-flex items-center gap-1.5 rounded-full bg-black/55 px-3 py-2 font-body text-xs font-semibold text-white backdrop-blur-md">
@@ -83,8 +83,8 @@ export default function ProductGallery({ productName, primaryImage, images }: Pr
                 onClick={() => setSelectedImage(image)}
                 className="relative flex-shrink-0 overflow-hidden rounded-xl transition-all duration-200"
                 style={{
-                  width: 74,
-                  height: 74,
+                  width: 88,
+                  height: 66,
                   background: '#F5F0E8',
                   border: isActive ? '2px solid #8B6F47' : '1px solid #D9CEC0',
                   boxShadow: isActive ? '0 4px 14px rgba(139,111,71,0.28)' : 'none',
@@ -98,8 +98,8 @@ export default function ProductGallery({ productName, primaryImage, images }: Pr
                   src={image}
                   alt={`${productName} — снимка ${index + 1}`}
                   fill
-                  className="object-cover"
-                  sizes="74px"
+                  className="object-contain p-1"
+                  sizes="88px"
                   onError={() => markImageAsFailed(image)}
                 />
               </button>

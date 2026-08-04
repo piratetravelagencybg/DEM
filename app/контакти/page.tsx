@@ -3,12 +3,14 @@ import { Phone, Mail, MapPin, Clock } from 'lucide-react'
 import QuoteForm from '@/components/ui/QuoteForm'
 import LocalBusinessSchema from '@/components/seo/LocalBusinessSchema'
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import { createPageMetadata } from '@/lib/seo'
 
-export const metadata: Metadata = {
-  title: { absolute: 'Контакти | Dom Expert Мебел — Благоевград и София' },
+export const metadata: Metadata = createPageMetadata({
+  title: 'Контакти | Dom Expert Мебел',
   description: 'Свържете се с Dom Expert Мебел за безплатна консултация и оферта за мебели по поръчка. Тел: 0876 081 199 | office@domexpertmebel.com | Благоевград',
-  alternates: { canonical: 'https://domexpertmebel.com/контакти/' },
-}
+  path: '/контакти/',
+  imageAlt: 'Контакти на Dom Expert Мебел',
+})
 
 export default function ContactsPage() {
   return (

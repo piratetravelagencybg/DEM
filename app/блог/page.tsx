@@ -3,18 +3,22 @@ import Link from 'next/link'
 import Image from 'next/image'
 import SectionHeader from '@/components/ui/SectionHeader'
 import Badge from '@/components/ui/Badge'
+import { completePageMetadata } from '@/lib/seo'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = completePageMetadata({
   title: { absolute: 'Блог за мебели и интериор | Dom Expert Мебел' },
   description: 'Полезни съвети за кухни и гардероби по поръчка, интериорен дизайн и обзавеждане на дома. Ценови наръчници и практически идеи от Dom Expert Мебел.',
   alternates: { canonical: 'https://domexpertmebel.com/блог/' },
   openGraph: {
+    type: 'website',
+    locale: 'bg_BG',
+    siteName: 'Dom Expert Мебел',
     url: 'https://domexpertmebel.com/блог/',
     title: 'Блог за мебели и интериор | Dom Expert Мебел',
     description: 'Полезни съвети за кухни и гардероби по поръчка, интериорен дизайн и обзавеждане на дома.',
     images: [{ url: '/images/real/kuhnya-04.webp', width: 1200, height: 630, alt: 'Блог Dom Expert Мебел' }],
   },
-}
+})
 
 const MONTHS = [
   'януари', 'февруари', 'март', 'април', 'май', 'юни',

@@ -6,6 +6,7 @@ import { ArrowLeft, MapPin, Clock, Layers } from 'lucide-react'
 import QuoteForm from '@/components/ui/QuoteForm'
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
 import projects from '@/data/projects.json'
+import { createPageMetadata, prepareSeoDescription } from '@/lib/seo'
 
 interface Props {
   params: { slug: string }
@@ -18,11 +19,13 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const project = projects.find((p) => p.slug === params.slug)
   if (!project) return {}
-  return {
-    title: `${project.title} — ${project.city}`,
-    description: project.description,
-    alternates: { canonical: `https://domexpertmebel.com/проекти/${project.slug}/` },
-  }
+  return createPageMetadata({
+    title: project.title + ' — ' + project.city,
+    description: prepareSeoDescription(project.description, 'Вижте реализацията, използваните решения и още проекти на Dom Expert Мебел.'),
+    path: '/проекти/' + project.slug + '/',
+    image: project.images[0],
+    imageAlt: project.title + ' — ' + project.city,
+  })
 }
 
 export default function ProjectPage({ params }: Props) {

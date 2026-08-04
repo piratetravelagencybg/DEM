@@ -4,8 +4,9 @@ import Link from 'next/link'
 import { CheckCircle2, Shield, Users, MapPin, Award } from 'lucide-react'
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
 import AnimatedStats from '@/components/about/AnimatedStats'
+import { completePageMetadata } from '@/lib/seo'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = completePageMetadata({
   title: { absolute: 'За нас | Мебели по поръчка Благоевград — Dom Expert Мебел' },
   description:
     'Семейна работилница с 10+ години опит в мебели по поръчка в Благоевград. 500+ реализирани кухни, гардероби и спални. Безплатна консултация. Тел: 0876 081 199',
@@ -19,7 +20,7 @@ export const metadata: Metadata = {
     siteName: 'Dom Expert Мебел',
     images: [{ url: '/images/real/kuhnya-05.webp', width: 1200, height: 630, alt: 'Dom Expert Мебел — мебели по поръчка Благоевград' }],
   },
-}
+})
 
 const localBusinessSchema = {
   '@context': 'https://schema.org',

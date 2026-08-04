@@ -5,12 +5,15 @@ import { ArrowRight } from 'lucide-react'
 import SectionHeader from '@/components/ui/SectionHeader'
 import CTABar from '@/components/home/CTABar'
 import services from '@/data/services.json'
+import { createPageMetadata } from '@/lib/seo'
 
-export const metadata: Metadata = {
-  title: { absolute: 'Услуги — Мебели по поръчка Благоевград | Dom Expert Мебел' },
+export const metadata: Metadata = createPageMetadata({
+  title: 'Услуги — Мебели по поръчка | Dom Expert Мебел',
   description: 'Кухни, гардероби, спални, дневни, офис мебели и монтаж по поръчка в Благоевград и София. Безплатна консултация и 3D проект. Тел: 0876 081 199',
-  alternates: { canonical: 'https://domexpertmebel.com/услуги/' },
-}
+  path: '/услуги/',
+  image: '/images/real/kuhnya-01.webp',
+  imageAlt: 'Услуги за мебели по поръчка',
+})
 
 export default function ServicesPage() {
   return (
