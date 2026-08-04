@@ -7,7 +7,7 @@ import { useRef } from 'react'
 
 const points = [
   'Реалистичен 3D модел с точни размери, цветове и материали',
-  'Корекции докато сте напълно доволни с резултата',
+  'Корекции до одобряване на уточнения проект',
   'Изработката започва само след вашето одобрение',
 ]
 
@@ -85,7 +85,7 @@ export default function Visualization3D() {
           className="font-body italic mb-6"
           style={{ fontSize: '0.82rem', color: '#A09890' }}
         >
-          * Цена на визуализацията по договаряне спрямо обема на проекта.
+          * Проектът се заплаща; при поръчка на мебелите приспадаме платената сума.
         </p>
 
         <Link href="/контакти/" className="btn-primary w-full justify-center">
@@ -150,7 +150,7 @@ export default function Visualization3D() {
             className="font-body italic mb-8"
             style={{ fontSize: '0.83rem', color: '#A09890' }}
           >
-            * Цена по договаряне спрямо обема на проекта.
+            * Проектът се заплаща; при поръчка на мебелите приспадаме платената сума.
           </p>
 
           <div>

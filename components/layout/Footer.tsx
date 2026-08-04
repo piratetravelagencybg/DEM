@@ -12,11 +12,15 @@ const services = [
 ]
 
 const company = [
+  { label: 'Готови мебели', href: '/готови-мебели/' },
+  { label: 'Мебели за спалня', href: '/готови-мебели/мебели-за-спалня/' },
+  { label: 'Гардероби', href: '/готови-мебели/гардероби/' },
+  { label: 'Легла', href: '/готови-мебели/легла/' },
+  { label: 'Детски легла', href: '/готови-мебели/детски-легла/' },
+  { label: 'Спални комплекти', href: '/готови-мебели/спални-комплекти/' },
   { label: 'За нас', href: '/за-нас/' },
   { label: 'Проекти', href: '/проекти/' },
-  { label: 'Каталог', href: '/каталог/' },
   { label: 'Блог', href: '/блог/' },
-  { label: 'Контакти', href: '/контакти/' },
 ]
 
 const locations = [
@@ -164,7 +168,13 @@ export default function Footer() {
               </li>
               <li className="flex items-start gap-3">
                 <MapPin size={15} className="text-walnut flex-shrink-0 mt-0.5" />
-                <span className="font-body" style={{ fontSize: '0.875rem', color: 'rgba(255,255,255,0.45)' }}>Благоевград, България</span>
+                <Link
+                  href="/контакти/"
+                  className="font-body hover:text-sand transition-colors"
+                  style={{ fontSize: '0.875rem', color: 'rgba(255,255,255,0.45)' }}
+                >
+                  ул. Стамболийски 52, 2700 Благоевград
+                </Link>
               </li>
               <li className="flex items-start gap-3">
                 <Clock size={15} className="text-walnut flex-shrink-0 mt-0.5" />

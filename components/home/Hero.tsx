@@ -127,8 +127,8 @@ export default function Hero() {
         >
           {[
             { n: '10+', l: 'Години опит' },
-            { n: '500+', l: 'Проекти' },
-            { n: '100%', l: 'Доволни клиенти' },
+            { n: '100+', l: 'Проекти' },
+            { n: '2 г.', l: 'Гаранция' },
           ].map((s, i) => (
             <div key={i} style={{ flex: 1, textAlign: 'center', position: 'relative' }}>
               <span style={{

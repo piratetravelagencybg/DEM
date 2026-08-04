@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { Phone, CheckCircle2, Package, Truck, ArrowLeft } from 'lucide-react'
-import { buildProductContent, buildProductMetadata, formatPrice, getAvailabilityLabel, getAvailabilitySchema, getCategoryLabel, getMbxGroupById, getMbxProductBySlug, getRelatedMbxProducts } from '@/lib/mbx'
+import { buildProductContent, buildProductMetadata, buildProductStructuredData, formatPrice, getAvailabilityLabel, getCategoryLabel, getMbxGroupById, getMbxProductBySlug, getRelatedMbxProducts } from '@/lib/mbx'
 import ProductGallery from '@/components/product/ProductGallery'
 import SafeProductImage from '@/components/product/SafeProductImage'
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
@@ -34,30 +34,14 @@ export default function ProductPage({ params }: Props) {
   const content = buildProductContent(product)
   const related = getRelatedMbxProducts(product)
 
-  const productSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'Product',
-    name: product.productName,
-    description: content.paragraphs.join(' '),
-    image: Array.from(new Set([product.imageUrl, ...product.imageAlternatives].filter(Boolean))),
-    sku: product.productNo || product.itemId,
-    brand: { '@type': 'Brand', name: content.manufacturer },
-    offers: {
-      '@type': 'Offer',
-      price: product.priceVat ?? 0,
-      priceCurrency: 'EUR',
-      availability: getAvailabilitySchema(product.availability),
-      url: `https://domexpertmebel.com/каталог/${product.slug}/`,
-      seller: { '@type': 'Organization', name: 'Dom Expert Мебел' },
-    },
-  }
+  const productSchema = buildProductStructuredData(product, visibleVariants)
 
   return (
     <div style={{ background: 'var(--color-cream)' }}>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema).replace(/</g, '\\u003c') }} />
       <BreadcrumbSchema items={[
         { name: 'Начало', url: 'https://domexpertmebel.com/' },
-        { name: 'Каталог', url: 'https://domexpertmebel.com/каталог/' },
+        { name: 'Готови мебели', url: 'https://domexpertmebel.com/готови-мебели/' },
         { name: product.productName, url: 'https://domexpertmebel.com/каталог/' + product.slug + '/' },
       ]} />
       <section style={{ paddingTop: '5.5rem', paddingBottom: '4rem' }}>
@@ -65,7 +49,7 @@ export default function ProductPage({ params }: Props) {
           <nav className="flex items-center gap-2 font-body mb-6" style={{ fontSize: '0.75rem', color: '#9B9490' }}>
             <Link href="/" style={{ color: '#8B6F47' }} className="hover:underline underline-offset-2">Начало</Link>
             <span>/</span>
-            <Link href="/каталог/" style={{ color: '#8B6F47' }} className="hover:underline underline-offset-2">Каталог</Link>
+            <Link href="/готови-мебели/" style={{ color: '#8B6F47' }} className="hover:underline underline-offset-2">Готови мебели</Link>
             <span>/</span>
             <span style={{ color: '#3C2A18', fontWeight: 500 }}>{product.productName}</span>
           </nav>
@@ -144,8 +128,8 @@ export default function ProductPage({ params }: Props) {
                 ))}
               </div>
 
-              <Link href="/каталог/" className="inline-flex items-center gap-2 font-body transition-colors hover:text-walnut" style={{ color: '#9B9490', fontSize: '0.82rem' }}>
-                <ArrowLeft size={13} /> Назад към каталога
+              <Link href="/готови-мебели/" className="inline-flex items-center gap-2 font-body transition-colors hover:text-walnut" style={{ color: '#9B9490', fontSize: '0.82rem' }}>
+                <ArrowLeft size={13} /> Назад към готовите мебели
               </Link>
             </div>
           </div>

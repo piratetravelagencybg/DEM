@@ -4,9 +4,9 @@ import { useEffect, useRef, useState } from 'react'
 import { useInView } from 'framer-motion'
 
 const stats = [
-  { target: 500, suffix: '+', label: 'Реализирани проекта', sub: 'Кухни, гардероби, спални' },
-  { target: 10,  suffix: '+', label: 'Години опит',          sub: 'Основани 2014 г.' },
-  { target: 100, suffix: '%', label: 'Доволни клиенти',      sub: '2г. гаранция' },
+  { target: 100, suffix: '+', label: 'Реализирани проекта', sub: 'Кухни, гардероби, спални' },
+  { target: 10,  suffix: '+', label: 'Години опит',          sub: 'Опит от реални проекти' },
+  { target: 2,   suffix: ' г.', label: 'Гаранция',           sub: 'За изработените мебели' },
 ]
 
 function Counter({ target, suffix, duration = 1600 }: { target: number; suffix: string; duration?: number }) {

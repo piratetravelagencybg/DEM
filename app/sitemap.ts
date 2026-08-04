@@ -2,8 +2,7 @@
 import projects from '@/data/projects.json'
 import services from '@/data/services.json'
 import { getAllMbxProducts } from '@/lib/mbx'
-import { getCatalogCategoryId, getCatalogProductTypeId, PRODUCT_TYPES } from '@/lib/product-display'
-import { buildCatalogHref, CATEGORIES } from '@/lib/catalog-routing'
+import { CATALOG_LANDINGS } from '@/lib/catalog-landings'
 
 const BASE = 'https://domexpertmebel.com'
 
@@ -22,7 +21,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/за-нас/`, priority: 0.7, changeFrequency: 'monthly' as const, lastModified: SITE_LAUNCH },
     { url: `${BASE}/услуги/`, priority: 0.9, changeFrequency: 'monthly' as const, lastModified: SITE_LAUNCH },
     { url: `${BASE}/проекти/`, priority: 0.8, changeFrequency: 'monthly' as const, lastModified: SITE_LAUNCH },
-    { url: `${BASE}/каталог/`, priority: 0.8, changeFrequency: 'weekly' as const, lastModified: SITE_LAUNCH },
     { url: `${BASE}/блог/`, priority: 0.7, changeFrequency: 'weekly' as const, lastModified: SITE_LAUNCH },
     { url: `${BASE}/контакти/`, priority: 0.8, changeFrequency: 'monthly' as const, lastModified: SITE_LAUNCH },
     { url: `${BASE}/благоевград/`, priority: 0.9, changeFrequency: 'monthly' as const, lastModified: SITE_LAUNCH },
@@ -53,23 +51,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: Number.isNaN(Date.parse(p.lastUpdate)) ? SITE_LAUNCH : new Date(p.lastUpdate),
   }))
 
-  const categoryHubPages = CATEGORIES.slice(1)
-    .filter((category) => products.some((product) => getCatalogCategoryId(product.categoryHierarchy, product.categoryText) === category.id))
-    .map((category) => ({
-      url: BASE + buildCatalogHref({ category: category.id }),
-      priority: 0.72,
-      changeFrequency: 'weekly' as const,
-      lastModified: SITE_LAUNCH,
-    }))
-
-  const typeHubPages = PRODUCT_TYPES.slice(1)
-    .filter((type) => products.some((product) => getCatalogProductTypeId(product.productName, product.categoryHierarchy, product.categoryText) === type.id))
-    .map((type) => ({
-      url: BASE + buildCatalogHref({ type: type.id }),
-      priority: 0.72,
-      changeFrequency: 'weekly' as const,
-      lastModified: SITE_LAUNCH,
-    }))
+  const readyFurniturePages = CATALOG_LANDINGS.map((landing) => ({
+    url: BASE + landing.path,
+    priority: landing.priority,
+    changeFrequency: landing.changeFrequency,
+    lastModified: SITE_LAUNCH,
+  }))
 
   const blogSlugs = Object.keys(BLOG_DATES)
   const blogPages = blogSlugs.map((slug) => ({
@@ -79,7 +66,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(BLOG_DATES[slug]),
   }))
 
-  return [...staticPages, ...servicePages, ...projectPages, ...categoryHubPages, ...typeHubPages, ...productPages, ...blogPages].map((page) => ({
+  return [...staticPages, ...servicePages, ...projectPages, ...readyFurniturePages, ...productPages, ...blogPages].map((page) => ({
     url: page.url,
     lastModified: page.lastModified,
     changeFrequency: page.changeFrequency,

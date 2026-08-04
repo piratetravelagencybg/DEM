@@ -1,38 +1,90 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
+import { ArrowRight, CheckCircle2 } from 'lucide-react'
 import SectionHeader from '@/components/ui/SectionHeader'
 import CTABar from '@/components/home/CTABar'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
 import projects from '@/data/projects.json'
 import { createPageMetadata } from '@/lib/seo'
 
 export const metadata: Metadata = createPageMetadata({
-  title: 'Реализирани проекти | Dom Expert Мебел',
-  description: 'Разгледайте нашето портфолио от реализирани проекти на мебели по поръчка в Благоевград, София и региона. Кухни, гардероби, спални, офис мебели.',
+  title: 'Реализирани мебели по поръчка | Dom Expert Мебел',
+  description: 'Вижте 6 реализирани проекта за кухни, гардероби, спални, дневни и офис мебели по поръчка в Благоевград, София, Дупница и Сандански.',
   path: '/проекти/',
   image: projects[0]?.images[0],
   imageAlt: 'Реализирани проекти на Dom Expert Мебел',
 })
 
-const categories = [
-  { id: 'all', label: 'Всички' },
-  { id: 'kuhni', label: 'Кухни' },
-  { id: 'garderob', label: 'Гардероби' },
-  { id: 'spalni', label: 'Спални' },
-  { id: 'dnevni', label: 'Дневни' },
-  { id: 'ofis', label: 'Офис' },
+const categoryLabels: Record<string, string> = {
+  kuhni: 'Кухня',
+  garderob: 'Гардероб',
+  spalni: 'Спалня',
+  dnevni: 'Дневна',
+  ofis: 'Офис',
+}
+
+const serviceLinks = [
+  { href: '/услуги/кухни-по-поръчка/', label: 'Кухни по поръчка' },
+  { href: '/услуги/гардероби-по-поръчка/', label: 'Гардероби по поръчка' },
+  { href: '/услуги/спални-по-поръчка/', label: 'Спални по поръчка' },
+  { href: '/услуги/дневни-по-поръчка/', label: 'Дневни по поръчка' },
+  { href: '/услуги/офис-мебели/', label: 'Офис мебели' },
 ]
+
+const projectListSchema = {
+  '@type': 'ItemList',
+  name: 'Реализирани проекти на Dom Expert Мебел',
+  numberOfItems: projects.length,
+  itemListElement: projects.map((project, index) => {
+    const url = 'https://domexpertmebel.com/проекти/' + project.slug + '/'
+    return {
+      '@type': 'ListItem',
+      position: index + 1,
+      url,
+      item: {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: project.title + ' — ' + project.city,
+        description: project.description,
+        primaryImageOfPage: {
+          '@type': 'ImageObject',
+          contentUrl: 'https://domexpertmebel.com' + project.images[0],
+        },
+      },
+    }
+  }),
+}
+
+const projectCollectionSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  '@id': 'https://domexpertmebel.com/проекти/#collection',
+  url: 'https://domexpertmebel.com/проекти/',
+  name: 'Реализирани мебели по поръчка',
+  description: 'Шест реализирани проекта на Dom Expert Мебел с информация за град, материали и срок.',
+  mainEntity: projectListSchema,
+}
 
 export default function ProjectsPage() {
   return (
     <>
+      <BreadcrumbSchema items={[
+        { name: 'Начало', url: 'https://domexpertmebel.com/' },
+        { name: 'Проекти', url: 'https://domexpertmebel.com/проекти/' },
+      ]} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(projectCollectionSchema).replace(/</g, '\\u003c') }}
+      />
       <div className="pt-24 section-py bg-cream">
         <div className="container-main">
           <SectionHeader
             level={1}
             eyebrow="Портфолио"
             title="Реализирани проекти"
-            subtitle="Всеки проект е уникален — вижте резултатите от нашата работа."
+            subtitle="Реални кухни, гардероби, спални, дневни и офис мебели с посочени град, материали и срок на изпълнение."
           />
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -53,6 +105,9 @@ export default function ProjectsPage() {
                   <div className="absolute inset-0 bg-gradient-to-t from-charcoal/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                 </div>
                 <div className="p-5">
+                  <span className="font-body text-xs font-semibold uppercase tracking-wide text-walnut">
+                    {categoryLabels[project.category] ?? 'Мебели по поръчка'}
+                  </span>
                   <h2 className="font-display font-semibold text-charcoal text-xl mb-1 group-hover:text-walnut transition-colors">
                     {project.title}
                   </h2>
@@ -62,6 +117,51 @@ export default function ProjectsPage() {
               </Link>
             ))}
           </div>
+
+          <section className="mt-16 rounded-2xl bg-warm-white p-6 md:p-10" style={{ border: '1px solid #E7DDCF' }}>
+            <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-10">
+              <div>
+                <span className="eyebrow-pill">Реални реализации</span>
+                <h2 className="font-display font-bold text-charcoal mt-2" style={{ fontSize: 'clamp(1.5rem, 3.5vw, 2.2rem)' }}>
+                  От конкретната задача до готовото обзавеждане
+                </h2>
+                <p className="font-body text-warm-gray leading-relaxed mt-4">
+                  Всяка страница представя изпълнен проект на Dom Expert Мебел. Показваме какъв тип
+                  обзавеждане е изработен, къде се намира обектът, кои основни материали са използвани
+                  и колко време е отнело изпълнението.
+                </p>
+                <ul className="space-y-3 mt-6">
+                  {[
+                    'Снимка от действително завършен проект',
+                    'Посочени град, материали и реален срок',
+                    'Връзка към съответната услуга и запитване за подобен проект',
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-3 font-body text-charcoal text-sm">
+                      <CheckCircle2 size={17} className="text-walnut flex-shrink-0 mt-0.5" aria-hidden="true" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div>
+                <h2 className="font-display font-semibold text-charcoal text-xl mb-4">Услуги по вид мебели</h2>
+                <div className="grid gap-2">
+                  {serviceLinks.map((service) => (
+                    <Link
+                      key={service.href}
+                      href={service.href}
+                      className="group flex items-center justify-between gap-3 rounded-xl bg-white px-4 py-3 font-body font-medium text-charcoal transition-colors hover:text-walnut"
+                      style={{ border: '1px solid #E7DDCF' }}
+                    >
+                      {service.label}
+                      <ArrowRight size={15} className="flex-shrink-0" aria-hidden="true" />
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
         </div>
       </div>
       <CTABar />

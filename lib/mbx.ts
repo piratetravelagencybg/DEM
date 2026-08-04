@@ -3,6 +3,7 @@ import mbxImport from '@/data/mbx-import.json'
 import {
   formatPrice,
   getAvailabilityLabel,
+  getAvailabilitySchema as getAvailabilitySchemaValue,
   getCatalogCategoryId,
   getCatalogProductTypeId,
   getProductTypeLabel,
@@ -166,6 +167,120 @@ function getCollectionName(product: MbxVariant) {
 
 function getShortProductName(product: MbxVariant) {
   return normalizeCopy(product.productName.replace(/\s*\([^)]*\)\s*$/, ''))
+}
+
+const SITE_URL = 'https://domexpertmebel.com'
+const MAX_STRUCTURED_VARIANTS = 12
+
+function getProductUrl(product: MbxVariant) {
+  return `${SITE_URL}/каталог/${product.slug}/`
+}
+
+function getValidGtin(value: string) {
+  const gtin = normalizeCopy(value).replace(/[\s-]/g, '')
+  if (!/^(?:\d{8}|\d{12}|\d{13}|\d{14})$/.test(gtin)) return undefined
+
+  let sum = 0
+  let multiplier = 3
+  for (let index = gtin.length - 2; index >= 0; index -= 1) {
+    sum += Number(gtin[index]) * multiplier
+    multiplier = multiplier === 3 ? 1 : 3
+  }
+
+  const checkDigit = (10 - (sum % 10)) % 10
+  if (checkDigit !== Number(gtin[gtin.length - 1])) return undefined
+
+  return {
+    property: `gtin${gtin.length}`,
+    value: gtin,
+  }
+}
+
+function buildOfferStructuredData(product: MbxVariant) {
+  if (typeof product.priceVat !== 'number' || !Number.isFinite(product.priceVat) || product.priceVat <= 0) {
+    return undefined
+  }
+
+  return {
+    '@type': 'Offer',
+    price: product.priceVat,
+    priceCurrency: 'EUR',
+    availability: getAvailabilitySchemaValue(product.availability),
+    itemCondition: 'https://schema.org/NewCondition',
+    url: getProductUrl(product),
+    seller: { '@type': 'Organization', name: 'Dom Expert Мебел' },
+  }
+}
+
+function buildProductStructuredDataNode(product: MbxVariant) {
+  const content = buildProductContent(product)
+  const images = Array.from(new Set(
+    [product.imageUrl, ...product.imageAlternatives]
+      .map((image) => normalizeCopy(image))
+      .filter(Boolean),
+  ))
+  const gtin = getValidGtin(product.ean)
+  const offer = buildOfferStructuredData(product)
+
+  return {
+    '@type': 'Product',
+    '@id': `${getProductUrl(product)}#product`,
+    name: product.productName,
+    description: content.paragraphs.join(' '),
+    url: getProductUrl(product),
+    sku: product.productNo || product.itemId,
+    brand: { '@type': 'Brand', name: content.manufacturer },
+    ...(images.length > 0 ? { image: images } : {}),
+    ...(gtin ? { [gtin.property]: gtin.value } : {}),
+    ...(offer ? { offers: offer } : {}),
+  }
+}
+
+/**
+ * Builds multi-page ProductGroup markup without embedding the full MBX catalogue.
+ * The current variant is complete; sibling pages are represented by URL-only
+ * references, as recommended by Google for variants split across URLs.
+ */
+export function buildProductStructuredData(product: MbxVariant, variants: readonly MbxVariant[]) {
+  const productNode = buildProductStructuredDataNode(product)
+  const seenSlugs = new Set<string>()
+  const activeGroupVariants = variants.filter((variant) => {
+    if (!variant.active || !variant.slug || seenSlugs.has(variant.slug)) return false
+    seenSlugs.add(variant.slug)
+    return true
+  })
+  const groupId = normalizeCopy(product.itemGroupId)
+
+  if (!groupId || activeGroupVariants.length < 2) {
+    return {
+      '@context': 'https://schema.org',
+      ...productNode,
+    }
+  }
+
+  const currentIndex = activeGroupVariants.findIndex((variant) => variant.slug === product.slug)
+  const orderedSiblings = Array.from(
+    { length: activeGroupVariants.length - 1 },
+    (_, offset) => activeGroupVariants[(Math.max(0, currentIndex) + offset + 1) % activeGroupVariants.length],
+  ).filter((variant) => variant.slug !== product.slug)
+  const siblingReferences = orderedSiblings
+    .slice(0, MAX_STRUCTURED_VARIANTS - 1)
+    .map((variant) => ({ url: getProductUrl(variant) }))
+  const groupName = getShortProductName(activeGroupVariants[0]) || getShortProductName(product)
+  const groupBrands = Array.from(new Set(
+    activeGroupVariants.map((variant) => normalizeCopy(variant.manufacturer)).filter(Boolean),
+  ))
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ProductGroup',
+    name: groupName,
+    productGroupID: groupId,
+    ...(groupBrands.length === 1
+      ? { brand: { '@type': 'Brand', name: groupBrands[0] } }
+      : {}),
+    hasVariant: [productNode, ...siblingReferences],
+  }
 }
 
 export function buildProductContent(product: MbxVariant) {

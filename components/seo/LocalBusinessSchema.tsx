@@ -1,3 +1,8 @@
+import {
+  BUSINESS_COORDINATES,
+  GOOGLE_BUSINESS_PROFILE_URL,
+} from '@/lib/business'
+
 export default function LocalBusinessSchema() {
   const schema = {
     '@context': 'https://schema.org',
@@ -5,11 +10,10 @@ export default function LocalBusinessSchema() {
     '@id': 'https://domexpertmebel.com/#business',
     name: 'Dom Expert Мебел',
     alternateName: 'Dom Expert',
-    description: 'Семейна фирма за мебели по поръчка в Благоевград и София. Кухни, гардероби, спални, офис мебели. Безплатна консултация и 3D проект.',
+    description: 'Семейна фирма за мебели по поръчка в Благоевград, София и региона. Безплатен оглед, платен 3D проект с приспадане при поръчка и 2 години гаранция.',
     url: 'https://domexpertmebel.com',
     telephone: '+359876081199',
     email: 'office@domexpertmebel.com',
-    foundingDate: '2014',
     address: {
       '@type': 'PostalAddress',
       streetAddress: 'ул. Стамболийски 52',
@@ -20,9 +24,10 @@ export default function LocalBusinessSchema() {
     },
     geo: {
       '@type': 'GeoCoordinates',
-      latitude: 42.0135,
-      longitude: 23.0944,
+      latitude: BUSINESS_COORDINATES.latitude,
+      longitude: BUSINESS_COORDINATES.longitude,
     },
+    hasMap: GOOGLE_BUSINESS_PROFILE_URL,
     openingHoursSpecification: [
       {
         '@type': 'OpeningHoursSpecification',
@@ -55,15 +60,16 @@ export default function LocalBusinessSchema() {
       ],
     },
     sameAs: [
-      'https://www.facebook.com/domexpertmebel',
-      'https://www.instagram.com/domexpertmebel',
+      GOOGLE_BUSINESS_PROFILE_URL,
+      'https://www.facebook.com/profile.php?id=61591180911065',
+      'https://www.instagram.com/domexpertmebel/',
     ],
   }
 
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, '\\u003c') }}
     />
   )
 }

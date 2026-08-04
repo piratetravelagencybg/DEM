@@ -3,6 +3,7 @@ import { Phone, Mail, MapPin, Clock } from 'lucide-react'
 import QuoteForm from '@/components/ui/QuoteForm'
 import LocalBusinessSchema from '@/components/seo/LocalBusinessSchema'
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import { GOOGLE_BUSINESS_PROFILE_URL } from '@/lib/business'
 import { createPageMetadata } from '@/lib/seo'
 
 export const metadata: Metadata = createPageMetadata({
@@ -40,7 +41,17 @@ export default function ContactsPage() {
                 <li>• Работно време: Понеделник–Петък, 09:00–18:00</li>
                 <li>• Телефон: <a href="tel:+359876081199" className="text-walnut hover:underline">0876 081 199</a></li>
                 <li>• Имейл: <a href="mailto:office@domexpertmebel.com" className="text-walnut hover:underline">office@domexpertmebel.com</a></li>
-                <li>• Адрес: ул. Стамболийски 52, Благоевград</li>
+                <li>
+                  • Адрес:{' '}
+                  <a
+                    href={GOOGLE_BUSINESS_PROFILE_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-walnut hover:underline"
+                  >
+                    ул. Стамболийски 52, 2700 Благоевград
+                  </a>
+                </li>
                 <li>• Обслужваме: Благоевград, София, Дупница, Сандански, Банско, Разлог</li>
               </ul>
             </div>
@@ -52,7 +63,7 @@ export default function ContactsPage() {
                   {[
                     { icon: Phone, label: 'Телефон', value: '0876 081 199', href: 'tel:+359876081199' },
                     { icon: Mail, label: 'Имейл', value: 'office@domexpertmebel.com', href: 'mailto:office@domexpertmebel.com' },
-                    { icon: MapPin, label: 'Адрес', value: 'ул. Стамболийски 52, Благоевград', href: null },
+                    { icon: MapPin, label: 'Адрес', value: 'ул. Стамболийски 52, 2700 Благоевград', href: GOOGLE_BUSINESS_PROFILE_URL },
                     { icon: Clock, label: 'Работно време', value: 'Понеделник — Петък: 09:00 — 18:00', href: null },
                   ].map(({ icon: Icon, label, value, href }) => (
                     <div key={label} className="flex items-start gap-4 bg-warm-white p-4 rounded-card">
@@ -62,7 +73,14 @@ export default function ContactsPage() {
                       <div>
                         <div className="font-body text-xs text-warm-gray mb-0.5">{label}</div>
                         {href ? (
-                          <a href={href} className="font-body font-medium text-charcoal hover:text-walnut transition-colors">{value}</a>
+                          <a
+                            href={href}
+                            target={href.startsWith('http') ? '_blank' : undefined}
+                            rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                            className="font-body font-medium text-charcoal hover:text-walnut transition-colors"
+                          >
+                            {value}
+                          </a>
                         ) : (
                           <div className="font-body font-medium text-charcoal">{value}</div>
                         )}
@@ -71,15 +89,23 @@ export default function ContactsPage() {
                   ))}
                 </div>
 
-                {/* Map placeholder */}
-                <div className="rounded-card overflow-hidden h-56 bg-light-tan flex items-center justify-center">
-                  <div className="text-center text-warm-gray font-body text-sm">
-                    <MapPin size={32} className="mx-auto mb-2 text-walnut" />
-                    {/* TODO: Replace with actual Google Maps embed */}
-                    <p>Google Maps</p>
-                    <p className="text-xs mt-1">ул. Стамболийски 52, Благоевград</p>
+                {/* Lightweight directions link — no map embed or third-party script. */}
+                <a
+                  href={GOOGLE_BUSINESS_PROFILE_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Отвори профила на Dom Expert Мебел в Google Maps"
+                  className="group rounded-card overflow-hidden h-56 bg-light-tan flex items-center justify-center transition-colors hover:bg-cream"
+                >
+                  <div className="text-center text-warm-gray font-body text-sm px-6">
+                    <MapPin size={32} className="mx-auto mb-3 text-walnut transition-transform group-hover:-translate-y-0.5" />
+                    <p className="font-semibold text-charcoal">Посетете ни в Благоевград</p>
+                    <p className="text-xs mt-1">ул. Стамболийски 52, 2700 Благоевград</p>
+                    <span className="inline-block mt-4 font-semibold text-walnut group-hover:underline">
+                      Отвори в Google Maps →
+                    </span>
                   </div>
-                </div>
+                </a>
               </div>
 
               {/* Right: Form */}

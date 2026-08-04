@@ -6,6 +6,12 @@ import {
   normalizeCatalogSort,
   normalizeCatalogType,
 } from '@/lib/catalog-routing'
+import {
+  buildCatalogLandingInternalPath,
+  parseCatalogLandingInternalSegments,
+  parseCatalogLandingSegments,
+  resolveLegacyCatalogPathRedirect,
+} from '@/lib/catalog-landings'
 
 const LEGACY_PRODUCT_SLUGS = new Set([
   'trapezen-stol-natural',
@@ -19,6 +25,26 @@ const LEGACY_PRODUCT_SLUGS = new Set([
 ])
 
 const CATALOG_ROUTE_PREFIXES = new Set(['стая', 'вид', 'подреждане', 'страница'])
+const READY_FURNITURE_PREFIX = '/готови-мебели'
+const READY_INTERNAL_PREFIX = '/ready'
+const READY_SORT_INTERNAL_PREFIX = '/ready-sort'
+
+function getPathSegments(pathname: string, prefix: string): string[] | null {
+  const suffix = pathname.slice(prefix.length).replace(/^\/+|\/+$/g, '')
+  if (!suffix) return []
+  const segments = suffix.split('/')
+  return segments.some((segment) => !segment) ? null : segments
+}
+
+function getPublicReadyRoute(pathname: string) {
+  const segments = getPathSegments(pathname, READY_FURNITURE_PREFIX)
+  return segments ? parseCatalogLandingSegments(segments) : null
+}
+
+function getInternalReadyRoute(pathname: string, prefix: string) {
+  const segments = getPathSegments(pathname, prefix)
+  return segments ? parseCatalogLandingInternalSegments(segments) : null
+}
 
 function getLegacyCatalogRedirect(request: NextRequest) {
   const params = request.nextUrl.searchParams
@@ -46,8 +72,74 @@ export function middleware(request: NextRequest) {
     return NextResponse.next()
   }
 
+  if (
+    decodedPathname === READY_SORT_INTERNAL_PREFIX
+    || decodedPathname.startsWith(READY_SORT_INTERNAL_PREFIX + '/')
+  ) {
+    const parsed = getInternalReadyRoute(decodedPathname, READY_SORT_INTERNAL_PREFIX)
+    const destination = request.nextUrl.clone()
+    destination.pathname = parsed?.pagePath ?? READY_FURNITURE_PREFIX + '/'
+    return NextResponse.redirect(destination, 308)
+  }
+
+  if (
+    decodedPathname === READY_INTERNAL_PREFIX
+    || decodedPathname.startsWith(READY_INTERNAL_PREFIX + '/')
+  ) {
+    const parsed = getInternalReadyRoute(decodedPathname, READY_INTERNAL_PREFIX)
+    const destination = request.nextUrl.clone()
+    destination.pathname = parsed?.pagePath ?? READY_FURNITURE_PREFIX + '/'
+    return NextResponse.redirect(destination, 308)
+  }
+
+  if (
+    request.nextUrl.search
+    && (
+      decodedPathname === READY_FURNITURE_PREFIX
+      || decodedPathname.startsWith(READY_FURNITURE_PREFIX + '/')
+    )
+  ) {
+    const parsed = getPublicReadyRoute(decodedPathname)
+    if (!parsed) return NextResponse.next()
+    const destination = request.nextUrl.clone()
+    destination.pathname = buildCatalogLandingInternalPath(
+      READY_SORT_INTERNAL_PREFIX,
+      parsed.landing,
+      parsed.page,
+    )
+    const response = NextResponse.rewrite(destination)
+    response.headers.set('X-Robots-Tag', 'noindex, follow')
+    return response
+  }
+
+  if (
+    decodedPathname === READY_FURNITURE_PREFIX
+    || decodedPathname.startsWith(READY_FURNITURE_PREFIX + '/')
+  ) {
+    const parsed = getPublicReadyRoute(decodedPathname)
+    if (!parsed) return NextResponse.next()
+    const destination = request.nextUrl.clone()
+    destination.pathname = buildCatalogLandingInternalPath(
+      READY_INTERNAL_PREFIX,
+      parsed.landing,
+      parsed.page,
+    )
+    return NextResponse.rewrite(destination)
+  }
+
   if (decodedPathname === '/catalog-test' || decodedPathname === '/catalog-test/') {
     return NextResponse.redirect(new URL('/каталог/', request.url), 308)
+  }
+
+  if (!request.nextUrl.search) {
+    const resolverPathname = decodedPathname === '/catalog' || decodedPathname === '/catalog/'
+      ? '/каталог/'
+      : pathname
+    const curatedPathname = resolveLegacyCatalogPathRedirect(resolverPathname)
+    if (curatedPathname) {
+      const destination = new URL(curatedPathname, request.url)
+      return NextResponse.redirect(destination, 308)
+    }
   }
 
   if (decodedPathname === '/catalog' || decodedPathname === '/catalog/' || decodedPathname.startsWith('/catalog/')) {
@@ -125,4 +217,17 @@ export function middleware(request: NextRequest) {
   }
 
   return NextResponse.next()
+}
+
+export const config = {
+  matcher: [
+    '/catalog/:path*',
+    '/catalog-test',
+    '/product/:path*',
+    '/produkt/:path*',
+    '/ready/:path*',
+    '/ready-sort/:path*',
+    '/каталог/:path*',
+    '/готови-мебели/:path*',
+  ],
 }

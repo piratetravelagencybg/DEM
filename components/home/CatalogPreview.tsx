@@ -34,11 +34,11 @@ export default function CatalogPreview({ products }: { products: MbxCatalogProdu
             </h2>
           </div>
           <Link
-            href="/каталог/"
+            href="/готови-мебели/"
             className="hidden sm:inline-flex items-center gap-1.5 font-body font-semibold text-walnut flex-shrink-0 hover:opacity-75 transition-opacity"
             style={{ fontSize: '0.88rem' }}
           >
-            Виж всички <ArrowRight size={14} />
+            Виж готовите мебели <ArrowRight size={14} />
           </Link>
         </motion.div>
 
@@ -203,11 +203,11 @@ export default function CatalogPreview({ products }: { products: MbxCatalogProdu
           className="flex justify-center mt-8"
         >
           <Link
-            href="/каталог/"
+            href="/готови-мебели/"
             className="inline-flex items-center gap-2 font-body font-semibold px-7 py-3 rounded-full text-white transition-all hover:-translate-y-0.5"
             style={{ background: '#8B6F47', fontSize: '0.9rem', boxShadow: '0 4px 20px rgba(139,111,71,0.35)' }}
           >
-            Разгледай всички продукти <ArrowRight size={15} />
+            Разгледай готовите мебели <ArrowRight size={15} />
           </Link>
         </motion.div>
 

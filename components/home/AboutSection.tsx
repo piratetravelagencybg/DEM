@@ -8,8 +8,8 @@ import { useRef } from 'react'
 
 const stats = [
   { value: '10+', label: 'Години опит' },
-  { value: '500+', label: 'Проекта' },
-  { value: '100%', label: 'Доволни клиенти' },
+  { value: '100+', label: 'Проекта' },
+  { value: '2 г.', label: 'Гаранция' },
 ]
 
 export default function AboutSection() {
@@ -171,8 +171,8 @@ export default function AboutSection() {
           className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-4"
         >
           {[
-            { icon: '🪵', title: 'Качествени материали', desc: 'Egger, Blum, Hafele' },
-            { icon: '📐', title: 'Безплатен 3D проект', desc: 'За всеки клиент' },
+            { icon: '🪵', title: 'Материали по избор', desc: 'Според проекта и бюджета' },
+            { icon: '📐', title: '3D проект', desc: 'Приспада се при поръчка' },
             { icon: '⏱', title: 'Точни срокове', desc: '4–6 седмици' },
             { icon: '✅', title: 'Гаранция', desc: '2 години' },
           ].map((q, i) => (

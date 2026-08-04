@@ -4,6 +4,9 @@ import { CheckCircle, ChevronDown } from 'lucide-react'
 import QuoteForm from '@/components/ui/QuoteForm'
 import FAQSchema from '@/components/seo/FAQSchema'
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import LocalBusinessSchema from '@/components/seo/LocalBusinessSchema'
+import ServiceSchema from '@/components/seo/ServiceSchema'
+import type { ReactNode } from 'react'
 
 interface ServiceFAQ {
   question: string
@@ -23,11 +26,32 @@ interface ServicePageProps {
   features: string[]
   faq: ServiceFAQ[]
   slug: string
+  schemaDescription?: string
+  children?: ReactNode
 }
 
-export default function ServicePageTemplate({ title, subtitle, heroImage, gallery = [], features, faq, slug }: ServicePageProps) {
+export default function ServicePageTemplate({
+  title,
+  subtitle,
+  heroImage,
+  gallery = [],
+  features,
+  faq,
+  slug,
+  schemaDescription,
+  children,
+}: ServicePageProps) {
+  const pageUrl = 'https://domexpertmebel.com/услуги/' + slug + '/'
+
   return (
     <>
+      <LocalBusinessSchema />
+      <ServiceSchema
+        name={title}
+        url={pageUrl}
+        city={['Благоевград', 'София', 'Дупница', 'Сандански']}
+        description={schemaDescription ?? subtitle}
+      />
       <FAQSchema items={faq} />
       <BreadcrumbSchema items={[
         { name: 'Начало', url: 'https://domexpertmebel.com/' },
@@ -150,12 +174,10 @@ export default function ServicePageTemplate({ title, subtitle, heroImage, galler
                   boxShadow: '0 4px 20px rgba(0,0,0,0.12)',
                 }}>
                   <div className="flex items-center gap-0.5 mb-0.5">
-                    {[1,2,3,4,5].map((i) => (
-                      <span key={i} style={{ color: '#C4A882', fontSize: '0.85rem' }}>★</span>
-                    ))}
+                    <span className="font-display font-bold" style={{ color: '#8B6F47', fontSize: '1rem' }}>10+</span>
                   </div>
                   <div className="font-body font-semibold" style={{ fontSize: '0.72rem', color: '#3C2A18' }}>
-                    Dom Expert Мебел
+                    години опит
                   </div>
                 </div>
 
@@ -168,7 +190,7 @@ export default function ServicePageTemplate({ title, subtitle, heroImage, galler
                   boxShadow: '0 8px 28px rgba(139,111,71,0.5)',
                 }}>
                   <div className="font-display font-bold text-white" style={{ fontSize: '1.6rem', lineHeight: 1 }}>
-                    500+
+                    100+
                   </div>
                   <div className="font-body text-white/75" style={{ fontSize: '0.62rem', marginTop: 3 }}>
                     проекта
@@ -226,6 +248,8 @@ export default function ServicePageTemplate({ title, subtitle, heroImage, galler
         </section>
       )}
 
+      {children}
+
       {/* ── FAQ ── */}
       <section className="section-py" style={{ backgroundColor: 'var(--color-warm-white)' }}>
         <div className="container-main max-w-3xl">
@@ -274,9 +298,11 @@ export default function ServicePageTemplate({ title, subtitle, heroImage, galler
       >
         <div className="container-main max-w-2xl">
           <div className="text-center mb-10">
-            <span className="eyebrow-pill">Безплатна консултация</span>
-            <h2 className="section-title">Заявете безплатна консултация</h2>
-            <p className="font-body text-warm-gray mt-3">Отговаряме до 24 часа. Без задължения.</p>
+            <span className="eyebrow-pill">Безплатен оглед</span>
+            <h2 className="section-title">Заявете оглед и консултация</h2>
+            <p className="font-body text-warm-gray mt-3">
+              Огледът е безплатен. 3D проектът се заплаща, а сумата се приспада при поръчка на мебелите.
+            </p>
           </div>
           <div
             className="bg-white rounded-2xl p-8"

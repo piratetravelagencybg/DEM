@@ -6,15 +6,15 @@ import Visualization3D from '@/components/home/Visualization3D'
 import ProcessSteps from '@/components/home/ProcessSteps'
 import ProjectsGallery from '@/components/home/ProjectsGallery'
 import CatalogPreview from '@/components/home/CatalogPreview'
-import Testimonials from '@/components/home/Testimonials'
+import GoogleBusinessProfile from '@/components/home/GoogleBusinessProfile'
 import CTABar from '@/components/home/CTABar'
 import LocalBusinessSchema from '@/components/seo/LocalBusinessSchema'
 import { getAllMbxCatalogProducts } from '@/lib/mbx-catalog'
 import { createPageMetadata } from '@/lib/seo'
 
 export const metadata: Metadata = createPageMetadata({
-  title: 'Мебели по поръчка Благоевград и София | Dom Expert Мебел',
-  description: 'Семейна фирма за мебели по поръчка в Благоевград и София. Кухни, гардероби, спални, офис мебели. Безплатна консултация и 3D проект. Тел: 0876 081 199',
+  title: 'Мебели по поръчка | Dom Expert Мебел',
+  description: 'Мебели по поръчка за кухня, спалня, дневна и офис. Безплатен оглед, платен 3D проект с приспадане при поръчка, монтаж и 2 г. гаранция.',
   path: '/',
   imageAlt: 'Мебели по поръчка от Dom Expert Мебел',
 })
@@ -32,7 +32,7 @@ export default function HomePage() {
       <ProcessSteps />
       <ProjectsGallery />
       <CatalogPreview products={catalogPreview} />
-      <Testimonials />
+      <GoogleBusinessProfile />
       <CTABar />
     </>
   )

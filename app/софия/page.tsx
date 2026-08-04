@@ -4,11 +4,12 @@ import { CheckCircle, Phone, ChevronDown } from 'lucide-react'
 import QuoteForm from '@/components/ui/QuoteForm'
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
 import FAQSchema from '@/components/seo/FAQSchema'
+import ServiceSchema from '@/components/seo/ServiceSchema'
 import { completePageMetadata } from '@/lib/seo'
 
 export const metadata: Metadata = completePageMetadata({
   title: { absolute: 'Мебели по поръчка София | Dom Expert Мебел' },
-  description: 'Мебели по поръчка в София. Кухни, гардероби, спални от семейна фирма с 10+ г. опит. Безплатна консултация и 3D проект. Тел: 0876 081 199',
+  description: 'Мебели по поръчка в София — кухни, гардероби и спални. Безплатен оглед на адрес, над 10 г. опит и 2 г. гаранция. Тел: 0876 081 199',
   alternates: { canonical: 'https://domexpertmebel.com/софия/' },
   openGraph: {
     type: 'website',
@@ -16,39 +17,19 @@ export const metadata: Metadata = completePageMetadata({
     siteName: 'Dom Expert Мебел',
     url: 'https://domexpertmebel.com/софия/',
     title: 'Мебели по поръчка София | Dom Expert Мебел',
-    description: 'Мебели по поръчка в София. Кухни, гардероби, спални от семейна фирма с 10+ г. опит.',
+    description: 'Dom Expert Мебел от Благоевград обслужва София с оглед на адрес, изработка и монтаж на мебели по поръчка.',
     images: [{ url: '/images/real/garderob-02.webp', width: 1200, height: 630, alt: 'Мебели по поръчка София — Dom Expert Мебел' }],
   },
 })
 
-const localSchema = {
-  '@context': 'https://schema.org',
-  '@type': ['LocalBusiness', 'FurnitureStore'],
-  name: 'Dom Expert Мебел — София',
-  url: 'https://domexpertmebel.com/софия/',
-  telephone: '+359876081199',
-  address: {
-    '@type': 'PostalAddress',
-    addressLocality: 'София',
-    addressCountry: 'BG',
-  },
-  areaServed: { '@type': 'City', name: 'София' },
-  openingHoursSpecification: [{
-    '@type': 'OpeningHoursSpecification',
-    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-    opens: '09:00',
-    closes: '18:00',
-  }],
-}
-
 const faqItems = [
   {
     question: 'Правите ли кухни по поръчка в София?',
-    answer: 'Да, обслужваме клиенти в цяла София и Софийска област. Идваме на оглед, изготвяме безплатен 3D проект и организираме монтажа в удобно за вас време.',
+    answer: 'Да, обслужваме клиенти в цяла София и Софийска област. Идваме на безплатен оглед и вземане на размери на адрес. 3D проектът се заплаща, а при възлагане цената му се приспада от поръчката.',
   },
   {
     question: 'Колко струват мебелите по поръчка в София?',
-    answer: 'Цените при нас са конкурентни, защото работим директно — без посредници. Стандартна кухня по поръчка започва от около 2500 лв. Свържете се за безплатна оферта.',
+    answer: 'Цената зависи от размерите, материалите, механизмите и сложността на проекта. След безплатния оглед и вземането на размери подготвяме конкретна оферта за вашето обзавеждане.',
   },
   {
     question: 'Колко отнема изработката на мебели за София?',
@@ -56,30 +37,35 @@ const faqItems = [
   },
   {
     question: 'Правите ли и офис обзавеждане в София?',
-    answer: 'Да, изработваме цялостно офис обзавеждане по поръчка — бюра, шкафове, конферентни маси и рецепции. Имаме опит с корпоративни проекти в София.',
+    answer: 'Да, изработваме цялостно офис обзавеждане по поръчка — бюра, шкафове, конферентни маси и рецепции. Огледът и вземането на размери се извършват на адрес в София.',
   },
 ]
 
 const features = [
-  'Безплатна консултация в София',
-  'Безплатен 3D проект при договор',
+  'Безплатен оглед на адрес в София',
+  'Платен 3D проект с приспадане при поръчка',
+  'Изработка в базата ни в Благоевград',
   'Монтаж в цяла София и Софийска обл.',
   '2 години гаранция',
-  'Материали Egger, Blum, Hafele',
-  'Собствена транспортна бригада',
+  'Над 10 години опит и 100+ проекта',
 ]
 
 const quickLinks = [
   { label: 'Кухни', href: '/услуги/кухни-по-поръчка/' },
   { label: 'Гардероби', href: '/услуги/гардероби-по-поръчка/' },
   { label: 'Спални', href: '/услуги/спални-по-поръчка/' },
-  { label: 'За нас', href: '/за-нас/' },
+  { label: 'Проект в София', href: '/проекти/kuhnya-s-ostrov-sofia/' },
 ]
 
 export default function SofiaPage() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localSchema) }} />
+      <ServiceSchema
+        name="Мебели по поръчка в София"
+        url="https://domexpertmebel.com/софия/"
+        city="София"
+        description="Проектиране, изработка, доставка и монтаж на мебели по поръчка в София и Софийска област."
+      />
       <FAQSchema items={faqItems} />
       <BreadcrumbSchema items={[
         { name: 'Начало', url: 'https://domexpertmebel.com/' },
@@ -122,13 +108,13 @@ export default function SofiaPage() {
                 Мебели по поръчка в София — индивидуален проект и монтаж
               </h1>
               <p className="font-body text-warm-gray leading-relaxed" style={{ fontSize: '1.05rem' }}>
-                Обслужваме клиенти в цяла София и Софийска област. Dom Expert Мебел изработва кухни, гардероби, спални и офис мебели по поръчка с безплатен 3D проект и гаранция 2 години. Идваме на оглед и организираме монтажа от А до Я.
+                Базирани сме в Благоевград и обслужваме клиенти в цяла София и Софийска област. Изработваме кухни, гардероби, спални и офис мебели по поръчка. Идваме на безплатен оглед и вземане на размери на вашия адрес; 3D проектът се заплаща, но цената му се приспада при възлагане на поръчката.
               </p>
 
               {/* GEO key facts */}
               <ul className="font-body text-sm text-warm-gray space-y-1">
                 <li>• Обслужваме цяла София и Софийска област</li>
-                <li>• Безплатен оглед и консултация</li>
+                <li>• Безплатен оглед и размери на адрес в София</li>
                 <li>• Производствен срок: 4–6 седмици</li>
                 <li>• Гаранция: 2 години на всички изделия</li>
               </ul>
@@ -198,7 +184,7 @@ export default function SofiaPage() {
           <div className="text-center mb-10">
             <span className="eyebrow-pill">Въпроси и отговори</span>
             <h2 className="font-display font-bold heading-gradient" style={{ fontSize: 'clamp(1.6rem, 4vw, 2.2rem)' }}>
-              Честo задавани въпроси за София
+              Често задавани въпроси за София
             </h2>
           </div>
           <div className="space-y-3">

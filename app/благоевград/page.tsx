@@ -2,9 +2,12 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { CheckCircle, Phone, ChevronDown } from 'lucide-react'
 import QuoteForm from '@/components/ui/QuoteForm'
-import Testimonials from '@/components/home/Testimonials'
+import ServiceGuide from '@/components/ui/ServiceGuide'
+import GoogleBusinessProfile from '@/components/home/GoogleBusinessProfile'
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
 import FAQSchema from '@/components/seo/FAQSchema'
+import LocalBusinessSchema from '@/components/seo/LocalBusinessSchema'
+import ServiceSchema from '@/components/seo/ServiceSchema'
 import { completePageMetadata } from '@/lib/seo'
 
 export const metadata: Metadata = completePageMetadata({
@@ -22,40 +25,15 @@ export const metadata: Metadata = completePageMetadata({
   },
 })
 
-const localSchema = {
-  '@context': 'https://schema.org',
-  '@type': ['LocalBusiness', 'FurnitureStore'],
-  '@id': 'https://domexpertmebel.com/#business',
-  name: 'Dom Expert Мебел — Благоевград',
-  url: 'https://domexpertmebel.com',
-  telephone: '+359876081199',
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: 'ул. Стамболийски 52',
-    addressLocality: 'Благоевград',
-    postalCode: '2700',
-    addressRegion: 'Благоевград',
-    addressCountry: 'BG',
-  },
-  geo: { '@type': 'GeoCoordinates', latitude: 42.0135, longitude: 23.0944 },
-  openingHoursSpecification: [{
-    '@type': 'OpeningHoursSpecification',
-    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-    opens: '09:00',
-    closes: '18:00',
-  }],
-  areaServed: { '@type': 'City', name: 'Благоевград' },
-  priceRange: '$$',
-}
 
 const faqItems = [
   {
     question: 'Правите ли кухни по поръчка в Благоевград?',
-    answer: 'Да, Dom Expert Мебел е местна фирма от Благоевград и изработваме кухни по поръчка за целия град и района. Идваме на оглед, правим безплатен 3D проект и организираме монтажа.',
+    answer: 'Да. Базирани сме в Благоевград и поемаме измерването, проекта, изработката и монтажа на кухни в града и региона. Огледът е безплатен. 3D проектът се заплаща, а при поръчка на кухнята приспадаме платената за него сума.',
   },
   {
     question: 'Колко струва кухня по поръчка в Благоевград?',
-    answer: 'Цените варират в зависимост от размера, материалите и оборудването. Стандартна кухня от нас започва от около 2500 лв. Свържете се с нас за безплатна оферта за вашия конкретен проект.',
+    answer: 'Цената зависи от точните размери, броя модули, лицата, плота, механизмите, осветлението и подготовката за уредите. След безплатния оглед изготвяме конкретна оферта за избраните решения.',
   },
   {
     question: 'Колко бързо можете да направите мебели в Благоевград?',
@@ -68,12 +46,12 @@ const faqItems = [
 ]
 
 const features = [
-  'Местна фирма — бързо обслужване в Благоевград',
-  'Безплатен оглед и 3D проект',
-  'Конкурентни цени, без посредници',
+  'База и екип в Благоевград',
+  'Безплатен оглед и вземане на размери',
+  'Платен 3D проект с приспадане при поръчка',
   'Монтаж в Благоевград и региона',
   '2 години гаранция на всички изделия',
-  'Материали Egger, Blum, Hafele',
+  'Над 10 години опит и 100+ реализирани проекта',
 ]
 
 const quickLinks = [
@@ -83,10 +61,88 @@ const quickLinks = [
   { label: 'За нас', href: '/за-нас/' },
 ]
 
+const guideSections = [
+  {
+    title: 'Какво изработваме',
+    paragraphs: [
+      'Поемаме кухни, вградени и корпусни гардероби, легла и цялостни спални, дневни и офис мебели. Всеки проект започва от реалните размери и начина, по който ще използвате помещението.',
+      'Можем да изпълним отделна мебел или да планираме няколко свързани зони. Преди офертата уточняваме обхвата, материалите, механизмите, монтажа и всички допълнителни елементи.',
+    ],
+  },
+  {
+    title: 'Безплатен оглед в Благоевград',
+    paragraphs: [
+      'Посещаваме адреса, вземаме точни размери и проверяваме стени, под, отвори и налични изводи. Огледът и първоначалната консултация са безплатни за клиентите ни.',
+      'При кухня отбелязваме вода, ток, аспирация и уреди; при гардероб или спалня проверяваме нишите, свободното отваряне и проходите. Това намалява риска от корекции при монтажа.',
+    ],
+  },
+  {
+    title: 'Проект и ясна оферта',
+    paragraphs: [
+      '3D проектът е платена услуга. Ако ни възложите изработката на кухнята или другите мебели, приспадаме платената за проекта сума от стойността на поръчката.',
+      'Крайната цена се влияе от размерите, броя модули, материалите, плотовете, механизмите, осветлението и сложността на монтажа. Получавате оферта за конкретно описан обхват, а не обща цена без размери.',
+    ],
+  },
+  {
+    title: 'Срок, монтаж и гаранция',
+    paragraphs: [
+      'Обичайният срок за производство е 4–6 седмици след одобряване на проекта и избора на материали. Ако изпълнението изисква повече време, уточняваме това преди старта.',
+      'Организираме доставката и монтажа в Благоевград и региона. За изработените изделия предоставяме 2 години гаранция и съдействие при възникнал въпрос след монтажа.',
+    ],
+  },
+]
+
+const guideSteps = [
+  { title: 'Запитване', description: 'Разказвате ни какво помещение и мебели искате да обзаведете.' },
+  { title: 'Безплатен оглед', description: 'Посещаваме адреса в Благоевград и вземаме точни размери.' },
+  { title: 'Проект и оферта', description: 'Подготвяме платен 3D проект; сумата се приспада при поръчка на мебелите.' },
+  { title: 'Изработка', description: 'Произвеждаме одобрените елементи в обичайния срок от 4–6 седмици.' },
+  { title: 'Монтаж', description: 'Доставяме, монтираме и проверяваме готовото обзавеждане на място.' },
+]
+
+const guideLinks = [
+  {
+    href: '/проекти/garderob-sistema-blagoevgrad/',
+    label: 'Гардеробна система',
+    description: 'Реализиран проект за вградено съхранение в Благоевград.',
+  },
+  {
+    href: '/проекти/spalna-tapicirano-leglo-blagoevgrad/',
+    label: 'Спалня с тапицирано легло',
+    description: 'Цялостна спалня, изпълнена за клиент в Благоевград.',
+  },
+  {
+    href: '/проекти/ofis-blagoevgrad/',
+    label: 'Офис обзавеждане',
+    description: 'Бюра, архивни шкафове и рецепция по индивидуален проект.',
+  },
+  {
+    href: '/блог/tseni-mebeli-po-poruchka-balgariya/',
+    label: 'Как се определя цената',
+    description: 'Практично обяснение на основните фактори в офертата.',
+  },
+  {
+    href: '/проекти/',
+    label: 'Всички реализирани проекти',
+    description: 'Разгледайте примери от Благоевград, София и региона.',
+  },
+  {
+    href: '/контакти/',
+    label: 'Адрес и безплатен оглед',
+    description: 'Вижте контактите ни и уговорете удобно време за посещение.',
+  },
+]
+
 export default function BlagoevgradPage() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localSchema) }} />
+      <LocalBusinessSchema />
+      <ServiceSchema
+        name="Мебели по поръчка в Благоевград"
+        url="https://domexpertmebel.com/благоевград/"
+        city="Благоевград"
+        description="Проектиране, изработка и монтаж на мебели по поръчка в Благоевград и региона."
+      />
       <FAQSchema items={faqItems} />
       <BreadcrumbSchema items={[
         { name: 'Начало', url: 'https://domexpertmebel.com/' },
@@ -126,10 +182,10 @@ export default function BlagoevgradPage() {
             <div className="space-y-6">
               <span className="eyebrow-pill">Благоевград</span>
               <h1 className="font-display font-bold text-charcoal leading-[1.05]" style={{ fontSize: 'var(--text-h1)' }}>
-                Мебели по поръчка в Благоевград — семейна фирма с конкурентни цени
+                Мебели по поръчка в Благоевград
               </h1>
               <p className="font-body text-warm-gray leading-relaxed" style={{ fontSize: '1.05rem' }}>
-                Dom Expert Мебел е местна семейна фирма, базирана в Благоевград. Изработваме кухни, гардероби, спални и офис мебели по поръчка с над 10 години опит. Идваме на оглед, правим безплатен 3D проект и монтираме прецизно.
+                Dom Expert Мебел е семейна фирма с база в Благоевград, над 10 години опит и повече от 100 реализирани проекта. Изработваме кухни, гардероби, спални и офис мебели по поръчка, като поемаме огледа, проекта, производството и монтажа.
               </p>
 
               {/* GEO key facts */}
@@ -137,7 +193,7 @@ export default function BlagoevgradPage() {
                 <li>• Базирани сме в Благоевград — обслужваме целия град и региона</li>
                 <li>• Работно време: Пон–Пет, 09:00–18:00</li>
                 <li>• Производствен срок: 4–6 седмици</li>
-                <li>• Материали: Egger, Blum, Hafele</li>
+                <li>• Реализирани проекти: над 100</li>
                 <li>• Гаранция: 2 години на всички изделия</li>
               </ul>
 
@@ -192,7 +248,10 @@ export default function BlagoevgradPage() {
                 className="bg-white rounded-2xl p-8"
                 style={{ border: '1px solid #EDE5DA', boxShadow: '0 4px 32px rgba(0,0,0,0.06)' }}
               >
-                <h2 className="font-display font-semibold text-charcoal text-xl mb-6">Безплатна оферта</h2>
+                <h2 className="font-display font-semibold text-charcoal text-xl mb-2">Безплатен оглед и оферта</h2>
+                <p className="font-body text-warm-gray text-sm mb-6">
+                  3D проектът се заплаща и се приспада при поръчка на мебелите.
+                </p>
                 <QuoteForm />
               </div>
             </div>
@@ -200,7 +259,16 @@ export default function BlagoevgradPage() {
         </div>
       </section>
 
-      <Testimonials />
+      <ServiceGuide
+        eyebrow="Местна услуга"
+        title="От размерите до монтажа — всичко на едно място"
+        intro="Когато мебелите са по поръчка, точният оглед и ясното задание са толкова важни, колкото и самата изработка. Ето как работим с клиентите си в Благоевград."
+        sections={guideSections}
+        steps={guideSteps}
+        links={guideLinks}
+      />
+
+      <GoogleBusinessProfile />
 
       {/* ── FAQ ── */}
       <section className="section-py" style={{ backgroundColor: 'var(--color-cream)' }}>
@@ -208,7 +276,7 @@ export default function BlagoevgradPage() {
           <div className="text-center mb-10">
             <span className="eyebrow-pill">Въпроси и отговори</span>
             <h2 className="font-display font-bold heading-gradient" style={{ fontSize: 'clamp(1.6rem, 4vw, 2.2rem)' }}>
-              Честo задавани въпроси за Благоевград
+              Често задавани въпроси за Благоевград
             </h2>
           </div>
           <div className="space-y-3">

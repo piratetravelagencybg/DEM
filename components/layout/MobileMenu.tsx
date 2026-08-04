@@ -88,7 +88,7 @@ export default function MobileMenu({ open, onClose, navLinks }: MobileMenuProps)
             <nav className="flex-1 overflow-y-auto px-3.5 pb-4 pt-3">
               <div>
                 <Link
-                  href="/каталог/"
+                  href="/готови-мебели/"
                   onClick={onClose}
                   className="group mb-4 flex items-center justify-between rounded-[20px] bg-[#272019] p-4 text-white"
                   style={{ boxShadow: '0 10px 28px rgba(45,34,25,0.2)' }}
@@ -98,8 +98,8 @@ export default function MobileMenu({ open, onClose, navLinks }: MobileMenuProps)
                       <ShoppingBag size={19} strokeWidth={1.7} />
                     </span>
                     <span>
-                      <span className="block font-body text-[0.66rem] font-semibold uppercase tracking-[0.14em] text-[#CDBA9D]">Онлайн магазин</span>
-                      <span className="mt-0.5 block font-body text-base font-semibold">Разгледай каталога</span>
+                      <span className="block font-body text-[0.66rem] font-semibold uppercase tracking-[0.14em] text-[#CDBA9D]">Готови мебели</span>
+                      <span className="mt-0.5 block font-body text-base font-semibold">Цени и наличности</span>
                     </span>
                   </div>
                   <ArrowRight size={18} className="text-[#CDBA9D] transition-transform group-hover:translate-x-1" />

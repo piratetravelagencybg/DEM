@@ -3,97 +3,51 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { CheckCircle2, Shield, Users, MapPin, Award } from 'lucide-react'
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import LocalBusinessSchema from '@/components/seo/LocalBusinessSchema'
 import AnimatedStats from '@/components/about/AnimatedStats'
 import { completePageMetadata } from '@/lib/seo'
 
 export const metadata: Metadata = completePageMetadata({
-  title: { absolute: 'За нас | Мебели по поръчка Благоевград — Dom Expert Мебел' },
+  title: { absolute: 'За Dom Expert Мебел | Семейна мебелна фирма' },
   description:
-    'Семейна работилница с 10+ години опит в мебели по поръчка в Благоевград. 500+ реализирани кухни, гардероби и спални. Безплатна консултация. Тел: 0876 081 199',
+    'Научете историята на Dom Expert Мебел — семейна мебелна фирма от Благоевград с над 10 години опит и повече от 100 реализирани проекта.',
   alternates: { canonical: 'https://domexpertmebel.com/за-нас/' },
   openGraph: {
-    title: 'За Нас – Мебели по Поръчка Благоевград | Dom Expert Мебел',
-    description: 'Семейна работилница с 10+ години опит – Благоевград. 500+ реализирани проекта.',
+    title: 'За Dom Expert Мебел | Семейна мебелна фирма',
+    description: 'Историята на семейна мебелна фирма от Благоевград с над 10 години опит и повече от 100 реализирани проекта.',
     url: 'https://domexpertmebel.com/за-нас/',
     type: 'website',
     locale: 'bg_BG',
     siteName: 'Dom Expert Мебел',
-    images: [{ url: '/images/real/kuhnya-05.webp', width: 1200, height: 630, alt: 'Dom Expert Мебел — мебели по поръчка Благоевград' }],
+    images: [{ url: '/images/real/kuhnya-05.webp', width: 1200, height: 630, alt: 'Проект на семейната фирма Dom Expert Мебел' }],
   },
 })
 
-const localBusinessSchema = {
-  '@context': 'https://schema.org',
-  '@type': ['LocalBusiness', 'FurnitureStore'],
-  '@id': 'https://domexpertmebel.com/#business',
-  name: 'Dom Expert Мебел',
-  description: 'Семейна фирма за мебели по поръчка в Благоевград.',
-  url: 'https://domexpertmebel.com',
-  telephone: '+359876081199',
-  email: 'office@domexpertmebel.com',
-  foundingDate: '2014',
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: 'ул. Стамболийски 52',
-    addressLocality: 'Благоевград',
-    postalCode: '2700',
-    addressRegion: 'Благоевград',
-    addressCountry: 'BG',
-  },
-  geo: { '@type': 'GeoCoordinates', latitude: 42.0135, longitude: 23.0944 },
-  openingHoursSpecification: [{
-    '@type': 'OpeningHoursSpecification',
-    dayOfWeek: ['Monday','Tuesday','Wednesday','Thursday','Friday'],
-    opens: '09:00', closes: '18:00',
-  }],
-  priceRange: '$$',
-  areaServed: ['Благоевград','София','Дупница','Сандански','Банско','Разлог'],
-  image: 'https://domexpertmebel.com/images/real/kuhnya-04.webp',
-  sameAs: ['https://www.facebook.com/domexpertmebel','https://www.instagram.com/domexpertmebel'],
-}
-
-const organizationSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Organization',
-  '@id': 'https://domexpertmebel.com/#organization',
-  name: 'Dom Expert Мебел',
-  url: 'https://domexpertmebel.com',
-  logo: 'https://domexpertmebel.com/images/logo-icon.webp',
-  contactPoint: {
-    '@type': 'ContactPoint',
-    telephone: '+359876081199',
-    contactType: 'customer service',
-    areaServed: 'BG',
-    availableLanguage: 'Bulgarian',
-  },
-}
-
 const whyUs = [
-  { Icon: Shield, title: 'Качество без компромис', desc: 'Материали Egger, Blum и Hafele. 2-годишна гаранция на всички изделия.' },
+  { Icon: Shield, title: 'Качество без компромис', desc: 'Материали и механизми според проекта. 2-годишна гаранция на всички изделия.' },
   { Icon: Users,  title: 'Индивидуален подход',    desc: 'Всеки проект е уникален — съобразен с пространството и бюджета.' },
   { Icon: MapPin, title: 'Местен и достъпен',      desc: 'Семейна фирма от Благоевград. Собственикът участва лично.' },
-  { Icon: Award,  title: 'Гарантиран резултат',    desc: '500+ реализирани проекта. Гаранция и следпродажбено обслужване.' },
+  { Icon: Award,  title: 'Гарантиран резултат',    desc: '100+ реализирани проекта. Гаранция и следпродажбено обслужване.' },
 ]
 
 const process = [
   { num: '01', title: 'Безплатна консултация', desc: 'Разговаряме за вашите нужди, пространство и вкус. Без задължения.' },
-  { num: '02', title: '3D дизайн проект',      desc: 'Виждате резултата преди да е наредена и една дъска.' },
+  { num: '02', title: '3D дизайн проект',      desc: 'Платен проект, чиято сума приспадаме при поръчка на мебелите.' },
   { num: '03', title: 'Производство',          desc: 'Изработваме мебелите с прецизно CNC рязане и ръчна обработка.' },
   { num: '04', title: 'Монтаж и предаване',    desc: 'Монтираме прецизно, почистваме и предаваме готовия проект.' },
 ]
 
 const facts = [
-  'Материали Egger, Blum, Hafele — водещи европейски марки',
+  'Материали и механизми, подбрани според проекта и бюджета',
   '2-годишна гаранция на всички изработени мебели',
-  'Безплатен 3D проект при сключен договор',
+  'Платен 3D проект с приспадане на сумата при поръчка',
   'Собствена транспортна и монтажна бригада',
 ]
 
 export default function AboutPage() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
+      <LocalBusinessSchema />
       <BreadcrumbSchema items={[
         { name: 'Начало', url: 'https://domexpertmebel.com/' },
         { name: 'За нас',  url: 'https://domexpertmebel.com/за-нас/' },
@@ -143,13 +97,13 @@ export default function AboutPage() {
                 className="font-display font-bold text-white"
                 style={{ fontSize: 'clamp(2.5rem, 7.5vw, 5.5rem)', lineHeight: 1.03, maxWidth: '15ch', marginBottom: '1.1rem' }}
               >
-                Семейна фирма за мебели по поръчка в Благоевград
+                Семейната история на Dom Expert Мебел
               </h1>
               <p className="font-body" style={{
                 fontSize: 'clamp(0.95rem, 2vw, 1.1rem)', color: 'rgba(255,255,255,0.65)',
                 maxWidth: '44ch', lineHeight: 1.6, marginBottom: '2rem',
               }}>
-                Семейна работилница от Благоевград — над 10 години опит, 500+ реализирани кухни, гардероби и спални.
+                Семейна работилница от Благоевград — над 10 години опит и 100+ реализирани кухни, гардероби и спални.
               </p>
               <div className="flex flex-wrap gap-3">
                 <Link href="/контакти/"
@@ -431,7 +385,7 @@ export default function AboutPage() {
               Готови да направим вашата мечтана кухня?
             </h2>
             <p className="font-body leading-relaxed mb-7" style={{ fontSize: '1rem', color: '#6A6460' }}>
-              Свържете се с нас за безплатна консултация и 3D проект. Без задължения.
+              Свържете се с нас за безплатен оглед и консултация. 3D проектът се заплаща и се приспада при поръчка.
             </p>
             <div className="flex flex-wrap gap-3 justify-center">
               <Link href="/контакти/"

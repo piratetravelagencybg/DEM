@@ -4,11 +4,12 @@ import { CheckCircle, Phone, ChevronDown } from 'lucide-react'
 import QuoteForm from '@/components/ui/QuoteForm'
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
 import FAQSchema from '@/components/seo/FAQSchema'
+import ServiceSchema from '@/components/seo/ServiceSchema'
 import { completePageMetadata } from '@/lib/seo'
 
 export const metadata: Metadata = completePageMetadata({
   title: { absolute: 'Мебели по поръчка Дупница | Dom Expert Мебел' },
-  description: 'Мебели по поръчка в Дупница. Кухни, гардероби, спални от местна семейна фирма. Безплатна консултация и 3D проект. Монтаж. Тел: 0876 081 199',
+  description: 'Мебели по поръчка в Дупница — кухни, гардероби и спални. Безплатен оглед, над 10 г. опит, монтаж и 2 г. гаранция. Тел: 0876 081 199',
   alternates: { canonical: 'https://domexpertmebel.com/дупница/' },
   openGraph: {
     type: 'website',
@@ -16,40 +17,19 @@ export const metadata: Metadata = completePageMetadata({
     siteName: 'Dom Expert Мебел',
     url: 'https://domexpertmebel.com/дупница/',
     title: 'Мебели по поръчка Дупница | Dom Expert Мебел',
-    description: 'Мебели по поръчка в Дупница. Кухни, гардероби, спални от местна семейна фирма.',
+    description: 'Dom Expert Мебел от Благоевград обслужва Дупница с оглед, изработка и монтаж на мебели по поръчка.',
     images: [{ url: '/images/real/dnevna-03.webp', width: 1200, height: 630, alt: 'Мебели по поръчка Дупница — Dom Expert Мебел' }],
   },
 })
 
-const localSchema = {
-  '@context': 'https://schema.org',
-  '@type': ['LocalBusiness', 'FurnitureStore'],
-  name: 'Dom Expert Мебел — Дупница',
-  url: 'https://domexpertmebel.com/дупница/',
-  telephone: '+359876081199',
-  address: {
-    '@type': 'PostalAddress',
-    addressLocality: 'Дупница',
-    addressRegion: 'Кюстендил',
-    addressCountry: 'BG',
-  },
-  areaServed: { '@type': 'City', name: 'Дупница' },
-  openingHoursSpecification: [{
-    '@type': 'OpeningHoursSpecification',
-    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-    opens: '09:00',
-    closes: '18:00',
-  }],
-}
-
 const faqItems = [
   {
     question: 'Правите ли мебели по поръчка в Дупница?',
-    answer: 'Да, обслужваме клиенти в Дупница и Кюстендилска област. Идваме на оглед, правим безплатен 3D проект и организираме монтажа. Свържете се с нас на 0876 081 199.',
+    answer: 'Да. Базата ни е в Благоевград, а обслужваме клиенти в Дупница и Кюстендилска област. Идваме на безплатен оглед и вземане на размери, след което организираме изработката и монтажа.',
   },
   {
     question: 'Колко струват мебелите по поръчка в Дупница?',
-    answer: 'Цените зависят от вида, размера и материалите. При нас няма скрити такси — даваме детайлна оферта след оглед. Обадете се за безплатна консултация.',
+    answer: 'Цената зависи от вида мебел, размерите, материалите, механизмите и сложността. Даваме конкретна оферта след безплатния оглед. 3D проектът се заплаща, но цената му се приспада при възлагане на поръчката.',
   },
   {
     question: 'Идвате ли на оглед в Дупница?',
@@ -62,18 +42,23 @@ const faqItems = [
 ]
 
 const features = [
-  'Обслужваме Дупница и Кюстендилска обл.',
-  'Безплатен оглед и 3D проект',
-  'Конкурентни цени, без посредници',
-  'Монтаж с наша бригада',
+  'Базирани в Благоевград, обслужваме Дупница',
+  'Безплатен оглед и вземане на размери',
+  'Платен 3D проект с приспадане при поръчка',
+  'Типичен срок за изработка: 4–6 седмици',
   '2 години гаранция',
-  'Материали Egger, Blum, Hafele',
+  'Над 10 години опит и 100+ проекта',
 ]
 
 export default function DupnicaPage() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localSchema) }} />
+      <ServiceSchema
+        name="Мебели по поръчка в Дупница"
+        url="https://domexpertmebel.com/дупница/"
+        city="Дупница"
+        description="Проектиране, изработка, доставка и монтаж на мебели по поръчка в Дупница и Кюстендилска област."
+      />
       <FAQSchema items={faqItems} />
       <BreadcrumbSchema items={[
         { name: 'Начало', url: 'https://domexpertmebel.com/' },
@@ -116,7 +101,7 @@ export default function DupnicaPage() {
                 Мебели по поръчка в Дупница
               </h1>
               <p className="font-body text-warm-gray leading-relaxed" style={{ fontSize: '1.05rem' }}>
-                Dom Expert Мебел обслужва клиенти в Дупница и Кюстендилска област. Изработваме мебели по поръчка — кухни, гардероби, спални и офис мебели с безплатен 3D проект и монтаж. Идваме на оглед на място без допълнително заплащане.
+                Базата на Dom Expert Мебел е в Благоевград, а обслужваме клиенти в Дупница и Кюстендилска област. Изработваме кухни, гардероби, спални и офис мебели по поръчка. Идваме на безплатен оглед и вземане на размери; 3D проектът се заплаща и се приспада от цената при възлагане.
               </p>
 
               {/* GEO key facts */}
@@ -158,7 +143,7 @@ export default function DupnicaPage() {
                 {[
                   { label: 'Кухни', href: '/услуги/кухни-по-поръчка/' },
                   { label: 'Гардероби', href: '/услуги/гардероби-по-поръчка/' },
-                  { label: 'За нас', href: '/за-нас/' },
+                  { label: 'Проект в Дупница', href: '/проекти/dnevna-po-poruchka-dupnitsa/' },
                   { label: 'Контакти', href: '/контакти/' },
                 ].map((s) => (
                   <Link
@@ -197,7 +182,7 @@ export default function DupnicaPage() {
           <div className="text-center mb-10">
             <span className="eyebrow-pill">Въпроси и отговори</span>
             <h2 className="font-display font-bold heading-gradient" style={{ fontSize: 'clamp(1.6rem, 4vw, 2.2rem)' }}>
-              Честo задавани въпроси за Дупница
+              Често задавани въпроси за Дупница
             </h2>
           </div>
           <div className="space-y-3">

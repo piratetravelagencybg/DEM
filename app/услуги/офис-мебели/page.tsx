@@ -1,9 +1,12 @@
 import type { Metadata } from 'next'
 import ServicePageTemplate from '@/components/ui/ServicePageTemplate'
+import ProjectHighlight from '@/components/ui/ProjectHighlight'
 import services from '@/data/services.json'
+import projects from '@/data/projects.json'
 import { completePageMetadata } from '@/lib/seo'
 
 const service = services.find((s) => s.id === 'ofis')!
+const featuredProject = projects.find((project) => project.slug === 'ofis-blagoevgrad')!
 
 export const metadata: Metadata = completePageMetadata({
   title: { absolute: 'Офис мебели по поръчка | Dom Expert Мебел' },
@@ -30,6 +33,15 @@ export default function OfisMebeliPage() {
       features={service.features}
       faq={service.faq}
       slug={service.slug}
-    />
+    >
+      <ProjectHighlight
+        title={featuredProject.title}
+        description={featuredProject.description}
+        city={featuredProject.city}
+        duration={featuredProject.duration}
+        image={featuredProject.images[0]}
+        href={'/проекти/' + featuredProject.slug + '/'}
+      />
+    </ServicePageTemplate>
   )
 }

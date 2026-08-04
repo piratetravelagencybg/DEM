@@ -93,7 +93,7 @@ export default function Header() {
               ))}
               {/* Shop button in nav */}
               <Link
-                href="/каталог/"
+                href="/готови-мебели/"
                 className="inline-flex items-center gap-1.5 font-body font-semibold text-sm px-4 py-2 rounded-full transition-all duration-200 hover:-translate-y-0.5"
                 style={{
                   background: scrolled ? '#8B6F47' : 'rgba(255,255,255,0.15)',
@@ -104,7 +104,7 @@ export default function Header() {
                 }}
               >
                 <ShoppingBag size={13} />
-                Онлайн магазин
+                Готови мебели
               </Link>
             </nav>
 
