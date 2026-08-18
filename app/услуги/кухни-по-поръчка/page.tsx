@@ -17,7 +17,7 @@ export const metadata: Metadata = completePageMetadata({
     url: 'https://domexpertmebel.com/услуги/кухни-по-поръчка/',
     title: 'Кухни по поръчка Благоевград | Dom Expert Мебел',
     description: 'Кухни по поръчка в Благоевград, София и региона. Безплатен оглед, платен 3D проект с приспадане при поръчка.',
-    images: [{ url: '/images/real/kuhnya-01.webp', width: 1200, height: 630, alt: 'Кухни по поръчка — Dom Expert Мебел' }],
+    images: [{ url: '/images/og/kitchens.webp', width: 1200, height: 630, alt: 'Примерна визуализация на кухня по поръчка' }],
   },
 })
 

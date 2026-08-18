@@ -9,7 +9,7 @@ import CatalogPreview from '@/components/home/CatalogPreview'
 import GoogleBusinessProfile from '@/components/home/GoogleBusinessProfile'
 import CTABar from '@/components/home/CTABar'
 import LocalBusinessSchema from '@/components/seo/LocalBusinessSchema'
-import { getAllMbxCatalogProducts } from '@/lib/mbx-catalog'
+import { getAllMbxProducts } from '@/lib/mbx'
 import { createPageMetadata } from '@/lib/seo'
 
 export const metadata: Metadata = createPageMetadata({
@@ -20,7 +20,7 @@ export const metadata: Metadata = createPageMetadata({
 })
 
 export default function HomePage() {
-  const catalogPreview = getAllMbxCatalogProducts().slice(0, 6)
+  const catalogPreview = getAllMbxProducts().slice(0, 6)
 
   return (
     <>

@@ -17,7 +17,7 @@ export const metadata: Metadata = completePageMetadata({
     url: 'https://domexpertmebel.com/услуги/гардероби-по-поръчка/',
     title: 'Гардероби по поръчка Благоевград | Dom Expert Мебел',
     description: 'Вградени и корпусни гардероби по поръчка в Благоевград, София и региона. Безплатен оглед и 2 години гаранция.',
-    images: [{ url: '/images/real/garderob-01.webp', width: 1200, height: 630, alt: 'Гардероби по поръчка — Dom Expert Мебел' }],
+    images: [{ url: '/images/og/wardrobes.webp', width: 1200, height: 630, alt: 'Примерна визуализация на гардероб по поръчка' }],
   },
 })
 

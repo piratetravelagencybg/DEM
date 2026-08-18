@@ -49,6 +49,14 @@ function getCityPage(city: string) {
   return cityPageByName[city as keyof typeof cityPageByName] || '/контакти/'
 }
 
+const PROJECT_SOCIAL_IMAGES: Record<string, string> = {
+  kuhni: '/images/og/kitchens.webp',
+  garderob: '/images/og/wardrobes.webp',
+  spalni: '/images/og/bedrooms.webp',
+  dnevni: '/images/og/living.webp',
+  ofis: '/images/og/office.webp',
+}
+
 export async function generateStaticParams() {
   return projects.map((project) => ({ slug: project.slug }))
 }
@@ -61,8 +69,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `${project.title} в ${project.city} | Dom Expert Мебел`,
     description: prepareSeoDescription(seoDescriptionBySlug[project.slug] || project.description),
     path: `/проекти/${project.slug}/`,
-    image: project.images[0],
-    imageAlt: `${project.title} в ${project.city} — реализиран проект`,
+    image: PROJECT_SOCIAL_IMAGES[project.category] || '/images/og/home.webp',
+    imageAlt: `${project.title} в ${project.city} — примерна визуализация към реализиран проект`,
   })
 }
 
@@ -91,7 +99,6 @@ export default function ProjectPage({ params }: Props) {
     name: `${project.title} в ${project.city}`,
     headline: project.title,
     description: project.description,
-    image: project.images.map((image) => `${SITE_URL}${image}`),
     inLanguage: 'bg-BG',
     material: materials,
     creator: { '@id': `${SITE_URL}/#business` },
@@ -144,13 +151,16 @@ export default function ProjectPage({ params }: Props) {
           <header className="relative h-[430px] sm:h-[500px] lg:h-[600px]">
             <Image
               src={project.images[0]}
-              alt={`${project.title} в ${project.city} — реализиран проект`}
+              alt={`${project.title} в ${project.city} — примерна визуализация към реализиран проект`}
               fill
               className="object-cover"
               priority
               sizes="100vw"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-charcoal/85 via-charcoal/25 to-transparent" />
+            <p className="absolute left-4 right-4 top-4 z-10 ml-auto max-w-xl rounded-xl bg-charcoal/85 px-4 py-2 font-body text-xs leading-relaxed text-white backdrop-blur-sm sm:left-auto sm:right-6 sm:top-6">
+              {project.imageCaption}
+            </p>
             <div className="absolute inset-x-0 bottom-0 container-main pb-8 sm:pb-12">
               <Link href="/проекти/" className="mb-5 inline-flex items-center gap-2 font-body text-sm text-white/80 transition-colors hover:text-white">
                 <ArrowLeft size={16} aria-hidden="true" /> Всички проекти
@@ -168,7 +178,7 @@ export default function ProjectPage({ params }: Props) {
             <div className="container-main grid gap-10 lg:grid-cols-[minmax(0,1fr)_340px] lg:gap-14">
               <div className="space-y-10">
                 <div>
-                  <p className="mb-3 font-body text-xs font-semibold uppercase tracking-[0.16em] text-walnut">Реална реализация</p>
+                  <p className="mb-3 font-body text-xs font-semibold uppercase tracking-[0.16em] text-walnut">Реализиран проект</p>
                   <h2 id="project-overview-title" className="section-title mb-5 text-left">Задача и изпълнено решение</h2>
                   <div className="grid gap-5 sm:grid-cols-2">
                     <div className="rounded-card border border-walnut/10 bg-warm-white p-6 shadow-sm">
@@ -270,7 +280,7 @@ export default function ProjectPage({ params }: Props) {
               <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
                 <div>
                   <p className="mb-2 font-body text-xs font-semibold uppercase tracking-[0.16em] text-walnut">Още идеи</p>
-                  <h2 id="related-projects-title" className="section-title text-left">Още реализирани проекти</h2>
+                  <h2 id="related-projects-title" className="section-title text-left">Други проектни казуси</h2>
                 </div>
                 <Link href="/проекти/" className="group inline-flex items-center gap-2 font-body text-sm font-semibold text-walnut">
                   Разгледайте всички проекти <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" aria-hidden="true" />
@@ -282,15 +292,21 @@ export default function ProjectPage({ params }: Props) {
                     <div className="relative aspect-[4/3] overflow-hidden">
                       <Image
                         src={candidate.images[0]}
-                        alt={`${candidate.title} в ${candidate.city} — реализиран проект`}
+                        alt={`${candidate.title} в ${candidate.city} — примерна визуализация към реализиран проект`}
                         fill
                         className="object-cover transition-transform duration-500 group-hover:scale-105"
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       />
+                      <span className="absolute left-3 top-3 rounded-full bg-charcoal/80 px-3 py-1 font-body text-[0.65rem] font-semibold uppercase tracking-wide text-white backdrop-blur-sm">
+                        Примерна визуализация
+                      </span>
                     </div>
                     <div className="p-5">
                       <h3 className="font-display text-xl font-semibold text-charcoal transition-colors group-hover:text-walnut">{candidate.title}</h3>
                       <p className="mt-1 font-body text-sm text-warm-gray">{candidate.city} · {candidate.duration}</p>
+                      <p className="mt-3 border-t border-walnut/10 pt-3 font-body text-xs leading-relaxed text-warm-gray">
+                        {candidate.imageCaption}
+                      </p>
                     </div>
                   </Link>
                 ))}

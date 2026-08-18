@@ -118,7 +118,12 @@ export function getCategoryLabel(category: string) {
 }
 
 export function formatPrice(value: number | null) {
-  if (value === null || value === undefined || Number.isNaN(value)) return '—'
+  if (
+    value === null
+    || value === undefined
+    || !Number.isFinite(value)
+    || value <= 0
+  ) return 'Цена по запитване'
   return `${value.toFixed(2).replace('.', ',')} €`
 }
 

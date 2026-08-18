@@ -1,19 +1,18 @@
-﻿import type { MetadataRoute } from 'next'
+import type { MetadataRoute } from 'next'
+import { blogPosts } from '@/data/blog-posts'
 import projects from '@/data/projects.json'
 import services from '@/data/services.json'
-import { getAllMbxProducts } from '@/lib/mbx'
 import { CATALOG_LANDINGS } from '@/lib/catalog-landings'
+import { getAllMbxProducts } from '@/lib/mbx'
 
 const BASE = 'https://domexpertmebel.com'
-
 const SITE_LAUNCH = new Date('2026-07-09')
-const BLOG_DATES: Record<string, string> = {
-  'kak-da-izberem-kuhnya-po-poruchka': '2025-06-01',
-  'garderob-po-poruchka-ili-gotov': '2025-05-15',
-  'tseni-mebeli-po-poruchka-balgariya': '2025-04-20',
-  'mebeli-malak-apartament': '2025-03-10',
-  'mebeli-po-poruchka-tendentsii-2026': '2026-07-10',
-}
+const BLOG_LAST_MODIFIED = new Date(
+  blogPosts.reduce((latest, post) => {
+    const timestamp = Date.parse(post.dateModified ?? post.date)
+    return Number.isNaN(timestamp) ? latest : Math.max(latest, timestamp)
+  }, SITE_LAUNCH.getTime()),
+)
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages = [
@@ -21,34 +20,36 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/за-нас/`, priority: 0.7, changeFrequency: 'monthly' as const, lastModified: SITE_LAUNCH },
     { url: `${BASE}/услуги/`, priority: 0.9, changeFrequency: 'monthly' as const, lastModified: SITE_LAUNCH },
     { url: `${BASE}/проекти/`, priority: 0.8, changeFrequency: 'monthly' as const, lastModified: SITE_LAUNCH },
-    { url: `${BASE}/блог/`, priority: 0.7, changeFrequency: 'weekly' as const, lastModified: SITE_LAUNCH },
+    { url: `${BASE}/блог/`, priority: 0.7, changeFrequency: 'weekly' as const, lastModified: BLOG_LAST_MODIFIED },
     { url: `${BASE}/контакти/`, priority: 0.8, changeFrequency: 'monthly' as const, lastModified: SITE_LAUNCH },
+    { url: `${BASE}/политика-за-поверителност/`, priority: 0.2, changeFrequency: 'yearly' as const, lastModified: SITE_LAUNCH },
     { url: `${BASE}/благоевград/`, priority: 0.9, changeFrequency: 'monthly' as const, lastModified: SITE_LAUNCH },
     { url: `${BASE}/софия/`, priority: 0.9, changeFrequency: 'monthly' as const, lastModified: SITE_LAUNCH },
     { url: `${BASE}/дупница/`, priority: 0.7, changeFrequency: 'monthly' as const, lastModified: SITE_LAUNCH },
     { url: `${BASE}/сандански/`, priority: 0.7, changeFrequency: 'monthly' as const, lastModified: SITE_LAUNCH },
   ]
 
-  const servicePages = services.map((s) => ({
-    url: `${BASE}/услуги/${s.slug}/`,
+  const servicePages = services.map((service) => ({
+    url: `${BASE}/услуги/${service.slug}/`,
     priority: 0.85,
     changeFrequency: 'monthly' as const,
     lastModified: SITE_LAUNCH,
   }))
 
-  const projectPages = projects.map((p) => ({
-    url: `${BASE}/проекти/${p.slug}/`,
+  const projectPages = projects.map((project) => ({
+    url: `${BASE}/проекти/${project.slug}/`,
     priority: 0.7,
     changeFrequency: 'monthly' as const,
     lastModified: SITE_LAUNCH,
   }))
 
-  const products = getAllMbxProducts()
-  const productPages = products.map((p) => ({
-    url: `${BASE}/каталог/${p.slug}/`,
+  const productPages = getAllMbxProducts().map((product) => ({
+    url: `${BASE}/каталог/${product.slug}/`,
     priority: 0.6,
     changeFrequency: 'monthly' as const,
-    lastModified: Number.isNaN(Date.parse(p.lastUpdate)) ? SITE_LAUNCH : new Date(p.lastUpdate),
+    lastModified: Number.isNaN(Date.parse(product.lastUpdate))
+      ? SITE_LAUNCH
+      : new Date(product.lastUpdate),
   }))
 
   const readyFurniturePages = CATALOG_LANDINGS.map((landing) => ({
@@ -58,15 +59,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: SITE_LAUNCH,
   }))
 
-  const blogSlugs = Object.keys(BLOG_DATES)
-  const blogPages = blogSlugs.map((slug) => ({
-    url: `${BASE}/блог/${slug}/`,
+  const blogPages = blogPosts.map((post) => ({
+    url: `${BASE}/блог/${post.slug}/`,
     priority: 0.65,
     changeFrequency: 'monthly' as const,
-    lastModified: new Date(BLOG_DATES[slug]),
+    lastModified: new Date(post.dateModified ?? post.date),
   }))
 
-  return [...staticPages, ...servicePages, ...projectPages, ...readyFurniturePages, ...productPages, ...blogPages].map((page) => ({
+  return [
+    ...staticPages,
+    ...servicePages,
+    ...projectPages,
+    ...readyFurniturePages,
+    ...productPages,
+    ...blogPages,
+  ].map((page) => ({
     url: page.url,
     lastModified: page.lastModified,
     changeFrequency: page.changeFrequency,

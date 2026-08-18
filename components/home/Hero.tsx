@@ -1,7 +1,6 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import Image from 'next/image'
 
 export default function Hero() {
   return (
@@ -14,24 +13,39 @@ export default function Hero() {
         backgroundColor: '#1A1208',
       }}
     >
-      <Image
-        src="/images/hero/hero.webp"
-        alt="Мебели по поръчка от ДомЕксперт"
-        fill
-        priority
-        fetchPriority="high"
-        sizes="100vw"
-        quality={78}
-        className="object-cover"
-      />
+      <picture>
+        <source
+          media="(max-width: 767px)"
+          srcSet="/images/visualizations/home-hero-mobile.webp"
+        />
+        <img
+          src="/images/visualizations/03-home-hero-open-plan-kitchen-03.webp"
+          alt="Примерна интериорна визуализация на кухня и дневна по поръчка"
+          width={1672}
+          height={941}
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+      </picture>
 
       {/* Overlay — dark only at top & bottom, clear in the middle so the image shines */}
-      <div style={{
+      <div className="hidden md:block" style={{
         position: 'absolute',
         inset: 0,
         background: 'linear-gradient(180deg, rgba(10,7,4,0.60) 0%, rgba(10,7,4,0.0) 32%, rgba(10,7,4,0.0) 50%, rgba(10,7,4,0.60) 72%, rgba(10,7,4,0.88) 100%)',
         zIndex: 1,
       }} />
+      <div className="absolute inset-0 z-[1] md:hidden" style={{
+        background: 'linear-gradient(180deg, rgba(10,7,4,0.72) 0%, rgba(10,7,4,0.48) 38%, rgba(10,7,4,0.14) 58%, rgba(10,7,4,0.88) 100%)',
+      }} />
+
+      <span
+        className="absolute right-4 top-20 z-[2] rounded-full bg-black/45 px-3 py-1.5 font-body text-[0.58rem] font-semibold text-white backdrop-blur-md"
+      >
+        Примерна интериорна визуализация
+      </span>
 
       {/* Content */}
       <div style={{

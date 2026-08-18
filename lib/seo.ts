@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 
 const SITE_URL = 'https://domexpertmebel.com'
-const DEFAULT_IMAGE = '/images/hero/hero.webp'
+const DEFAULT_IMAGE = '/images/og/home.webp'
 
 type PageMetadataOptions = {
   title: string
@@ -13,7 +13,57 @@ type PageMetadataOptions = {
   keywords?: string[]
 }
 
-export function shortenSeoTitle(value: string, maxLength = 60) {
+type SocialImageObject = {
+  url: string | URL
+  secureUrl?: string | URL
+  alt?: string
+  type?: string
+  width?: number | string
+  height?: number | string
+}
+
+type SocialImage = string | URL | SocialImageObject
+
+function getImageMimeType(value: string | URL) {
+  const source = value.toString().split('?')[0].toLowerCase()
+  if (source.endsWith('.webp')) return 'image/webp'
+  if (source.endsWith('.png')) return 'image/png'
+  if (source.endsWith('.jpg') || source.endsWith('.jpeg')) return 'image/jpeg'
+  return undefined
+}
+
+function isKnownSocialCrop(value: string | URL) {
+  try {
+    const pathname = new URL(value.toString(), SITE_URL).pathname
+    return pathname.startsWith('/images/og/')
+  } catch {
+    return false
+  }
+}
+
+function buildSocialImage(
+  url: string | URL,
+  alt?: string,
+  source: Partial<SocialImageObject> = {},
+): SocialImageObject {
+  const knownCrop = isKnownSocialCrop(url)
+  return {
+    url,
+    ...(source.secureUrl ? { secureUrl: source.secureUrl } : {}),
+    ...(alt ? { alt } : {}),
+    ...(source.type || getImageMimeType(url)
+      ? { type: source.type || getImageMimeType(url) }
+      : {}),
+    ...(source.width !== undefined
+      ? { width: source.width }
+      : knownCrop ? { width: 1200 } : {}),
+    ...(source.height !== undefined
+      ? { height: source.height }
+      : knownCrop ? { height: 630 } : {}),
+  }
+}
+
+export function shortenSeoTitle(value: string, maxLength = 55) {
   const normalized = value.replace(/\s+/g, ' ').trim()
   if (normalized.length <= maxLength) return normalized
   const candidate = normalized.slice(0, maxLength - 1)
@@ -60,7 +110,7 @@ export function createPageMetadata({
       title: safeTitle,
       description: safeDescription,
       url: canonical,
-      images: [{ url: image, alt: imageAlt }],
+      images: [buildSocialImage(image, imageAlt)],
     },
     twitter: {
       card: 'summary_large_image',
@@ -71,8 +121,6 @@ export function createPageMetadata({
   }
 }
 
-type SocialImage = string | URL | { url: string | URL; alt?: string }
-
 export function completePageMetadata(metadata: Metadata): Metadata {
   const openGraph = metadata.openGraph
   if (!openGraph) return metadata
@@ -82,12 +130,24 @@ export function completePageMetadata(metadata: Metadata): Metadata {
   const cleanImages = rawImages.flatMap<SocialImage>((image) => {
     if (typeof image === 'string' || image instanceof URL) return [image]
     if (!image || typeof image !== 'object' || !('url' in image)) return []
-    const candidate = image as { url?: unknown; alt?: unknown }
+    const candidate = image as Record<string, unknown>
     if (typeof candidate.url !== 'string' && !(candidate.url instanceof URL)) return []
-    return [{
-      url: candidate.url,
-      ...(typeof candidate.alt === 'string' ? { alt: candidate.alt } : {}),
-    }]
+    return [buildSocialImage(
+      candidate.url,
+      typeof candidate.alt === 'string' ? candidate.alt : undefined,
+      {
+        ...(typeof candidate.secureUrl === 'string' || candidate.secureUrl instanceof URL
+          ? { secureUrl: candidate.secureUrl }
+          : {}),
+        ...(typeof candidate.type === 'string' ? { type: candidate.type } : {}),
+        ...(typeof candidate.width === 'number' || typeof candidate.width === 'string'
+          ? { width: candidate.width }
+          : {}),
+        ...(typeof candidate.height === 'number' || typeof candidate.height === 'string'
+          ? { height: candidate.height }
+          : {}),
+      },
+    )]
   })
   const twitterImages = cleanImages.map((image) => (
     typeof image === 'object' && !(image instanceof URL) ? image.url : image

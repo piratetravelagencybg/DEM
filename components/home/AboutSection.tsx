@@ -5,6 +5,10 @@ import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
+import { getImageDisclosure } from '@/lib/image-credits'
+
+const aboutImage = '/images/visualizations/01-home-hero-open-plan-kitchen-01.webp'
+const aboutImageDisclosure = getImageDisclosure(aboutImage)
 
 const stats = [
   { value: '10+', label: 'Години опит' },
@@ -38,8 +42,8 @@ export default function AboutSection() {
         >
           {/* Background image */}
           <Image
-            src="/images/real/spalna-08.webp"
-            alt="Спалня по поръчка Dom Expert Мебел"
+            src={aboutImage}
+            alt="Примерна интериорна визуализация на обзавеждане по поръчка"
             fill
             className="object-cover"
             sizes="(max-width: 768px) 100vw, 80vw"
@@ -52,6 +56,12 @@ export default function AboutSection() {
               background: 'linear-gradient(170deg, rgba(12,8,4,0.18) 0%, rgba(12,8,4,0.55) 55%, rgba(12,8,4,0.88) 100%)',
             }}
           />
+
+          {aboutImageDisclosure && (
+            <span className="absolute right-4 top-4 z-20 rounded-full bg-black/60 px-3 py-1.5 font-body text-[0.62rem] text-white backdrop-blur-md">
+              {aboutImageDisclosure}
+            </span>
+          )}
 
           {/* Content inside card */}
           <div className="relative z-10 flex flex-col justify-end h-full p-6 md:p-10" style={{ minHeight: 'inherit' }}>

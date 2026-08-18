@@ -11,38 +11,38 @@ const services = [
     title: 'Кухни по поръчка',
     href: '/услуги/кухни-по-поръчка/',
     desc: 'Модерни и класически кухни по ваш проект и вкус.',
-    image: '/images/real/kuhnya-02.webp',
+    image: '/images/visualizations/05-modern-kitchen-oak-01.webp',
     tag: 'Най-търсено',
   },
   {
     title: 'Гардероби',
     href: '/услуги/гардероби-по-поръчка/',
     desc: 'Вградени гардероби за всяко пространство',
-    image: '/images/real/garderob-01.webp',
+    image: '/images/visualizations/21-modern-wardrobe-bedroom-01.webp',
   },
   {
     title: 'Спални',
     href: '/услуги/спални-по-поръчка/',
     desc: 'Легла и спални комплекти по дизайн',
-    image: '/images/real/spalna-08.webp',
+    image: '/images/visualizations/19-modern-bedroom-neutral-01.webp',
   },
   {
     title: 'Дневни',
     href: '/услуги/дневни-по-поръчка/',
     desc: 'ТВ секции, стелажи и холни мебели',
-    image: '/images/real/dnevna-01.webp',
+    image: '/images/visualizations/04-home-hero-open-plan-kitchen-04.webp',
   },
   {
     title: 'Офис мебели',
     href: '/услуги/офис-мебели/',
     desc: 'Бюра и офис обзавеждане за бизнеса',
-    image: '/images/real/office-corner.webp',
+    image: '/images/visualizations/13-modern-home-office-double-desk-01.webp',
   },
   {
     title: 'Монтаж',
     href: '/услуги/монтаж/',
     desc: 'Прецизен монтаж с гаранция',
-    image: '/images/real/kuhnya-05.webp',
+    image: '/images/stock/assembly-tools-pexels.webp',
   },
 ]
 
@@ -56,7 +56,7 @@ function FeaturedCard({ s }: { s: (typeof services)[0] }) {
     >
       <Image
         src={s.image}
-        alt={s.title}
+        alt={`${s.title} – ${s.image.includes('/stock/') ? 'илюстративна снимка' : 'примерна визуализация'}`}
         fill
         className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
         sizes="(max-width: 768px) 100vw, 66vw"
@@ -88,6 +88,10 @@ function FeaturedCard({ s }: { s: (typeof services)[0] }) {
         </div>
       )}
 
+      <span className="absolute right-4 top-4 z-10 rounded-full bg-black/55 px-2.5 py-1 font-body text-[0.55rem] font-semibold text-white backdrop-blur-md">
+        {s.image.includes('/stock/') ? 'Илюстративна снимка' : 'Примерна визуализация'}
+      </span>
+
       {/* Bottom text */}
       <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 z-10">
         <h3
@@ -117,11 +121,14 @@ function SmallCard({ s }: { s: (typeof services)[0] }) {
     >
       <Image
         src={s.image}
-        alt={s.title}
+        alt={`${s.title} – ${s.image.includes('/stock/') ? 'илюстративна снимка' : 'примерна визуализация'}`}
         fill
         className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
         sizes="(max-width: 768px) 50vw, 33vw"
       />
+      <span className="absolute right-2.5 top-2.5 z-10 rounded-full bg-black/55 px-2 py-1 font-body text-[0.5rem] font-semibold text-white backdrop-blur-md">
+        {s.image.includes('/stock/') ? 'Илюстративно' : 'Визуализация'}
+      </span>
       {/* Bottom gradient */}
       <div
         className="absolute inset-0"
@@ -175,80 +182,30 @@ export default function ServicesGrid() {
           </div>
         </motion.div>
 
-        {/* ─── MOBILE layout ─── */}
-        <div className="md:hidden space-y-3">
-          {/* Featured */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.55, delay: 0.05 }}
-            style={{ height: 280 }}
-          >
-            <FeaturedCard s={services[0]} />
-          </motion.div>
-
-          {/* 2-col grid for the rest */}
-          <div className="grid grid-cols-2 gap-3">
-            {services.slice(1).map((s, i) => (
-              <motion.div
-                key={s.href}
-                initial={{ opacity: 0, y: 14 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.45, delay: 0.12 + i * 0.06 }}
-                style={{ height: 150 }}
-              >
-                <SmallCard s={s} />
-              </motion.div>
-            ))}
-          </div>
-        </div>
-
-        {/* ─── DESKTOP bento grid ─── */}
+        {/* One responsive grid: every service and image is rendered only once. */}
         {/*
           [ Кухни (2cols × 2rows) ] [ Гардероби ]
           [                       ] [ Спални    ]
           [ Дневни ] [ Офис ] [ Монтаж ]
         */}
-        <div
-          className="hidden md:grid gap-3"
-          style={{
-            gridTemplateColumns: 'repeat(3, 1fr)',
-            gridTemplateRows: '280px 280px 240px',
-          }}
-        >
-          {/* Featured */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.98 }}
-            animate={inView ? { opacity: 1, scale: 1 } : {}}
-            transition={{ duration: 0.6 }}
-            style={{ gridColumn: 'span 2', gridRow: 'span 2' }}
-          >
-            <FeaturedCard s={services[0]} />
-          </motion.div>
+        <div className="grid grid-cols-2 gap-3 md:grid-cols-3 md:grid-rows-[280px_280px_240px]">
+          {services.map((s, i) => {
+            const isFeatured = i === 0
 
-          {/* Гардероби + Спални */}
-          {services.slice(1, 3).map((s, i) => (
+            return (
             <motion.div
               key={s.href}
-              initial={{ opacity: 0, x: 18 }}
-              animate={inView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.12 + i * 0.1 }}
+              initial={{ opacity: 0, y: isFeatured ? 16 : 14, scale: isFeatured ? 0.98 : 1 }}
+              animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
+              transition={{ duration: isFeatured ? 0.6 : 0.45, delay: isFeatured ? 0.05 : 0.12 + (i - 1) * 0.06 }}
+              className={isFeatured
+                ? 'col-span-2 h-[280px] md:row-span-2 md:h-auto'
+                : 'h-[150px] md:h-auto'}
             >
-              <SmallCard s={s} />
+              {isFeatured ? <FeaturedCard s={s} /> : <SmallCard s={s} />}
             </motion.div>
-          ))}
-
-          {/* Bottom row */}
-          {services.slice(3).map((s, i) => (
-            <motion.div
-              key={s.href}
-              initial={{ opacity: 0, y: 18 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.28 + i * 0.08 }}
-            >
-              <SmallCard s={s} />
-            </motion.div>
-          ))}
+            )
+          })}
         </div>
 
       </div>

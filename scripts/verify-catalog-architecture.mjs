@@ -32,6 +32,9 @@ const {
   compareCatalogProductIdentity,
   getCatalogLandingCounts,
 } = await import(pathToFileURL(path.join(repositoryRoot, 'lib', 'catalog-models.ts')).href)
+const {
+  selectCrawlableVariants,
+} = await import(pathToFileURL(path.join(repositoryRoot, 'lib', 'product-variants.ts')).href)
 
 const rawCatalog = await readFile(path.join(repositoryRoot, 'data', 'mbx-catalog.json'), 'utf8')
 const catalog = JSON.parse(rawCatalog)
@@ -96,7 +99,9 @@ checkCondition(
 )
 
 const invalidAggregates = index.models.filter((model) => {
-  const prices = model.variants.map((variant) => variant.priceVat).filter((price) => price !== null)
+  const prices = model.variants
+    .map((variant) => variant.priceVat)
+    .filter((price) => typeof price === 'number' && Number.isFinite(price) && price > 0)
   const expectedImages = new Set(model.variants.map((variant) => variant.imageUrl).filter(Boolean))
   const expectedAvailability = new Set(model.variants.map((variant) => variant.availability).filter(Boolean))
   return model.variantCount !== model.variants.length
@@ -104,6 +109,7 @@ const invalidAggregates = index.models.filter((model) => {
     || model.images.length !== expectedImages.size
     || model.availability.values.length !== expectedAvailability.size
     || (prices.length > 0 && (model.minPrice !== Math.min(...prices) || model.maxPrice !== Math.max(...prices)))
+    || (prices.length === 0 && (model.minPrice !== null || model.maxPrice !== null))
     || model.tags.rooms.length === 0
     || model.tags.types.length === 0
 })
@@ -111,6 +117,54 @@ checkCondition(
   'model aggregates are complete and internally consistent',
   invalidAggregates.length === 0,
   `invalid model keys: ${invalidAggregates.slice(0, 10).map((model) => model.key).join(', ')}`,
+)
+
+const graph = new Map(activeProducts.map((product) => [product.slug, new Set()]))
+const incomingVariantLinks = new Map(activeProducts.map((product) => [product.slug, 0]))
+for (const model of index.models) {
+  for (const current of model.variants) {
+    const targets = selectCrawlableVariants(model.variants, current)
+    for (const target of targets) {
+      if (target.slug === current.slug) continue
+      graph.get(current.slug)?.add(target.slug)
+      incomingVariantLinks.set(target.slug, (incomingVariantLinks.get(target.slug) || 0) + 1)
+    }
+  }
+}
+
+const depthBySlug = new Map(index.models.map((model) => [model.representative.slug, 0]))
+const queue = [...depthBySlug.keys()]
+for (let cursor = 0; cursor < queue.length; cursor += 1) {
+  const source = queue[cursor]
+  const nextDepth = (depthBySlug.get(source) || 0) + 1
+  for (const target of graph.get(source) || []) {
+    if (depthBySlug.has(target)) continue
+    depthBySlug.set(target, nextDepth)
+    queue.push(target)
+  }
+}
+
+const maxVariantDepth = Math.max(...depthBySlug.values())
+const unreachableVariants = activeProducts.filter((product) => !depthBySlug.has(product.slug))
+const variantsWithoutIncomingLinks = index.models.flatMap((model) => (
+  model.variantCount > 1
+    ? model.variants.filter((variant) => (incomingVariantLinks.get(variant.slug) || 0) === 0)
+    : []
+))
+checkCondition(
+  'every SKU is reachable through compact product-variant links',
+  unreachableVariants.length === 0,
+  `unreachable slugs: ${unreachableVariants.slice(0, 10).map((product) => product.slug).join(', ')}`,
+)
+checkCondition(
+  'variant link depth stays within the crawler budget',
+  maxVariantDepth <= 8,
+  `maximum depth: ${maxVariantDepth}`,
+)
+checkCondition(
+  'every grouped SKU has a non-self incoming variant link',
+  variantsWithoutIncomingLinks.length === 0,
+  `missing incoming links: ${variantsWithoutIncomingLinks.slice(0, 10).map((product) => product.slug).join(', ')}`,
 )
 
 const intendedIndexedLandings = [

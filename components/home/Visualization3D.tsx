@@ -4,6 +4,10 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
+import { getImageDisclosure } from '@/lib/image-credits'
+
+const visualizationImage = '/images/visualizations/08-modern-kitchen-island-02.webp'
+const visualizationDisclosure = getImageDisclosure(visualizationImage)
 
 const points = [
   'Реалистичен 3D модел с точни размери, цветове и материали',
@@ -17,175 +21,90 @@ export default function Visualization3D() {
 
   return (
     <section ref={ref} style={{ backgroundColor: 'var(--color-warm-white)', overflow: 'hidden' }}>
-
-      {/* ─── MOBILE ─── */}
-      <div className="md:hidden px-5 py-16">
+      <div className="grid md:min-h-[560px] md:grid-cols-2 md:grid-rows-[auto_auto]">
         <motion.div
           initial={{ opacity: 0, y: 18 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.55 }}
+          className="px-5 pt-16 md:col-start-1 md:row-start-1 md:self-end md:pb-0 md:pl-8 md:pr-16 md:pt-20 xl:pl-[calc((100vw_-_1280px)_/_2_+_2rem)]"
         >
           <span className="eyebrow-pill">Проектиране</span>
 
-          <h2
-            className="font-display font-bold heading-gradient leading-[1.05] mb-5"
-            style={{ fontSize: 'clamp(2.4rem, 10vw, 3.2rem)' }}
-          >
-            Проект и<br />3D визуализация
+          <h2 className="mb-5 font-display text-[clamp(2.4rem,10vw,3.2rem)] font-bold leading-[1.05] heading-gradient md:mb-6 md:text-[clamp(2.6rem,4vw,3.8rem)] md:leading-[1.04]">
+            Проект
+            <br className="hidden md:block" /> и
+            <br className="md:hidden" /> 3D
+            <br className="hidden md:block" /> визуализация
           </h2>
 
-          <p
-            className="font-body leading-relaxed mb-6"
-            style={{ fontSize: '0.95rem', color: '#6B6560' }}
-          >
-            Преди изработка получавате пълна 3D визуализация — виждате всеки детайл и одобрявате резултата предварително.
+          <p className="mb-6 max-w-[40ch] font-body text-[0.95rem] leading-relaxed text-[#6B6560] md:mb-8 md:text-base">
+            Преди изработка получавате пълна 3D визуализация на вашите мебели. Виждате всеки детайл, материал и размер предварително.
           </p>
         </motion.div>
 
-        {/* Image */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="relative rounded-[20px] overflow-hidden mb-7"
-          style={{ height: 250 }}
+          initial={{ opacity: 0, scale: 1.03 }}
+          animate={inView ? { opacity: 1, scale: 1 } : {}}
+          transition={{ duration: 0.8, delay: 0.1 }}
+          className="relative mx-5 mb-7 h-[250px] overflow-hidden rounded-[20px] md:col-start-2 md:row-span-2 md:row-start-1 md:m-0 md:h-auto md:min-h-[560px] md:rounded-none"
         >
           <Image
-            src="/images/services/kuhnya.webp"
-            alt="3D визуализация на кухня"
+            src={visualizationImage}
+            alt="Примерна 3D визуализация на кухня по поръчка с остров"
             fill
             className="object-cover"
-            sizes="100vw"
+            sizes="(max-width: 767px) calc(100vw - 40px), 50vw"
           />
+          <div
+            className="pointer-events-none absolute inset-0 hidden md:block"
+            style={{
+              background: 'linear-gradient(to right, var(--color-warm-white) 0%, transparent 18%)',
+            }}
+          />
+          {visualizationDisclosure && (
+            <span className="absolute bottom-3 left-3 rounded-full bg-black/60 px-3 py-1.5 font-body text-[0.62rem] text-white backdrop-blur-md md:bottom-4 md:left-auto md:right-4">
+              {visualizationDisclosure}
+            </span>
+          )}
         </motion.div>
 
-        {/* Points */}
-        <motion.ul
+        <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="space-y-3 mb-6"
+          className="px-5 pb-16 md:col-start-1 md:row-start-2 md:self-start md:pl-8 md:pr-16 md:pb-20 xl:pl-[calc((100vw_-_1280px)_/_2_+_2rem)]"
         >
-          {points.map((p, i) => (
-            <li key={i} className="flex gap-3 items-start">
-              <span
-                className="flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center mt-0.5 text-white font-body font-bold"
-                style={{ background: '#8B6F47', fontSize: '0.6rem' }}
-              >
-                ✓
-              </span>
-              <span className="font-body text-charcoal leading-snug" style={{ fontSize: '0.9rem' }}>
-                {p}
-              </span>
-            </li>
-          ))}
-        </motion.ul>
-
-        <p
-          className="font-body italic mb-6"
-          style={{ fontSize: '0.82rem', color: '#A09890' }}
-        >
-          * Проектът се заплаща; при поръчка на мебелите приспадаме платената сума.
-        </p>
-
-        <Link href="/контакти/" className="btn-primary w-full justify-center">
-          Поискай проект →
-        </Link>
-      </div>
-
-      {/* ─── DESKTOP: text left, image bleeds to right edge ─── */}
-      <div className="hidden md:flex items-stretch" style={{ minHeight: 560 }}>
-
-        {/* Text side */}
-        <motion.div
-          initial={{ opacity: 0, x: -24 }}
-          animate={inView ? { opacity: 1, x: 0 } : {}}
-          transition={{ duration: 0.65 }}
-          className="flex flex-col justify-center py-20"
-          style={{
-            flex: '0 0 50%',
-            paddingLeft: 'max(2rem, calc((100vw - 1280px) / 2 + 2rem))',
-            paddingRight: '4rem',
-          }}
-        >
-          <span className="eyebrow-pill">Проектиране</span>
-
-          <h2
-            className="font-display font-bold heading-gradient leading-[1.04] mb-6"
-            style={{ fontSize: 'clamp(2.6rem, 4vw, 3.8rem)' }}
-          >
-            Проект<br />и 3D<br />визуализация
-          </h2>
-
-          <p
-            className="font-body leading-relaxed mb-8"
-            style={{ fontSize: '1rem', color: '#6B6560', maxWidth: '40ch' }}
-          >
-            Преди изработка получавате пълна 3D визуализация на вашите мебели. Виждате всеки детайл, материал и размер предварително.
-          </p>
-
-          <ul className="space-y-4 mb-8">
-            {points.map((p, i) => (
+          <ul className="mb-6 space-y-3 md:mb-8 md:space-y-4">
+            {points.map((point, index) => (
               <motion.li
-                key={i}
+                key={point}
                 initial={{ opacity: 0, x: -12 }}
                 animate={inView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.4, delay: 0.25 + i * 0.08 }}
-                className="flex gap-3 items-start"
+                transition={{ duration: 0.4, delay: 0.25 + index * 0.08 }}
+                className="flex items-start gap-3"
               >
                 <span
-                  className="flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center mt-0.5 text-white font-body font-bold"
-                  style={{ background: '#8B6F47', fontSize: '0.6rem' }}
+                  className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full font-body text-[0.6rem] font-bold text-white"
+                  style={{ background: '#8B6F47' }}
                 >
                   ✓
                 </span>
-                <span className="font-body text-charcoal leading-snug" style={{ fontSize: '0.95rem' }}>
-                  {p}
+                <span className="font-body text-[0.9rem] leading-snug text-charcoal md:text-[0.95rem]">
+                  {point}
                 </span>
               </motion.li>
             ))}
           </ul>
 
-          <p
-            className="font-body italic mb-8"
-            style={{ fontSize: '0.83rem', color: '#A09890' }}
-          >
+          <p className="mb-6 font-body text-[0.82rem] italic text-[#A09890] md:mb-8 md:text-[0.83rem]">
             * Проектът се заплаща; при поръчка на мебелите приспадаме платената сума.
           </p>
 
-          <div>
-            <Link href="/контакти/" className="btn-primary">
-              Поискай проект →
-            </Link>
-          </div>
-        </motion.div>
-
-        {/* Image — bleeds fully to the right edge */}
-        <motion.div
-          initial={{ opacity: 0, scale: 1.03 }}
-          animate={inView ? { opacity: 1, scale: 1 } : {}}
-          transition={{ duration: 0.8, delay: 0.1 }}
-          className="relative flex-1"
-          style={{ minHeight: 480 }}
-        >
-          <Image
-            src="/images/services/kuhnya.webp"
-            alt="3D визуализация на кухня по поръчка"
-            fill
-            className="object-cover"
-            sizes="50vw"
-            priority={false}
-          />
-          {/* Fade on left edge to blend with white */}
-          <div
-            className="absolute inset-0 pointer-events-none"
-            style={{
-              background: 'linear-gradient(to right, var(--color-warm-white) 0%, transparent 18%)',
-            }}
-          />
+          <Link href="/контакти/" className="btn-primary w-full justify-center md:w-auto">
+            Поискай проект →
+          </Link>
         </motion.div>
       </div>
-
     </section>
   )
 }

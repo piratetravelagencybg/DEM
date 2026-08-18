@@ -7,6 +7,7 @@ import CuratedCatalogView, {
   type CuratedCatalogSort,
 } from '@/components/catalog/CuratedCatalogView'
 import { getAllMbxCatalogProducts } from '@/lib/mbx-catalog'
+import { getMbxImageCandidates, getMbxProductByItemId } from '@/lib/mbx'
 import {
   buildCatalogModelIndex,
   compareCatalogProductIdentity,
@@ -26,6 +27,7 @@ import {
   type CatalogFilterDescriptor,
   type CatalogLanding,
 } from '@/lib/catalog-landings'
+import { prepareSeoDescription, shortenSeoTitle } from '@/lib/seo'
 
 type SearchParams = Record<string, string | string[] | undefined>
 
@@ -40,7 +42,7 @@ type LandingDataset = {
 }
 
 const PAGE_SIZE = 36
-const CATALOG_IMAGE = '/images/hero/hero.webp'
+const CATALOG_IMAGE = '/images/og/home.webp'
 const SORT_VALUES: readonly CuratedCatalogSort[] = ['default', 'price-asc', 'price-desc', 'name']
 
 const APPROVED_COLLECTION_LANDINGS = CATALOG_LANDINGS.filter(
@@ -165,11 +167,16 @@ function getCollectionLabel(landing: CatalogLanding) {
 
 function createCard(model: CatalogModel): CuratedCatalogCard {
   const representative = model.representative
+  const fullProduct = getMbxProductByItemId(representative.itemId)
+  const imageUrls = fullProduct
+    ? getMbxImageCandidates(fullProduct)
+    : Array.from(new Set([representative.imageUrl, ...model.images].filter(Boolean)))
+
   return {
     key: model.key,
     href: `/каталог/${representative.slug}/`,
     name: representative.productName,
-    imageUrl: representative.imageUrl || model.images[0] || '',
+    imageUrls,
     minPrice: model.minPrice,
     maxPrice: model.maxPrice,
     variantCount: model.variantCount,
@@ -220,8 +227,12 @@ export function generateMetadata({ params, searchParams }: Props): Metadata {
   if (parsed.page > totalPages) return { robots: { index: false, follow: false } }
 
   const query = getQueryState(searchParams)
-  const title = addPageToTitle(parsed.landing.title, parsed.page)
-  const description = addPageToDescription(parsed.landing.metaDescription, parsed.page, totalPages)
+  const title = shortenSeoTitle(addPageToTitle(parsed.landing.title, parsed.page), 55)
+  const landingDescription = prepareSeoDescription(
+    parsed.landing.metaDescription,
+    'Сравнете размери, предназначение, цени и наличности, за да изберете подходящия модел.',
+  )
+  const description = addPageToDescription(landingDescription, parsed.page, totalPages)
   const canonical = getRequestCanonical(parsed.landing, parsed.canonicalUrl, query.hasAnyQuery)
 
   return {
@@ -242,6 +253,7 @@ export function generateMetadata({ params, searchParams }: Props): Metadata {
         url: CATALOG_IMAGE,
         width: 1200,
         height: 630,
+        type: 'image/webp',
         alt: parsed.landing.h1,
       }],
     },

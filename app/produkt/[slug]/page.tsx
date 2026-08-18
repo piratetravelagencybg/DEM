@@ -6,6 +6,7 @@ import { buildProductContent, buildProductMetadata, buildProductStructuredData, 
 import ProductGallery from '@/components/product/ProductGallery'
 import SafeProductImage from '@/components/product/SafeProductImage'
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import { selectCrawlableVariants } from '@/lib/product-variants'
 
 interface Props { params: { slug: string } }
 
@@ -28,17 +29,20 @@ export default function ProductPage({ params }: Props) {
 
   const group = getMbxGroupById(product.itemGroupId)
   const variants = group?.variants.filter((variant) => variant.active) || [product]
-  const orderedVariants = [product, ...variants.filter((variant) => variant.slug !== product.slug)]
-  const visibleVariants = orderedVariants.slice(0, 12)
-  const hiddenVariantCount = Math.max(0, orderedVariants.length - visibleVariants.length)
+  const visibleVariants = selectCrawlableVariants(variants, product)
+  const hiddenVariantCount = Math.max(0, variants.length - visibleVariants.length)
   const content = buildProductContent(product)
   const related = getRelatedMbxProducts(product)
 
-  const productSchema = buildProductStructuredData(product, visibleVariants)
+  const productSchema = typeof product.priceVat === 'number' && product.priceVat > 0
+    ? buildProductStructuredData(product, visibleVariants)
+    : null
 
   return (
     <div style={{ background: 'var(--color-cream)' }}>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema).replace(/</g, '\\u003c') }} />
+      {productSchema && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema).replace(/</g, '\\u003c') }} />
+      )}
       <BreadcrumbSchema items={[
         { name: 'Начало', url: 'https://domexpertmebel.com/' },
         { name: 'Готови мебели', url: 'https://domexpertmebel.com/готови-мебели/' },
@@ -175,7 +179,7 @@ export default function ProductPage({ params }: Props) {
               {related.map((entry) => (
                 <Link key={entry.slug} href={`/каталог/${entry.slug}/`} className="group block bg-white rounded-xl overflow-hidden transition-all hover:-translate-y-1" style={{ border: '1px solid #EDE5DA' }}>
                   <div className="relative overflow-hidden p-2" style={{ aspectRatio: '4 / 3', background: '#F5F0E8' }}>
-                    <SafeProductImage src={entry.imageUrl} alt={entry.productName} fill className="object-contain transition-transform duration-500 group-hover:scale-[1.02]" sizes="(max-width:768px) 50vw, 300px" />
+                    <SafeProductImage src={entry.imageUrl} fallbackSources={entry.imageAlternatives} alt={entry.productName} fill className="object-contain transition-transform duration-500 group-hover:scale-[1.02]" sizes="(max-width:768px) 50vw, 300px" />
                   </div>
                   <div style={{ padding: '12px 14px 14px' }}>
                     <h3 className="font-body font-bold text-charcoal leading-snug mb-2" style={{ fontSize: '0.84rem' }}>{entry.productName}</h3>

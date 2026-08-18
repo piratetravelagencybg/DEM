@@ -63,6 +63,7 @@ export type MbxImportData = {
 const importData = mbxImport as MbxImportData
 const activeProducts = importData.products.filter((product) => product.active)
 const productsBySlug = new Map(activeProducts.map((product) => [product.slug, product]))
+const productsByItemId = new Map(activeProducts.map((product) => [product.itemId, product]))
 const activeGroups = importData.groups.filter((group) => group.variants.some((variant) => variant.active))
 const groupsById = new Map(activeGroups.map((group) => [group.groupId, group]))
 const productsByPrimaryCategory = new Map<string, MbxVariant[]>()
@@ -91,6 +92,16 @@ export function getAllMbxProducts() {
 
 export function getMbxProductBySlug(slug: string) {
   return productsBySlug.get(slug)
+}
+
+export function getMbxProductByItemId(itemId: string) {
+  return productsByItemId.get(itemId)
+}
+
+export function getMbxImageCandidates(product: Pick<MbxVariant, 'imageUrl' | 'imageAlternatives'>) {
+  return Array.from(new Set(
+    [product.imageUrl, ...product.imageAlternatives].filter(Boolean),
+  ))
 }
 
 export function getMbxGroups() {
@@ -147,6 +158,19 @@ function normalizeCopy(value: string) {
     .replace(/[*_~`]+/g, '')
     .replace(/\s+/g, ' ')
     .trim()
+}
+
+function normalizeImageUrl(value: string) {
+  const candidate = value.trim()
+  if (!candidate) return ''
+
+  try {
+    const url = new URL(candidate)
+    if (url.protocol !== 'https:' && url.protocol !== 'http:') return ''
+    return url.toString()
+  } catch {
+    return ''
+  }
 }
 
 function truncateAtWord(value: string, maxLength: number) {
@@ -216,7 +240,9 @@ function buildProductStructuredDataNode(product: MbxVariant) {
   const content = buildProductContent(product)
   const images = Array.from(new Set(
     [product.imageUrl, ...product.imageAlternatives]
-      .map((image) => normalizeCopy(image))
+      // Image URLs must not pass through normalizeCopy(): underscores are
+      // meaningful in MBX endpoints such as /image_1920.
+      .map((image) => normalizeImageUrl(image))
       .filter(Boolean),
   ))
   const gtin = getValidGtin(product.ean)
@@ -298,7 +324,10 @@ export function buildProductContent(product: MbxVariant) {
     ? ' Част е от колекция ' + collection + ', което улеснява комбинирането му с останалите елементи от същата серия.'
     : ''
   const generatedIntro = '„' + product.productName + '“ е модел в категория „' + typeLabel + '“ от каталога на ' + manufacturer + ', подходящ за обзавеждане на ' + roomLabel + '.' + collectionCopy
-  const productDetails = 'Каталожният номер на модела е ' + sku + '. Показаната цена е крайна клиентска цена, а текущият статус е „' + availability + '“. Снимките представят конкретния вариант; при избор сравнете наименованието, конфигурацията и посочените в него декор или размер.'
+  const priceCopy = typeof product.priceVat === 'number' && product.priceVat > 0
+    ? 'Показаната цена е крайна клиентска цена'
+    : 'Цената за този вариант се потвърждава при запитване'
+  const productDetails = 'Каталожният номер на модела е ' + sku + '. ' + priceCopy + ', а текущият статус е „' + availability + '“. Снимките представят конкретния вариант; при избор сравнете наименованието, конфигурацията и посочените в него декор или размер.'
   const orderingHelp = 'Преди поръчка препоръчваме да потвърдите подходящия вариант и размерите за вашето пространство. Екипът на Dom Expert Мебел може да помогне с проверка на актуалната наличност, съвместимите елементи от серията и организацията на поръчката.'
 
   return {
@@ -319,14 +348,16 @@ function buildProductTitle(product: MbxVariant) {
   const sku = normalizeCopy(product.productNo || '')
   const skuSuffix = sku ? ' – ' + sku : ''
   const brandSuffix = ' | Dom Expert'
-  const availableNameLength = Math.max(18, 60 - skuSuffix.length - brandSuffix.length)
+  const availableNameLength = Math.max(18, 55 - skuSuffix.length - brandSuffix.length)
   return truncateAtWord(shortName, availableNameLength) + skuSuffix + brandSuffix
 }
 
 function buildProductMetaDescription(product: MbxVariant) {
   const content = buildProductContent(product)
   const shortName = truncateAtWord(getShortProductName(product), 56)
-  const price = product.priceVat === null ? 'цена по запитване' : 'цена ' + formatPrice(product.priceVat)
+  const price = typeof product.priceVat !== 'number' || product.priceVat <= 0
+    ? 'цена по запитване'
+    : 'цена ' + formatPrice(product.priceVat)
   const description = shortName + ' (' + content.sku + ') – ' + content.typeLabel.toLowerCase() + ' от ' + content.manufacturer + ', ' + price + '. Вижте снимки, варианти и актуална наличност. Поръчка с консултация от Dom Expert Мебел.'
   return truncateAtWord(description, 155)
 }
@@ -335,7 +366,10 @@ export function buildProductMetadata(product: MbxVariant): Metadata {
   const title = buildProductTitle(product)
   const description = buildProductMetaDescription(product)
   const canonical = `https://domexpertmebel.com/каталог/${product.slug}/`
-  const image = product.imageUrl || '/images/hero/hero.webp'
+  // Use a stable local 1200x630 social card. Product photography remains in
+  // Product schema and on the page, while crawlers never depend on MBX or the
+  // disabled Vercel image transformer for Open Graph previews.
+  const image = '/images/og/home.webp'
   return {
     title: { absolute: title },
     description,
@@ -348,7 +382,13 @@ export function buildProductMetadata(product: MbxVariant): Metadata {
       title,
       description,
       url: canonical,
-      images: [{ url: image, alt: product.productName }],
+      images: [{
+        url: image,
+        width: 1200,
+        height: 630,
+        type: 'image/webp',
+        alt: 'Примерна интериорна визуализация – Dom Expert Мебел',
+      }],
     },
     twitter: {
       card: 'summary_large_image',

@@ -19,7 +19,7 @@ export type CuratedCatalogCard = {
   key: string
   href: string
   name: string
-  imageUrl: string
+  imageUrls: readonly string[]
   minPrice: number | null
   maxPrice: number | null
   variantCount: number
@@ -113,7 +113,8 @@ function ProductCard({ card, priority }: { card: CuratedCatalogCard; priority: b
       <Link href={card.href} className="flex h-full flex-col" aria-label={`Виж ${card.name}`}>
         <div className="relative aspect-[4/3] overflow-hidden bg-[#F6F2EC] p-3 sm:p-4">
           <SafeProductImage
-            src={card.imageUrl}
+            src={card.imageUrls[0]}
+            fallbackSources={card.imageUrls.slice(1)}
             alt={card.name}
             fill
             priority={priority}

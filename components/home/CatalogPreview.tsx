@@ -4,11 +4,11 @@ import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
-import type { MbxCatalogProduct } from '@/lib/mbx-catalog'
+import type { MbxVariant } from '@/lib/mbx'
 import { formatPrice, getCategoryLabel } from '@/lib/product-display'
 import SafeProductImage from '@/components/product/SafeProductImage'
 
-export default function CatalogPreview({ products }: { products: MbxCatalogProduct[] }) {
+export default function CatalogPreview({ products }: { products: MbxVariant[] }) {
   const preview = products
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
@@ -71,6 +71,7 @@ export default function CatalogPreview({ products }: { products: MbxCatalogProdu
                   <div className="relative overflow-hidden p-2" style={{ aspectRatio: '4/3', background: '#F5F0E8' }}>
                     <SafeProductImage
                       src={product.imageUrl}
+                      fallbackSources={product.imageAlternatives}
                       alt={product.productName}
                       fill
                       className="object-contain transition-transform duration-600 group-hover:scale-[1.02]"
@@ -135,6 +136,7 @@ export default function CatalogPreview({ products }: { products: MbxCatalogProdu
                   <div className="relative overflow-hidden p-3" style={{ aspectRatio: '4/3', background: '#F5F0E8' }}>
                     <SafeProductImage
                       src={product.imageUrl}
+                      fallbackSources={product.imageAlternatives}
                       alt={product.productName}
                       fill
                       className="object-contain transition-transform duration-700 group-hover:scale-[1.02]"

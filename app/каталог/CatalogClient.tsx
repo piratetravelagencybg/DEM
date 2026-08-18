@@ -4,6 +4,7 @@ import type { MbxCatalogProduct } from '@/lib/mbx-catalog'
 import { formatPrice, getAvailabilityLabel, getCategoryLabel, PRODUCT_TYPES } from '@/lib/product-display'
 import { buildCatalogHref, CATEGORIES, SORT_OPTIONS } from '@/lib/catalog-routing'
 import SafeProductImage from '@/components/product/SafeProductImage'
+import { getMbxProductByItemId } from '@/lib/mbx'
 
 export { CATEGORIES, SORT_OPTIONS }
 
@@ -13,6 +14,8 @@ type ProductCardProps = {
 }
 
 function ProductCard({ product, priority = false }: ProductCardProps) {
+  const fullProduct = getMbxProductByItemId(product.itemId)
+
   return (
     <Link
       href={`/каталог/${product.slug}/`}
@@ -22,6 +25,7 @@ function ProductCard({ product, priority = false }: ProductCardProps) {
       <div className="relative aspect-[4/3] flex-shrink-0 overflow-hidden bg-[#F7F3ED] p-2 sm:p-3">
         <SafeProductImage
           src={product.imageUrl}
+          fallbackSources={fullProduct?.imageAlternatives}
           alt={product.productName}
           fill
           priority={priority}

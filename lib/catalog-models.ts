@@ -243,7 +243,7 @@ function buildModel(key: string, sourceVariants: MbxCatalogProduct[], tagsByItem
   const representative = variants[0]
   const prices = variants
     .map((variant) => variant.priceVat)
-    .filter((price): price is number => price !== null && Number.isFinite(price))
+    .filter((price): price is number => price !== null && Number.isFinite(price) && price > 0)
   const availabilityValues = uniqueSorted(variants.map((variant) => variant.availability).filter(Boolean))
   const rooms = new Set<CatalogRoomTag>()
   const types = new Set<ProductTypeId>()

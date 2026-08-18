@@ -19,7 +19,7 @@ export const metadata: Metadata = completePageMetadata({
     url: 'https://domexpertmebel.com/услуги/офис-мебели/',
     title: 'Офис мебели по поръчка | Dom Expert Мебел',
     description: 'Офис обзавеждане по поръчка в Благоевград и София. Бюра, шкафове, конферентни маси. Корпоративен дизайн.',
-    images: [{ url: '/images/real/office-corner.webp', width: 1200, height: 630, alt: 'Офис мебели по поръчка — Dom Expert Мебел' }],
+    images: [{ url: '/images/og/office.webp', width: 1200, height: 630, alt: 'Примерна визуализация на офис мебели по поръчка' }],
   },
 })
 

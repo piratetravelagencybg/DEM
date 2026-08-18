@@ -8,7 +8,9 @@
     "description": "Модерна кухня с централен остров, изработена от МДФ гланц в бяло и дъб натурал. Оборудвана с вградена техника Bosch, подово осветление и гранитен плот.",
     "materials": "МДФ гланц, плот гранит",
     "duration": "5 седмици",
-    "images": ["/images/real/kuhnya-03.webp"],
+    "images": ["/images/visualizations/07-modern-kitchen-island-01.webp"],
+    "imageType": "visualization",
+    "imageCaption": "Примерна визуализация към описания реализиран проект. Изображението не е фотография от обекта.",
     "featured": true
   },
   {
@@ -20,7 +22,9 @@
     "description": "Вградена гардеробна система с плъзгащи огледални врати, вградено LED осветление и множество отделения за съхранение.",
     "materials": "ПДЧ, огледало, LED",
     "duration": "2 седмици",
-    "images": ["/images/real/garderob-02.webp"],
+    "images": ["/images/visualizations/22-modern-wardrobe-sliding-doors-01.webp"],
+    "imageType": "visualization",
+    "imageCaption": "Примерна визуализация към описания реализиран проект. Изображението не е фотография от обекта.",
     "featured": true
   },
   {
@@ -32,7 +36,9 @@
     "description": "Цялостна дневна стая с ТВ секция, библиотека и вградено осветление. Изработена в тъмно дъбово дърво с меден акцент.",
     "materials": "МДФ фурнир дъб, метален акцент",
     "duration": "4 седмици",
-    "images": ["/images/real/dnevna-03.webp"],
+    "images": ["/images/visualizations/02-home-hero-open-plan-kitchen-02.webp"],
+    "imageType": "visualization",
+    "imageCaption": "Примерна визуализация към описания реализиран проект. Изображението не е фотография от обекта.",
     "featured": true
   },
   {
@@ -44,7 +50,9 @@
     "description": "Цялостна спалня с тапицирано легло в сиво кадифе, нощни шкафчета и вграден гардероб. Минималистичен дизайн с топли тонове.",
     "materials": "МДФ, кадифена тапицерия, ПДЧ",
     "duration": "5 седмици",
-    "images": ["/images/real/spalna-09.webp"],
+    "images": ["/images/visualizations/19-modern-bedroom-neutral-01.webp"],
+    "imageType": "visualization",
+    "imageCaption": "Примерна визуализация към описания реализиран проект. Изображението не е фотография от обекта.",
     "featured": true
   },
   {
@@ -56,7 +64,9 @@
     "description": "Цялостно офис обзавеждане за счетоводна кантора — бюра, архивни шкафове и рецепция по поръчка.",
     "materials": "ПДЧ, МДФ",
     "duration": "3 седмици",
-    "images": ["/images/real/office-corner.webp"],
+    "images": ["/images/visualizations/13-modern-home-office-double-desk-01.webp"],
+    "imageType": "visualization",
+    "imageCaption": "Примерна визуализация към описания реализиран проект. Изображението не е фотография от обекта.",
     "featured": false
   },
   {
@@ -68,7 +78,9 @@
     "description": "Класическа кухня в крем и злато с фрезовани врати, кварцов плот и вграден абсорбатор в колона.",
     "materials": "МДФ профил, кварц Silestone",
     "duration": "6 седмици",
-    "images": ["/images/real/kuhnya-06.webp"],
+    "images": ["/images/visualizations/11-modern-kitchen-gold-accents-01.webp"],
+    "imageType": "visualization",
+    "imageCaption": "Примерна визуализация към описания реализиран проект. Изображението не е фотография от обекта.",
     "featured": false
   }
 ]

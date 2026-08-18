@@ -46,7 +46,7 @@ export default function LocalBusinessSchema() {
       { '@type': 'City', name: 'Банско' },
       { '@type': 'City', name: 'Разлог' },
     ],
-    image: 'https://domexpertmebel.com/images/hero/hero.webp',
+    image: 'https://domexpertmebel.com/images/og/home.webp',
     logo: 'https://domexpertmebel.com/images/logo-icon.webp',
     hasOfferCatalog: {
       '@type': 'OfferCatalog',

@@ -9,11 +9,11 @@ import projects from '@/data/projects.json'
 import { createPageMetadata } from '@/lib/seo'
 
 export const metadata: Metadata = createPageMetadata({
-  title: 'Реализирани мебели по поръчка | Dom Expert Мебел',
-  description: 'Вижте 6 реализирани проекта за кухни, гардероби, спални, дневни и офис мебели по поръчка в Благоевград, София, Дупница и Сандански.',
+  title: 'Проектни казуси за мебели по поръчка | Dom Expert Мебел',
+  description: 'Шест реализирани проекта за кухни, гардероби, спални, дневни и офис мебели с потвърдени данни и ясно обозначени примерни визуализации.',
   path: '/проекти/',
-  image: projects[0]?.images[0],
-  imageAlt: 'Реализирани проекти на Dom Expert Мебел',
+  image: '/images/og/home.webp',
+  imageAlt: 'Примерна визуализация към проектен казус на Dom Expert Мебел',
 })
 
 const categoryLabels: Record<string, string> = {
@@ -48,10 +48,6 @@ const projectListSchema = {
         url,
         name: project.title + ' — ' + project.city,
         description: project.description,
-        primaryImageOfPage: {
-          '@type': 'ImageObject',
-          contentUrl: 'https://domexpertmebel.com' + project.images[0],
-        },
       },
     }
   }),
@@ -62,8 +58,8 @@ const projectCollectionSchema = {
   '@type': 'CollectionPage',
   '@id': 'https://domexpertmebel.com/проекти/#collection',
   url: 'https://domexpertmebel.com/проекти/',
-  name: 'Реализирани мебели по поръчка',
-  description: 'Шест реализирани проекта на Dom Expert Мебел с информация за град, материали и срок.',
+  name: 'Проектни казуси за мебели по поръчка',
+  description: 'Шест реализирани проекта на Dom Expert Мебел с информация за град, материали и срок. Изображенията на страницата са примерни визуализации, а не снимки от обектите.',
   mainEntity: projectListSchema,
 }
 
@@ -82,9 +78,9 @@ export default function ProjectsPage() {
         <div className="container-main">
           <SectionHeader
             level={1}
-            eyebrow="Портфолио"
-            title="Реализирани проекти"
-            subtitle="Реални кухни, гардероби, спални, дневни и офис мебели с посочени град, материали и срок на изпълнение."
+            eyebrow="Проектни казуси"
+            title="Реализирани мебели и решения"
+            subtitle="Фактите за проектите, градовете, материалите и сроковете са от реални реализации. Изображенията са примерни визуализации, а не снимки от обектите."
           />
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -97,11 +93,14 @@ export default function ProjectsPage() {
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <Image
                     src={project.images[0]}
-                    alt={`${project.title} — ${project.city}`}
+                    alt={`${project.title} — примерна визуализация към реализиран проект в ${project.city}`}
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
+                  <span className="absolute left-3 top-3 z-10 rounded-full bg-charcoal/80 px-3 py-1 font-body text-[0.65rem] font-semibold uppercase tracking-wide text-white backdrop-blur-sm">
+                    Примерна визуализация
+                  </span>
                   <div className="absolute inset-0 bg-gradient-to-t from-charcoal/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                 </div>
                 <div className="p-5">
@@ -113,6 +112,9 @@ export default function ProjectsPage() {
                   </h2>
                   <p className="font-body text-warm-gray text-sm">{project.city} · {project.duration}</p>
                   <p className="font-body text-warm-gray text-sm mt-2 line-clamp-2">{project.description}</p>
+                  <p className="mt-3 border-t border-walnut/10 pt-3 font-body text-xs leading-relaxed text-warm-gray">
+                    {project.imageCaption}
+                  </p>
                 </div>
               </Link>
             ))}
@@ -121,7 +123,7 @@ export default function ProjectsPage() {
           <section className="mt-16 rounded-2xl bg-warm-white p-6 md:p-10" style={{ border: '1px solid #E7DDCF' }}>
             <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-10">
               <div>
-                <span className="eyebrow-pill">Реални реализации</span>
+                <span className="eyebrow-pill">Реализирани проекти</span>
                 <h2 className="font-display font-bold text-charcoal mt-2" style={{ fontSize: 'clamp(1.5rem, 3.5vw, 2.2rem)' }}>
                   От конкретната задача до готовото обзавеждане
                 </h2>
@@ -132,7 +134,8 @@ export default function ProjectsPage() {
                 </p>
                 <ul className="space-y-3 mt-6">
                   {[
-                    'Снимка от действително завършен проект',
+                    'Данни от действително завършен проект',
+                    'Примерна визуализация, ясно обозначена като илюстративна',
                     'Посочени град, материали и реален срок',
                     'Връзка към съответната услуга и запитване за подобен проект',
                   ].map((item) => (

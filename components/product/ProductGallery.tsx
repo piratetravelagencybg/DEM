@@ -3,6 +3,8 @@
 import Image from 'next/image'
 import { useEffect, useMemo, useState } from 'react'
 import { ZoomIn, X } from 'lucide-react'
+import { isMbxPlaceholder } from '@/components/product/SafeProductImage'
+import { getMbxImageAtSize } from '@/lib/mbx-image'
 
 const FALLBACK_IMAGE = '/images/product-placeholder.svg'
 
@@ -25,6 +27,8 @@ export default function ProductGallery({ productName, primaryImage, images }: Pr
   const activeImage = visibleImages.includes(selectedImage)
     ? selectedImage
     : visibleImages[0] || FALLBACK_IMAGE
+  const mainImage = getMbxImageAtSize(activeImage, 1024)
+  const fullImage = getMbxImageAtSize(activeImage, 1920)
 
   useEffect(() => {
     if (!isOpen) return
@@ -58,7 +62,7 @@ export default function ProductGallery({ productName, primaryImage, images }: Pr
       >
         <Image
           key={activeImage}
-          src={activeImage}
+          src={mainImage}
           alt={productName}
           fill
           className="object-contain transition-transform duration-300 group-hover:scale-[1.01]"
@@ -66,6 +70,11 @@ export default function ProductGallery({ productName, primaryImage, images }: Pr
           quality={85}
           sizes="(max-width: 1024px) calc(100vw - 32px), 620px"
           onError={() => markImageAsFailed(activeImage)}
+          onLoad={(event) => {
+            void isMbxPlaceholder(event.currentTarget, mainImage).then((isPlaceholder) => {
+              if (isPlaceholder) markImageAsFailed(activeImage)
+            })
+          }}
         />
         <span className="absolute bottom-3 right-3 inline-flex items-center gap-1.5 rounded-full bg-black/55 px-3 py-2 font-body text-xs font-semibold text-white backdrop-blur-md">
           <ZoomIn size={14} /> Увеличи
@@ -95,12 +104,17 @@ export default function ProductGallery({ productName, primaryImage, images }: Pr
                 role="listitem"
               >
                 <Image
-                  src={image}
+                  src={getMbxImageAtSize(image, 512)}
                   alt={`${productName} — снимка ${index + 1}`}
                   fill
                   className="object-contain p-1"
                   sizes="88px"
                   onError={() => markImageAsFailed(image)}
+                  onLoad={(event) => {
+                    void isMbxPlaceholder(event.currentTarget, image).then((isPlaceholder) => {
+                      if (isPlaceholder) markImageAsFailed(image)
+                    })
+                  }}
                 />
               </button>
             )
@@ -129,13 +143,18 @@ export default function ProductGallery({ productName, primaryImage, images }: Pr
             onClick={(event) => event.stopPropagation()}
           >
             <Image
-              src={activeImage}
+              src={fullImage}
               alt={productName}
               fill
               className="object-contain"
               quality={90}
               sizes="95vw"
               onError={() => markImageAsFailed(activeImage)}
+              onLoad={(event) => {
+                void isMbxPlaceholder(event.currentTarget, fullImage).then((isPlaceholder) => {
+                  if (isPlaceholder) markImageAsFailed(activeImage)
+                })
+              }}
             />
           </div>
         </div>

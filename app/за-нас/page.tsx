@@ -5,7 +5,18 @@ import { CheckCircle2, Shield, Users, MapPin, Award } from 'lucide-react'
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
 import LocalBusinessSchema from '@/components/seo/LocalBusinessSchema'
 import AnimatedStats from '@/components/about/AnimatedStats'
+import { getImageCredit, getImageDisclosure } from '@/lib/image-credits'
 import { completePageMetadata } from '@/lib/seo'
+
+const aboutHeroImage = '/images/visualizations/03-home-hero-open-plan-kitchen-03.webp'
+const storyImage = '/images/stock/material-samples-pexels.webp'
+const kitchenVisualization = '/images/visualizations/05-modern-kitchen-oak-01.webp'
+const processImage = '/images/stock/wood-router-unsplash.webp'
+const wardrobeVisualization = '/images/visualizations/24-modern-wardrobe-led-lighting-01.webp'
+const livingVisualization = '/images/visualizations/04-home-hero-open-plan-kitchen-04.webp'
+
+const storyImageCredit = getImageCredit(storyImage)
+const processImageCredit = getImageCredit(processImage)
 
 export const metadata: Metadata = completePageMetadata({
   title: { absolute: 'За Dom Expert Мебел | Семейна мебелна фирма' },
@@ -19,7 +30,7 @@ export const metadata: Metadata = completePageMetadata({
     type: 'website',
     locale: 'bg_BG',
     siteName: 'Dom Expert Мебел',
-    images: [{ url: '/images/real/kuhnya-05.webp', width: 1200, height: 630, alt: 'Проект на семейната фирма Dom Expert Мебел' }],
+    images: [{ url: '/images/og/home.webp', width: 1200, height: 630, alt: 'Примерна интериорна визуализация за мебели по поръчка' }],
   },
 })
 
@@ -61,8 +72,8 @@ export default function AboutPage() {
           style={{ position: 'relative', minHeight: '88vh', display: 'flex', flexDirection: 'column' }}
         >
           <Image
-            src="/images/real/kuhnya-04.webp"
-            alt="Кухня по поръчка — Dom Expert Мебел Благоевград"
+            src={aboutHeroImage}
+            alt="Примерна интериорна визуализация на обзавеждане по поръчка"
             fill
             className="object-cover"
             sizes="100vw"
@@ -72,6 +83,16 @@ export default function AboutPage() {
             position: 'absolute', inset: 0,
             background: 'linear-gradient(to bottom, rgba(8,5,2,0.32) 0%, rgba(8,5,2,0.18) 35%, rgba(8,5,2,0.75) 75%, rgba(8,5,2,0.92) 100%)',
           }} />
+          <span
+            className="font-body"
+            style={{
+              position: 'absolute', zIndex: 20, top: '5.5rem', right: 'max(1.25rem, calc((100vw - 1120px) / 2))',
+              borderRadius: 100, padding: '6px 12px', fontSize: '0.65rem',
+              color: 'white', background: 'rgba(0,0,0,0.58)', backdropFilter: 'blur(8px)',
+            }}
+          >
+            {getImageDisclosure(aboutHeroImage)}
+          </span>
 
           <div style={{
             position: 'relative', zIndex: 10, flex: 1,
@@ -170,11 +191,11 @@ export default function AboutPage() {
                 </ul>
               </div>
 
-              {/* Photo */}
+              {/* Illustrative material image */}
               <div className="relative rounded-2xl overflow-hidden" style={{ aspectRatio: '4/5' }}>
                 <Image
-                  src="/images/real/spalna-01.webp"
-                  alt="Спалня по поръчка — Dom Expert Мебел Благоевград"
+                  src={storyImage}
+                  alt="Илюстративна снимка на мостри за материали и цветове"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 45vw"
@@ -183,12 +204,22 @@ export default function AboutPage() {
                   position: 'absolute', inset: 0,
                   background: 'linear-gradient(to top, rgba(12,8,4,0.7) 0%, transparent 55%)',
                 }} />
+                {storyImageCredit && (
+                  <a
+                    href={storyImageCredit.sourceUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="absolute right-3 top-3 rounded-full bg-black/60 px-3 py-1.5 font-body text-[0.62rem] text-white backdrop-blur-md transition-colors hover:bg-black/75"
+                  >
+                    Илюстративна снимка: {storyImageCredit.label}
+                  </a>
+                )}
                 <div style={{ position: 'absolute', bottom: 22, left: 22, right: 22 }}>
                   <p className="font-body font-semibold text-white" style={{ fontSize: '0.85rem' }}>
-                    ул. Стамболийски 52, Благоевград
+                    Материали според проекта и бюджета
                   </p>
                   <p style={{ fontSize: '0.72rem', color: 'rgba(255,255,255,0.5)', marginTop: 4 }}>
-                    Пон–Пет 09:00–18:00 · 0876 081 199
+                    Конкретните декори и механизми се уточняват индивидуално.
                   </p>
                 </div>
               </div>
@@ -202,15 +233,15 @@ export default function AboutPage() {
           <div className="container-main">
             <div className="relative overflow-hidden rounded-2xl" style={{ aspectRatio: '21/9' }}>
               <Image
-                src="/images/real/kuhnya-06.webp"
-                alt="Кухня по поръчка — реализация Dom Expert Мебел Благоевград"
+                src={kitchenVisualization}
+                alt="Примерна визуализация на модерна кухня по поръчка"
                 fill
                 className="object-cover"
                 sizes="100vw"
               />
             </div>
             <p className="font-body text-center" style={{ fontSize: '0.75rem', color: '#A09890', marginTop: 12, fontStyle: 'italic' }}>
-              Кухня по поръчка — реализация на Dom Expert Мебел, Благоевград
+              Примерна визуализация за вдъхновение — изображението не е снимка на реализиран обект.
             </p>
           </div>
         </section>
@@ -323,15 +354,25 @@ export default function AboutPage() {
                 ))}
               </div>
 
-              {/* Right: photo */}
+              {/* Right: illustrative process photo */}
               <div className="relative rounded-2xl overflow-hidden" style={{ aspectRatio: '4/5' }}>
                 <Image
-                  src="/images/real/kuhnya-03.webp"
-                  alt="Процес на изработка на кухня по поръчка — Dom Expert Мебел"
+                  src={processImage}
+                  alt="Илюстративна снимка на обработка на дървен детайл в работилница"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 45vw"
                 />
+                {processImageCredit && (
+                  <a
+                    href={processImageCredit.sourceUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="absolute bottom-3 right-3 rounded-full bg-black/60 px-3 py-1.5 font-body text-[0.62rem] text-white backdrop-blur-md transition-colors hover:bg-black/75"
+                  >
+                    Илюстративна снимка: {processImageCredit.label}
+                  </a>
+                )}
               </div>
 
             </div>
@@ -342,22 +383,28 @@ export default function AboutPage() {
         <section style={{ backgroundColor: 'var(--color-cream)', padding: '56px 0' }}>
           <div className="container-main">
             <div className="text-center mb-8">
-              <span className="eyebrow-pill">Реализации</span>
+              <span className="eyebrow-pill">Вдъхновение</span>
               <h2
                 className="font-display font-bold heading-gradient leading-[1.1] mt-2"
                 style={{ fontSize: 'clamp(1.7rem, 3.8vw, 2.4rem)' }}
               >
-                Нашата работа говори сама
+                Идеи за вашия проект
               </h2>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="relative overflow-hidden rounded-2xl" style={{ aspectRatio: '3/4' }}>
-                <Image src="/images/real/garderob-02.webp" alt="Гардероб по поръчка — Dom Expert Мебел"
+                <Image src={wardrobeVisualization} alt="Примерна визуализация на гардероб с вътрешно осветление"
                   fill className="object-cover" sizes="(max-width: 640px) 100vw, 50vw" />
+                <span className="absolute bottom-3 left-3 rounded-full bg-black/60 px-3 py-1.5 font-body text-[0.62rem] text-white backdrop-blur-md">
+                  {getImageDisclosure(wardrobeVisualization)}
+                </span>
               </div>
               <div className="relative overflow-hidden rounded-2xl" style={{ aspectRatio: '3/4' }}>
-                <Image src="/images/real/dnevna-02.webp" alt="Дневна по поръчка — Dom Expert Мебел"
+                <Image src={livingVisualization} alt="Примерна визуализация на отворена дневна зона"
                   fill className="object-cover" sizes="(max-width: 640px) 100vw, 50vw" />
+                <span className="absolute bottom-3 left-3 rounded-full bg-black/60 px-3 py-1.5 font-body text-[0.62rem] text-white backdrop-blur-md">
+                  {getImageDisclosure(livingVisualization)}
+                </span>
               </div>
             </div>
             <div className="text-center mt-7">

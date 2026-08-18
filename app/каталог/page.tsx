@@ -15,7 +15,7 @@ import CTABar from '@/components/home/CTABar'
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
 
 const BASE_URL = 'https://domexpertmebel.com'
-const CATALOG_IMAGE = '/images/hero/hero.webp'
+const CATALOG_IMAGE = '/images/og/home.webp'
 const DEFAULT_DESCRIPTION = 'Разгледайте мебели от MBX с актуални цени, снимки и наличности. Филтрирайте по стая и вид мебел и поръчайте с консултация от Dom Expert Мебел.'
 
 export const revalidate = 86400
@@ -54,7 +54,7 @@ export function buildCatalogMetadata(state: CatalogRouteState): Metadata {
       title,
       description,
       url: canonical,
-      images: [{ url: CATALOG_IMAGE, width: 1200, height: 630, alt: 'Каталог мебели от Dom Expert Мебел' }],
+      images: [{ url: CATALOG_IMAGE, width: 1200, height: 630, type: 'image/webp', alt: 'Каталог мебели от Dom Expert Мебел' }],
     },
     twitter: {
       card: 'summary_large_image',

@@ -44,13 +44,13 @@ export const metadata: Metadata = {
     title: 'Мебели по поръчка Благоевград и София | Dom Expert Мебел',
     description: 'Семейна фирма за мебели по поръчка. Безплатен оглед, платен 3D проект с приспадане при поръчка и 2 години гаранция.',
     url: 'https://domexpertmebel.com/',
-    images: [{ url: '/images/hero/hero.webp', width: 1200, height: 630, alt: 'Dom Expert Мебел' }],
+    images: [{ url: '/images/og/home.webp', width: 1200, height: 630, type: 'image/webp', alt: 'Примерна интериорна визуализация – Dom Expert Мебел' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Мебели по поръчка | Dom Expert Мебел',
     description: 'Мебели по поръчка в Благоевград, София и региона.',
-    images: ['/images/hero/hero.webp'],
+    images: ['/images/og/home.webp'],
   },
   verification: {
     google: 'x5xQdqBdODlXpaSyVftbqIMvjO0yuPo_D31lm-JCS4U',

@@ -17,7 +17,7 @@ export const metadata: Metadata = completePageMetadata({
     url: 'https://domexpertmebel.com/услуги/спални-по-поръчка/',
     title: 'Спални по поръчка Благоевград | Dom Expert Мебел',
     description: 'Спални и легла по поръчка в Благоевград, София и региона. Безплатен оглед, монтаж и 2 години гаранция.',
-    images: [{ url: '/images/real/spalna-01.webp', width: 1200, height: 630, alt: 'Спални по поръчка — Dom Expert Мебел' }],
+    images: [{ url: '/images/og/bedrooms.webp', width: 1200, height: 630, alt: 'Примерна визуализация на спалня по поръчка' }],
   },
 })
 

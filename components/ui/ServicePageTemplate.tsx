@@ -6,6 +6,7 @@ import FAQSchema from '@/components/seo/FAQSchema'
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
 import LocalBusinessSchema from '@/components/seo/LocalBusinessSchema'
 import ServiceSchema from '@/components/seo/ServiceSchema'
+import { getImageCredit, getImageDisclosure } from '@/lib/image-credits'
 import type { ReactNode } from 'react'
 
 interface ServiceFAQ {
@@ -42,6 +43,8 @@ export default function ServicePageTemplate({
   children,
 }: ServicePageProps) {
   const pageUrl = 'https://domexpertmebel.com/услуги/' + slug + '/'
+  const heroDisclosure = getImageDisclosure(heroImage)
+  const heroCredit = getImageCredit(heroImage)
 
   return (
     <>
@@ -153,7 +156,7 @@ export default function ServicePageTemplate({
               >
                 <Image
                   src={heroImage}
-                  alt={title}
+                  alt={`${title} – ${heroDisclosure?.toLocaleLowerCase('bg-BG') || 'илюстрация'}`}
                   fill
                   className="object-cover"
                   priority
@@ -181,6 +184,23 @@ export default function ServicePageTemplate({
                   </div>
                 </div>
 
+                {heroDisclosure && (
+                  heroCredit ? (
+                    <a
+                      href={heroCredit.sourceUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="absolute bottom-3 right-3 z-10 rounded-full bg-black/60 px-3 py-1.5 font-body text-[0.62rem] text-white backdrop-blur-md transition-colors hover:bg-black/75"
+                    >
+                      {heroDisclosure}
+                    </a>
+                  ) : (
+                    <span className="absolute bottom-3 right-3 z-10 rounded-full bg-black/60 px-3 py-1.5 font-body text-[0.62rem] text-white backdrop-blur-md">
+                      {heroDisclosure}
+                    </span>
+                  )
+                )}
+
                 {/* Stat badge */}
                 <div style={{
                   position: 'absolute', top: 16, right: 16, zIndex: 10,
@@ -207,32 +227,24 @@ export default function ServicePageTemplate({
         <section className="section-py" style={{ backgroundColor: 'var(--color-cream)' }}>
           <div className="container-main">
             <div className="text-center mb-8">
-              <span className="eyebrow-pill">Галерия</span>
+              <span className="eyebrow-pill">Вдъхновение</span>
               <h2 className="font-display font-bold heading-gradient" style={{ fontSize: 'clamp(1.6rem, 4vw, 2.2rem)' }}>
-                Наши реализации
+                Идеи и примерни визуализации
               </h2>
+              <p className="mx-auto mt-3 max-w-2xl font-body text-sm leading-relaxed text-warm-gray">
+                Изображенията показват възможни посоки за стил и разпределение. Конкретното решение се проектира според вашето помещение.
+              </p>
             </div>
-            <div
-              className="grid gap-3"
-              style={{
-                gridTemplateColumns: gallery.length >= 3
-                  ? 'repeat(3, 1fr)'
-                  : `repeat(${gallery.length}, 1fr)`,
-              }}
-            >
-              {gallery.map((item, i) => (
-                <div
-                  key={i}
-                  className="relative overflow-hidden"
-                  style={{
-                    borderRadius: 16,
-                    aspectRatio: i === 0 && gallery.length >= 3 ? '4/3' : '3/4',
-                    ...(i === 0 && gallery.length >= 3 ? {
-                      gridColumn: 'span 2',
-                      gridRow: 'span 1',
-                      aspectRatio: '16/9',
-                    } : {}),
-                  }}
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {gallery.map((item, i) => {
+                const disclosure = getImageDisclosure(item.src)
+                const credit = getImageCredit(item.src)
+                const isFeatured = i === 0 && gallery.length >= 3
+
+                return (
+                <figure
+                  key={item.src}
+                  className={`relative overflow-hidden rounded-2xl ${isFeatured ? 'aspect-video sm:col-span-2' : 'aspect-[4/3]'}`}
                 >
                   <Image
                     src={item.src}
@@ -241,8 +253,24 @@ export default function ServicePageTemplate({
                     className="object-cover hover:scale-105 transition-transform duration-700"
                     sizes="(max-width: 768px) 100vw, 33vw"
                   />
-                </div>
-              ))}
+                  {disclosure && (
+                    credit ? (
+                      <a
+                        href={credit.sourceUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="absolute bottom-3 left-3 rounded-full bg-black/60 px-3 py-1.5 font-body text-[0.62rem] text-white backdrop-blur-md transition-colors hover:bg-black/75"
+                      >
+                        {disclosure}
+                      </a>
+                    ) : (
+                      <figcaption className="absolute bottom-3 left-3 rounded-full bg-black/60 px-3 py-1.5 font-body text-[0.62rem] text-white backdrop-blur-md">
+                        {disclosure}
+                      </figcaption>
+                    )
+                  )}
+                </figure>
+              )})}
             </div>
           </div>
         </section>
