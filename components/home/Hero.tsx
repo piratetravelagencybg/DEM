@@ -59,7 +59,7 @@ export default function Hero() {
       }}>
 
         {/* Spacer for fixed header */}
-        <div style={{ height: '72px', flexShrink: 0 }} />
+        <div className="h-[72px] shrink-0 lg:h-[96px] xl:h-[104px]" />
 
         {/* Badge */}
         <motion.div
