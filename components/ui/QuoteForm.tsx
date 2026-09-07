@@ -31,7 +31,7 @@ export default function QuoteForm({ defaultService = '' }: { defaultService?: st
     const body = encodeURIComponent(
       `Ime: ${data.name}\nTelefon: ${data.phone}\nEmail: ${data.email || '—'}\nGrad: ${data.city}\nUsluga: ${data.service}\n\n${data.message}`
     )
-    window.location.href = `mailto:office@domexpertmebel.com?subject=${subject}&body=${body}`
+    window.location.href = `mailto:domexpertmebel@gmail.com?subject=${subject}&body=${body}`
     setSubmitted(true)
   }
 

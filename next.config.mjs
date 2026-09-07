@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   trailingSlash: true,
+  // Middleware combines host, legacy-path and slash normalization into one
+  // permanent redirect. Disable Next's automatic slash hop to avoid chains.
+  skipTrailingSlashRedirect: true,
   async headers() {
     return [{
       source: '/images/:path*',
@@ -8,14 +11,6 @@ const nextConfig = {
         key: 'Cache-Control',
         value: 'public, max-age=604800, stale-while-revalidate=2592000',
       }],
-    }]
-  },
-  async redirects() {
-    return [{
-      source: '/:path*',
-      has: [{ type: 'host', value: 'www.domexpertmebel.com' }],
-      destination: 'https://domexpertmebel.com/:path*',
-      permanent: true,
     }]
   },
   images: {

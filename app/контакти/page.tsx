@@ -8,7 +8,7 @@ import { createPageMetadata } from '@/lib/seo'
 
 export const metadata: Metadata = createPageMetadata({
   title: 'Контакти | Dom Expert Мебел',
-  description: 'Свържете се с Dom Expert Мебел за безплатна консултация и оферта за мебели по поръчка. Тел: 0876 081 199 | office@domexpertmebel.com | Благоевград',
+  description: 'Свържете се с Dom Expert Мебел за консултация и оферта за мебели по поръчка. Тел: 0876 081 199 | domexpertmebel@gmail.com | Благоевград',
   path: '/контакти/',
   imageAlt: 'Контакти на Dom Expert Мебел',
 })
@@ -40,7 +40,7 @@ export default function ContactsPage() {
               <ul className="mt-4 space-y-1 font-body text-sm text-warm-gray">
                 <li>• Работно време: Понеделник–Петък, 09:00–18:00</li>
                 <li>• Телефон: <a href="tel:+359876081199" className="text-walnut hover:underline">0876 081 199</a></li>
-                <li>• Имейл: <a href="mailto:office@domexpertmebel.com" className="text-walnut hover:underline">office@domexpertmebel.com</a></li>
+                <li>• Имейл: <a href="mailto:domexpertmebel@gmail.com" className="text-walnut hover:underline">domexpertmebel@gmail.com</a></li>
                 <li>
                   • Адрес:{' '}
                   <a
@@ -62,7 +62,7 @@ export default function ContactsPage() {
                 <div className="space-y-4">
                   {[
                     { icon: Phone, label: 'Телефон', value: '0876 081 199', href: 'tel:+359876081199' },
-                    { icon: Mail, label: 'Имейл', value: 'office@domexpertmebel.com', href: 'mailto:office@domexpertmebel.com' },
+                    { icon: Mail, label: 'Имейл', value: 'domexpertmebel@gmail.com', href: 'mailto:domexpertmebel@gmail.com' },
                     { icon: MapPin, label: 'Адрес', value: 'ул. Стамболийски 52, 2700 Благоевград', href: GOOGLE_BUSINESS_PROFILE_URL },
                     { icon: Clock, label: 'Работно време', value: 'Понеделник — Петък: 09:00 — 18:00', href: null },
                   ].map(({ icon: Icon, label, value, href }) => (

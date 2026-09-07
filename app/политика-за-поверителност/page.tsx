@@ -33,7 +33,7 @@ export default function PrivacyPolicyPage() {
             </p>
             <p>За въпроси, свързани с личните данни, можете да се свържете с нас на:</p>
             <ul className="list-disc pl-5 space-y-1">
-              <li>Имейл: <a href="mailto:office@domexpertmebel.com" className="text-walnut hover:underline">office@domexpertmebel.com</a></li>
+              <li>Имейл: <a href="mailto:domexpertmebel@gmail.com" className="text-walnut hover:underline">domexpertmebel@gmail.com</a></li>
               <li>Телефон: <a href="tel:+359876081199" className="text-walnut hover:underline">0876 081 199</a></li>
               <li>Адрес: Благоевград, България</li>
             </ul>
@@ -43,10 +43,12 @@ export default function PrivacyPolicyPage() {
             <h2 className="font-display font-semibold text-charcoal text-xl mb-3">2. Какви данни събираме</h2>
             <p>Събираме следните лични данни, когато попълвате формата за запитване:</p>
             <ul className="list-disc pl-5 space-y-1">
-              <li>Ime (задължително)</li>
+              <li>Име (задължително)</li>
               <li>Телефонен номер (задължително)</li>
               <li>Имейл адрес (по избор)</li>
-              <li>Описание на проекта (по избор)</li>
+              <li>Град и вид на търсената услуга (задължително)</li>
+              <li>Описание на проекта (задължително)</li>
+              <li>Страницата, от която е изпратено запитването, и технически номер на заявката</li>
             </ul>
           </section>
 
@@ -58,23 +60,36 @@ export default function PrivacyPolicyPage() {
               <li>Изготвяне на оферта и 3D проект</li>
               <li>Комуникация относно вашата поръчка</li>
             </ul>
-            <p>Правното основание за обработката е вашето изрично съгласие при изпращане на формата (чл. 6, ал. 1, б. „а" от GDPR).</p>
+            <p>Правното основание за обработката е вашето изрично съгласие при изпращане на формата (чл. 6, ал. 1, б. „а&quot; от GDPR).</p>
           </section>
 
           <section>
-            <h2 className="font-display font-semibold text-charcoal text-xl mb-3">4. Срок на съхранение</h2>
+            <h2 className="font-display font-semibold text-charcoal text-xl mb-3">4. Технически доставчици</h2>
             <p>
-              Личните данни се съхраняват за срок, необходим за изпълнение на договорните ни отношения, но не по-дълго от 3 години след последния контакт с вас, освен ако законът не изисква по-дълъг срок.
+              За хостинг, защитено съхранение и доставяне на известията от формата можем да използваме
+              Vercel, Supabase и Resend. Те обработват единствено данните, необходими за техническото
+              изпълнение на услугата, при приложими договорни и организационни мерки за защита.
+            </p>
+            <p>
+              Данните от формата не се продават и не се използват за маркетингови съобщения без
+              отделно изрично съгласие.
             </p>
           </section>
 
           <section>
-            <h2 className="font-display font-semibold text-charcoal text-xl mb-3">5. Вашите права</h2>
+            <h2 className="font-display font-semibold text-charcoal text-xl mb-3">5. Срок на съхранение</h2>
+            <p>
+              Ако след запитването не се сключи договор, личните данни се изтриват не по-късно от 3 години след изпращането му. При сключен договор данните се съхраняват за сроковете, необходими за изпълнението му и за спазване на приложимите законови изисквания.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="font-display font-semibold text-charcoal text-xl mb-3">6. Вашите права</h2>
             <p>Имате право на:</p>
             <ul className="list-disc pl-5 space-y-1">
               <li><strong className="text-charcoal">Достъп</strong> — да получите копие от личните данни, с които разполагаме</li>
               <li><strong className="text-charcoal">Коригиране</strong> — да коригирате неточни данни</li>
-              <li><strong className="text-charcoal">Изтриване</strong> — да поискате изтриване на данните („право да бъдеш забравен")</li>
+              <li><strong className="text-charcoal">Изтриване</strong> — да поискате изтриване на данните („право да бъдеш забравен&quot;)</li>
               <li><strong className="text-charcoal">Ограничаване</strong> — да ограничите обработката</li>
               <li><strong className="text-charcoal">Оттегляне на съгласие</strong> — по всяко време, без да засяга законосъобразността на обработката преди оттеглянето</li>
               <li><strong className="text-charcoal">Жалба</strong> — до Комисията за защита на личните данни (КЗЛД) на адрес <a href="https://www.cpdp.bg" target="_blank" rel="noopener noreferrer" className="text-walnut hover:underline">www.cpdp.bg</a></li>
@@ -82,16 +97,16 @@ export default function PrivacyPolicyPage() {
           </section>
 
           <section>
-            <h2 className="font-display font-semibold text-charcoal text-xl mb-3">6. Бисквитки (Cookies)</h2>
+            <h2 className="font-display font-semibold text-charcoal text-xl mb-3">7. Бисквитки (Cookies)</h2>
             <p>
               Уебсайтът може да използва технически бисквитки, необходими за правилното му функциониране. Не използваме проследяващи или маркетингови бисквитки без вашето изрично съгласие.
             </p>
           </section>
 
           <section>
-            <h2 className="font-display font-semibold text-charcoal text-xl mb-3">7. Промени в политиката</h2>
+            <h2 className="font-display font-semibold text-charcoal text-xl mb-3">8. Промени в политиката</h2>
             <p>
-              Можем да актуализираме тази политика. При съществени промени ще ви уведомим по имейл или чрез съобщение на сайта. Текущата версия е от <strong className="text-charcoal">юли 2026 г.</strong>
+              Можем да актуализираме тази политика. При съществени промени ще ви уведомим по имейл или чрез съобщение на сайта. Текущата версия е от <strong className="text-charcoal">август 2026 г.</strong>
             </p>
           </section>
 

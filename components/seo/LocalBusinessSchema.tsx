@@ -13,7 +13,7 @@ export default function LocalBusinessSchema() {
     description: 'Семейна фирма за мебели по поръчка в Благоевград, София и региона. Безплатен оглед, платен 3D проект с приспадане при поръчка и 2 години гаранция.',
     url: 'https://domexpertmebel.com',
     telephone: '+359876081199',
-    email: 'office@domexpertmebel.com',
+    email: 'domexpertmebel@gmail.com',
     address: {
       '@type': 'PostalAddress',
       streetAddress: 'ул. Стамболийски 52',

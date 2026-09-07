@@ -151,8 +151,8 @@ function addPageToDescription(description: string, page: number, totalPages: num
   return shortened + '…' + suffix
 }
 
-function getRequestCanonical(landing: CatalogLanding, cleanCanonical: string, hasAnyQuery: boolean) {
-  return hasAnyQuery ? CATALOG_SITE_ORIGIN + landing.path : cleanCanonical
+function getRequestCanonical(_landing: CatalogLanding, cleanCanonical: string, _hasAnyQuery: boolean) {
+  return cleanCanonical
 }
 
 function getPageHeading(landing: CatalogLanding, page: number) {

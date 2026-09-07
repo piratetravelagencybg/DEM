@@ -7,7 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "import:mbx": "node scripts/import-mbx-feed.mjs"
+    "import:mbx": "node scripts/import-mbx-feed.mjs",
+    "test:catalog": "node scripts/verify-catalog-architecture.mjs",
+    "test:seo:source": "node scripts/verify-seo-source.mjs",
+    "test:seo:live": "node scripts/verify-seo-live.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",

@@ -82,7 +82,7 @@ export default function ProductGallery({ productName, primaryImage, images }: Pr
       </button>
 
       {visibleImages.length > 1 && (
-        <div className="mt-3 flex gap-2 overflow-x-auto pb-1" role="list" aria-label="Снимки на продукта">
+        <div className="mt-3 flex gap-2 overflow-x-auto pb-1" role="group" aria-label="Снимки на продукта">
           {visibleImages.map((image, index) => {
             const isActive = image === activeImage
             return (
@@ -101,7 +101,6 @@ export default function ProductGallery({ productName, primaryImage, images }: Pr
                 }}
                 aria-label={`Покажи снимка ${index + 1} от ${visibleImages.length}`}
                 aria-pressed={isActive}
-                role="listitem"
               >
                 <Image
                   src={getMbxImageAtSize(image, 512)}

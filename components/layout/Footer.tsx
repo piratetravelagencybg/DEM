@@ -162,8 +162,8 @@ export default function Footer() {
               </li>
               <li className="flex items-start gap-3">
                 <Mail size={15} className="text-walnut flex-shrink-0 mt-0.5" />
-                <a href="mailto:office@domexpertmebel.com" className="font-body hover:text-sand transition-colors break-all" style={{ fontSize: '0.82rem', color: 'rgba(255,255,255,0.45)' }}>
-                  office@domexpertmebel.com
+                <a href="mailto:domexpertmebel@gmail.com" className="font-body hover:text-sand transition-colors break-all" style={{ fontSize: '0.82rem', color: 'rgba(255,255,255,0.45)' }}>
+                  domexpertmebel@gmail.com
                 </a>
               </li>
               <li className="flex items-start gap-3">

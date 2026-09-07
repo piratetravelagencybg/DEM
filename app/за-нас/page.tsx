@@ -449,7 +449,7 @@ export default function AboutPage() {
               </a>
             </div>
             <p className="font-body mt-8" style={{ fontSize: '0.78rem', color: '#B0A8A0' }}>
-              <Link href="/" style={{ color: '#8B6F47' }} className="hover:underline underline-offset-2">Нашите услуги</Link>
+              <Link href="/услуги/" style={{ color: '#8B6F47' }} className="hover:underline underline-offset-2">Нашите услуги</Link>
               {' · '}
               <Link href="/проекти/" style={{ color: '#8B6F47' }} className="hover:underline underline-offset-2">Завършени проекти</Link>
             </p>

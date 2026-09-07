@@ -22,7 +22,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/проекти/`, priority: 0.8, changeFrequency: 'monthly' as const, lastModified: SITE_LAUNCH },
     { url: `${BASE}/блог/`, priority: 0.7, changeFrequency: 'weekly' as const, lastModified: BLOG_LAST_MODIFIED },
     { url: `${BASE}/контакти/`, priority: 0.8, changeFrequency: 'monthly' as const, lastModified: SITE_LAUNCH },
-    { url: `${BASE}/политика-за-поверителност/`, priority: 0.2, changeFrequency: 'yearly' as const, lastModified: SITE_LAUNCH },
     { url: `${BASE}/благоевград/`, priority: 0.9, changeFrequency: 'monthly' as const, lastModified: SITE_LAUNCH },
     { url: `${BASE}/софия/`, priority: 0.9, changeFrequency: 'monthly' as const, lastModified: SITE_LAUNCH },
     { url: `${BASE}/дупница/`, priority: 0.7, changeFrequency: 'monthly' as const, lastModified: SITE_LAUNCH },
