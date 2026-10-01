@@ -374,7 +374,7 @@ export function buildProductMetadata(product: MbxVariant): Metadata {
     title: { absolute: title },
     description,
     alternates: { canonical },
-    robots: { index: true, follow: true },
+    robots: { index: false, follow: true },
     openGraph: {
       type: 'website',
       locale: 'bg_BG',
