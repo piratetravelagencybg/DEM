@@ -8,6 +8,7 @@ import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
 import LocalBusinessSchema from '@/components/seo/LocalBusinessSchema'
 import ServiceSchema from '@/components/seo/ServiceSchema'
 import { getImageCredit, getImageDisclosure } from '@/lib/image-credits'
+import { SITE_CONFIG } from '@/lib/site-config'
 import type { ReactNode } from 'react'
 
 interface ServiceFAQ {
@@ -213,7 +214,7 @@ export default function ServicePageTemplate({
                   boxShadow: '0 4px 20px rgba(0,0,0,0.12)',
                 }}>
                   <div className="flex items-center gap-0.5 mb-0.5">
-                    <span className="font-display font-bold" style={{ color: '#8B6F47', fontSize: '1rem' }}>10+</span>
+                    <span className="font-display font-bold" style={{ color: '#8B6F47', fontSize: '1rem' }}>{SITE_CONFIG.stats.experienceYears}+</span>
                   </div>
                   <div className="font-body font-semibold" style={{ fontSize: '0.72rem', color: '#3C2A18' }}>
                     години опит

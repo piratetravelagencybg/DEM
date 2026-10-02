@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import HeroRatingBadge from './HeroRatingBadge'
+import { SITE_CONFIG } from '@/lib/site-config'
 
 export default function Hero() {
   return (
@@ -149,7 +150,7 @@ export default function Hero() {
           }}
         >
           {[
-            { n: '10+', l: 'Години опит' },
+            { n: `${SITE_CONFIG.stats.experienceYears}+`, l: 'Години опит' },
             { n: '100+', l: 'Проекти' },
             { n: '2 г.', l: 'Гаранция' },
           ].map((s, i) => (

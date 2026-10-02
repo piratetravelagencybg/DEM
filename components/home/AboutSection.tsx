@@ -6,12 +6,13 @@ import { ArrowRight } from 'lucide-react'
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { getImageDisclosure } from '@/lib/image-credits'
+import { SITE_CONFIG } from '@/lib/site-config'
 
 const aboutImage = '/images/visualizations/01-home-hero-open-plan-kitchen-01.webp'
 const aboutImageDisclosure = getImageDisclosure(aboutImage)
 
 const stats = [
-  { value: '10+', label: 'Години опит' },
+  { value: `${SITE_CONFIG.stats.experienceYears}+`, label: 'Години опит' },
   { value: '100+', label: 'Проекта' },
   { value: '2 г.', label: 'Гаранция' },
 ]
