@@ -157,25 +157,31 @@ export default function MobileMenu({ open, onClose, navLinks, projectsLinks, cit
                   />
                 </button>
 
-                {projectsExpanded && (
-                  <div className="border-t border-[#EEE6DC]">
-                    {projectsLinks.map((project) => {
-                      const active = isActive(project.href)
-                      return (
-                        <Link
-                          key={project.href}
-                          href={project.href}
-                          onClick={onClose}
-                          className="group flex min-h-[48px] items-center gap-3 px-3.5 pl-12 border-b border-[#EEE6DC] last:border-0"
-                          style={{ background: active ? '#F1E8DC' : 'transparent' }}
-                        >
-                          <span className="flex-1 font-body text-[0.9rem] text-charcoal">{project.label}</span>
-                          <ChevronRight size={14} className="text-[#B7A99A] transition-transform group-hover:translate-x-0.5 group-hover:text-walnut" />
-                        </Link>
-                      )
-                    })}
-                  </div>
-                )}
+                {/* Always in HTML, hidden with CSS */}
+                <div
+                  className="border-t border-[#EEE6DC] transition-all duration-300 overflow-hidden"
+                  style={{
+                    maxHeight: projectsExpanded ? '500px' : '0',
+                    opacity: projectsExpanded ? 1 : 0,
+                    borderTopWidth: projectsExpanded ? '1px' : '0',
+                  }}
+                >
+                  {projectsLinks.map((project) => {
+                    const active = isActive(project.href)
+                    return (
+                      <Link
+                        key={project.href}
+                        href={project.href}
+                        onClick={onClose}
+                        className="group flex min-h-[48px] items-center gap-3 px-3.5 pl-12 border-b border-[#EEE6DC] last:border-0"
+                        style={{ background: active ? '#F1E8DC' : 'transparent' }}
+                      >
+                        <span className="flex-1 font-body text-[0.9rem] text-charcoal">{project.label}</span>
+                        <ChevronRight size={14} className="text-[#B7A99A] transition-transform group-hover:translate-x-0.5 group-hover:text-walnut" />
+                      </Link>
+                    )
+                  })}
+                </div>
               </div>
 
               {/* Cities Section */}
@@ -199,25 +205,31 @@ export default function MobileMenu({ open, onClose, navLinks, projectsLinks, cit
                   />
                 </button>
 
-                {citiesExpanded && (
-                  <div className="border-t border-[#EEE6DC]">
-                    {cities.map((city) => {
-                      const active = isActive(city.href)
-                      return (
-                        <Link
-                          key={city.href}
-                          href={city.href}
-                          onClick={onClose}
-                          className="group flex min-h-[48px] items-center gap-3 px-3.5 pl-12 border-b border-[#EEE6DC] last:border-0"
-                          style={{ background: active ? '#F1E8DC' : 'transparent' }}
-                        >
-                          <span className="flex-1 font-body text-[0.9rem] text-charcoal">{city.label}</span>
-                          <ChevronRight size={14} className="text-[#B7A99A] transition-transform group-hover:translate-x-0.5 group-hover:text-walnut" />
-                        </Link>
-                      )
-                    })}
-                  </div>
-                )}
+                {/* Always in HTML, hidden with CSS */}
+                <div
+                  className="border-t border-[#EEE6DC] transition-all duration-300 overflow-hidden"
+                  style={{
+                    maxHeight: citiesExpanded ? '500px' : '0',
+                    opacity: citiesExpanded ? 1 : 0,
+                    borderTopWidth: citiesExpanded ? '1px' : '0',
+                  }}
+                >
+                  {cities.map((city) => {
+                    const active = isActive(city.href)
+                    return (
+                      <Link
+                        key={city.href}
+                        href={city.href}
+                        onClick={onClose}
+                        className="group flex min-h-[48px] items-center gap-3 px-3.5 pl-12 border-b border-[#EEE6DC] last:border-0"
+                        style={{ background: active ? '#F1E8DC' : 'transparent' }}
+                      >
+                        <span className="flex-1 font-body text-[0.9rem] text-charcoal">{city.label}</span>
+                        <ChevronRight size={14} className="text-[#B7A99A] transition-transform group-hover:translate-x-0.5 group-hover:text-walnut" />
+                      </Link>
+                    )
+                  })}
+                </div>
               </div>
             </nav>
 

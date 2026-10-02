@@ -112,7 +112,8 @@ export default function Header() {
                 onMouseEnter={() => setProjectsDropdownOpen(true)}
                 onMouseLeave={() => setProjectsDropdownOpen(false)}
               >
-                <button
+                <Link
+                  href="/проекти/"
                   className="font-body text-sm transition-colors duration-200 relative group flex items-center gap-1"
                   style={{ color: scrolled ? '#2C2C2C' : 'rgba(255,255,255,0.85)' }}
                 >
@@ -125,42 +126,43 @@ export default function Header() {
                     className="absolute -bottom-0.5 left-0 w-0 h-0.5 transition-all duration-200 group-hover:w-full"
                     style={{ background: scrolled ? '#8B6F47' : 'white' }}
                   />
-                </button>
+                </Link>
 
-                {/* Dropdown Menu */}
-                {projectsDropdownOpen && (
-                  <div
-                    className="absolute top-full left-0 mt-2 min-w-[180px] rounded-2xl overflow-hidden"
-                    style={{
-                      background: scrolled ? '#FFFFFF' : 'rgba(31,25,20,0.96)',
-                      backdropFilter: 'blur(12px)',
-                      WebkitBackdropFilter: 'blur(12px)',
-                      border: `1px solid ${scrolled ? '#E8DDD0' : 'rgba(255,255,255,0.12)'}`,
-                      boxShadow: '0 8px 24px rgba(0,0,0,0.15)',
-                    }}
-                  >
-                    {projectsLinks.map((project, index) => (
-                      <Link
-                        key={project.href}
-                        href={project.href}
-                        className="block px-4 py-2.5 font-body text-sm transition-colors duration-150"
-                        style={{
-                          color: scrolled ? '#2C2C2C' : 'rgba(255,255,255,0.85)',
-                          borderBottom: index < projectsLinks.length - 1 ? `1px solid ${scrolled ? '#F0EBE3' : 'rgba(255,255,255,0.08)'}` : 'none',
-                          background: 'transparent',
-                        }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.background = scrolled ? '#F7F3ED' : 'rgba(255,255,255,0.08)'
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.background = 'transparent'
-                        }}
-                      >
-                        {project.label}
-                      </Link>
-                    ))}
-                  </div>
-                )}
+                {/* Dropdown Menu - Always in HTML, hidden with CSS */}
+                <div
+                  className="absolute top-full left-0 mt-2 min-w-[180px] rounded-2xl overflow-hidden transition-all duration-200"
+                  style={{
+                    background: scrolled ? '#FFFFFF' : 'rgba(31,25,20,0.96)',
+                    backdropFilter: 'blur(12px)',
+                    WebkitBackdropFilter: 'blur(12px)',
+                    border: `1px solid ${scrolled ? '#E8DDD0' : 'rgba(255,255,255,0.12)'}`,
+                    boxShadow: '0 8px 24px rgba(0,0,0,0.15)',
+                    opacity: projectsDropdownOpen ? 1 : 0,
+                    pointerEvents: projectsDropdownOpen ? 'auto' : 'none',
+                    transform: projectsDropdownOpen ? 'translateY(0)' : 'translateY(-8px)',
+                  }}
+                >
+                  {projectsLinks.map((project, index) => (
+                    <Link
+                      key={project.href}
+                      href={project.href}
+                      className="block px-4 py-2.5 font-body text-sm transition-colors duration-150"
+                      style={{
+                        color: scrolled ? '#2C2C2C' : 'rgba(255,255,255,0.85)',
+                        borderBottom: index < projectsLinks.length - 1 ? `1px solid ${scrolled ? '#F0EBE3' : 'rgba(255,255,255,0.08)'}` : 'none',
+                        background: 'transparent',
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.background = scrolled ? '#F7F3ED' : 'rgba(255,255,255,0.08)'
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.background = 'transparent'
+                      }}
+                    >
+                      {project.label}
+                    </Link>
+                  ))}
+                </div>
               </div>
 
               {/* Cities Dropdown */}
@@ -169,7 +171,8 @@ export default function Header() {
                 onMouseEnter={() => setCitiesDropdownOpen(true)}
                 onMouseLeave={() => setCitiesDropdownOpen(false)}
               >
-                <button
+                <Link
+                  href="/благоевград/"
                   className="font-body text-sm transition-colors duration-200 relative group flex items-center gap-1"
                   style={{ color: scrolled ? '#2C2C2C' : 'rgba(255,255,255,0.85)' }}
                 >
@@ -182,42 +185,43 @@ export default function Header() {
                     className="absolute -bottom-0.5 left-0 w-0 h-0.5 transition-all duration-200 group-hover:w-full"
                     style={{ background: scrolled ? '#8B6F47' : 'white' }}
                   />
-                </button>
+                </Link>
 
-                {/* Dropdown Menu */}
-                {citiesDropdownOpen && (
-                  <div
-                    className="absolute top-full left-0 mt-2 min-w-[180px] rounded-2xl overflow-hidden"
-                    style={{
-                      background: scrolled ? '#FFFFFF' : 'rgba(31,25,20,0.96)',
-                      backdropFilter: 'blur(12px)',
-                      WebkitBackdropFilter: 'blur(12px)',
-                      border: `1px solid ${scrolled ? '#E8DDD0' : 'rgba(255,255,255,0.12)'}`,
-                      boxShadow: '0 8px 24px rgba(0,0,0,0.15)',
-                    }}
-                  >
-                    {cities.map((city, index) => (
-                      <Link
-                        key={city.href}
-                        href={city.href}
-                        className="block px-4 py-2.5 font-body text-sm transition-colors duration-150"
-                        style={{
-                          color: scrolled ? '#2C2C2C' : 'rgba(255,255,255,0.85)',
-                          borderBottom: index < cities.length - 1 ? `1px solid ${scrolled ? '#F0EBE3' : 'rgba(255,255,255,0.08)'}` : 'none',
-                          background: 'transparent',
-                        }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.background = scrolled ? '#F7F3ED' : 'rgba(255,255,255,0.08)'
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.background = 'transparent'
-                        }}
-                      >
-                        {city.label}
-                      </Link>
-                    ))}
-                  </div>
-                )}
+                {/* Dropdown Menu - Always in HTML, hidden with CSS */}
+                <div
+                  className="absolute top-full left-0 mt-2 min-w-[180px] rounded-2xl overflow-hidden transition-all duration-200"
+                  style={{
+                    background: scrolled ? '#FFFFFF' : 'rgba(31,25,20,0.96)',
+                    backdropFilter: 'blur(12px)',
+                    WebkitBackdropFilter: 'blur(12px)',
+                    border: `1px solid ${scrolled ? '#E8DDD0' : 'rgba(255,255,255,0.12)'}`,
+                    boxShadow: '0 8px 24px rgba(0,0,0,0.15)',
+                    opacity: citiesDropdownOpen ? 1 : 0,
+                    pointerEvents: citiesDropdownOpen ? 'auto' : 'none',
+                    transform: citiesDropdownOpen ? 'translateY(0)' : 'translateY(-8px)',
+                  }}
+                >
+                  {cities.map((city, index) => (
+                    <Link
+                      key={city.href}
+                      href={city.href}
+                      className="block px-4 py-2.5 font-body text-sm transition-colors duration-150"
+                      style={{
+                        color: scrolled ? '#2C2C2C' : 'rgba(255,255,255,0.85)',
+                        borderBottom: index < cities.length - 1 ? `1px solid ${scrolled ? '#F0EBE3' : 'rgba(255,255,255,0.08)'}` : 'none',
+                        background: 'transparent',
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.background = scrolled ? '#F7F3ED' : 'rgba(255,255,255,0.08)'
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.background = 'transparent'
+                      }}
+                    >
+                      {city.label}
+                    </Link>
+                  ))}
+                </div>
               </div>
 
               {/* Shop button in nav */}

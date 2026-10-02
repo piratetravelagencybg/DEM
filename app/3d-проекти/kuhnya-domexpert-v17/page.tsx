@@ -6,16 +6,16 @@ import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
 import { completePageMetadata } from '@/lib/seo'
 
 export const metadata: Metadata = completePageMetadata({
-  title: { absolute: '3D проект на кухня – Кашмир монохромна | Dom Expert Мебел' },
-  description: 'Модерна монохромна кухня с кашмир фронтове, тъмен мраморен гръб Laminam и остров с канали. 3D визуализация и видео разходка.',
+  title: { absolute: '3D проект на модерна кухня с остров – кашмир и Laminam | Dom Expert Мебел' },
+  description: 'П-образна кухня с остров, кашмир фронтове, Laminam мраморен гръб, LED осветление и кафе станция. Детайлна 3D визуализация и видео разходка.',
   alternates: { canonical: 'https://domexpertmebel.com/3d-проекти/kuhnya-domexpert-v17/' },
   openGraph: {
     type: 'article',
     locale: 'bg_BG',
     siteName: 'Dom Expert Мебел',
     url: 'https://domexpertmebel.com/3d-проекти/kuhnya-domexpert-v17/',
-    title: '3D проект на кухня – Кашмир монохромна | Dom Expert Мебел',
-    description: 'Модерна монохромна кухня с кашмир фронтове, тъмен мраморен гръб Laminam и остров с канали.',
+    title: '3D проект на модерна кухня с остров – кашмир и Laminam | Dom Expert Мебел',
+    description: 'П-образна кухня с остров, кашмир фронтове, Laminam мраморен гръб, LED осветление и кафе станция.',
     images: [{ url: '/portfolio/kuhnya-domexpert-v17/3d-proekt-kuhnya-moderna-obsht-1.webp', width: 1500, height: 1000, alt: '3D визуализация на модерна кухня – кашмир – Dom Expert Мебел' }],
   },
 })
@@ -49,8 +49,8 @@ const projectDetails = [
 const creativeWorkSchema = {
   '@context': 'https://schema.org',
   '@type': 'CreativeWork',
-  name: '3D проект на кухня – Кашмир монохромна',
-  description: 'Всички фронтове в кашмир, тъмен мраморен гръб Laminam, остров с канали.',
+  name: '3D проект на модерна кухня с остров – кашмир и Laminam',
+  description: 'П-образна кухня с остров, кашмир фронтове, Laminam мраморен гръб, LED осветление и кафе станция. Детайлна 3D визуализация.',
   creator: {
     '@type': 'Organization',
     name: 'Dom Expert Мебел',
@@ -63,12 +63,28 @@ const creativeWorkSchema = {
   })),
 }
 
+// Schema.org - VideoObject
+const videoObjectSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'VideoObject',
+  name: 'Видео разходка в 3D проект на модерна кухня с остров',
+  description: 'Разходка в 3D визуализацията на кухня с кашмир фронтове и Laminam мрамор – LED осветление, вградени уреди, чекмеджета, кафе станция и остров.',
+  thumbnailUrl: 'https://domexpertmebel.com/video/kitchen-tour-16x9-poster.webp',
+  contentUrl: 'https://domexpertmebel.com/video/kitchen-tour-16x9-compressed.mp4',
+  uploadDate: '2026-10-02',
+  duration: 'PT30S',
+}
+
 export default function KuhnyaDomExpertV17Page() {
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(creativeWorkSchema).replace(/</g, '\\u003c') }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(videoObjectSchema).replace(/</g, '\\u003c') }}
       />
       <BreadcrumbSchema items={[
         { name: 'Начало', url: 'https://domexpertmebel.com/' },
@@ -112,15 +128,31 @@ export default function KuhnyaDomExpertV17Page() {
               </span>
             </div>
             <h1 className="font-display font-bold text-charcoal leading-[1.05] mb-5" style={{ fontSize: 'clamp(1.8rem, 5vw, 3rem)' }}>
-              3D проект на кухня – Кашмир монохромна
+              3D проект на модерна кухня с остров – кашмир и Laminam
             </h1>
-            <p className="font-body text-warm-gray leading-relaxed mb-4" style={{ fontSize: '1.15rem', maxWidth: '65ch' }}>
-              Всички фронтове в кашмир, тъмен мраморен гръб Laminam, остров с канали.
-            </p>
-            <p className="font-body text-warm-gray leading-relaxed" style={{ fontSize: '1.05rem', maxWidth: '65ch' }}>
-              Модерна монохромна кухня с елегантна визия — неутрална цветова палитра, луксозни материали и функционално разпределение.
-              3D проектът показва точно как ще изглеждат мебелите преди изработка.
-            </p>
+            <div className="font-body text-warm-gray leading-relaxed space-y-4" style={{ fontSize: '1.05rem', maxWidth: '65ch' }}>
+              <p style={{ fontSize: '1.15rem', fontWeight: 500 }}>
+                Модерна монохромна кухня с елегантна визия — неутрална цветова палитра, луксозни материали и функционално разпределение.
+              </p>
+              <p>
+                Идеята на проекта е да създаде хармонична и светла кухня с акцент върху естествените текстури и качествените материали.
+                Всички фронтове са в топъл кашмир тон, който допълва тъмния мраморен гръб от Laminam — италиански порцеланов материал с реалистична мраморна текстура,
+                устойчив на топлина, драскотини и влага.
+              </p>
+              <p>
+                Разпределението е П-образно с централен остров, който осигурява допълнителна работна повърхност и място за хранене.
+                Островът включва вградени канали за съхранение, скрити чекмеджета и интегрирана мивка. Горните шкафове са проектирани с push-to-open механизми,
+                а долните включват вградени уреди — фурна, микровълнова печка и хладилник.
+              </p>
+              <p>
+                Осветлението е многослойно — вграден LED монтиран под горните шкафове осветява работните зони,
+                а централен полилей с топла светлина създава уют над трапезарията. Включена е и отделна кафе станция с вградена кафемашина и рафтове за чаши.
+              </p>
+              <p>
+                Клиентът получава пълен пакет от детайлни 3D визуализации от различни ъгли, интерактивна видео разходка в кухнята,
+                и възможност за корекции преди началото на производството. 3D проектът се приспада 100% от крайната цена при поръчка.
+              </p>
+            </div>
           </div>
         </div>
       </section>

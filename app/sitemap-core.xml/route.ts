@@ -46,15 +46,34 @@ export async function GET() {
     ...blogPages,
   ]
 
+  // 3D project images for image sitemap
+  const project3DImages = [
+    { url: `${BASE}/3d-проекти/kuhnya-domexpert-v17/`, images: [
+      `${BASE}/portfolio/kuhnya-domexpert-v17/3d-proekt-kuhnya-moderna-obsht-1.webp`,
+      `${BASE}/portfolio/kuhnya-domexpert-v17/3d-proekt-kuhnya-moderna-frontalen-2.webp`,
+      `${BASE}/portfolio/kuhnya-domexpert-v17/3d-proekt-kuhnya-moderna-vrata-3.webp`,
+    ]},
+  ]
+
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 ${allPages
   .map(
-    (page) => `  <url>
+    (page) => {
+      const projectImages = project3DImages.find(p => p.url === page.url)
+      const imagesTags = projectImages
+        ? projectImages.images.map(img => `    <image:image>
+      <image:loc>${img}</image:loc>
+    </image:image>`).join('\n')
+        : ''
+
+      return `  <url>
     <loc>${page.url}</loc>
     <changefreq>${page.changeFrequency}</changefreq>
-    <priority>${page.priority}</priority>
-  </url>`,
+    <priority>${page.priority}</priority>${imagesTags ? '\n' + imagesTags : ''}
+  </url>`
+    }
   )
   .join('\n')}
 </urlset>`
