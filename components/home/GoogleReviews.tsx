@@ -1,25 +1,24 @@
 import { Star, ExternalLink } from 'lucide-react'
-import { getGoogleReviews } from '@/lib/google-reviews'
+import { getReviews, formatReviewDate } from '@/lib/reviews'
+import { GOOGLE_BUSINESS_PROFILE_URL } from '@/lib/business'
 
 interface GoogleReviewsProps {
   compact?: boolean
 }
 
-export default async function GoogleReviews({ compact = false }: GoogleReviewsProps) {
-  const data = await getGoogleReviews()
+export default function GoogleReviews({ compact = false }: GoogleReviewsProps) {
+  const data = getReviews()
 
   // Hide component if no data
-  if (!data || data.userRatingCount === 0) {
+  if (!data) {
     return null
   }
 
-  const { rating, userRatingCount, reviews, googleMapsUri } = data
+  const { rating, totalReviews, reviews } = data
 
-  // Construct write review URL
-  const placeId = process.env.GOOGLE_PLACE_ID || ''
-  const writeReviewUrl = placeId
-    ? `https://search.google.com/local/writereview?placeid=${placeId}`
-    : googleMapsUri
+  // URLs
+  const googleMapsUri = GOOGLE_BUSINESS_PROFILE_URL
+  const writeReviewUrl = 'https://search.google.com/local/writereview?placeid=ChIJH4FTnIX3qhQRrsTtIxlayao'
 
   return (
     <section className="section-py" style={{ backgroundColor: 'var(--color-cream)' }}>
@@ -61,7 +60,7 @@ export default async function GoogleReviews({ compact = false }: GoogleReviewsPr
             ))}
           </div>
           <p className="font-body text-warm-gray text-sm">
-            {userRatingCount} {userRatingCount === 1 ? 'отзив' : 'отзива'}
+            {totalReviews} {totalReviews === 1 ? 'отзив' : 'отзива'}
           </p>
         </div>
 
@@ -76,24 +75,16 @@ export default async function GoogleReviews({ compact = false }: GoogleReviewsPr
               >
                 {/* Author */}
                 <div className="flex items-center gap-3 mb-3">
-                  {review.authorPhotoUrl ? (
-                    <img
-                      src={review.authorPhotoUrl}
-                      alt={review.authorName}
-                      className="w-10 h-10 rounded-full"
-                    />
-                  ) : (
-                    <div
-                      className="w-10 h-10 rounded-full bg-walnut/10 flex items-center justify-center"
-                    >
-                      <span className="font-body font-semibold text-walnut text-sm">
-                        {review.authorName.charAt(0).toUpperCase()}
-                      </span>
-                    </div>
-                  )}
+                  <div
+                    className="w-10 h-10 rounded-full bg-walnut/10 flex items-center justify-center"
+                  >
+                    <span className="font-body font-semibold text-walnut text-sm">
+                      {review.name.charAt(0).toUpperCase()}
+                    </span>
+                  </div>
                   <div className="flex-1 min-w-0">
                     <p className="font-body font-semibold text-charcoal text-sm truncate">
-                      {review.authorName}
+                      {review.name}
                     </p>
                     <div className="flex items-center gap-1 mt-0.5">
                       {[1, 2, 3, 4, 5].map((star) => (
@@ -117,7 +108,7 @@ export default async function GoogleReviews({ compact = false }: GoogleReviewsPr
 
                 {/* Time */}
                 <p className="font-body text-warm-gray text-xs">
-                  {review.relativeTimeDescription}
+                  {formatReviewDate(review.date)}
                 </p>
               </div>
             ))}

@@ -1,19 +1,19 @@
 import { Star } from 'lucide-react'
-import { getGoogleReviews } from '@/lib/google-reviews'
+import { getReviews } from '@/lib/reviews'
 
 /**
- * Server component that displays Google rating in Hero
+ * Component that displays Google rating in Hero
  * Hidden if no review data available
  */
-export default async function HeroRatingBadge() {
-  const data = await getGoogleReviews()
+export default function HeroRatingBadge() {
+  const data = getReviews()
 
   // Hide if no rating data
-  if (!data || data.userRatingCount === 0) {
+  if (!data) {
     return null
   }
 
-  const { rating, userRatingCount } = data
+  const { rating, totalReviews } = data
 
   return (
     <div
@@ -30,7 +30,7 @@ export default async function HeroRatingBadge() {
     >
       <Star size={14} className="text-amber-400" fill="currentColor" />
       <span className="font-medium">
-        {rating.toFixed(1)} от {userRatingCount} отзива в Google
+        {rating.toFixed(1)} от {totalReviews} отзива в Google
       </span>
     </div>
   )
