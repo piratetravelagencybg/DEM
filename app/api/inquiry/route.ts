@@ -24,13 +24,65 @@ const inquirySchema = z.object({
 
 export async function POST(request: NextRequest) {
   try {
-    // Parse and validate request body
-    const body = await request.json()
+    // Parse FormData
+    const formData = await request.formData()
+
+    const body = {
+      name: formData.get('name') as string,
+      phone: formData.get('phone') as string,
+      email: formData.get('email') as string,
+      city: formData.get('city') as string,
+      service: formData.get('service') as string,
+      message: formData.get('message') as string,
+      honeypot: formData.get('honeypot') as string,
+      source_page: formData.get('source_page') as string,
+    }
+
     const validatedData = inquirySchema.parse(body)
 
     // Check honeypot
     if (validatedData.honeypot) {
       return NextResponse.json({ error: 'Spam detected' }, { status: 400 })
+    }
+
+    // Get photos from FormData
+    const photoFiles = formData.getAll('photos') as File[]
+
+    // Validate photos
+    if (photoFiles.length > 5) {
+      return NextResponse.json({ error: 'Максимум 5 снимки' }, { status: 400 })
+    }
+
+    let totalSize = 0
+    const attachments: { filename: string; content: string }[] = []
+
+    for (const file of photoFiles) {
+      if (!file.type.startsWith('image/')) {
+        return NextResponse.json({ error: 'Само изображения са разрешени' }, { status: 400 })
+      }
+
+      if (file.size > 1.5 * 1024 * 1024) {
+        return NextResponse.json({ error: 'Всяка снимка трябва да е под 1.5 MB' }, { status: 400 })
+      }
+
+      totalSize += file.size
+    }
+
+    if (totalSize > 4 * 1024 * 1024) {
+      return NextResponse.json({ error: 'Общият размер на снимките не може да надвишава 4 MB' }, { status: 400 })
+    }
+
+    // Convert photos to base64 for email attachments
+    for (let i = 0; i < photoFiles.length; i++) {
+      const file = photoFiles[i]
+      const bytes = await file.arrayBuffer()
+      const buffer = Buffer.from(bytes)
+      const base64 = buffer.toString('base64')
+
+      attachments.push({
+        filename: `snimka-${i + 1}.jpg`,
+        content: base64,
+      })
     }
 
     // Check if Resend is configured
@@ -57,6 +109,7 @@ export async function POST(request: NextRequest) {
 Съобщение:
 ${validatedData.message}
 
+${photoFiles.length > 0 ? `Прикачени снимки: ${photoFiles.length}` : ''}
 ${validatedData.source_page ? `Източник: ${validatedData.source_page}` : ''}
 `.trim()
 
@@ -65,6 +118,7 @@ ${validatedData.source_page ? `Източник: ${validatedData.source_page}` :
       to: recipientEmail,
       subject: emailSubject,
       text: emailBody,
+      attachments: attachments.length > 0 ? attachments : undefined,
     })
 
     return NextResponse.json({ success: true }, { status: 200 })

@@ -1,10 +1,10 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Send, CheckCircle, AlertCircle } from 'lucide-react'
+import { Send, CheckCircle, AlertCircle, Image as ImageIcon, X } from 'lucide-react'
 
 const schema = z.object({
   name: z.string().min(2, 'Въведете вашето име'),
@@ -18,25 +18,137 @@ const schema = z.object({
 
 type FormData = z.infer<typeof schema>
 
+// Helper function to compress image
+async function compressImage(file: File): Promise<File> {
+  return new Promise((resolve, reject) => {
+    const img = document.createElement('img')
+    const canvas = document.createElement('canvas')
+    const ctx = canvas.getContext('2d')
+
+    img.onload = () => {
+      const maxDimension = 1600
+      let { width, height } = img
+
+      if (width > maxDimension || height > maxDimension) {
+        if (width > height) {
+          height = (height / width) * maxDimension
+          width = maxDimension
+        } else {
+          width = (width / height) * maxDimension
+          height = maxDimension
+        }
+      }
+
+      canvas.width = width
+      canvas.height = height
+      ctx?.drawImage(img, 0, 0, width, height)
+
+      canvas.toBlob(
+        (blob) => {
+          if (blob) {
+            const compressedFile = new File([blob], file.name.replace(/\.[^/.]+$/, '.jpg'), {
+              type: 'image/jpeg',
+              lastModified: Date.now(),
+            })
+            resolve(compressedFile)
+          } else {
+            reject(new Error('Failed to compress image'))
+          }
+        },
+        'image/jpeg',
+        0.8
+      )
+    }
+
+    img.onerror = () => reject(new Error('Failed to load image'))
+    img.src = URL.createObjectURL(file)
+  })
+}
+
 export default function QuoteForm({ defaultService = '' }: { defaultService?: string }) {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+  const [photos, setPhotos] = useState<File[]>([])
+  const [photoError, setPhotoError] = useState<string>('')
+  const fileInputRef = useRef<HTMLInputElement>(null)
 
   const { register, handleSubmit, formState: { errors }, reset } = useForm<FormData>({
     resolver: zodResolver(schema),
     defaultValues: { service: defaultService, honeypot: '' },
   })
 
+  const handlePhotoChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = Array.from(e.target.files || [])
+    setPhotoError('')
+
+    if (photos.length + files.length > 5) {
+      setPhotoError('Максимум 5 снимки')
+      return
+    }
+
+    // Check for HEIC files (not supported by canvas)
+    const hasHeic = files.some(f => f.name.toLowerCase().endsWith('.heic'))
+    if (hasHeic) {
+      setPhotoError('Моля, изпратете JPG/PNG вместо HEIC формат')
+      return
+    }
+
+    try {
+      // Compress all images
+      const compressedFiles = await Promise.all(
+        files.map(async (file) => {
+          if (file.type.startsWith('image/')) {
+            return await compressImage(file)
+          }
+          return file
+        })
+      )
+
+      // Check total size
+      const totalSize = [...photos, ...compressedFiles].reduce((sum, f) => sum + f.size, 0)
+      if (totalSize > 4 * 1024 * 1024) {
+        setPhotoError('Общият размер на снимките надвишава 4 MB. Моля, изберете по-малко или по-малки снимки.')
+        return
+      }
+
+      setPhotos(prev => [...prev, ...compressedFiles])
+    } catch (error) {
+      console.error('Error compressing images:', error)
+      setPhotoError('Грешка при обработка на снимките')
+    }
+
+    // Clear input value so same file can be re-selected
+    if (fileInputRef.current) {
+      fileInputRef.current.value = ''
+    }
+  }
+
+  const removePhoto = (index: number) => {
+    setPhotos(prev => prev.filter((_, i) => i !== index))
+    setPhotoError('')
+  }
+
   const onSubmit = async (data: FormData) => {
     setStatus('loading')
 
     try {
+      const formData = new FormData()
+      formData.append('name', data.name)
+      formData.append('phone', data.phone)
+      formData.append('email', data.email)
+      formData.append('city', data.city)
+      formData.append('service', data.service)
+      formData.append('message', data.message)
+      formData.append('honeypot', data.honeypot)
+      formData.append('source_page', typeof window !== 'undefined' ? window.location.pathname : '')
+
+      // Attach photos
+      photos.forEach((photo, index) => {
+        formData.append('photos', photo, `snimka-${index + 1}.jpg`)
+      })
+
       const response = await fetch('/api/inquiry', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          ...data,
-          source_page: typeof window !== 'undefined' ? window.location.pathname : undefined,
-        }),
+        body: formData,
       })
 
       if (!response.ok) {
@@ -45,6 +157,8 @@ export default function QuoteForm({ defaultService = '' }: { defaultService?: st
 
       setStatus('success')
       reset()
+      setPhotos([])
+      setPhotoError('')
 
       // GTM event tracking
       if (typeof window !== 'undefined' && (window as any).dataLayer) {
@@ -179,13 +293,64 @@ export default function QuoteForm({ defaultService = '' }: { defaultService?: st
         {errors.message && <p className="text-red-500 text-xs mt-1">{errors.message.message}</p>}
       </div>
 
+      {/* Photos Upload */}
+      <div>
+        <label className="block text-sm font-medium text-charcoal mb-1.5">
+          Снимки на помещението (по желание)
+        </label>
+        <div className="space-y-3">
+          <input
+            ref={fileInputRef}
+            type="file"
+            accept="image/jpeg,image/png,image/webp,image/heic"
+            multiple
+            onChange={handlePhotoChange}
+            disabled={status === 'loading' || photos.length >= 5}
+            className="w-full px-4 py-3 border border-light-tan rounded-btn bg-white text-charcoal text-sm file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-cream file:text-walnut hover:file:bg-light-tan disabled:opacity-50 disabled:cursor-not-allowed"
+          />
+          <p className="text-xs text-warm-gray">
+            До 5 снимки. Помагат ни да дадем по-точна оценка преди огледа.
+          </p>
+          {photoError && <p className="text-red-500 text-xs">{photoError}</p>}
+
+          {/* Photo Previews */}
+          {photos.length > 0 && (
+            <div className="flex flex-wrap gap-2 mt-3">
+              {photos.map((photo, index) => (
+                <div
+                  key={index}
+                  className="relative group w-20 h-20 rounded-lg overflow-hidden border border-light-tan"
+                >
+                  <img
+                    src={URL.createObjectURL(photo)}
+                    alt={`Снимка ${index + 1}`}
+                    className="w-full h-full object-cover"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => removePhoto(index)}
+                    className="absolute top-1 right-1 bg-red-500 text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity"
+                    aria-label="Премахни снимка"
+                  >
+                    <X size={12} />
+                  </button>
+                  <div className="absolute bottom-0 left-0 right-0 bg-black/50 text-white text-xs text-center py-0.5">
+                    {index + 1}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+
       <button
         type="submit"
         disabled={status === 'loading'}
         className="btn-primary w-full justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
       >
         <Send size={16} />
-        {status === 'loading' ? 'Изпраща се...' : 'Изпрати запитване'}
+        {status === 'loading' ? (photos.length > 0 ? 'Изпращане на снимките...' : 'Изпраща се...') : 'Изпрати запитване'}
       </button>
       <p className="text-xs text-warm-gray text-center">Безплатна консултация и оферта. Отговаряме до 24 часа.</p>
     </form>
