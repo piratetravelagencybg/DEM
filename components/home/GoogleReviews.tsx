@@ -1,4 +1,7 @@
-import { Star, ExternalLink } from 'lucide-react'
+'use client'
+
+import { Star, ExternalLink, ChevronLeft, ChevronRight, Quote } from 'lucide-react'
+import { useState, useEffect, useRef } from 'react'
 import { getReviews, formatReviewDate } from '@/lib/reviews'
 import { GOOGLE_BUSINESS_PROFILE_URL } from '@/lib/business'
 
@@ -7,7 +10,36 @@ interface GoogleReviewsProps {
 }
 
 export default function GoogleReviews({ compact = false }: GoogleReviewsProps) {
+  // State hooks must be called before any conditional returns
+  const [activeIndex, setActiveIndex] = useState(0)
+  const [isPaused, setIsPaused] = useState(false)
+  const [touchStart, setTouchStart] = useState(0)
+  const [touchEnd, setTouchEnd] = useState(0)
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
+  const carouselRef = useRef<HTMLDivElement>(null)
+
   const data = getReviews()
+
+  // Check for prefers-reduced-motion
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
+    setPrefersReducedMotion(mediaQuery.matches)
+
+    const handler = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches)
+    mediaQuery.addEventListener('change', handler)
+    return () => mediaQuery.removeEventListener('change', handler)
+  }, [])
+
+  // Auto-carousel every 3 seconds
+  useEffect(() => {
+    if (!data || prefersReducedMotion || isPaused || data.reviews.length <= 1) return
+
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % data.reviews.length)
+    }, 3000)
+
+    return () => clearInterval(interval)
+  }, [data, isPaused, prefersReducedMotion])
 
   // Hide component if no data
   if (!data) {
@@ -20,9 +52,62 @@ export default function GoogleReviews({ compact = false }: GoogleReviewsProps) {
   const googleMapsUri = GOOGLE_BUSINESS_PROFILE_URL
   const writeReviewUrl = 'https://search.google.com/local/writereview?placeid=ChIJH4FTnIX3qhQRrsTtIxlayao'
 
+  // Touch handlers for swipe
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.targetTouches[0].clientX)
+  }
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX)
+  }
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return
+
+    const distance = touchStart - touchEnd
+    const threshold = 50
+
+    if (distance > threshold) {
+      // Swipe left - next
+      setActiveIndex((prev) => (prev + 1) % reviews.length)
+    } else if (distance < -threshold) {
+      // Swipe right - previous
+      setActiveIndex((prev) => (prev - 1 + reviews.length) % reviews.length)
+    }
+
+    setTouchStart(0)
+    setTouchEnd(0)
+  }
+
+  const goToSlide = (index: number) => {
+    setActiveIndex(index)
+  }
+
+  const goToPrevious = () => {
+    setActiveIndex((prev) => (prev - 1 + reviews.length) % reviews.length)
+  }
+
+  const goToNext = () => {
+    setActiveIndex((prev) => (prev + 1) % reviews.length)
+  }
+
   return (
-    <section className="section-py" style={{ backgroundColor: 'var(--color-cream)' }}>
-      <div className="container-main">
+    <section
+      className="section-py relative overflow-hidden"
+      style={{ backgroundColor: 'var(--color-cream)' }}
+    >
+      {/* Architectural Blueprint Background */}
+      <div
+        className="absolute inset-0 pointer-events-none opacity-[0.03]"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='800' height='600' xmlns='http://www.w3.org/2000/svg'%3E%3Cg stroke='%2351423C' stroke-width='1' fill='none'%3E%3C!-- Roof --%3E%3Cpath d='M200,150 L400,50 L600,150'/%3E%3Cline x1='400' y1='50' x2='400' y2='80'/%3E%3C!-- House outline --%3E%3Crect x='200' y='150' width='400' height='300'/%3E%3C!-- Windows --%3E%3Crect x='250' y='200' width='80' height='100'/%3E%3Cline x1='290' y1='200' x2='290' y2='300'/%3E%3Cline x1='250' y1='250' x2='330' y2='250'/%3E%3Crect x='370' y='200' width='80' height='100'/%3E%3Cline x1='410' y1='200' x2='410' y2='300'/%3E%3Cline x1='370' y1='250' x2='450' y2='250'/%3E%3Crect x='490' y='200' width='80' height='100'/%3E%3Cline x1='530' y1='200' x2='530' y2='300'/%3E%3Cline x1='490' y1='250' x2='570' y2='250'/%3E%3C!-- Door --%3E%3Crect x='360' y='330' width='80' height='120'/%3E%3Ccircle cx='420' cy='390' r='3'/%3E%3C/g%3E%3C/svg%3E")`,
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: 'contain',
+        }}
+      />
+
+      <div className="container-main relative z-10">
         <div className="text-center mb-10">
           <span className="eyebrow-pill">Отзиви от клиенти</span>
           <h2
@@ -40,8 +125,14 @@ export default function GoogleReviews({ compact = false }: GoogleReviewsProps) {
 
         {/* Rating Summary */}
         <div
-          className="flex flex-col items-center gap-3 mb-8 p-6 rounded-2xl bg-white mx-auto max-w-md"
-          style={{ border: '1px solid #E7DDCF' }}
+          className="flex flex-col items-center gap-3 mb-10 p-6 rounded-2xl mx-auto max-w-md"
+          style={{
+            background: 'rgba(255, 255, 255, 0.7)',
+            backdropFilter: 'blur(12px)',
+            WebkitBackdropFilter: 'blur(12px)',
+            border: '1px solid rgba(231, 221, 207, 0.5)',
+            boxShadow: '0 8px 32px rgba(81, 66, 60, 0.08)',
+          }}
         >
           <div className="flex items-baseline gap-2">
             <span className="font-display font-bold text-charcoal" style={{ fontSize: '2.5rem' }}>
@@ -64,54 +155,206 @@ export default function GoogleReviews({ compact = false }: GoogleReviewsProps) {
           </p>
         </div>
 
-        {/* Reviews Grid */}
+        {/* Carousel */}
         {reviews && reviews.length > 0 && (
-          <div className={`grid gap-5 mb-8 ${compact ? 'md:grid-cols-2' : 'md:grid-cols-3'} max-w-6xl mx-auto`}>
-            {reviews.map((review, i) => (
-              <div
-                key={i}
-                className="bg-white rounded-2xl p-6 flex flex-col"
-                style={{ border: '1px solid #E7DDCF' }}
-              >
-                {/* Author */}
-                <div className="flex items-center gap-3 mb-3">
+          <div
+            ref={carouselRef}
+            className="relative max-w-6xl mx-auto mb-10"
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+          >
+            {/* Carousel Container */}
+            <div className="relative h-[400px] md:h-[380px] flex items-center justify-center">
+              {reviews.map((review, index) => {
+                const isActive = index === activeIndex
+                const isPrev = index === (activeIndex - 1 + reviews.length) % reviews.length
+                const isNext = index === (activeIndex + 1) % reviews.length
+                const isVisible = isActive || isPrev || isNext
+
+                // Calculate position
+                let position = 'translate-x-0'
+                let scale = 'scale-100'
+                let opacity = 'opacity-100'
+                let zIndex = 'z-10'
+
+                if (!isVisible) {
+                  opacity = 'opacity-0'
+                  position = 'translate-x-full'
+                } else if (isPrev) {
+                  position = compact ? '-translate-x-[105%]' : 'md:-translate-x-[105%] -translate-x-full'
+                  scale = compact ? 'scale-90' : 'md:scale-90 scale-75'
+                  opacity = compact ? 'opacity-50' : 'md:opacity-50 opacity-0'
+                  zIndex = 'z-0'
+                } else if (isNext) {
+                  position = compact ? 'translate-x-[105%]' : 'md:translate-x-[105%] translate-x-full'
+                  scale = compact ? 'scale-90' : 'md:scale-90 scale-75'
+                  opacity = compact ? 'opacity-50' : 'md:opacity-50 opacity-0'
+                  zIndex = 'z-0'
+                } else if (isActive) {
+                  position = 'translate-x-0'
+                  scale = 'scale-100'
+                  opacity = 'opacity-100'
+                  zIndex = 'z-20'
+                }
+
+                return (
                   <div
-                    className="w-10 h-10 rounded-full bg-walnut/10 flex items-center justify-center"
+                    key={index}
+                    className={`absolute inset-0 transition-all duration-500 ease-out ${position} ${scale} ${opacity} ${zIndex}`}
+                    style={{
+                      transitionProperty: prefersReducedMotion ? 'opacity' : 'transform, opacity',
+                    }}
                   >
-                    <span className="font-body font-semibold text-walnut text-sm">
-                      {review.name.charAt(0).toUpperCase()}
-                    </span>
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <p className="font-body font-semibold text-charcoal text-sm truncate">
-                      {review.name}
-                    </p>
-                    <div className="flex items-center gap-1 mt-0.5">
-                      {[1, 2, 3, 4, 5].map((star) => (
-                        <Star
-                          key={star}
-                          size={12}
-                          className={star <= review.rating ? 'text-amber-500' : 'text-gray-300'}
-                          fill={star <= review.rating ? 'currentColor' : 'none'}
-                        />
-                      ))}
+                    <div
+                      className={`mx-auto h-full flex flex-col justify-center ${
+                        compact ? 'max-w-md' : 'max-w-2xl'
+                      }`}
+                    >
+                      {/* Glassmorphism Card */}
+                      <div
+                        className={`rounded-3xl ${compact ? 'p-6' : 'p-8 md:p-10'} flex flex-col relative overflow-hidden group`}
+                        style={{
+                          background: 'rgba(255, 255, 255, 0.65)',
+                          backdropFilter: 'blur(16px)',
+                          WebkitBackdropFilter: 'blur(16px)',
+                          border: '1px solid rgba(255, 255, 255, 0.4)',
+                          boxShadow: '0 8px 32px rgba(81, 66, 60, 0.12), 0 2px 8px rgba(81, 66, 60, 0.08)',
+                        }}
+                      >
+                        {/* Quote Icon */}
+                        <div className="mb-4">
+                          <Quote
+                            size={compact ? 32 : 40}
+                            className="text-walnut/20"
+                            strokeWidth={1.5}
+                          />
+                        </div>
+
+                        {/* Stars */}
+                        <div className="flex gap-1 mb-4">
+                          {[1, 2, 3, 4, 5].map((star) => (
+                            <Star
+                              key={star}
+                              size={compact ? 16 : 18}
+                              className={star <= review.rating ? 'text-amber-500' : 'text-gray-300'}
+                              fill={star <= review.rating ? 'currentColor' : 'none'}
+                            />
+                          ))}
+                        </div>
+
+                        {/* Review Text */}
+                        {review.text && (
+                          <p
+                            className={`font-body text-charcoal leading-relaxed flex-1 mb-6 ${
+                              compact ? 'text-sm' : 'text-base md:text-lg'
+                            }`}
+                            style={{ fontStyle: 'italic' }}
+                          >
+                            &ldquo;{review.text}&rdquo;
+                          </p>
+                        )}
+
+                        {/* Author & Date */}
+                        <div className="flex items-center gap-3">
+                          <div
+                            className={`${
+                              compact ? 'w-10 h-10' : 'w-12 h-12'
+                            } rounded-full flex items-center justify-center`}
+                            style={{
+                              background: 'rgba(139, 96, 68, 0.1)',
+                              border: '1px solid rgba(139, 96, 68, 0.2)',
+                            }}
+                          >
+                            <span
+                              className={`font-body font-semibold text-walnut ${
+                                compact ? 'text-sm' : 'text-base'
+                              }`}
+                            >
+                              {review.name.charAt(0).toUpperCase()}
+                            </span>
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <p
+                              className={`font-body font-semibold text-charcoal truncate ${
+                                compact ? 'text-sm' : 'text-base'
+                              }`}
+                            >
+                              {review.name}
+                            </p>
+                            <p
+                              className={`font-body text-warm-gray ${
+                                compact ? 'text-xs' : 'text-sm'
+                              }`}
+                            >
+                              {formatReviewDate(review.date)}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
+                )
+              })}
+            </div>
 
-                {/* Review Text */}
-                {review.text && (
-                  <p className="font-body text-warm-gray text-sm leading-relaxed flex-1 mb-3">
-                    {review.text}
-                  </p>
-                )}
+            {/* Navigation Arrows - Desktop Only */}
+            {!compact && reviews.length > 1 && (
+              <>
+                <button
+                  onClick={goToPrevious}
+                  className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 w-12 h-12 items-center justify-center rounded-full transition-all hover:scale-110"
+                  style={{
+                    background: 'rgba(255, 255, 255, 0.9)',
+                    backdropFilter: 'blur(12px)',
+                    WebkitBackdropFilter: 'blur(12px)',
+                    border: '1px solid rgba(231, 221, 207, 0.5)',
+                    boxShadow: '0 4px 16px rgba(81, 66, 60, 0.1)',
+                  }}
+                  aria-label="Предишен отзив"
+                >
+                  <ChevronLeft size={24} className="text-charcoal" />
+                </button>
+                <button
+                  onClick={goToNext}
+                  className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 w-12 h-12 items-center justify-center rounded-full transition-all hover:scale-110"
+                  style={{
+                    background: 'rgba(255, 255, 255, 0.9)',
+                    backdropFilter: 'blur(12px)',
+                    WebkitBackdropFilter: 'blur(12px)',
+                    border: '1px solid rgba(231, 221, 207, 0.5)',
+                    boxShadow: '0 4px 16px rgba(81, 66, 60, 0.1)',
+                  }}
+                  aria-label="Следващ отзив"
+                >
+                  <ChevronRight size={24} className="text-charcoal" />
+                </button>
+              </>
+            )}
 
-                {/* Time */}
-                <p className="font-body text-warm-gray text-xs">
-                  {formatReviewDate(review.date)}
-                </p>
+            {/* Dots Navigation */}
+            {reviews.length > 1 && (
+              <div className="flex justify-center gap-2 mt-8">
+                {reviews.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => goToSlide(index)}
+                    className={`transition-all ${
+                      index === activeIndex
+                        ? 'w-8 h-2 bg-walnut'
+                        : 'w-2 h-2 bg-warm-gray/30 hover:bg-warm-gray/50'
+                    }`}
+                    style={{
+                      borderRadius: '4px',
+                    }}
+                    aria-label={`Отзив ${index + 1}`}
+                    aria-current={index === activeIndex}
+                  />
+                ))}
               </div>
-            ))}
+            )}
           </div>
         )}
 

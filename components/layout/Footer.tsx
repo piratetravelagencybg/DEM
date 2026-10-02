@@ -28,6 +28,7 @@ const locations = [
   { label: 'Мебели София', href: '/софия/' },
   { label: 'Мебели Дупница', href: '/дупница/' },
   { label: 'Мебели Сандански', href: '/сандански/' },
+  { label: 'Мебели Петрич', href: '/петрич/' },
 ]
 
 function FooterLogo() {

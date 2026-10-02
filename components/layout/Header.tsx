@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import dynamic from 'next/dynamic'
-import { Menu, Phone, ShoppingBag } from 'lucide-react'
+import { Menu, Phone, ShoppingBag, ChevronDown } from 'lucide-react'
 
 const MobileMenu = dynamic(() => import('./MobileMenu'), { ssr: false })
 
@@ -16,9 +16,18 @@ const navLinks = [
   { label: 'Контакти', href: '/контакти/' },
 ]
 
+const cities = [
+  { label: 'Благоевград', href: '/благоевград/' },
+  { label: 'София', href: '/софия/' },
+  { label: 'Дупница', href: '/дупница/' },
+  { label: 'Сандански', href: '/сандански/' },
+  { label: 'Петрич', href: '/петрич/' },
+]
+
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [citiesDropdownOpen, setCitiesDropdownOpen] = useState(false)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20)
@@ -91,6 +100,64 @@ export default function Header() {
                   />
                 </Link>
               ))}
+
+              {/* Cities Dropdown */}
+              <div
+                className="relative"
+                onMouseEnter={() => setCitiesDropdownOpen(true)}
+                onMouseLeave={() => setCitiesDropdownOpen(false)}
+              >
+                <button
+                  className="font-body text-sm transition-colors duration-200 relative group flex items-center gap-1"
+                  style={{ color: scrolled ? '#2C2C2C' : 'rgba(255,255,255,0.85)' }}
+                >
+                  Градове
+                  <ChevronDown
+                    size={14}
+                    className={`transition-transform duration-200 ${citiesDropdownOpen ? 'rotate-180' : ''}`}
+                  />
+                  <span
+                    className="absolute -bottom-0.5 left-0 w-0 h-0.5 transition-all duration-200 group-hover:w-full"
+                    style={{ background: scrolled ? '#8B6F47' : 'white' }}
+                  />
+                </button>
+
+                {/* Dropdown Menu */}
+                {citiesDropdownOpen && (
+                  <div
+                    className="absolute top-full left-0 mt-2 min-w-[180px] rounded-2xl overflow-hidden"
+                    style={{
+                      background: scrolled ? '#FFFFFF' : 'rgba(31,25,20,0.96)',
+                      backdropFilter: 'blur(12px)',
+                      WebkitBackdropFilter: 'blur(12px)',
+                      border: `1px solid ${scrolled ? '#E8DDD0' : 'rgba(255,255,255,0.12)'}`,
+                      boxShadow: '0 8px 24px rgba(0,0,0,0.15)',
+                    }}
+                  >
+                    {cities.map((city, index) => (
+                      <Link
+                        key={city.href}
+                        href={city.href}
+                        className="block px-4 py-2.5 font-body text-sm transition-colors duration-150"
+                        style={{
+                          color: scrolled ? '#2C2C2C' : 'rgba(255,255,255,0.85)',
+                          borderBottom: index < cities.length - 1 ? `1px solid ${scrolled ? '#F0EBE3' : 'rgba(255,255,255,0.08)'}` : 'none',
+                          background: 'transparent',
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.background = scrolled ? '#F7F3ED' : 'rgba(255,255,255,0.08)'
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.background = 'transparent'
+                        }}
+                      >
+                        {city.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+
               {/* Shop button in nav */}
               <Link
                 href="/готови-мебели/"
@@ -141,7 +208,7 @@ export default function Header() {
         </div>
       </header>
 
-      {menuOpen && <MobileMenu open onClose={() => setMenuOpen(false)} navLinks={navLinks} />}
+      {menuOpen && <MobileMenu open onClose={() => setMenuOpen(false)} navLinks={navLinks} cities={cities} />}
     </>
   )
 }

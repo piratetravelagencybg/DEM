@@ -23,6 +23,11 @@ export const SITE_CONFIG = {
     url: GOOGLE_BUSINESS_PROFILE_URL,
   },
 
+  // UI настройки
+  ui: {
+    showHeroRating: false, // Ще се включи при 20+ отзива
+  },
+
   hours: {
     weekdays: 'Пон–Пет, 09:00–18:00',
     weekend: 'По договаряне',

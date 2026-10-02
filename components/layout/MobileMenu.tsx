@@ -1,20 +1,22 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { ArrowRight, ChevronRight, Phone, ShoppingBag, X } from 'lucide-react'
+import { ArrowRight, ChevronRight, Phone, ShoppingBag, X, ChevronDown, MapPin } from 'lucide-react'
 
 interface MobileMenuProps {
   open: boolean
   onClose: () => void
   navLinks: { label: string; href: string }[]
+  cities: { label: string; href: string }[]
 }
 
-export default function MobileMenu({ open, onClose, navLinks }: MobileMenuProps) {
+export default function MobileMenu({ open, onClose, navLinks, cities }: MobileMenuProps) {
   const pathname = usePathname()
   const links = [{ label: 'Начало', href: '/' }, ...navLinks]
+  const [citiesExpanded, setCitiesExpanded] = useState(false)
 
   useEffect(() => {
     if (!open) return
@@ -107,7 +109,7 @@ export default function MobileMenu({ open, onClose, navLinks }: MobileMenuProps)
               </div>
 
               <p className="mb-1.5 px-2 font-body text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-[#9A8F85]">Навигация</p>
-              <div className="overflow-hidden rounded-[18px] border border-[#E8DDD0] bg-white/75">
+              <div className="overflow-hidden rounded-[18px] border border-[#E8DDD0] bg-white/75 mb-4">
                 {links.map((link, index) => {
                   const active = isActive(link.href)
                   return (
@@ -130,6 +132,48 @@ export default function MobileMenu({ open, onClose, navLinks }: MobileMenuProps)
                     </div>
                   )
                 })}
+              </div>
+
+              {/* Cities Section */}
+              <p className="mb-1.5 px-2 font-body text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-[#9A8F85]">Градове</p>
+              <div className="overflow-hidden rounded-[18px] border border-[#E8DDD0] bg-white/75">
+                <button
+                  onClick={() => setCitiesExpanded(!citiesExpanded)}
+                  className="group flex w-full min-h-[52px] items-center gap-3 px-3.5"
+                  style={{ background: 'transparent' }}
+                >
+                  <span
+                    className="flex h-7 w-7 items-center justify-center rounded-full"
+                    style={{ background: '#F3EEE7', color: '#8A7F75' }}
+                  >
+                    <MapPin size={14} />
+                  </span>
+                  <span className="flex-1 text-left font-body text-[0.95rem] font-semibold text-charcoal">Всички градове</span>
+                  <ChevronDown
+                    size={16}
+                    className={`text-[#B7A99A] transition-transform ${citiesExpanded ? 'rotate-180' : ''}`}
+                  />
+                </button>
+
+                {citiesExpanded && (
+                  <div className="border-t border-[#EEE6DC]">
+                    {cities.map((city) => {
+                      const active = isActive(city.href)
+                      return (
+                        <Link
+                          key={city.href}
+                          href={city.href}
+                          onClick={onClose}
+                          className="group flex min-h-[48px] items-center gap-3 px-3.5 pl-12 border-b border-[#EEE6DC] last:border-0"
+                          style={{ background: active ? '#F1E8DC' : 'transparent' }}
+                        >
+                          <span className="flex-1 font-body text-[0.9rem] text-charcoal">{city.label}</span>
+                          <ChevronRight size={14} className="text-[#B7A99A] transition-transform group-hover:translate-x-0.5 group-hover:text-walnut" />
+                        </Link>
+                      )
+                    })}
+                  </div>
+                )}
               </div>
             </nav>
 

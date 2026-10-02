@@ -1,11 +1,17 @@
 import { Star } from 'lucide-react'
 import { getReviews } from '@/lib/reviews'
+import { SITE_CONFIG } from '@/lib/site-config'
 
 /**
  * Component that displays Google rating in Hero
- * Hidden if no review data available
+ * Hidden if no review data available or if disabled in config
  */
 export default function HeroRatingBadge() {
+  // Hide if disabled in config
+  if (!SITE_CONFIG.ui.showHeroRating) {
+    return null
+  }
+
   const data = getReviews()
 
   // Hide if no rating data
