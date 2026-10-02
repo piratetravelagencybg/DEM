@@ -10,7 +10,7 @@ import { createPageMetadata } from '@/lib/seo'
 
 export const metadata: Metadata = createPageMetadata({
   title: 'Услуги — Мебели по поръчка | Dom Expert Мебел',
-  description: 'Кухни, гардероби, спални, дневни и офис мебели по поръчка в Благоевград, София и региона. Безплатен оглед, монтаж и 2 г. гаранция.',
+  description: 'Кухни, гардероби, спални, дневни и офис мебели по поръчка в Благоевград, София и региона. Оглед 50 €, приспадат се, монтаж и 2 г. гаранция.',
   path: '/услуги/',
   image: '/images/og/kitchens.webp',
   imageAlt: 'Примерна визуализация на мебели по поръчка',
@@ -25,7 +25,7 @@ export default function ServicesPage() {
             level={1}
             eyebrow="Какво правим"
             title="Нашите услуги"
-            subtitle="От кухни до офис мебели — безплатен оглед, платен 3D проект с приспадане при поръчка и професионален монтаж."
+            subtitle="От кухни до офис мебели — оглед — 50 €, приспадат се, платен 3D проект с приспадане при поръчка и професионален монтаж."
           />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((s) => {
