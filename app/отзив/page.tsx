@@ -9,7 +9,7 @@ export const metadata: Metadata = completePageMetadata({
 })
 
 export default function ReviewPage() {
-  const writeReviewUrl = 'https://search.google.com/local/writereview?placeid=ChIJH4FTnIX3qhQRrsTtIxlayao'
+  const writeReviewUrl = 'https://search.google.com/local/writereview?placeid=ChIJH4FTnIX3qhQRrsTtIxIayao'
 
   return (
     <div

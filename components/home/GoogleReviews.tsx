@@ -50,7 +50,7 @@ export default function GoogleReviews({ compact = false }: GoogleReviewsProps) {
 
   // URLs
   const googleMapsUri = GOOGLE_BUSINESS_PROFILE_URL
-  const writeReviewUrl = 'https://search.google.com/local/writereview?placeid=ChIJH4FTnIX3qhQRrsTtIxlayao'
+  const writeReviewUrl = 'https://search.google.com/local/writereview?placeid=ChIJH4FTnIX3qhQRrsTtIxIayao'
 
   // Touch handlers for swipe
   const handleTouchStart = (e: React.TouchEvent) => {
