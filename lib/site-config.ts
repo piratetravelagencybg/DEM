@@ -7,6 +7,7 @@ import { BUSINESS_COORDINATES, GOOGLE_BUSINESS_PROFILE_URL } from './business'
 
 export const SITE_CONFIG = {
   name: 'Dom Expert Мебел',
+  legalName: 'Dom Expert Мебел',
   phone: '0876 081 199',
   phoneInternational: '+359876081199',
   email: 'domexpertmebel@gmail.com',
@@ -15,6 +16,9 @@ export const SITE_CONFIG = {
     street: 'ул. „Стамболийски" 52',
     city: 'Благоевград',
     postalCode: '2700',
+    region: 'Благоевград',
+    country: 'BG',
+    countryName: 'България',
     fullAddress: 'ул. „Стамболийски" 52, 2700 Благоевград',
   },
 
@@ -29,15 +33,21 @@ export const SITE_CONFIG = {
   },
 
   hours: {
-    weekdays: 'Пон–Пет, 09:00–18:00',
-    weekend: 'По договаряне',
+    weekdays: 'Понеделник–Петък',
+    time: '09:00–18:00',
+    weekend: 'Събота и Неделя: Почивни дни',
   },
 
   stats: {
     experience: '10+ години',
+    experienceYears: 10,
     projects: '100+ проекта',
+    projectsCount: 100,
     warranty: '2 години',
+    warrantyYears: 2,
     deliveryTime: '4–6 седмици',
+    deliveryWeeksMin: 4,
+    deliveryWeeksMax: 6,
   },
 
   // Цени за 3D проект
@@ -64,6 +74,15 @@ export const SITE_CONFIG = {
     },
   },
 
+  // Услуги и условия
+  services: {
+    freeInspection: 'Безплатен оглед на място',
+    design3D: '3D проект с приспадане при поръчка',
+    assemblyIncluded: 'Монтаж включен',
+    warranty: '2 години гаранция',
+    responseTime: 'до 24 часа',
+  },
+
   // Обслужвани градове
   cities: {
     primary: ['Благоевград', 'София', 'Дупница', 'Сандански', 'Петрич'],
@@ -77,6 +96,7 @@ export const SITE_CONFIG = {
   },
 
   siteUrl: 'https://domexpertmebel.com',
+  siteName: 'Dom Expert Мебел',
 } as const
 
 // Помощни функции
@@ -102,3 +122,5 @@ export function getInteriorDesignPrice() {
     minimum: `минимум ${minimumSqm} кв.м`,
   }
 }
+
+export type SiteConfig = typeof SITE_CONFIG

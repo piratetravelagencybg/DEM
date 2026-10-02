@@ -1,33 +1,30 @@
-import {
-  BUSINESS_COORDINATES,
-  GOOGLE_BUSINESS_PROFILE_URL,
-} from '@/lib/business'
+import { SITE_CONFIG } from '@/lib/site-config'
 
 export default function LocalBusinessSchema() {
   const schema = {
     '@context': 'https://schema.org',
     '@type': ['LocalBusiness', 'FurnitureStore'],
-    '@id': 'https://domexpertmebel.com/#business',
-    name: 'Dom Expert Мебел',
+    '@id': `${SITE_CONFIG.siteUrl}/#business`,
+    name: SITE_CONFIG.name,
     alternateName: 'Dom Expert',
     description: 'Семейна фирма за мебели по поръчка в Благоевград, София и региона. Безплатен оглед, платен 3D проект с приспадане при поръчка и 2 години гаранция.',
-    url: 'https://domexpertmebel.com',
-    telephone: '+359876081199',
-    email: 'domexpertmebel@gmail.com',
+    url: SITE_CONFIG.siteUrl,
+    telephone: SITE_CONFIG.phoneInternational,
+    email: SITE_CONFIG.email,
     address: {
       '@type': 'PostalAddress',
-      streetAddress: 'ул. Стамболийски 52',
-      addressLocality: 'Благоевград',
-      postalCode: '2700',
-      addressRegion: 'Благоевград',
-      addressCountry: 'BG',
+      streetAddress: SITE_CONFIG.address.street,
+      addressLocality: SITE_CONFIG.address.city,
+      postalCode: SITE_CONFIG.address.postalCode,
+      addressRegion: SITE_CONFIG.address.region,
+      addressCountry: SITE_CONFIG.address.country,
     },
     geo: {
       '@type': 'GeoCoordinates',
-      latitude: BUSINESS_COORDINATES.latitude,
-      longitude: BUSINESS_COORDINATES.longitude,
+      latitude: SITE_CONFIG.geo.latitude,
+      longitude: SITE_CONFIG.geo.longitude,
     },
-    hasMap: GOOGLE_BUSINESS_PROFILE_URL,
+    hasMap: SITE_CONFIG.googleBusinessProfile.url,
     openingHoursSpecification: [
       {
         '@type': 'OpeningHoursSpecification',
@@ -37,32 +34,27 @@ export default function LocalBusinessSchema() {
       },
     ],
     priceRange: '$$',
-    areaServed: [
-      { '@type': 'City', name: 'Благоевград' },
-      { '@type': 'City', name: 'София' },
-      { '@type': 'City', name: 'Дупница' },
-      { '@type': 'City', name: 'Сандански' },
-      { '@type': 'City', name: 'Кресна' },
-      { '@type': 'City', name: 'Банско' },
-      { '@type': 'City', name: 'Разлог' },
-    ],
-    image: 'https://domexpertmebel.com/images/og/home.webp',
-    logo: 'https://domexpertmebel.com/images/logo-icon.webp',
+    areaServed: SITE_CONFIG.cities.primary.map((city) => ({
+      '@type': 'City',
+      name: city,
+    })),
+    image: `${SITE_CONFIG.siteUrl}/images/og/home.webp`,
+    logo: `${SITE_CONFIG.siteUrl}/images/logo-icon.webp`,
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: 'Мебели по поръчка',
       itemListElement: [
-        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Кухни по поръчка', url: 'https://domexpertmebel.com/услуги/кухни-по-поръчка/' } },
-        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Гардероби по поръчка', url: 'https://domexpertmebel.com/услуги/гардероби-по-поръчка/' } },
-        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Спални по поръчка', url: 'https://domexpertmebel.com/услуги/спални-по-поръчка/' } },
-        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Дневни по поръчка', url: 'https://domexpertmebel.com/услуги/дневни-по-поръчка/' } },
-        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Офис мебели', url: 'https://domexpertmebel.com/услуги/офис-мебели/' } },
+        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Кухни по поръчка', url: `${SITE_CONFIG.siteUrl}/услуги/кухни-по-поръчка/` } },
+        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Гардероби по поръчка', url: `${SITE_CONFIG.siteUrl}/услуги/гардероби-по-поръчка/` } },
+        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Спални по поръчка', url: `${SITE_CONFIG.siteUrl}/услуги/спални-по-поръчка/` } },
+        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Дневни по поръчка', url: `${SITE_CONFIG.siteUrl}/услуги/дневни-по-поръчка/` } },
+        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Офис мебели', url: `${SITE_CONFIG.siteUrl}/услуги/офис-мебели/` } },
       ],
     },
     sameAs: [
-      GOOGLE_BUSINESS_PROFILE_URL,
-      'https://www.facebook.com/profile.php?id=61591180911065',
-      'https://www.instagram.com/domexpertmebel/',
+      SITE_CONFIG.googleBusinessProfile.url,
+      SITE_CONFIG.social.facebook,
+      SITE_CONFIG.social.instagram,
     ],
   }
 
