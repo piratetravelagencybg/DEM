@@ -38,11 +38,14 @@ export const SITE_CONFIG = {
     weekend: 'Събота и Неделя: Почивни дни',
   },
 
+  foundingDate: '2012-01-01', // Основана 2012 г.
+
   stats: {
-    experience: '10+ години',
-    experienceYears: 10,
+    experience: 'от 2012 г.',
+    experienceYears: new Date().getFullYear() - 2012,
     projects: '100+ проекта',
     projectsCount: 100,
+    projectsSofia: '30+',
     warranty: '2 години',
     warrantyYears: 2,
     deliveryTime: '4–6 седмици',
@@ -52,6 +55,12 @@ export const SITE_CONFIG = {
 
   // Цени за 3D проект
   pricing: {
+    inspection: {
+      price: 50,
+      currency: '€',
+      deductible: true, // 100% приспадане при поръчка
+      description: 'Оглед на адрес с точно заснемане на размерите',
+    },
     visualization: {
       kitchen: {
         from: 100,
@@ -76,7 +85,8 @@ export const SITE_CONFIG = {
 
   // Услуги и условия
   services: {
-    freeInspection: 'Безплатен оглед на място',
+    inspection: 'Оглед на адрес — 50 €, приспадат се от цената при поръчка',
+    freeConsultation: 'Безплатна консултация по телефон или снимки',
     design3D: '3D проект с приспадане при поръчка',
     assemblyIncluded: 'Монтаж включен',
     warranty: '2 години гаранция',
