@@ -4,7 +4,8 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Send, CheckCircle } from 'lucide-react'
+import Link from 'next/link'
+import { Send, CheckCircle, ArrowRight } from 'lucide-react'
 
 const schema = z.object({
   name: z.string().min(2, 'Въведете вашето име'),
@@ -41,6 +42,10 @@ export default function QuoteForm({ defaultService = '' }: { defaultService?: st
         <CheckCircle size={48} className="text-success" />
         <h3 className="font-display text-2xl font-semibold text-charcoal">Благодарим ви!</h3>
         <p className="text-warm-gray">Ще се свържем с вас до 24 часа.</p>
+        <Link href="/проекти/" className="btn-outline inline-flex items-center gap-2 mt-4">
+          Разгледайте нашите проекти
+          <ArrowRight size={16} />
+        </Link>
       </div>
     )
   }

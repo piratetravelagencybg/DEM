@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import HeroRatingBadge from './HeroRatingBadge'
 
 export default function Hero() {
   return (
@@ -124,6 +125,14 @@ export default function Hero() {
           Проектираме, изработваме и монтираме —<br />
           кухни, гардероби и спални по вашия вкус.
         </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
+        >
+          <HeroRatingBadge />
+        </motion.div>
 
         <div style={{ flex: 1, minHeight: '2rem' }} />
 

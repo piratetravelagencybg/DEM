@@ -28,11 +28,11 @@ export default function HomePage() {
       <LocalBusinessSchema />
       <Hero />
       <ServicesGrid />
-      <AboutSection />
-      <Visualization3D />
-      <ProcessSteps />
-      <ProjectsGallery />
       <GoogleReviews />
+      <ProcessSteps />
+      <Visualization3D />
+      <ProjectsGallery />
+      <AboutSection />
       <CatalogPreview products={catalogPreview} />
       <GoogleBusinessProfile />
       <CTABar />

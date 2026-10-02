@@ -3,6 +3,8 @@ import { Cormorant_Garamond, DM_Sans } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
+import MobileStickyBar from '@/components/layout/MobileStickyBar'
+import TelephoneTracker from '@/components/layout/TelephoneTracker'
 
 const cormorant = Cormorant_Garamond({
   subsets: ['latin', 'cyrillic'],
@@ -77,6 +79,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header />
         <main id="main-content">{children}</main>
         <Footer />
+        <MobileStickyBar />
+        <TelephoneTracker />
       </body>
     </html>
   )
