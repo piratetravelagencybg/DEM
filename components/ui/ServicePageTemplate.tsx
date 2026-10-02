@@ -2,6 +2,7 @@
 import Link from 'next/link'
 import { CheckCircle, ChevronDown } from 'lucide-react'
 import QuoteForm from '@/components/ui/QuoteForm'
+import GoogleReviews from '@/components/home/GoogleReviews'
 import FAQSchema from '@/components/seo/FAQSchema'
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
 import LocalBusinessSchema from '@/components/seo/LocalBusinessSchema'
@@ -277,6 +278,8 @@ export default function ServicePageTemplate({
       )}
 
       {children}
+
+      <GoogleReviews compact />
 
       {/* ── FAQ ── */}
       <section className="section-py" style={{ backgroundColor: 'var(--color-warm-white)' }}>

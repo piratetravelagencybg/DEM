@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { CheckCircle, Phone, ChevronDown } from 'lucide-react'
 import QuoteForm from '@/components/ui/QuoteForm'
 import ServiceGuide from '@/components/ui/ServiceGuide'
+import GoogleReviews from '@/components/home/GoogleReviews'
 import GoogleBusinessProfile from '@/components/home/GoogleBusinessProfile'
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
 import FAQSchema from '@/components/seo/FAQSchema'
@@ -279,6 +280,8 @@ export default function BlagoevgradPage() {
       />
 
       <GoogleBusinessProfile />
+
+      <GoogleReviews />
 
       {/* ── FAQ ── */}
       <section className="section-py" style={{ backgroundColor: 'var(--color-cream)' }}>

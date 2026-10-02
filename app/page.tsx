@@ -6,6 +6,7 @@ import Visualization3D from '@/components/home/Visualization3D'
 import ProcessSteps from '@/components/home/ProcessSteps'
 import ProjectsGallery from '@/components/home/ProjectsGallery'
 import CatalogPreview from '@/components/home/CatalogPreview'
+import GoogleReviews from '@/components/home/GoogleReviews'
 import GoogleBusinessProfile from '@/components/home/GoogleBusinessProfile'
 import CTABar from '@/components/home/CTABar'
 import LocalBusinessSchema from '@/components/seo/LocalBusinessSchema'
@@ -31,6 +32,7 @@ export default function HomePage() {
       <Visualization3D />
       <ProcessSteps />
       <ProjectsGallery />
+      <GoogleReviews />
       <CatalogPreview products={catalogPreview} />
       <GoogleBusinessProfile />
       <CTABar />

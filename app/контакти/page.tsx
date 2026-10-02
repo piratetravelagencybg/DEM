@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Phone, Mail, MapPin, Clock } from 'lucide-react'
 import QuoteForm from '@/components/ui/QuoteForm'
+import GoogleReviews from '@/components/home/GoogleReviews'
 import LocalBusinessSchema from '@/components/seo/LocalBusinessSchema'
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
 import { GOOGLE_BUSINESS_PROFILE_URL } from '@/lib/business'
@@ -118,6 +119,7 @@ export default function ContactsPage() {
             </div>
           </div>
         </section>
+        <GoogleReviews compact />
       </div>
     </>
   )
