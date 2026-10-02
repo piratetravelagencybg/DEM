@@ -10,10 +10,14 @@ const MobileMenu = dynamic(() => import('./MobileMenu'), { ssr: false })
 
 const navLinks = [
   { label: 'Услуги', href: '/услуги/' },
-  { label: 'Проекти', href: '/проекти/' },
   { label: 'Блог', href: '/блог/' },
   { label: 'За нас', href: '/за-нас/' },
   { label: 'Контакти', href: '/контакти/' },
+]
+
+const projectsLinks = [
+  { label: 'Проектни казуси', href: '/проекти/' },
+  { label: '3D проекти', href: '/3d-проекти/' },
 ]
 
 const cities = [
@@ -28,6 +32,7 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [citiesDropdownOpen, setCitiesDropdownOpen] = useState(false)
+  const [projectsDropdownOpen, setProjectsDropdownOpen] = useState(false)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20)
@@ -100,6 +105,63 @@ export default function Header() {
                   />
                 </Link>
               ))}
+
+              {/* Projects Dropdown */}
+              <div
+                className="relative"
+                onMouseEnter={() => setProjectsDropdownOpen(true)}
+                onMouseLeave={() => setProjectsDropdownOpen(false)}
+              >
+                <button
+                  className="font-body text-sm transition-colors duration-200 relative group flex items-center gap-1"
+                  style={{ color: scrolled ? '#2C2C2C' : 'rgba(255,255,255,0.85)' }}
+                >
+                  Проекти
+                  <ChevronDown
+                    size={14}
+                    className={`transition-transform duration-200 ${projectsDropdownOpen ? 'rotate-180' : ''}`}
+                  />
+                  <span
+                    className="absolute -bottom-0.5 left-0 w-0 h-0.5 transition-all duration-200 group-hover:w-full"
+                    style={{ background: scrolled ? '#8B6F47' : 'white' }}
+                  />
+                </button>
+
+                {/* Dropdown Menu */}
+                {projectsDropdownOpen && (
+                  <div
+                    className="absolute top-full left-0 mt-2 min-w-[180px] rounded-2xl overflow-hidden"
+                    style={{
+                      background: scrolled ? '#FFFFFF' : 'rgba(31,25,20,0.96)',
+                      backdropFilter: 'blur(12px)',
+                      WebkitBackdropFilter: 'blur(12px)',
+                      border: `1px solid ${scrolled ? '#E8DDD0' : 'rgba(255,255,255,0.12)'}`,
+                      boxShadow: '0 8px 24px rgba(0,0,0,0.15)',
+                    }}
+                  >
+                    {projectsLinks.map((project, index) => (
+                      <Link
+                        key={project.href}
+                        href={project.href}
+                        className="block px-4 py-2.5 font-body text-sm transition-colors duration-150"
+                        style={{
+                          color: scrolled ? '#2C2C2C' : 'rgba(255,255,255,0.85)',
+                          borderBottom: index < projectsLinks.length - 1 ? `1px solid ${scrolled ? '#F0EBE3' : 'rgba(255,255,255,0.08)'}` : 'none',
+                          background: 'transparent',
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.background = scrolled ? '#F7F3ED' : 'rgba(255,255,255,0.08)'
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.background = 'transparent'
+                        }}
+                      >
+                        {project.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
 
               {/* Cities Dropdown */}
               <div
@@ -208,7 +270,7 @@ export default function Header() {
         </div>
       </header>
 
-      {menuOpen && <MobileMenu open onClose={() => setMenuOpen(false)} navLinks={navLinks} cities={cities} />}
+      {menuOpen && <MobileMenu open onClose={() => setMenuOpen(false)} navLinks={navLinks} projectsLinks={projectsLinks} cities={cities} />}
     </>
   )
 }

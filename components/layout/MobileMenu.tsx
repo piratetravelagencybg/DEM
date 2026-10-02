@@ -10,13 +10,15 @@ interface MobileMenuProps {
   open: boolean
   onClose: () => void
   navLinks: { label: string; href: string }[]
+  projectsLinks: { label: string; href: string }[]
   cities: { label: string; href: string }[]
 }
 
-export default function MobileMenu({ open, onClose, navLinks, cities }: MobileMenuProps) {
+export default function MobileMenu({ open, onClose, navLinks, projectsLinks, cities }: MobileMenuProps) {
   const pathname = usePathname()
   const links = [{ label: 'Начало', href: '/' }, ...navLinks]
   const [citiesExpanded, setCitiesExpanded] = useState(false)
+  const [projectsExpanded, setProjectsExpanded] = useState(false)
 
   useEffect(() => {
     if (!open) return
@@ -132,6 +134,48 @@ export default function MobileMenu({ open, onClose, navLinks, cities }: MobileMe
                     </div>
                   )
                 })}
+              </div>
+
+              {/* Projects Section */}
+              <p className="mb-1.5 px-2 font-body text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-[#9A8F85]">Проекти</p>
+              <div className="overflow-hidden rounded-[18px] border border-[#E8DDD0] bg-white/75 mb-4">
+                <button
+                  onClick={() => setProjectsExpanded(!projectsExpanded)}
+                  className="group flex w-full min-h-[52px] items-center gap-3 px-3.5"
+                  style={{ background: 'transparent' }}
+                >
+                  <span
+                    className="flex h-7 w-7 items-center justify-center rounded-full font-body text-[0.62rem] font-bold"
+                    style={{ background: '#F3EEE7', color: '#8A7F75' }}
+                  >
+                    <span>📁</span>
+                  </span>
+                  <span className="flex-1 text-left font-body text-[0.95rem] font-semibold text-charcoal">Всички проекти</span>
+                  <ChevronDown
+                    size={16}
+                    className={`text-[#B7A99A] transition-transform ${projectsExpanded ? 'rotate-180' : ''}`}
+                  />
+                </button>
+
+                {projectsExpanded && (
+                  <div className="border-t border-[#EEE6DC]">
+                    {projectsLinks.map((project) => {
+                      const active = isActive(project.href)
+                      return (
+                        <Link
+                          key={project.href}
+                          href={project.href}
+                          onClick={onClose}
+                          className="group flex min-h-[48px] items-center gap-3 px-3.5 pl-12 border-b border-[#EEE6DC] last:border-0"
+                          style={{ background: active ? '#F1E8DC' : 'transparent' }}
+                        >
+                          <span className="flex-1 font-body text-[0.9rem] text-charcoal">{project.label}</span>
+                          <ChevronRight size={14} className="text-[#B7A99A] transition-transform group-hover:translate-x-0.5 group-hover:text-walnut" />
+                        </Link>
+                      )
+                    })}
+                  </div>
+                )}
               </div>
 
               {/* Cities Section */}

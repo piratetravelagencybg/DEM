@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import ServicePageTemplate from '@/components/ui/ServicePageTemplate'
 import ServiceGuide from '@/components/ui/ServiceGuide'
+import Projects3DShowcase from '@/components/ui/Projects3DShowcase'
 import services from '@/data/services.json'
 import { completePageMetadata } from '@/lib/seo'
 import { SITE_CONFIG } from '@/lib/site-config'
@@ -136,6 +137,7 @@ export default function InteriorDesignPage() {
         steps={guideSteps}
         links={guideLinks}
       />
+      <Projects3DShowcase />
     </ServicePageTemplate>
   )
 }

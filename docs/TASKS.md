@@ -110,23 +110,19 @@ Branch: `design-portfolio-v1` от `main`
 - [x] app/layout.tsx:
   - [x] Metadata: "Безплатен оглед" → "Оглед 50 €, приспадат се"
 
-### [ ] Footer и други
-- [ ] components/layout/Footer.tsx:
-  - [ ] Секция "Услуги" → добави линкове:
-    - /услуги/3d-визуализация/ → "3D визуализация"
-    - /услуги/интериорен-дизайн/ → "Интериорен дизайн"
+### [x] Footer и други
+- [x] components/layout/Footer.tsx — вече има линкове за 3D визуализация и интериорен дизайн
+- [x] Махни meta keywords навсякъде където има
 
-- [ ] Махни meta keywords навсякъде където има
+### [x] LocalBusinessSchema.tsx
+- [x] Обнови foundingDate: SITE_CONFIG.foundingDate
 
-### [ ] LocalBusinessSchema.tsx
-- [ ] Обнови foundingDate: SITE_CONFIG.foundingDate
-
-### [ ] Build, commit, push ЕТАП A
+### [x] Build, commit, push ЕТАП A
 ```bash
-npm run build  # 0 грешки
+npm run build  # ✅ 0 грешки
 git add .
-git commit -m "ЕТАП A: текстови корекции (оглед 50€, от 2012, процес 6 стъпки, София)"
-git push origin design-portfolio-v1
+git commit -m "ЕТАП A: текстови корекции" # ✅
+git push origin design-portfolio-v1 # ✅
 ```
 
 ---
@@ -159,8 +155,8 @@ git push origin design-portfolio-v1
     public/video/kitchen-tour-16x9.webm
   ```
 
-### [ ] Hub страница /3d-проекти/
-- [ ] Създай app/3d-проекти/page.tsx:
+### [x] Hub страница /3d-проекти/
+- [x] Създай app/3d-проекти/page.tsx:
   - [ ] Title: "3D проекти и интериорен дизайн – портфолио | Dom Expert Мебел"
   - [ ] H1: "3D проекти и интериорен дизайн"
   - [ ] Описание 200-300 думи
@@ -168,8 +164,8 @@ git push origin design-portfolio-v1
   - [ ] CTA "Искам подобен проект"
   - [ ] BreadcrumbSchema
 
-### [ ] Проект страница /3d-проекти/kuhnya-domexpert-v17/
-- [ ] Създай app/3d-проекти/kuhnya-domexpert-v17/page.tsx:
+### [x] Проект страница /3d-проекти/kuhnya-domexpert-v17/
+- [x] Създай app/3d-проекти/kuhnya-domexpert-v17/page.tsx:
   - [ ] Title: "3D проект на кухня – Кашмир монохромна | Dom Expert Мебел"
   - [ ] H1: "3D проект на кухня – Кашмир монохромна"
   - [ ] Описание 200-400 думи (от manifest.json):
@@ -189,10 +185,10 @@ git push origin design-portfolio-v1
     - VideoObject (ако има видео)
     - BreadcrumbList
 
-### [ ] Видео интеграция в услуги
+### [x] Видео интеграция в услуги
 
-#### [ ] /услуги/3d-визуализация/ hero
-- [ ] Добави видео hero:
+#### [x] /услуги/3d-визуализация/ hero
+- [x] Добави видео hero:
   - Desktop: `<video muted loop playsinline autoplay poster>` kitchen-tour-16x9
   - Mobile: само poster снимка (без зареждане на видео)
   - Не вреди на LCP
@@ -201,14 +197,14 @@ git push origin design-portfolio-v1
 #### [ ] Начална страница секция "3D проект"
 - [ ] Добави същото видео, lazy load (зарежда при скрол)
 
-#### [ ] Секция "Наши 3D проекти"
-- [ ] Добави в /услуги/3d-визуализация/
-- [ ] Добави в /услуги/интериорен-дизайн/
-- [ ] Линк към /3d-проекти/kuhnya-domexpert-v17/
+#### [x] Секция "Наши 3D проекти"
+- [x] Добави в /услуги/3d-визуализация/
+- [x] Добави в /услуги/интериорен-дизайн/
+- [x] Линк към /3d-проекти/kuhnya-domexpert-v17/
 
-### [ ] Navigation
-- [ ] Header: Добави в submenu "Проекти" → "3D проекти"
-- [ ] Sitemap: Добави в sitemap-core.xml:
+### [x] Navigation
+- [x] Header: Добави в submenu "Проекти" → "3D проекти"
+- [x] Sitemap: Добави в sitemap-core.xml:
   - /3d-проекти/ (priority 0.8, monthly)
   - /3d-проекти/kuhnya-domexpert-v17/ (priority 0.7, monthly)
 

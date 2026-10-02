@@ -20,10 +20,16 @@ interface GalleryItem {
   alt: string
 }
 
+interface HeroVideo {
+  src: string
+  poster: string
+}
+
 interface ServicePageProps {
   title: string
   subtitle: string
   heroImage: string
+  heroVideo?: HeroVideo
   gallery?: GalleryItem[]
   features: string[]
   faq: ServiceFAQ[]
@@ -36,6 +42,7 @@ export default function ServicePageTemplate({
   title,
   subtitle,
   heroImage,
+  heroVideo,
   gallery = [],
   features,
   faq,
@@ -149,20 +156,48 @@ export default function ServicePageTemplate({
               </div>
             </div>
 
-            {/* ── Image column ── */}
+            {/* ── Image/Video column ── */}
             <div className="relative" style={{ aspectRatio: '4/3' }}>
               <div
                 className="rounded-2xl overflow-hidden h-full relative"
                 style={{ boxShadow: '0 24px 64px rgba(0,0,0,0.16), 0 8px 24px rgba(0,0,0,0.10)' }}
               >
-                <Image
-                  src={heroImage}
-                  alt={`${title} – ${heroDisclosure?.toLocaleLowerCase('bg-BG') || 'илюстрация'}`}
-                  fill
-                  className="object-cover"
-                  priority
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                />
+                {heroVideo ? (
+                  <>
+                    {/* Desktop: autoplay video */}
+                    <video
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      poster={heroVideo.poster}
+                      className="hidden md:block w-full h-full object-cover"
+                      style={{ backgroundColor: '#1A1714' }}
+                    >
+                      <source src={heroVideo.src} type="video/mp4" />
+                    </video>
+                    {/* Mobile: only poster image */}
+                    <div className="md:hidden w-full h-full relative">
+                      <Image
+                        src={heroVideo.poster}
+                        alt={`${title} – илюстрация`}
+                        fill
+                        className="object-cover"
+                        priority
+                        sizes="100vw"
+                      />
+                    </div>
+                  </>
+                ) : (
+                  <Image
+                    src={heroImage}
+                    alt={`${title} – ${heroDisclosure?.toLocaleLowerCase('bg-BG') || 'илюстрация'}`}
+                    fill
+                    className="object-cover"
+                    priority
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                  />
+                )}
                 {/* Bottom gradient */}
                 <div style={{
                   position: 'absolute', inset: 0,

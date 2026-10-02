@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import ServicePageTemplate from '@/components/ui/ServicePageTemplate'
 import ServiceGuide from '@/components/ui/ServiceGuide'
+import Projects3DShowcase from '@/components/ui/Projects3DShowcase'
 import services from '@/data/services.json'
 import { completePageMetadata } from '@/lib/seo'
 import { SITE_CONFIG } from '@/lib/site-config'
@@ -122,6 +123,10 @@ export default function Visualization3DPage() {
       title={service.title}
       subtitle={`Виждате точно как ще изглеждат вашите мебели преди изработката. 3D проектът за кухня започва от ${SITE_CONFIG.pricing.visualization.kitchen.from} ${SITE_CONFIG.pricing.visualization.kitchen.currency}, за гардероб/спалня/дневна — от ${SITE_CONFIG.pricing.visualization.other.from} ${SITE_CONFIG.pricing.visualization.other.currency}. При поръчка приспадаме 100% от платената сума.`}
       heroImage={service.image}
+      heroVideo={{
+        src: '/video/kitchen-tour-16x9-compressed.mp4',
+        poster: '/video/kitchen-tour-16x9-poster.webp',
+      }}
       gallery={service.gallery}
       features={service.features}
       faq={service.faq}
@@ -135,6 +140,7 @@ export default function Visualization3DPage() {
         steps={guideSteps}
         links={guideLinks}
       />
+      <Projects3DShowcase />
     </ServicePageTemplate>
   )
 }

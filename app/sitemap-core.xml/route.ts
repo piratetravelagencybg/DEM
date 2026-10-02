@@ -10,6 +10,8 @@ export async function GET() {
     { url: `${BASE}/за-нас/`, priority: 0.7, changeFrequency: 'monthly' },
     { url: `${BASE}/услуги/`, priority: 0.9, changeFrequency: 'monthly' },
     { url: `${BASE}/проекти/`, priority: 0.8, changeFrequency: 'monthly' },
+    { url: `${BASE}/3d-проекти/`, priority: 0.8, changeFrequency: 'monthly' },
+    { url: `${BASE}/3d-проекти/kuhnya-domexpert-v17/`, priority: 0.7, changeFrequency: 'monthly' },
     { url: `${BASE}/блог/`, priority: 0.7, changeFrequency: 'weekly' },
     { url: `${BASE}/контакти/`, priority: 0.8, changeFrequency: 'monthly' },
     { url: `${BASE}/благоевград/`, priority: 0.9, changeFrequency: 'monthly' },
