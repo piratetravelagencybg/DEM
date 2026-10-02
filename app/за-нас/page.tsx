@@ -21,11 +21,11 @@ const processImageCredit = getImageCredit(processImage)
 export const metadata: Metadata = completePageMetadata({
   title: { absolute: 'За Dom Expert Мебел | Семейна мебелна фирма' },
   description:
-    'Научете историята на Dom Expert Мебел — семейна мебелна фирма от Благоевград с над 10 години опит и повече от 100 реализирани проекта.',
+    'Научете историята на Dom Expert Мебел — семейна мебелна фирма от Благоевград с опит от 2012 г. и повече от 100 реализирани проекта.',
   alternates: { canonical: 'https://domexpertmebel.com/за-нас/' },
   openGraph: {
     title: 'За Dom Expert Мебел | Семейна мебелна фирма',
-    description: 'Историята на семейна мебелна фирма от Благоевград с над 10 години опит и повече от 100 реализирани проекта.',
+    description: 'Историята на семейна мебелна фирма от Благоевград с опит от 2012 г. и повече от 100 реализирани проекта.',
     url: 'https://domexpertmebel.com/за-нас/',
     type: 'website',
     locale: 'bg_BG',
@@ -124,7 +124,7 @@ export default function AboutPage() {
                 fontSize: 'clamp(0.95rem, 2vw, 1.1rem)', color: 'rgba(255,255,255,0.65)',
                 maxWidth: '44ch', lineHeight: 1.6, marginBottom: '2rem',
               }}>
-                Семейна работилница от Благоевград — над 10 години опит и 100+ реализирани кухни, гардероби и спални.
+                Семейна работилница от Благоевград — опит от 2012 г. и 100+ реализирани кухни, гардероби и спални.
               </p>
               <div className="flex flex-wrap gap-3">
                 <Link href="/контакти/"
@@ -163,12 +163,12 @@ export default function AboutPage() {
                   className="font-display font-bold heading-gradient leading-[1.1] mt-2 mb-6"
                   style={{ fontSize: 'clamp(1.7rem, 3.8vw, 2.4rem)' }}
                 >
-                  Семеен бизнес с над 10 години традиция
+                  Семеен бизнес с традиция от 2012 г.
                 </h2>
                 <div className="space-y-4">
                   <p className="font-body leading-relaxed" style={{ fontSize: '1.02rem', color: '#3C3830', lineHeight: 1.75 }}>
                     Всичко започна с просто желание — да правим мебели, каквито сами бихме искали у дома.
-                    Преди над 10 години основахме Dom Expert Мебел като малка семейна работилница с ясна цел:{' '}
+                    От 2012 г. основахме Dom Expert Мебел като малка семейна работилница с ясна цел:{' '}
                     <strong style={{ color: '#1C1208', fontWeight: 700 }}>качество, честност и внимание към всеки детайл.</strong>
                   </p>
                   <p className="font-body leading-relaxed" style={{ fontSize: '1.02rem', color: '#3C3830', lineHeight: 1.75 }}>
@@ -432,7 +432,7 @@ export default function AboutPage() {
               Готови да направим вашата мечтана кухня?
             </h2>
             <p className="font-body leading-relaxed mb-7" style={{ fontSize: '1rem', color: '#6A6460' }}>
-              Свържете се с нас за безплатен оглед и консултация. 3D проектът се заплаща и се приспада при поръчка.
+              Свържете се с нас за оглед (50 €, приспадат се) и консултация. 3D проектът се заплаща и се приспада при поръчка.
             </p>
             <div className="flex flex-wrap gap-3 justify-center">
               <Link href="/контакти/"

@@ -103,7 +103,7 @@ export default function AboutSection() {
               className="font-body leading-relaxed mb-6 md:max-w-[48ch]"
               style={{ fontSize: '0.95rem', color: 'rgba(255,255,255,0.72)' }}
             >
-              Проектираме и изработваме мебели по поръчка от над 10 години.
+              Проектираме и изработваме мебели по поръчка от 2012 г.
               Всеки проект е уникален — създаден специално за вашия дом и начин на живот.
             </motion.p>
 

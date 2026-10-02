@@ -329,10 +329,10 @@ export default function ServicePageTemplate({
       >
         <div className="container-main max-w-2xl">
           <div className="text-center mb-10">
-            <span className="eyebrow-pill">Безплатен оглед</span>
+            <span className="eyebrow-pill">Оглед 50 €, приспадат се</span>
             <h2 className="section-title">Заявете оглед и консултация</h2>
             <p className="font-body text-warm-gray mt-3">
-              Огледът е безплатен. 3D проектът се заплаща, а сумата се приспада при поръчка на мебелите.
+              Огледът е 50 €, приспадат се при поръчка. 3D проектът се заплаща, а сумата се приспада при поръчка на мебелите.
             </p>
           </div>
           <div

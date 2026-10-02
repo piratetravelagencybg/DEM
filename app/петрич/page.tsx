@@ -188,7 +188,7 @@ export default function PetrichPage() {
                 Мебели по поръчка в Петрич
               </h1>
               <p className="font-body text-warm-gray leading-relaxed" style={{ fontSize: '1.05rem' }}>
-                Dom Expert Мебел обслужва Петрич и района с безплатен оглед, изработка на мебели по поръчка в собствена работилница в Благоевград, доставка и монтаж. Изработваме кухни, гардероби, спални, дневни и офис мебели с 3D проект, монтаж и 2 години гаранция.
+                Dom Expert Мебел обслужва Петрич и района с оглед на адрес — 50 €, приспадат се при поръчка, изработка на мебели по поръчка в собствена работилница в Благоевград, доставка и монтаж. Изработваме кухни, гардероби, спални, дневни и офис мебели с 3D проект, монтаж и 2 години гаранция.
               </p>
 
               {/* GEO key facts */}
@@ -251,7 +251,7 @@ export default function PetrichPage() {
                 className="bg-white rounded-2xl p-8"
                 style={{ border: '1px solid #EDE5DA', boxShadow: '0 4px 32px rgba(0,0,0,0.06)' }}
               >
-                <h2 className="font-display font-semibold text-charcoal text-xl mb-2">Безплатен оглед и оферта</h2>
+                <h2 className="font-display font-semibold text-charcoal text-xl mb-2">Оглед 50 €, приспадат се</h2>
                 <p className="font-body text-warm-gray text-sm mb-6">
                   3D проектът се заплаща и се приспада 100% при поръчка на мебелите.
                 </p>
@@ -265,7 +265,7 @@ export default function PetrichPage() {
       <ServiceGuide
         eyebrow="Местна услуга"
         title="Как работим с клиенти от Петрич"
-        intro="Обслужваме Петрич и района с безплатен оглед на място, изработка в нашата работилница в Благоевград и монтаж с гаранция. Ето процеса от заявката до готовите мебели."
+        intro="Обслужваме Петрич и района с оглед на място — 50 €, приспадат се при поръчка, изработка в нашата работилница в Благоевград и монтаж с гаранция. Ето процеса от заявката до готовите мебели."
         sections={guideSections}
         steps={guideSteps}
         links={guideLinks}

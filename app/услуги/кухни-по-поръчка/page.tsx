@@ -89,7 +89,7 @@ const guideLinks = [
   },
   {
     href: '/контакти/',
-    label: 'Заявете безплатен оглед',
+    label: 'Заявете оглед 50 €',
     description: 'Свържете се с нас за Благоевград, София и региона.',
   },
 ]
@@ -98,7 +98,7 @@ export default function KuhniPage() {
   return (
     <ServicePageTemplate
       title={service.title}
-      subtitle="Проектираме и изработваме кухни според реалните размери, начина ви на работа и избрания бюджет — с безплатен оглед, монтаж и 2 години гаранция."
+      subtitle="Проектираме и изработваме кухни според реалните размери, начина ви на работа и избрания бюджет — с оглед на адрес (50 €, приспадат се), монтаж и 2 години гаранция."
       heroImage={service.image}
       gallery={service.gallery}
       features={service.features}

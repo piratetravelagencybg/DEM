@@ -28,7 +28,6 @@ export const metadata: Metadata = {
     template: '%s | Dom Expert Мебел',
   },
   description: 'Семейна фирма за мебели по поръчка. Кухни, гардероби, спални и офис мебели с оглед — 50 €, приспадат се, монтаж и 2 години гаранция.',
-  keywords: ['мебели по поръчка', 'кухни по поръчка', 'гардероби по поръчка', 'Благоевград', 'София'],
   authors: [{ name: 'Dom Expert Мебел' }],
   manifest: '/site.webmanifest',
   icons: {

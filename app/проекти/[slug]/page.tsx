@@ -119,7 +119,7 @@ export default function ProjectPage({ params }: Props) {
   const processSteps = [
     {
       icon: Ruler,
-      title: 'Разговор и безплатен оглед',
+      title: 'Разговор и оглед 50 €',
       description: 'Уточняваме задачата и вземаме точни размери на място, преди да предложим конкретно решение.',
     },
     {
