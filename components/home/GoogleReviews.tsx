@@ -94,16 +94,24 @@ export default function GoogleReviews({ compact = false }: GoogleReviewsProps) {
   return (
     <section
       className="section-py relative overflow-hidden"
-      style={{ backgroundColor: 'var(--color-cream)' }}
     >
-      {/* Architectural Blueprint Background */}
+      {/* Background Image with Blur */}
       <div
-        className="absolute inset-0 pointer-events-none opacity-[0.03]"
+        className="absolute inset-0 pointer-events-none"
         style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='800' height='600' xmlns='http://www.w3.org/2000/svg'%3E%3Cg stroke='%2351423C' stroke-width='1' fill='none'%3E%3C!-- Roof --%3E%3Cpath d='M200,150 L400,50 L600,150'/%3E%3Cline x1='400' y1='50' x2='400' y2='80'/%3E%3C!-- House outline --%3E%3Crect x='200' y='150' width='400' height='300'/%3E%3C!-- Windows --%3E%3Crect x='250' y='200' width='80' height='100'/%3E%3Cline x1='290' y1='200' x2='290' y2='300'/%3E%3Cline x1='250' y1='250' x2='330' y2='250'/%3E%3Crect x='370' y='200' width='80' height='100'/%3E%3Cline x1='410' y1='200' x2='410' y2='300'/%3E%3Cline x1='370' y1='250' x2='450' y2='250'/%3E%3Crect x='490' y='200' width='80' height='100'/%3E%3Cline x1='530' y1='200' x2='530' y2='300'/%3E%3Cline x1='490' y1='250' x2='570' y2='250'/%3E%3C!-- Door --%3E%3Crect x='360' y='330' width='80' height='120'/%3E%3Ccircle cx='420' cy='390' r='3'/%3E%3C/g%3E%3C/svg%3E")`,
+          backgroundImage: 'url(/portfolio/kuhnya-domexpert-v17/3d-proekt-kuhnya-moderna-obsht-1.webp)',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
-          backgroundSize: 'contain',
+          backgroundSize: 'cover',
+          filter: 'blur(12px)',
+          transform: 'scale(1.1)', // Prevent blur edges
+        }}
+      />
+      {/* Light overlay for readability */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: 'rgba(255,255,255,0.7)',
         }}
       />
 
