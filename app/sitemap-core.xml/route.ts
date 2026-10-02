@@ -14,8 +14,9 @@ export async function GET() {
     { url: `${BASE}/контакти/`, priority: 0.8, changeFrequency: 'monthly' },
     { url: `${BASE}/благоевград/`, priority: 0.9, changeFrequency: 'monthly' },
     { url: `${BASE}/софия/`, priority: 0.9, changeFrequency: 'monthly' },
-    { url: `${BASE}/дупница/`, priority: 0.7, changeFrequency: 'monthly' },
-    { url: `${BASE}/сандански/`, priority: 0.7, changeFrequency: 'monthly' },
+    { url: `${BASE}/дупница/`, priority: 0.9, changeFrequency: 'monthly' },
+    { url: `${BASE}/сандански/`, priority: 0.9, changeFrequency: 'monthly' },
+    { url: `${BASE}/петрич/`, priority: 0.9, changeFrequency: 'monthly' },
   ]
 
   const servicePages = services.map((service) => ({

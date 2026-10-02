@@ -105,7 +105,7 @@ export const CATALOG_LANDINGS = [
     metaDescription: 'Разгледайте готови мебели от каталога на MBX с актуални цени, снимки и наличности. Филтрирайте по стая, вид, размер и колекция.',
     intro: 'Сравнете готови модели за спалня, детска стая, дневна и антре на едно място. Проверете цената, вариантите и актуалната наличност преди избор.',
     filter: { kind: 'all' },
-    priority: 1,
+    priority: 0.6,
     changeFrequency: 'weekly',
   },
   {
@@ -118,7 +118,7 @@ export const CATALOG_LANDINGS = [
     metaDescription: 'Готови мебели за спалня с актуални цени и снимки: легла, гардероби, скринове, нощни шкафчета и спални комплекти.',
     intro: 'Обзаведете спалнята с готови модели, които лесно се комбинират по стил и функция. Разгледайте отделни мебели и завършени комплекти с ясни продуктови данни.',
     filter: { kind: 'room', room: 'bedroom' },
-    priority: 0.9,
+    priority: 0.5,
     changeFrequency: 'weekly',
   },
   {
@@ -131,7 +131,7 @@ export const CATALOG_LANDINGS = [
     metaDescription: 'Разгледайте готови гардероби с различни размери, врати и вътрешно разпределение. Вижте актуални цени, снимки и наличности.',
     intro: 'Сравнете готови гардероби за спалня, детска стая или антре. Продуктовите страници показват размери, варианти, цена и информация за наличността.',
     filter: { kind: 'type', productType: 'wardrobes' },
-    priority: 0.9,
+    priority: 0.5,
     changeFrequency: 'weekly',
   },
   {
@@ -144,7 +144,7 @@ export const CATALOG_LANDINGS = [
     metaDescription: 'Готови легла за спалня и детска стая с различни размери и конфигурации. Сравнете модели, цени, снимки и актуална наличност.',
     intro: 'Открийте готови легла за различни помещения и размери матраци. Сравнете конструкция, място за съхранение и подходящи допълващи мебели.',
     filter: { kind: 'type', productType: 'beds' },
-    priority: 0.9,
+    priority: 0.5,
     changeFrequency: 'weekly',
   },
   {
@@ -157,7 +157,7 @@ export const CATALOG_LANDINGS = [
     metaDescription: 'Готови детски легла в практични размери и конфигурации. Разгледайте снимки, актуални цени, варианти и информация за наличност.',
     intro: 'Изберете готово детско легло според свободното пространство и размера на матрака. Сред моделите има компактни решения и варианти с допълнително съхранение.',
     filter: { kind: 'room-type', room: 'children', productType: 'beds' },
-    priority: 0.9,
+    priority: 0.5,
     changeFrequency: 'weekly',
   },
   {
@@ -170,7 +170,7 @@ export const CATALOG_LANDINGS = [
     metaDescription: 'Готови спални комплекти с легло, гардероб и допълващи мебели. Сравнете състав, цветове, актуални цени и наличности.',
     intro: 'Спалните комплекти събират основните мебели в единна серия и улесняват съчетаването на цветове и материали. Проверете какво включва всеки комплект.',
     filter: { kind: 'type', productType: 'bedroom-sets' },
-    priority: 0.9,
+    priority: 0.5,
     changeFrequency: 'weekly',
   },
   {
@@ -183,7 +183,7 @@ export const CATALOG_LANDINGS = [
     metaDescription: 'Готови скринове, ракли и комоди за практично съхранение. Разгледайте размери, цветове, снимки, актуални цени и наличности.',
     intro: 'Скриновете и раклите добавят удобно място за дрехи и вещи без да заемат голяма площ. Сравнете ширина, брой чекмеджета и подходяща мебелна серия.',
     filter: { kind: 'type', productType: 'dressers' },
-    priority: 0.9,
+    priority: 0.5,
     changeFrequency: 'weekly',
   },
   {
@@ -196,7 +196,7 @@ export const CATALOG_LANDINGS = [
     metaDescription: 'Готови нощни шкафчета за различни легла и спални серии. Сравнете размери, чекмеджета, цветове, актуални цени и наличности.',
     intro: 'Подберете нощно шкафче според височината на леглото и нуждата от съхранение. Моделите могат да се комбинират с легла, скринове и гардероби от същата серия.',
     filter: { kind: 'type', productType: 'nightstands' },
-    priority: 0.9,
+    priority: 0.5,
     changeFrequency: 'weekly',
   },
   {
@@ -213,7 +213,7 @@ export const CATALOG_LANDINGS = [
       productType: 'tv-units',
       subtype: 'tv-cabinet',
     },
-    priority: 0.9,
+    priority: 0.5,
     changeFrequency: 'weekly',
   },
   {
@@ -230,7 +230,7 @@ export const CATALOG_LANDINGS = [
       productType: 'tv-units',
       subtype: 'living-wall-unit',
     },
-    priority: 0.9,
+    priority: 0.5,
     changeFrequency: 'weekly',
   },
   {
@@ -382,7 +382,7 @@ export const CATALOG_LANDINGS = [
     metaDescription: 'Разгледайте колекции готови мебели с координирани цветове и модули за различни помещения. Сравнете елементи, цени и наличности.',
     intro: 'Колекциите улесняват съчетаването на няколко мебели в обща визия. Отворете избрана серия, за да сравните включените модули и продуктовите им данни.',
     filter: { kind: 'collections' },
-    priority: 0.8,
+    priority: 0.5,
     changeFrequency: 'weekly',
   },
   {
@@ -395,7 +395,7 @@ export const CATALOG_LANDINGS = [
     metaDescription: 'Разгледайте готовите мебели от колекция Line. Сравнете наличните модули, размери, цветови варианти, актуални цени и наличности.',
     intro: 'Колекция Line включва съвместими мебели, които могат да се комбинират според помещението и нуждите. Проверете всеки модул поотделно преди избор.',
     filter: { kind: 'collection', collection: 'line', aliases: ['Line', 'Колекция Line'] },
-    priority: 0.7,
+    priority: 0.4,
     changeFrequency: 'monthly',
   },
   {
@@ -408,7 +408,7 @@ export const CATALOG_LANDINGS = [
     metaDescription: 'Разгледайте готовите мебели от колекция Sentinel. Сравнете модули, размери, цветови варианти, актуални цени и наличности.',
     intro: 'Серия Sentinel позволява да подберете координирани мебели от една продуктова линия. Разгледайте размерите и предназначението на отделните модули.',
     filter: { kind: 'collection', collection: 'sentinel', aliases: ['Sentinel', 'Колекция Sentinel'] },
-    priority: 0.7,
+    priority: 0.4,
     changeFrequency: 'monthly',
   },
   {
@@ -421,7 +421,7 @@ export const CATALOG_LANDINGS = [
     metaDescription: 'Разгледайте готовите мебели от колекция Modern. Сравнете наличните елементи, размери, варианти, актуални цени и наличности.',
     intro: 'Колекция Modern събира мебели с обща продуктова линия за по-лесно комбиниране. Проверете кои модули са подходящи за вашето помещение.',
     filter: { kind: 'collection', collection: 'modern', aliases: ['Modern', 'Колекция Modern'] },
-    priority: 0.7,
+    priority: 0.4,
     changeFrequency: 'monthly',
   },
   {
@@ -434,7 +434,7 @@ export const CATALOG_LANDINGS = [
     metaDescription: 'Разгледайте готовите мебели от колекция Linero. Сравнете елементи, конфигурации, размери, актуални цени и наличности.',
     intro: 'Мебелите Linero могат да бъдат разглеждани като комплект или като отделни елементи от серията. Сверете състава и размерите на всеки модел.',
     filter: { kind: 'collection', collection: 'linero', aliases: ['Linero', 'Колекция Linero'] },
-    priority: 0.7,
+    priority: 0.4,
     changeFrequency: 'monthly',
   },
   {
@@ -447,7 +447,7 @@ export const CATALOG_LANDINGS = [
     metaDescription: 'Разгледайте готовите мебели от колекция Kiara. Сравнете наличните модули, размери, цветове, актуални цени и наличности.',
     intro: 'Колекция Kiara предлага група съвместими мебели за последователно обзавеждане. Разгледайте продуктовите варианти и избирайте по размер и функция.',
     filter: { kind: 'collection', collection: 'kiara', aliases: ['Kiara', 'Колекция Kiara'] },
-    priority: 0.7,
+    priority: 0.4,
     changeFrequency: 'monthly',
   },
   {
@@ -460,7 +460,7 @@ export const CATALOG_LANDINGS = [
     metaDescription: 'Разгледайте готовите мебели от колекция Zanardi. Сравнете комплекти и отделни модули, размери, актуални цени и наличности.',
     intro: 'Серия Zanardi включва мебели, които могат да се подбират като общо решение или поотделно. Проверете състава, размерите и наличните варианти.',
     filter: { kind: 'collection', collection: 'zanardi', aliases: ['Zanardi', 'Колекция Zanardi'] },
-    priority: 0.7,
+    priority: 0.4,
     changeFrequency: 'monthly',
   },
   {
@@ -473,7 +473,7 @@ export const CATALOG_LANDINGS = [
     metaDescription: 'Разгледайте готовите мебели от колекция Brooklyn. Сравнете наличните елементи, размери, варианти, актуални цени и наличности.',
     intro: 'Колекция Brooklyn обединява съвместими елементи в една продуктова серия. Сравнете отделните мебели и планирайте комбинацията според помещението.',
     filter: { kind: 'collection', collection: 'brooklyn', aliases: ['Brooklyn', 'Колекция Brooklyn'] },
-    priority: 0.7,
+    priority: 0.4,
     changeFrequency: 'monthly',
   },
   {
@@ -486,7 +486,7 @@ export const CATALOG_LANDINGS = [
     metaDescription: 'Разгледайте готовите мебели от колекция Integra. Сравнете модули, конфигурации, размери, актуални цени и наличности.',
     intro: 'Модулите Integra могат да се комбинират в последователно обзавеждане. Проверете функциите, размерите и продуктовите варианти на всеки елемент.',
     filter: { kind: 'collection', collection: 'integra', aliases: ['Integra', 'Колекция Integra'] },
-    priority: 0.7,
+    priority: 0.4,
     changeFrequency: 'monthly',
   },
   {
@@ -499,7 +499,7 @@ export const CATALOG_LANDINGS = [
     metaDescription: 'Разгледайте готовите мебели от колекция Bronx. Сравнете различни модули, размери, актуални цени, снимки и наличности.',
     intro: 'Колекция Bronx включва множество модули за комбиниране в обща мебелна линия. Сравнете елементите според помещението и нужната функция.',
     filter: { kind: 'collection', collection: 'bronx', aliases: ['Bronx', 'Колекция Bronx'] },
-    priority: 0.7,
+    priority: 0.4,
     changeFrequency: 'monthly',
   },
   {
@@ -512,7 +512,7 @@ export const CATALOG_LANDINGS = [
     metaDescription: 'Разгледайте готовите мебели от колекция Arson. Сравнете наличните модули, размери, варианти, актуални цени и наличности.',
     intro: 'Серия Arson предлага съвместими мебели, които могат да се разглеждат и избират поотделно. Проверете размерите и предназначението на всеки модул.',
     filter: { kind: 'collection', collection: 'arson', aliases: ['Arson', 'Колекция Arson'] },
-    priority: 0.7,
+    priority: 0.4,
     changeFrequency: 'monthly',
   },
 ] as const satisfies readonly CatalogLandingConfig[]
