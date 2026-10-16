@@ -10,16 +10,31 @@ mkdir -p "$OUT/frames"
 if [[ -f "$SRC" ]]; then
   cp "$SRC" "$OUT/video.mp4"
 else
-  if ! command -v yt-dlp >/dev/null 2>&1; then
-    echo "yt-dlp липсва — опитвам: pip install -U yt-dlp" >&2
-    pip install -q -U yt-dlp >&2 || { echo "ERROR: няма yt-dlp и не мога да го инсталирам" >&2; exit 2; }
+  SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+  YTDLP=$(command -v yt-dlp || true)
+  if [[ -z "$YTDLP" ]]; then
+    # pip често е блокиран в облачни среди — GitHub release-ът обикновено минава
+    YTDLP="$OUT/.yt-dlp"
+    pip install -q -U yt-dlp >/dev/null 2>&1 && YTDLP=$(command -v yt-dlp) \
+      || { curl -sSL --max-time 60 -o "$YTDLP" https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp \
+           && chmod +x "$YTDLP"; } || YTDLP=""
   fi
   COOKIES=()
   [[ -n "${IG_COOKIES:-}" && -f "$IG_COOKIES" ]] && COOKIES=(--cookies "$IG_COOKIES")
-  yt-dlp "${COOKIES[@]}" -q --no-warnings \
-    -f "mp4/best" -o "$OUT/video.%(ext)s" \
-    --write-info-json --write-description --write-subs --write-auto-subs --sub-langs "bg,en,.*" \
-    "$SRC" || { echo "ERROR: свалянето не успя (блокиран достъп, private акаунт или нужни cookies в IG_COOKIES)" >&2; exit 3; }
+  if [[ -z "$YTDLP" ]] || ! "$YTDLP" "${COOKIES[@]}" -q --no-warnings \
+      -f "mp4/best" -o "$OUT/video.%(ext)s" \
+      --write-info-json --write-description --write-subs --write-auto-subs --sub-langs "bg,en,.*" \
+      "$SRC"; then
+    echo "yt-dlp не успя — опитвам през headless браузър..." >&2
+    python3 -I "$SCRIPT_DIR/ig_browser_fetch.py" "$SRC" "$OUT" \
+      || { echo "ERROR: свалянето не успя (login стена / private акаунт) — поискай видеото от потребителя" >&2; exit 3; }
+    if [[ -f "$OUT/a.mp4" ]]; then
+      ffmpeg -loglevel error -y -i "$OUT/v.mp4" -i "$OUT/a.mp4" -c copy "$OUT/video.mp4"
+    else
+      mv "$OUT/v.mp4" "$OUT/video.mp4"
+    fi
+    rm -f "$OUT/v.mp4" "$OUT/a.mp4"
+  fi
   VID=$(ls "$OUT"/video.* 2>/dev/null | grep -Ev '\.(json|description|vtt|srt)$' | head -1)
   [[ -n "$VID" && "$VID" != "$OUT/video.mp4" ]] && mv "$VID" "$OUT/video.mp4"
   [[ -f "$OUT/video.info.json" ]] && python3 - "$OUT" <<'PY'
