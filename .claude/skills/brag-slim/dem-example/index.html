@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="bg">
+<head>
+<meta charset="utf-8">
+<style>
+@font-face { font-family: 'Cormorant'; src: url('assets/cormorant.ttf'); font-weight: 300 700; }
+@font-face { font-family: 'DMSans'; src: url('assets/dmsans.ttf'); font-weight: 100 1000; }
+:root { --cream:#F5F0E8; --walnut:#8B6F47; --walnut-dark:#6B5235; --charcoal:#2C2C2C; --tan:#E8DDD0; --sand:#D4C4A8; }
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { width:1080px; height:1920px; overflow:hidden; background:var(--charcoal); }
+.scene { position:absolute; inset:0; overflow:hidden; opacity:0; }
+.fill { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+.serif { font-family:'Cormorant', serif; }
+.sans { font-family:'DMSans', sans-serif; }
+.shade-top { position:absolute; left:0; right:0; top:0; height:900px; background:linear-gradient(rgba(28,24,20,.82), rgba(28,24,20,0)); }
+.shade-bot { position:absolute; left:0; right:0; bottom:0; height:900px; background:linear-gradient(rgba(28,24,20,0), rgba(28,24,20,.85)); }
+
+/* S1 */
+#s1 h1 { position:absolute; left:90px; right:90px; top:250px; color:var(--cream); font-weight:500; font-size:116px; line-height:1.04; letter-spacing:-1px; }
+#s1 h1 span { display:block; }
+#s1 h1 .l2 { font-style:italic; color:var(--sand); font-weight:400; }
+#s1 .tag { position:absolute; left:90px; top:150px; color:var(--sand); font-size:30px; letter-spacing:6px; text-transform:uppercase; }
+
+/* S2 */
+#s2 { background:var(--cream); }
+#s2 .eyebrow { position:absolute; left:90px; top:170px; padding:14px 28px; border-radius:999px; background:var(--walnut); color:var(--cream); font-size:30px; letter-spacing:4px; text-transform:uppercase; }
+#s2 h2 { position:absolute; left:90px; right:80px; top:270px; color:var(--charcoal); font-size:112px; line-height:1.0; font-weight:500; }
+#s2 h2 em { color:var(--walnut); }
+#s2 .card { position:absolute; left:90px; width:900px; height:506px; border-radius:22px; overflow:hidden; box-shadow:0 30px 60px rgba(60,40,20,.25); }
+#s2 .card img { width:100%; height:100%; object-fit:cover; }
+#s2 .note { position:absolute; left:90px; right:90px; color:var(--charcoal); font-size:44px; line-height:1.25; }
+#s2 .note b { color:var(--walnut-dark); font-weight:600; }
+
+/* S3 */
+#s3 .shot { position:absolute; inset:0; opacity:0; }
+#s3 .label { position:absolute; left:90px; bottom:250px; color:var(--cream); font-size:150px; font-weight:500; line-height:1; }
+#s3 .pill { position:absolute; left:94px; bottom:430px; padding:12px 26px; border-radius:999px; border:2px solid var(--sand); color:var(--sand); font-size:30px; letter-spacing:4px; text-transform:uppercase; }
+
+/* S4 */
+#s4 { background:var(--charcoal); }
+#s4 .verb { position:absolute; left:90px; color:var(--cream); font-size:132px; font-weight:500; line-height:1; }
+#s4 .verb.i { font-style:italic; color:var(--sand); }
+#s4 .rule { position:absolute; left:90px; top:1060px; height:3px; width:900px; background:var(--walnut); transform-origin:left; }
+#s4 .stat { position:absolute; top:1140px; width:300px; color:var(--cream); }
+#s4 .stat .n { font-size:118px; font-weight:600; line-height:1; color:var(--sand); }
+#s4 .stat .l { margin-top:16px; font-size:32px; line-height:1.25; color:var(--tan); }
+
+/* S5 */
+#s5 { background:var(--cream); }
+#s5 .logo { position:absolute; left:50%; top:560px; width:700px; transform:translateX(-50%); }
+#s5 .claim { position:absolute; left:80px; right:80px; top:1010px; text-align:center; color:var(--charcoal); font-size:92px; line-height:1.05; font-weight:500; }
+#s5 .claim em { color:var(--walnut); }
+#s5 .cities { position:absolute; left:0; right:0; top:1300px; text-align:center; color:var(--walnut-dark); font-size:36px; letter-spacing:3px; }
+#s5 .url { position:absolute; left:50%; top:1460px; transform:translateX(-50%); padding:26px 54px; border-radius:14px; background:var(--walnut); color:var(--cream); font-size:46px; letter-spacing:1px; white-space:nowrap; }
+</style>
+</head>
+<body>
+
+<div class="scene" id="s1">
+  <img class="fill" id="tour" src="tour/t_001.jpg">
+  <div class="shade-top"></div>
+  <div class="tag sans">ДомЕксперт Мебел</div>
+  <h1 class="serif"><span class="l1">Виж кухнята си,</span><span class="l2">преди да е направена.</span></h1>
+</div>
+
+<div class="scene" id="s2">
+  <div class="eyebrow sans">Проектиране</div>
+  <h2 class="serif">3D проект с <em>точни размери</em></h2>
+  <div class="card" id="c1"><img src="assets/3d-proekt-kuhnya-moderna-obsht-1.webp"></div>
+  <div class="card" id="c2"><img src="assets/3d-proekt-kuhnya-moderna-frontalen-2.webp"></div>
+  <div class="card" id="c3"><img src="assets/3d-proekt-kuhnya-moderna-vrata-3.webp"></div>
+  <div class="note sans" id="n1">Коригираме проекта <b>до одобрение.</b></div>
+  <div class="note sans" id="n2">Стойността му <b>се приспада при поръчка.</b></div>
+</div>
+
+<div class="scene" id="s3">
+  <div class="shot" id="h0"><img class="fill" src="assets/kuhnya-06.webp"><div class="shade-bot"></div><div class="pill sans">По поръчка</div><div class="label serif">Кухни</div></div>
+  <div class="shot" id="h1"><img class="fill" src="assets/garderob-01.webp"><div class="shade-bot"></div><div class="pill sans">По поръчка</div><div class="label serif">Гардероби</div></div>
+  <div class="shot" id="h2"><img class="fill" src="assets/spalna-07.webp"><div class="shade-bot"></div><div class="pill sans">По поръчка</div><div class="label serif">Спални</div></div>
+  <div class="shot" id="h3"><img class="fill" src="assets/dnevna-03.webp"><div class="shade-bot"></div><div class="pill sans">По поръчка</div><div class="label serif">Дневни</div></div>
+</div>
+
+<div class="scene" id="s4">
+  <div class="verb serif" id="v1" style="top:360px">Проектираме.</div>
+  <div class="verb serif i" id="v2" style="top:580px">Изработваме.</div>
+  <div class="verb serif" id="v3" style="top:800px">Монтираме.</div>
+  <div class="rule" id="rule"></div>
+  <div class="stat sans" id="st1" style="left:90px"><div class="n" data-to="14" data-suf="+">0</div><div class="l">години<br>опит</div></div>
+  <div class="stat sans" id="st2" style="left:400px"><div class="n" data-to="100" data-suf="+">0</div><div class="l">проекта</div></div>
+  <div class="stat sans" id="st3" style="left:720px"><div class="n" data-to="2" data-suf=" г.">0</div><div class="l">гаранция</div></div>
+</div>
+
+<div class="scene" id="s5">
+  <img class="logo" src="assets/logo-clean.png">
+  <div class="claim serif">Мебели по поръчка<br>за домове <em>с характер</em></div>
+  <div class="cities sans">БЛАГОЕВГРАД · СОФИЯ · РЕГИОНА</div>
+  <div class="url sans">domexpertmebel.com</div>
+</div>
+
+<script>
+// Cuts on strong beats of the music track
+const CUT = [0, 3.70, 8.96, 12.65, 17.91, 21.5];
+const clamp = (x, a=0, b=1) => Math.min(b, Math.max(a, x));
+const ease = x => { x = clamp(x); return 1 - Math.pow(1 - x, 3); };          // easeOutCubic
+const inOut = x => { x = clamp(x); return x < .5 ? 4*x*x*x : 1 - Math.pow(-2*x + 2, 3)/2; };
+const prog = (t, a, d) => ease((t - a) / d);
+const $ = id => document.getElementById(id);
+const set = (el, o, tf) => { el.style.opacity = o; if (tf !== undefined) el.style.transform = tf; };
+
+// Scene visibility: dip-through crossfade of 0.35s at each cut (old out, new in)
+function sceneAlpha(i, t) {
+  const a = CUT[i], b = CUT[i+1], f = 0.35;
+  if (t < a - 0.001 || t > b + f) return 0;
+  const fin = i === 0 ? 1 : clamp((t - a - f/2) / (f/2));
+  const fout = i === 4 ? 1 : clamp(1 - (t - b) / (f/2));
+  return Math.min(fin, fout);
+}
+
+function riseIn(el, t, a, d = 0.6, dy = 50) {
+  const p = prog(t, a, d);
+  set(el, p, `translateY(${(1 - p) * dy}px)`);
+}
+
+const pending = [];
+window.renderAt = async function (t) {
+  for (let i = 0; i < 5; i++) {
+    const s = $('s' + (i+1)), al = sceneAlpha(i, t);
+    s.style.opacity = al; s.style.visibility = al > 0 ? 'visible' : 'hidden';
+    s.style.zIndex = i;
+  }
+
+  // S1 — 3D tour + hook
+  const f = Math.min(114, Math.max(1, Math.floor(t * 30) + 1));
+  const tour = $('tour'); const src = `tour/t_${String(f).padStart(3, '0')}.jpg`;
+  if (!tour.src.endsWith(src)) { tour.src = src; pending.push(tour.decode().catch(() => {})); }
+  tour.style.transform = `scale(${1.04 + t * 0.012})`;
+  riseIn(document.querySelector('#s1 .tag'), t, 0.05, 0.5, 20);
+  riseIn(document.querySelector('#s1 .l1'), t, 0.15, 0.6);
+  riseIn(document.querySelector('#s1 .l2'), t, 0.75, 0.6);
+
+  // S2 — 3D project cards
+  const t2 = t - CUT[1];
+  riseIn(document.querySelector('#s2 .eyebrow'), t2, 0.15, 0.5, 20);
+  riseIn(document.querySelector('#s2 h2'), t2, 0.25, 0.6);
+  const cardTop = [600, 780, 960], cardT = [0.75, 1.55, 2.35];
+  ['c1','c2','c3'].forEach((id, k) => {
+    const p = prog(t2, cardT[k], 0.6);
+    const next = k < 2 ? prog(t2, cardT[k+1], 0.6) : 0;
+    const x = (1 - p) * 1000;
+    const sc = 1 - next * 0.04;
+    const el = $(id);
+    el.style.top = cardTop[k] + 'px';
+    el.style.zIndex = k + 1;
+    set(el, p, `translateX(${x}px) scale(${sc})`);
+  });
+  riseIn($('n1'), t2, 3.0, 0.5, 24); $('n1').style.top = '1560px';
+  riseIn($('n2'), t2, 3.75, 0.5, 24); $('n2').style.top = '1650px';
+
+  // S3 — category cuts (~0.92s each, hard-ish 0.12s dissolve)
+  const t3 = t - CUT[2], slot = (CUT[3] - CUT[2]) / 4;
+  for (let k = 0; k < 4; k++) {
+    const a = k * slot, el = $('h' + k);
+    const on = k === 0 ? 1 : clamp((t3 - a) / 0.12);
+    el.style.opacity = t3 >= a - 0.001 ? on : 0;
+    el.style.zIndex = k;
+    el.querySelector('img').style.transform = `scale(${1.12 - clamp((t3 - a) / (slot + 0.4)) * 0.08})`;
+    const lp = prog(t3, a + 0.05, 0.35);
+    el.querySelector('.label').style.transform = `translateY(${(1 - lp) * 40}px)`;
+    el.querySelector('.label').style.opacity = lp;
+    el.querySelector('.pill').style.opacity = k === 0 ? prog(t3, 0.05, 0.3) : 1;
+  }
+
+  // S4 — process + stats
+  const t4 = t - CUT[3];
+  riseIn($('v1'), t4, 0.10, 0.55); riseIn($('v2'), t4, 0.55, 0.55); riseIn($('v3'), t4, 1.00, 0.55);
+  const rp = prog(t4, 1.55, 0.7); $('rule').style.transform = `scaleX(${rp})`;
+  ['st1','st2','st3'].forEach((id, k) => {
+    const a = 1.85 + k * 0.25, el = $(id); riseIn(el, t4, a, 0.5, 30);
+    const n = el.querySelector('.n'); const to = +n.dataset.to;
+    n.textContent = Math.round(to * inOut((t4 - a) / 1.1)) + n.dataset.suf;
+  });
+
+  // S5 — outro
+  const t5 = t - CUT[4];
+  const lp = prog(t5, 0.15, 0.8);
+  set(document.querySelector('#s5 .logo'), lp, `translateX(-50%) scale(${0.94 + lp * 0.06})`);
+  riseIn(document.querySelector('#s5 .claim'), t5, 0.55, 0.6);
+  riseIn(document.querySelector('#s5 .cities'), t5, 0.95, 0.5, 20);
+  const up = prog(t5, 1.25, 0.5);
+  set(document.querySelector('#s5 .url'), up, `translateX(-50%) translateY(${(1 - up) * 24}px)`);
+
+  await Promise.all(pending.splice(0));
+};
+window.DURATION = CUT[5];
+</script>
+</body>
+</html>
