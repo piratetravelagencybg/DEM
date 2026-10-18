@@ -10,7 +10,7 @@ const root = join(here, '../../..');
 // groupId -> illustration palette (used only while the real photo is missing)
 // scene = room direction for the AI photo (marketing/ai/generate-images.mjs)
 const PICK = [
-  { group: '412', shape: 'Wardrobe shape: about as wide as it is tall; FOUR hinged white high-gloss doors in a light grey oak frame; two thin dark horizontal handle strips; two drawers at the lower right.', body: 'greyOak', front: 'whiteGloss', doors: 4, // Livorno
+  { group: '412', shape: 'Wardrobe shape: about as wide as it is tall; FOUR hinged white high-gloss doors in a light grey oak frame. The two left doors are single full-height panels from top to bottom (no split). One thin dark horizontal handle strip runs across at two-thirds height; below it on the right exactly TWO drawers with one more dark strip between them. Nothing is placed on or against the wardrobe.', body: 'greyOak', front: 'whiteGloss', doors: 4, // Livorno
     scene: 'A light bedroom: the wardrobe stands against the wall on the left, the corner of a bed with white linen and a knitted beige throw on the right, a tall window with sheer curtains.' },
   { group: '406', shape: 'Wardrobe shape: clearly wider than it is tall; TWO wide sliding doors in dark walnut-brown wood; one trapezoid mirror panel running across the middle of both doors.', body: 'brandyOak', front: 'brandyOak', doors: 4, // Agata
     scene: 'A cosy bedroom with warm wood tones: the wardrobe against a cream wall, a linen armchair and a floor lamp beside it, a window with sheer curtains on the right.' },
