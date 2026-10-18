@@ -45,3 +45,4 @@ items.sort((a, b) => a.price - b.price);
 writeFileSync(join(here, 'data.json'), JSON.stringify(items, null, 2) + '\n');
 writeFileSync(join(here, 'data.js'), `window.ITEMS = ${JSON.stringify(items)};\n`); // file:// pages can't fetch JSON
 console.log(items.map((i) => `${i.name} ${i.price} € photo=${!!i.photo}`).join('\n'));
+// images fetched by .github/workflows/marketing-images.yml
