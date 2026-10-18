@@ -11,6 +11,8 @@ import GoogleBusinessProfile from '@/components/home/GoogleBusinessProfile'
 import CTABar from '@/components/home/CTABar'
 import LocalBusinessSchema from '@/components/seo/LocalBusinessSchema'
 import SiteSchema from '@/components/seo/SiteSchema'
+import ServiceLinks from '@/components/ui/ServiceLinks'
+import CityLinks from '@/components/ui/CityLinks'
 import { getAllMbxProducts } from '@/lib/mbx'
 import { createPageMetadata } from '@/lib/seo'
 
@@ -36,6 +38,8 @@ export default function HomePage() {
       <ProjectsGallery />
       <AboutSection />
       <CatalogPreview products={catalogPreview} />
+      <ServiceLinks title="Услуги по поръчка" background="var(--color-warm-white)" />
+      <CityLinks title="Мебели по поръчка в градовете, които обслужваме" background="var(--color-cream)" />
       <GoogleBusinessProfile />
       <CTABar />
     </>

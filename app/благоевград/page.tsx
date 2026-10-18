@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { CheckCircle, Phone, ChevronDown } from 'lucide-react'
 import QuoteForm from '@/components/ui/QuoteForm'
 import ServiceGuide from '@/components/ui/ServiceGuide'
+import ServiceLinks from '@/components/ui/ServiceLinks'
 import GoogleReviews from '@/components/home/GoogleReviews'
 import GoogleBusinessProfile from '@/components/home/GoogleBusinessProfile'
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
@@ -354,6 +355,8 @@ export default function BlagoevgradPage() {
           </div>
         </div>
       </section>
+
+      <ServiceLinks title="Всички услуги за Благоевград" background="var(--color-warm-white)" />
 
       {/* ── Other locations ── */}
       <section className="section-py" style={{ backgroundColor: 'var(--color-warm-white)' }}>

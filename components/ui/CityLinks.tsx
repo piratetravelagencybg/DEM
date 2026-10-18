@@ -12,16 +12,18 @@ const CITY_LINKS = [
 export default function CityLinks({
   title,
   extra = [],
+  background = 'var(--color-warm-white)',
 }: {
   title: string
   extra?: { label: string; href: string }[]
+  background?: string
 }) {
   const links = [
     ...CITY_LINKS.map((item) => ({ label: `Мебели по поръчка в ${item.city}`, href: item.href })),
     ...extra,
   ]
   return (
-    <section className="section-py" style={{ backgroundColor: 'var(--color-warm-white)' }}>
+    <section className="section-py" style={{ backgroundColor: background }}>
       <div className="container-main">
         <h2 className="font-display font-semibold text-charcoal text-center mb-8" style={{ fontSize: 'clamp(1.4rem, 3vw, 1.8rem)' }}>
           {title}

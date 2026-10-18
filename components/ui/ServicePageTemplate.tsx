@@ -7,6 +7,7 @@ import FAQSchema from '@/components/seo/FAQSchema'
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
 import LocalBusinessSchema from '@/components/seo/LocalBusinessSchema'
 import ServiceSchema from '@/components/seo/ServiceSchema'
+import CityLinks from '@/components/ui/CityLinks'
 import { getImageCredit, getImageDisclosure } from '@/lib/image-credits'
 import { SITE_CONFIG } from '@/lib/site-config'
 import type { ReactNode } from 'react'
@@ -36,6 +37,7 @@ interface ServicePageProps {
   faq: ServiceFAQ[]
   slug: string
   schemaDescription?: string
+  cityLinksExtra?: { label: string; href: string }[]
   children?: ReactNode
 }
 
@@ -49,6 +51,7 @@ export default function ServicePageTemplate({
   faq,
   slug,
   schemaDescription,
+  cityLinksExtra,
   children,
 }: ServicePageProps) {
   const pageUrl = 'https://domexpertmebel.com/услуги/' + slug + '/'
@@ -380,6 +383,12 @@ export default function ServicePageTemplate({
           </div>
         </div>
       </section>
+
+      <CityLinks
+        title={`${title} в градовете, които обслужваме`}
+        extra={cityLinksExtra}
+        background="var(--color-cream)"
+      />
     </>
   )
 }

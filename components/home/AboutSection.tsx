@@ -159,7 +159,7 @@ export default function AboutSection() {
                   boxShadow: '0 4px 18px rgba(139,111,71,0.55)',
                 }}
               >
-                Научи повече <ArrowRight size={14} />
+                Повече за работилницата <ArrowRight size={14} />
               </Link>
               <Link
                 href="/контакти/"

@@ -63,6 +63,7 @@
   "components/ui/QuoteForm.tsx": "2026-10-18",
   "components/ui/SectionHeader.tsx": "2026-07-09",
   "components/ui/ServiceGuide.tsx": "2026-08-04",
+  "components/ui/ServiceLinks.tsx": "2026-10-18",
   "components/ui/ServicePageTemplate.tsx": "2026-10-18",
   "components/ui/WishlistButton.tsx": "2026-06-16",
   "data/blog-posts.ts": "2026-10-18",

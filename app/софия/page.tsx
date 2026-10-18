@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { ArrowRight, CheckCircle, ChevronDown, Clock3, MapPin, Phone } from 'lucide-react'
 import QuoteForm from '@/components/ui/QuoteForm'
 import ServiceGuide from '@/components/ui/ServiceGuide'
+import ServiceLinks from '@/components/ui/ServiceLinks'
 import GoogleReviews from '@/components/home/GoogleReviews'
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
 import FAQSchema from '@/components/seo/FAQSchema'
@@ -580,6 +581,8 @@ export default function SofiaPage() {
           </div>
         </div>
       </section>
+
+      <ServiceLinks title="Всички услуги за София" background="var(--color-warm-white)" />
 
       {/* ── Other locations ── */}
       <section className="section-py" style={{ backgroundColor: 'var(--color-cream)' }}>

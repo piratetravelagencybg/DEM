@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { CheckCircle, ChevronDown, Phone } from 'lucide-react'
 import QuoteForm from '@/components/ui/QuoteForm'
 import ServiceGuide from '@/components/ui/ServiceGuide'
+import ServiceLinks from '@/components/ui/ServiceLinks'
 import ProjectHighlight from '@/components/ui/ProjectHighlight'
 import GoogleReviews from '@/components/home/GoogleReviews'
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
@@ -251,6 +252,8 @@ export default function CityLandingTemplate({
           </div>
         </div>
       </section>
+
+      <ServiceLinks title={`Всички услуги за ${city}`} />
 
       {/* ── Other locations ── */}
       <section className="section-py" style={{ backgroundColor: 'var(--color-warm-white)' }}>

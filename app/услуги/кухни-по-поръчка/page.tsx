@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import ServicePageTemplate from '@/components/ui/ServicePageTemplate'
 import ServiceGuide from '@/components/ui/ServiceGuide'
 import ProjectCards from '@/components/ui/ProjectCards'
-import CityLinks from '@/components/ui/CityLinks'
 import { projectsByCategory } from '@/lib/projects'
 import services from '@/data/services.json'
 import { completePageMetadata } from '@/lib/seo'
@@ -124,6 +123,7 @@ export default function KuhniPage() {
       features={service.features}
       faq={service.faq}
       slug={service.slug}
+      cityLinksExtra={[{ label: 'Кухни по поръчка в София', href: '/софия/кухни-по-поръчка/' }]}
       schemaDescription="Проектиране с 3D проект, изработка в собствена работилница и монтаж на кухни по поръчка: прави, ъглови, П-образни и с остров."
     >
       <ServiceGuide
@@ -145,7 +145,6 @@ export default function KuhniPage() {
           <ProjectCards items={projectsByCategory('kuhni')} />
         </div>
       </section>
-      <CityLinks title="Кухни по поръчка в градовете, които обслужваме" extra={[{ label: 'Кухни по поръчка в София', href: '/софия/кухни-по-поръчка/' }]} />
     </ServicePageTemplate>
   )
 }

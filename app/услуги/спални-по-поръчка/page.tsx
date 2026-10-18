@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import ServicePageTemplate from '@/components/ui/ServicePageTemplate'
 import ServiceGuide from '@/components/ui/ServiceGuide'
 import ProjectCards from '@/components/ui/ProjectCards'
-import CityLinks from '@/components/ui/CityLinks'
 import { projectsByCategory } from '@/lib/projects'
 import services from '@/data/services.json'
 import { completePageMetadata } from '@/lib/seo'
@@ -152,7 +151,6 @@ export default function SpalniPage() {
           <ProjectCards items={projectsByCategory('spalni')} />
         </div>
       </section>
-      <CityLinks title="Спални по поръчка в градовете, които обслужваме" />
     </ServicePageTemplate>
   )
 }
