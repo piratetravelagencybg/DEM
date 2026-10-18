@@ -122,7 +122,7 @@ export default function InteriorDesignPage() {
   return (
     <ServicePageTemplate
       title={service.title}
-      subtitle={`Цялостен интериорен дизайн с изработка на мебелите в собствена работилница. От ${SITE_CONFIG.pricing.interiorDesign.pricePerSqm} ${SITE_CONFIG.pricing.interiorDesign.currency}/кв.м при минимум ${SITE_CONFIG.pricing.interiorDesign.minimumSqm} кв.м. Ключово предимство: дизайн + производство = един изпълнител, проектът е изпълним и в бюджета.`}
+      subtitle={`Правим пълен интериорен дизайн на помещенията — разпределение, материали, цветове, осветление и 3D визуализации — и изработваме мебелите в собствената си работилница в Благоевград. Дизайнът е от ${SITE_CONFIG.pricing.interiorDesign.pricePerSqm} ${SITE_CONFIG.pricing.interiorDesign.currency}/кв.м при минимум ${SITE_CONFIG.pricing.interiorDesign.minimumSqm} кв.м, а мебелите се изработват за 4–6 седмици след одобрение на проекта.`}
       heroImage={service.image}
       gallery={service.gallery}
       features={service.features}

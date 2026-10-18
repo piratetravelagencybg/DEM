@@ -4,6 +4,7 @@ import { CheckCircle, Phone, ChevronDown } from 'lucide-react'
 import QuoteForm from '@/components/ui/QuoteForm'
 import ServiceGuide from '@/components/ui/ServiceGuide'
 import ServiceLinks from '@/components/ui/ServiceLinks'
+import { QuickFactsList } from '@/components/ui/QuickFacts'
 import GoogleReviews from '@/components/home/GoogleReviews'
 import GoogleBusinessProfile from '@/components/home/GoogleBusinessProfile'
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
@@ -198,17 +199,10 @@ export default function BlagoevgradPage() {
                 Мебели по поръчка в Благоевград
               </h1>
               <p className="font-body text-warm-gray leading-relaxed" style={{ fontSize: '1.05rem' }}>
-                Dom Expert Мебел е семейна фирма с база в Благоевград, опит от 2012 г. и повече от 100 реализирани проекта. Изработваме кухни, гардероби, спални и офис мебели по поръчка, като поемаме огледа, проекта, производството и монтажа.
+                Dom Expert Мебел е семейна мебелна работилница в Благоевград, която от 2012 г. проектира и изработва кухни, гардероби, спални и офис мебели по поръчка — с 3D проект преди изработка и монтаж от нашия екип. Огледът е 50 €, 3D проектът е от 100 € за кухня и от 50 € за друга мебел (и двете се приспадат при поръчка), а изработката отнема 4–6 седмици след одобрение.
               </p>
 
-              {/* GEO key facts */}
-              <ul className="font-body text-sm text-warm-gray space-y-1">
-                <li>• Базирани сме в Благоевград — обслужваме целия град и региона</li>
-                <li>• Работно време: Пон–Пет, 09:00–18:00</li>
-                <li>• Производствен срок: 4–6 седмици</li>
-                <li>• Реализирани проекти: над 100</li>
-                <li>• Гаранция: 2 години на всички изделия</li>
-              </ul>
+              <QuickFactsList />
 
               <div className="space-y-2">
                 {features.map((f) => (

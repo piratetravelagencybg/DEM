@@ -121,7 +121,7 @@ export default function Visualization3DPage() {
   return (
     <ServicePageTemplate
       title={service.title}
-      subtitle={`Виждате точно как ще изглеждат вашите мебели преди изработката. 3D проектът за кухня започва от ${SITE_CONFIG.pricing.visualization.kitchen.from} ${SITE_CONFIG.pricing.visualization.kitchen.currency}, за гардероб/спалня/дневна — от ${SITE_CONFIG.pricing.visualization.other.from} ${SITE_CONFIG.pricing.visualization.other.currency}. При поръчка приспадаме 100% от платената сума.`}
+      subtitle={`Изготвяме 3D проект на мебелите преди изработка — след оглед или дистанционно по снимки и размери, за цялата страна. 3D проектът на кухня е от ${SITE_CONFIG.pricing.visualization.kitchen.from} ${SITE_CONFIG.pricing.visualization.kitchen.currency}, на друга мебел от ${SITE_CONFIG.pricing.visualization.other.from} ${SITE_CONFIG.pricing.visualization.other.currency} според размера на проекта; сумата се приспада изцяло при поръчка, а изработката отнема 4–6 седмици след одобрение.`}
       heroImage={service.image}
       heroVideo={{
         src: '/video/kitchen-tour-16x9-compressed.mp4',

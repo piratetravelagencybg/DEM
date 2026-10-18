@@ -27,7 +27,7 @@ export default function DnevniPage() {
   return (
     <ServicePageTemplate
       title={service.title}
-      subtitle="ТВ секции, стелажи и мебели за дневната стая по ваш проект. Функционален дизайн и прецизна изработка."
+      subtitle="Изработваме мебели за дневна по поръчка — ТВ секции, стелажи, библиотеки и холни маси — в собствената си работилница в Благоевград, по 3D проект в размерите на стаята. 3D проектът е от 50 €, огледът е 50 € (приспадат се при поръчка), а изработката отнема 4–6 седмици след одобрение."
       heroImage={service.image}
       gallery={service.gallery}
       features={service.features}
