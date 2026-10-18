@@ -1,12 +1,14 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import Link from 'next/link'
-import { CheckCircle, Phone, ChevronDown } from 'lucide-react'
+import { ArrowRight, CheckCircle, ChevronDown, Clock3, MapPin, Phone } from 'lucide-react'
 import QuoteForm from '@/components/ui/QuoteForm'
 import ServiceGuide from '@/components/ui/ServiceGuide'
 import GoogleReviews from '@/components/home/GoogleReviews'
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
 import FAQSchema from '@/components/seo/FAQSchema'
 import ServiceSchema from '@/components/seo/ServiceSchema'
+import projects from '@/data/projects.json'
 import { completePageMetadata } from '@/lib/seo'
 
 export const metadata: Metadata = completePageMetadata({
@@ -26,142 +28,154 @@ export const metadata: Metadata = completePageMetadata({
 
 const faqItems = [
   {
-    question: 'Правите ли кухни по поръчка в София?',
-    answer: 'Да, обслужваме клиенти в цяла София и Софийска област. Огледът на адрес — 50 €, приспадат се от цената при поръчка. 3D проектът също се заплаща, а при възлагане цената му се приспада от поръчката.',
+    question: 'Колко струва оглед в София?',
+    answer: 'Огледът на адрес в София е 50 € и сумата се приспада от цената при поръчка. Преди огледа ни изпратете снимки и описание на помещението — така идваме подготвени, а понякога можем да започнем направо с дистанционен 3D проект.',
+  },
+  {
+    question: 'Колко време отнема кухня по поръчка за София?',
+    answer: 'Изработката отнема 4–6 седмици след одобрение на 3D проекта и материалите. Датата за доставка и монтаж в София уговаряме отделно за всеки проект, за да е удобна за вас.',
+  },
+  {
+    question: 'Правите ли 3D проект без оглед?',
+    answer: 'Да. По вашите снимки и размери изготвяме дистанционен 3D проект — за кухня от 100 €, за друга мебел от 50 €. Сумата се приспада при поръчка, а преди производството правим оглед, за да потвърдим размерите на място.',
+  },
+  {
+    question: 'Включен ли е монтажът?',
+    answer: 'Доставката и монтажът в София се извършват от нашия екип. Условията и датата се уговарят за всеки проект и влизат в офертата, така че знаете предварително какво включва поръчката.',
+  },
+  {
+    question: 'В кои квартали на София работите?',
+    answer: 'Обслужваме цяла София и Софийска област — от Лозенец, Младост и Люлин до Бояна, Драгалевци, Симеоново, Банкя, Бистрица и Панчарево. Огледът, доставката и монтажът се правят на вашия адрес.',
   },
   {
     question: 'Колко струват мебелите по поръчка в София?',
-    answer: 'Цената зависи от размерите, материалите, механизмите и сложността на проекта. След огледа и вземането на размери подготвяме конкретна оферта за вашето обзавеждане.',
-  },
-  {
-    question: 'Колко отнема изработката на мебели за София?',
-    answer: 'Производственият срок е 4–6 седмици след одобряване на проекта. Доставката и монтажа в София организираме в рамките на договорения срок.',
-  },
-  {
-    question: 'Правите ли и офис обзавеждане в София?',
-    answer: 'Да, изработваме цялостно офис обзавеждане по поръчка — бюра, шкафове, конферентни маси и рецепции. Огледът и вземането на размери се извършват на адрес в София.',
-  },
-  {
-    question: 'Може ли да поръчам само 3D проект без изработка?',
-    answer: 'Да, можете да поръчате само 3D визуализация. Изпращате ни размерите дистанционно, ние изготвяме проекта онлайн. При поръчка на мебелите приспадаме 100% от платената сума.',
+    answer: 'Нямаме фиксирани цени „от“, защото цената зависи от размерите, материалите, механизмите и сложността на проекта. Конкретна оферта получавате след 3D проекта или огледа.',
   },
   {
     question: 'Имате ли реализирани проекти в София?',
-    answer: 'Да, реализирали сме над 30 проекта в София — кухни с острови, вградени гардероби, спални комплекти, офис обзавеждане. Можете да видите примерите в нашата галерия с реализирани проекти.',
+    answer: 'Да, реализирали сме над 30 проекта в София. Един от тях — кухня с централен остров — е описан подробно в раздел „Проекти“.',
+  },
+  {
+    question: 'Защо мебелите се изработват в Благоевград?',
+    answer: 'Там е нашата собствена работилница. Един екип води проекта от 3D дизайна през производството до монтажа в София, без посредници, така че отговаряме за всеки детайл.',
   },
 ]
 
-const guideSections = [
+const quickFacts = [
+  'Семейна работилница от 2012 г.',
+  '100+ проекта, от тях 30+ в София',
+  'Оглед 50 € — приспада се при поръчка',
+  '3D проект от 100 € за кухня, от 50 € за друга мебел',
+  'Изработка 4–6 седмици след одобрение',
+  '2 години гаранция',
+]
+
+const remoteSteps = [
+  { title: 'Снимки и размери', description: 'Изпращате снимки, размери и описание на помещението в София.' },
+  { title: 'Дистанционен 3D проект', description: 'Подготвяме 3D проект и го коригираме, докато разпределението ви хареса.' },
+  { title: 'Оглед', description: 'Идваме на адреса в София, за да потвърдим точните размери преди изработка.' },
+  { title: 'Производство', description: 'Изработваме мебелите в собствената ни работилница в Благоевград за 4–6 седмици.' },
+  { title: 'Доставка и монтаж', description: 'Нашият екип доставя и монтира в уговорения с вас ден.' },
+]
+
+const remoteSections = [
   {
-    title: 'Какво изработваме в София',
+    title: 'Започнете, без да чакате оглед',
     paragraphs: [
-      'Обслужваме цяла София и Софийска област с пълната гама от мебели по поръчка — кухни с различни конфигурации (прави, ъглови, П-образни, с острови), вградени и корпусни гардероби с плъзгащи или разпашни врати, спални комплекти с легла, нощни шкафчета и скринове, ТВ секции, стелажи и библиотеки за дневни, офис мебели — бюра, шкафове, конферентни маси, рецепции.',
-      'Също така предлагаме 3D визуализация преди изработка и цялостен интериорен дизайн на помещения. Всеки проект започва от точните размери и се изработва според одобрена от вас визуализация.',
+      'Повечето проекти за София започват дистанционно. Изпращате ни снимки на помещението, основните размери и какво искате да постигнете — повече място за съхранение, остров в кухнята, гардероб до тавана.',
+      'По тези данни изготвяме 3D проект, в който виждате разпределението, фронтовете и цветовете, преди да поръчате. Корекциите правим по телефон или имейл, а сумата за проекта се приспада при поръчка.',
     ],
   },
   {
-    title: 'Оглед и монтаж в цяла София и Софийска област',
+    title: 'Оглед, изработка и монтаж',
     paragraphs: [
-      'Посещаваме адреси в цяла София и Софийска област за оглед и вземане на размери — 50 €, приспадат се от цената при поръчка. Не ограничаваме услугата до конкретни квартали — обслужваме всички райони в столицата и околните населени места.',
-      'При огледа вземаме точни размери на помещението, проверяваме стени, подове, отвори, изводи за ток, вода и аспирация. Обсъждаме какви мебели искате, стилови предпочитания, функционални нужди и ориентировъчен бюджет.',
-      'След производството организираме доставка и монтаж на адреса в София. Монтажът е включен в цената при поръчка на мебели по поръчка. Монтажният екип почиства след работа.',
-    ],
-  },
-  {
-    title: 'Срок за доставка и монтаж в София',
-    paragraphs: [
-      'Производственият срок е 4–6 седмици от одобряване на 3D проекта и избора на материали. Мебелите се изработват в нашата работилница в Благоевград, след което организираме доставка до адреса в София.',
-      'Доставката и монтажът се уговарят предварително, за да сте сигурни, че екипът ще дойде в удобно за вас време.',
-    ],
-  },
-  {
-    title: 'Дистанционен 3D проект за клиенти от София',
-    paragraphs: [
-      'Не е задължително да идваме на оглед, ако имате точни размери. Предлагаме дистанционно изготвяне на 3D проект — изпращате ни размерите и план на помещението, ние подготвяме визуализацията онлайн.',
-      'Процесът е прост: обменяме се по имейл или телефон, уточняваме нуждите, изпращаме първоначален вариант, правим корекции, финализираме проекта. След това, ако решите да възложите мебелите на нас, приспадаме 100% от платената сума за проекта.',
-      'Този вариант е подходящ за клиенти от София, които предпочитат да не чакат оглед на място или имат готов план с точни размери. За повече информация вижте нашата специална страница за 3D визуализация.',
-    ],
-  },
-  {
-    title: 'Проекти в София',
-    paragraphs: [
-      'Имаме реализирани проекти в София — модерни кухни с централен остров и вградени уреди, вградени гардероби в нестандартни ниши, спални комплекти с тапицирани легла, офис обзавеждане за фирмени офиси.',
-      'Един от примерните ни проекти е кухня с остров в София, която можете да видите в нашата галерия. Проектът включва пълно функционално разпределение, вградени уреди, работен плот и остров с допълнително съхранение.',
+      'Когато проектът е одобрен, идваме на оглед в София, за да проверим стените, отворите и изводите и да потвърдим всеки размер. Огледът е 50 € и също се приспада.',
+      'Мебелите се изработват в Благоевград, а доставката и монтажът се уговарят за всеки проект. Така един и същ екип отговаря за проекта от първата скица до последната регулировка на вратите.',
     ],
   },
 ]
 
-const guideSteps = [
-  { title: 'Запитване', description: 'Пращате снимки и описание на мебелите и адрес в София.' },
-  { title: 'Консултация', description: 'Безплатна консултация по телефон или снимки, ориентировъчна оценка.' },
-  { title: 'Оглед и размери', description: 'Посещаваме адреса, вземаме точни размери — 50 €, приспадат се.' },
-  { title: '3D проект', description: 'Професионална визуализация — от 100 € (кухня) / от 50 € (друго), приспада се.' },
-  { title: 'Изработка', description: 'Произвеждаме в Благоевград в срок 4–6 седмици.' },
-  { title: 'Доставка и монтаж', description: 'Доставяме и монтираме в София с 2 г. гаранция.' },
+const sofiaDistricts = [
+  'Лозенец', 'Младост', 'Люлин', 'Надежда', 'Овча купел', 'Красно село', 'Студентски град',
+  'Дружба', 'Витоша', 'Бояна', 'Драгалевци', 'Симеоново', 'Манастирски ливади', 'Борово',
+  'Изток', 'Изгрев', 'Гео Милев', 'Банишора', 'Център', 'Банкя', 'Бистрица', 'Панчарево',
 ]
+
+const furnitureBlocks = [
+  {
+    title: 'Кухни по поръчка в София',
+    text: 'Кухнята е най-честата поръчка от София. Проектираме прави, ъглови, П-образни кухни и кухни с остров, като в 3D проекта планираме уредите, плота, осветлението и всяко чекмедже. 3D проектът на кухня е от 100 € и се приспада при поръчка.',
+    links: [
+      { href: '/софия/кухни-по-поръчка/', label: 'кухни по поръчка в София' },
+      { href: '/услуги/кухни-по-поръчка/', label: 'видове кухни и материали' },
+    ],
+  },
+  {
+    title: 'Гардероби и гардеробни в София',
+    text: 'В новите сгради и в по-старите апартаменти в София нишите рядко са стандартни. Изработваме вградени гардероби и гардеробни по точни размери, а вътрешното разпределение — рафтове, лостове, чекмеджета — планираме в 3D проекта.',
+    links: [
+      { href: '/услуги/гардероби-по-поръчка/', label: 'гардероби по поръчка' },
+      { href: '/блог/vutreshno-razpredelenie-na-garderob/', label: 'как да разпределим гардероба' },
+    ],
+  },
+  {
+    title: 'Спални по поръчка в София',
+    text: 'Спалнята по поръчка събира в един проект леглото, нощните шкафчета и гардероба, в една визия и с размери, които пасват на стаята. В 3D проекта виждате как ще изглежда цялата стая, преди изработка.',
+    links: [
+      { href: '/услуги/спални-по-поръчка/', label: 'спални по поръчка' },
+      { href: '/услуги/3d-визуализация/', label: '3D проект преди изработка' },
+    ],
+  },
+]
+
+const sofiaProjects = projects.filter((project) => project.city === 'София')
+// TODO: добави още реални проекти от София в data/projects.json (има 30+, описан е само един).
 
 const guideLinks = [
   {
-    href: '/услуги/кухни-по-поръчка/',
-    label: 'Кухни по поръчка',
-    description: 'Модерни и класически кухни с 3D проект.',
-  },
-  {
-    href: '/услуги/гардероби-по-поръчка/',
-    label: 'Гардероби по поръчка',
-    description: 'Вградени гардероби и гардеробни системи.',
-  },
-  {
-    href: '/услуги/спални-по-поръчка/',
-    label: 'Спални по поръчка',
-    description: 'Легла, скринове и цялостни спални.',
-  },
-  {
-    href: '/услуги/офис-мебели/',
-    label: 'Офис мебели',
-    description: 'Бюра, шкафове, рецепции за офиси.',
+    href: '/софия/кухни-по-поръчка/',
+    label: 'Кухни по поръчка в София',
+    description: 'Процес, материали, срокове и цени за кухня в София.',
   },
   {
     href: '/услуги/3d-визуализация/',
     label: '3D визуализация',
-    description: 'Професионален проект преди изработка.',
+    description: 'Дистанционен 3D проект за цялата страна.',
   },
   {
     href: '/услуги/интериорен-дизайн/',
     label: 'Интериорен дизайн',
-    description: 'Цялостен дизайн на помещения.',
+    description: 'Пълен интериорен дизайн с изработка на мебелите.',
   },
   {
-    href: '/проекти/kuhnya-s-ostrov-sofia/',
-    label: 'Проект в София',
-    description: 'Кухня с остров, реализирана в София.',
+    href: '/услуги/офис-мебели/',
+    label: 'Офис мебели',
+    description: 'Бюра, шкафове и рецепции по поръчка.',
   },
   {
-    href: '/проекти/',
-    label: 'Всички проекти',
-    description: 'Примери от София и региона.',
+    href: '/блог/ot-kakvo-zavisi-tsenata-na-kuhnya-po-poruchka/',
+    label: 'От какво зависи цената',
+    description: 'Какво определя цената на кухня по поръчка.',
   },
   {
     href: '/контакти/',
     label: 'Контакти',
-    description: 'Адрес, телефон и форма за оглед.',
+    description: 'Телефон, имейл и форма за запитване.',
   },
 ]
 
 const features = [
-  'Оглед на адрес — 50 €, приспадат се при поръчка',
-  'Платен 3D проект с приспадане при поръчка',
-  'Изработка в базата ни в Благоевград',
-  'Монтаж в цяла София и Софийска обл.',
-  '2 години гаранция',
-  'Опит от 2012 г. и над 30 проекта в София',
+  '3D проект преди изработка',
+  'Собствено производство в Благоевград',
+  'Оглед, доставка и монтаж в цяла София',
+  'Един екип от дизайна до монтажа',
 ]
 
 const quickLinks = [
-  { label: 'Кухни', href: '/услуги/кухни-по-поръчка/' },
+  { label: 'Кухни София', href: '/софия/кухни-по-поръчка/' },
   { label: 'Гардероби', href: '/услуги/гардероби-по-поръчка/' },
   { label: 'Спални', href: '/услуги/спални-по-поръчка/' },
-  { label: 'Проект в София', href: '/проекти/kuhnya-s-ostrov-sofia/' },
+  { label: 'Проекти', href: '/проекти/' },
 ]
 
 export default function SofiaPage() {
@@ -171,7 +185,7 @@ export default function SofiaPage() {
         name="Мебели по поръчка в София"
         url="https://domexpertmebel.com/софия/"
         city="София"
-        description="Проектиране, изработка, доставка и монтаж на мебели по поръчка в София и Софийска област."
+        description="Кухни, гардероби и спални по поръчка за София и Софийска област: дистанционен 3D проект, оглед, изработка в собствена работилница в Благоевград, доставка и монтаж."
       />
       <FAQSchema items={faqItems} />
       <BreadcrumbSchema items={[
@@ -212,19 +226,21 @@ export default function SofiaPage() {
             <div className="space-y-6">
               <span className="eyebrow-pill">София</span>
               <h1 className="font-display font-bold text-charcoal leading-[1.05]" style={{ fontSize: 'var(--text-h1)' }}>
-                Мебели по поръчка в София — индивидуален проект и монтаж
+                Мебели по поръчка в София — 3D проект, изработка и монтаж
               </h1>
               <p className="font-body text-warm-gray leading-relaxed" style={{ fontSize: '1.05rem' }}>
-                Базирани сме в Благоевград и обслужваме клиенти в цяла София и Софийска област. Изработваме кухни, гардероби, спални и офис мебели по поръчка. Идваме на оглед и вземане на размери на вашия адрес — 50 €, приспадат се от цената при поръчка. 3D проектът също се заплаща, но цената му се приспада при възлагане.
+                Dom Expert Мебел изработва кухни, гардероби и спални по поръчка за София с 3D проект преди изработка, собствено производство в Благоевград и монтаж от нашия екип. Огледът е 50 €, 3D проектът е от 100 € за кухня и от 50 € за друга мебел — и двете се приспадат при поръчка, а срокът е 4–6 седмици след одобрение на проекта.
               </p>
 
-              {/* GEO key facts */}
-              <ul className="font-body text-sm text-warm-gray space-y-1">
-                <li>• Обслужваме цяла София и Софийска област</li>
-                <li>• Оглед и размери на адрес — 50 €, приспадат се</li>
-                <li>• Производствен срок: 4–6 седмици</li>
-                <li>• Гаранция: 2 години на всички изделия</li>
-              </ul>
+              {/* Quick facts */}
+              <div>
+                <h2 className="font-display font-semibold text-charcoal mb-2" style={{ fontSize: '1.05rem' }}>Бързи факти</h2>
+                <ul className="font-body text-sm text-warm-gray space-y-1">
+                  {quickFacts.map((fact) => (
+                    <li key={fact}>• {fact}</li>
+                  ))}
+                </ul>
+              </div>
 
               <div className="space-y-2">
                 {features.map((f) => (
@@ -249,9 +265,14 @@ export default function SofiaPage() {
                 ))}
               </div>
 
-              <a href="tel:+359876081199" className="btn-primary inline-flex items-center gap-2">
-                <Phone size={16} /> 0876 081 199
-              </a>
+              <div className="flex flex-wrap gap-3">
+                <a href="tel:+359876081199" className="btn-primary inline-flex items-center gap-2">
+                  <Phone size={16} /> 0876 081 199
+                </a>
+                <a href="#zapitvane" className="btn-outline inline-flex items-center gap-2">
+                  Изпратете снимки и размери
+                </a>
+              </div>
 
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-2">
                 {quickLinks.map((s) => (
@@ -272,12 +293,15 @@ export default function SofiaPage() {
               </div>
             </div>
 
-            <div>
+            <div id="zapitvane" style={{ scrollMarginTop: '6rem' }}>
               <div
                 className="bg-white rounded-2xl p-8"
                 style={{ border: '1px solid #EDE5DA', boxShadow: '0 4px 32px rgba(0,0,0,0.06)' }}
               >
-                <h2 className="font-display font-semibold text-charcoal text-xl mb-6">Запитване за оферта</h2>
+                <h2 className="font-display font-semibold text-charcoal text-xl mb-2">Запитване за оферта</h2>
+                <p className="font-body text-warm-gray text-sm mb-6">
+                  Прикачете снимки и размери — ще ви върнем отговор с предложение за 3D проект или оглед в София.
+                </p>
                 <QuoteForm />
               </div>
             </div>
@@ -285,14 +309,145 @@ export default function SofiaPage() {
         </div>
       </section>
 
+      {/* ── Kitchens, wardrobes, bedrooms ── */}
+      <section className="section-py" style={{ backgroundColor: '#FDFCFA' }}>
+        <div className="container-main">
+          <div className="max-w-3xl mb-10">
+            <span className="eyebrow-pill">Какво изработваме</span>
+            <h2 className="section-title text-left">Кухни, гардероби и спални по поръчка за София</h2>
+            <p className="font-body text-warm-gray leading-relaxed mt-4" style={{ fontSize: '1rem' }}>
+              Всяка мебел започва от 3D проект по размерите на вашето помещение. Изработваме и дневни, ТВ секции, антрета, детски и офис мебели, но най-често клиентите от София ни търсят за тези три.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-5">
+            {furnitureBlocks.map((block) => (
+              <article
+                key={block.title}
+                className="rounded-2xl bg-white"
+                style={{ border: '1px solid #EDE5DA', padding: 'clamp(1.25rem, 3vw, 1.75rem)' }}
+              >
+                <h3 className="font-display font-semibold text-charcoal mb-3" style={{ fontSize: '1.25rem' }}>
+                  {block.title}
+                </h3>
+                <p className="font-body text-warm-gray leading-relaxed" style={{ fontSize: '0.93rem' }}>
+                  {block.text}
+                </p>
+                <ul className="space-y-2 mt-4">
+                  {block.links.map((link) => (
+                    <li key={link.href}>
+                      <Link href={link.href} className="inline-flex items-center gap-2 font-body font-medium text-walnut hover:underline underline-offset-2" style={{ fontSize: '0.88rem' }}>
+                        <ArrowRight size={14} aria-hidden="true" /> {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Remote process ── */}
       <ServiceGuide
-        eyebrow="Местна услуга"
-        title="Мебели по поръчка в цяла София и Софийска област"
-        intro="Обслужваме клиенти в цяла София без ограничения по квартали. Ето как работим и какво можем да изработим за вас — от 3D проект до монтаж на адреса."
-        sections={guideSections}
-        steps={guideSteps}
+        eyebrow="От разстояние"
+        title="Как работим със София от разстояние"
+        intro="Работилницата ни е в Благоевград, но процесът е изграден така, че да не губите време в пътуване и чакане. Повечето решения се вземат още по снимки и 3D проект."
+        sections={remoteSections}
+        steps={remoteSteps}
         links={guideLinks}
       />
+
+      {/* ── Projects in Sofia ── */}
+      <section className="section-py" style={{ backgroundColor: 'var(--color-cream)' }}>
+        <div className="container-main">
+          <div className="max-w-3xl mb-10">
+            <span className="eyebrow-pill">Проекти</span>
+            <h2 className="section-title text-left">Проекти в София</h2>
+            <p className="font-body text-warm-gray leading-relaxed mt-4" style={{ fontSize: '1rem' }}>
+              Реализирали сме над 30 проекта в София. Тук показваме описаните в портфолиото; изображенията са визуализации, а не снимки от обектите.
+            </p>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {sofiaProjects.map((project) => (
+              <Link
+                key={project.slug}
+                href={`/проекти/${project.slug}/`}
+                className="group overflow-hidden rounded-2xl bg-white transition-transform duration-200 hover:-translate-y-0.5"
+                style={{ border: '1px solid #E7DDCF' }}
+              >
+                <div className="relative aspect-[4/3]">
+                  <Image
+                    src={project.images[0]}
+                    alt={`${project.title} в ${project.city} — примерна визуализация към реализиран проект`}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  />
+                </div>
+                <div style={{ padding: '1.15rem' }}>
+                  <h3 className="font-display font-semibold text-charcoal group-hover:text-walnut transition-colors" style={{ fontSize: '1.15rem' }}>
+                    {project.title}
+                  </h3>
+                  <p className="font-body text-warm-gray leading-relaxed mt-2" style={{ fontSize: '0.85rem' }}>
+                    {project.description}
+                  </p>
+                  <div className="flex flex-wrap gap-4 mt-3 font-body text-xs text-warm-gray">
+                    <span className="inline-flex items-center gap-1.5"><MapPin size={13} className="text-walnut" aria-hidden="true" />{project.city}</span>
+                    <span className="inline-flex items-center gap-1.5"><Clock3 size={13} className="text-walnut" aria-hidden="true" />{project.duration}</span>
+                  </div>
+                  <p className="font-body text-warm-gray mt-3" style={{ fontSize: '0.72rem' }}>{project.imageCaption}</p>
+                </div>
+              </Link>
+            ))}
+            <Link
+              href="/3d-проекти/"
+              className="group flex flex-col justify-center rounded-2xl bg-white transition-transform duration-200 hover:-translate-y-0.5"
+              style={{ border: '1px dashed #D9C9B4', padding: '1.5rem' }}
+            >
+              <h3 className="font-display font-semibold text-charcoal group-hover:text-walnut transition-colors" style={{ fontSize: '1.15rem' }}>
+                3D проекти
+              </h3>
+              <p className="font-body text-warm-gray leading-relaxed mt-2" style={{ fontSize: '0.85rem' }}>
+                Вижте 3D визуализации на кухни, подготвени преди изработка — така изглежда и проектът, който ще получите за вашия дом в София.
+              </p>
+              <span className="inline-flex items-center gap-2 font-body font-medium text-walnut mt-4" style={{ fontSize: '0.88rem' }}>
+                Към 3D проектите <ArrowRight size={14} aria-hidden="true" />
+              </span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Districts ── */}
+      <section className="section-py" style={{ backgroundColor: 'var(--color-warm-white)' }}>
+        <div className="container-main max-w-4xl">
+          <div className="text-center mb-8">
+            <span className="eyebrow-pill">Зона на обслужване</span>
+            <h2 className="font-display font-bold heading-gradient" style={{ fontSize: 'clamp(1.6rem, 4vw, 2.2rem)' }}>
+              Работим във всички квартали на София
+            </h2>
+            <p className="font-body text-warm-gray leading-relaxed mt-4 mx-auto" style={{ maxWidth: '42rem', fontSize: '1rem' }}>
+              Огледът, доставката и монтажът покриват цяла София и Софийска област. Обслужваме, наред с други, следните квартали и населени места:
+            </p>
+          </div>
+          <ul className="flex flex-wrap justify-center gap-2.5">
+            {sofiaDistricts.map((district) => (
+              <li
+                key={district}
+                className="font-body"
+                style={{
+                  padding: '8px 16px', borderRadius: 100, fontSize: '0.85rem',
+                  border: '1px solid rgba(139,111,71,0.2)',
+                  color: '#3C2A18',
+                  background: 'white',
+                }}
+              >
+                {district}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
 
       {/* ── Защо клиенти от София избират нас ── */}
       <section className="section-py" style={{ backgroundColor: '#FDFCFA' }}>
@@ -303,7 +458,7 @@ export default function SofiaPage() {
               Защо клиенти от София избират нас
             </h2>
             <p className="font-body text-warm-gray leading-relaxed mt-4 mx-auto" style={{ maxWidth: '42rem', fontSize: '1rem' }}>
-              Фокусът ни е върху качеството и индивидуалния подход — всяка мебел се изработва с внимание към детайла в собствената ни работилница.
+              В София има много мебелни фирми. Нашата разлика е, че проектът, производството и монтажът са в ръцете на един семеен екип.
             </p>
           </div>
 
@@ -311,27 +466,27 @@ export default function SofiaPage() {
             {[
               {
                 title: 'Собствено производство',
-                description: 'Пълен контрол на всеки детайл — от проекта до финалното изпълнение.',
+                description: 'Мебелите се изработват в нашата работилница в Благоевград, а не се поръчват при подизпълнител.',
               },
               {
                 title: 'Семейна работилница от 2012 г.',
-                description: 'Дългогодишен опит и традиция в изработката на мебели по поръчка.',
-              },
-              {
-                title: 'Над 30 реализирани проекта в София',
-                description: 'Доказан опит с кухни, гардероби, спални и офис обзавеждане в столицата.',
+                description: 'Над 100 реализирани проекта, от които повече от 30 в София.',
               },
               {
                 title: '3D проект преди изработка',
-                description: 'Виждате крайния резултат предварително — никакви изненади.',
+                description: 'Одобрявате разпределението и визията, преди да започне производството.',
               },
               {
-                title: 'Дизайн и изработка от един екип',
-                description: 'Без посредници — директна комуникация от идея до монтаж.',
+                title: 'Един екип от дизайна до монтажа',
+                description: 'Говорите с хората, които проектират, изработват и монтират мебелите.',
               },
               {
-                title: 'Конкурентни цени',
-                description: 'Качествени мебели на справедлива цена — без компромиси.',
+                title: '2 години гаранция',
+                description: 'Гаранцията важи за изработените от нас мебели.',
+              },
+              {
+                title: 'Конкурентна цена за качеството',
+                description: 'Не се състезаваме с най-ниската цена — държим на точна изработка и материали, подходящи за натоварването.',
               },
             ].map((item, i) => (
               <div
@@ -403,8 +558,31 @@ export default function SofiaPage() {
         </div>
       </section>
 
-      {/* ── Other locations ── */}
+      {/* ── Final CTA ── */}
       <section className="section-py" style={{ backgroundColor: 'var(--color-warm-white)' }}>
+        <div
+          className="container-main max-w-3xl text-center rounded-2xl bg-white"
+          style={{ border: '1px solid #EDE5DA', padding: 'clamp(1.75rem, 5vw, 3rem)', boxShadow: '0 4px 32px rgba(0,0,0,0.06)' }}
+        >
+          <h2 className="font-display font-bold heading-gradient" style={{ fontSize: 'clamp(1.6rem, 4vw, 2.2rem)' }}>
+            Започнете с 3D проект за вашия дом в София
+          </h2>
+          <p className="font-body text-warm-gray leading-relaxed mt-4 mx-auto" style={{ maxWidth: '36rem', fontSize: '1rem' }}>
+            Изпратете ни снимки и размери на помещението. Ще ви предложим следващата стъпка — дистанционен 3D проект или оглед на адрес.
+          </p>
+          <div className="flex flex-wrap justify-center gap-3 mt-7">
+            <a href="tel:+359876081199" className="btn-primary inline-flex items-center gap-2">
+              <Phone size={16} /> 0876 081 199
+            </a>
+            <a href="#zapitvane" className="btn-outline inline-flex items-center gap-2">
+              Изпратете запитване
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Other locations ── */}
+      <section className="section-py" style={{ backgroundColor: 'var(--color-cream)' }}>
         <div className="container-main">
           <h2 className="font-display font-semibold text-charcoal text-center mb-8" style={{ fontSize: 'clamp(1.4rem, 3vw, 1.8rem)' }}>
             Обслужваме и други градове

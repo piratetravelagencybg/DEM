@@ -352,7 +352,7 @@ export default function QuoteForm({ defaultService = '' }: { defaultService?: st
         <Send size={16} />
         {status === 'loading' ? (photos.length > 0 ? 'Изпращане на снимките...' : 'Изпраща се...') : 'Изпрати запитване'}
       </button>
-      <p className="text-xs text-warm-gray text-center">Безплатна консултация и оферта. Отговаряме до 24 часа.</p>
+      <p className="text-xs text-warm-gray text-center">Изпратете снимки и размери – отговаряме до 24 часа.</p>
     </form>
   )
 }

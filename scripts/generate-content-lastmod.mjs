@@ -24,7 +24,8 @@ function walk(relative) {
 
 function git(args) {
   try {
-    return execFileSync('git', args, { cwd: root, encoding: 'utf8' }).trim()
+    // trimEnd only: porcelain status lines start with a significant space.
+    return execFileSync('git', args, { cwd: root, encoding: 'utf8' }).trimEnd()
   } catch {
     return ''
   }

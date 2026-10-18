@@ -7,7 +7,9 @@ import TelephoneTracker from '@/components/layout/TelephoneTracker'
 
 const cormorant = Cormorant_Garamond({
   subsets: ['latin', 'cyrillic'],
-  weight: ['400', '500', '600', '700'],
+  // Only semibold and bold are rendered in the display font (measured on
+  // every sitemap page); 400/500 were downloaded without being used.
+  weight: ['600', '700'],
   variable: '--font-display',
   display: 'swap',
 })

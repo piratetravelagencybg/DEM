@@ -104,8 +104,15 @@ export default function AboutSection() {
               className="font-body leading-relaxed mb-6 md:max-w-[48ch]"
               style={{ fontSize: '0.95rem', color: 'rgba(255,255,255,0.72)' }}
             >
-              Проектираме и изработваме мебели по поръчка от 2012 г.
-              Всеки проект е уникален — създаден специално за вашия дом и начин на живот.
+              Проектираме и изработваме мебели по поръчка от 2012 г. — от{' '}
+              <Link href="/благоевград/" className="text-white underline underline-offset-2 hover:no-underline">
+                мебели по поръчка в Благоевград
+              </Link>
+              , където е работилницата ни, до{' '}
+              <Link href="/софия/" className="text-white underline underline-offset-2 hover:no-underline">
+                мебели по поръчка в София
+              </Link>
+              . Всеки проект е уникален — създаден специално за вашия дом и начин на живот.
             </motion.p>
 
             {/* Stats row */}

@@ -68,6 +68,7 @@ export function getCoreSitemapEntries(): SitemapEntry[] {
     entry('/контакти/', 0.8, 'monthly', [page('/контакти/')]),
     entry('/благоевград/', 0.9, 'monthly', [page('/благоевград/')]),
     entry('/софия/', 0.9, 'monthly', [page('/софия/')]),
+    entry('/софия/кухни-по-поръчка/', 0.9, 'monthly', [page('/софия/кухни-по-поръчка/'), 'data/projects.json']),
     entry('/дупница/', 0.9, 'monthly', [page('/дупница/')]),
     entry('/сандански/', 0.9, 'monthly', [page('/сандански/')]),
     entry('/петрич/', 0.9, 'monthly', [page('/петрич/')]),
