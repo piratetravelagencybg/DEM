@@ -372,8 +372,8 @@ export default function BlogPostPage({ params }: Props) {
                 Искате решение за вашето пространство?
               </h2>
               <p className="mb-6 font-body text-white/75">
-                Огледът и измерването са безплатни. Платеният 3D проект се приспада при
-                поръчка на мебелите от нас.
+                Огледът е 50 €, а 3D проектът е от 100 € за кухня и от 50 € за друга
+                мебел — и двете се приспадат при поръчка на мебелите от нас.
               </p>
               <div className="flex flex-wrap justify-center gap-3">
                 <Link

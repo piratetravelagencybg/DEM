@@ -139,7 +139,7 @@ export default function PortfolioHubPage() {
             Искате подобен проект?
           </h2>
           <p className="font-body text-warm-gray leading-relaxed mb-8" style={{ fontSize: '1.05rem' }}>
-            Започнете с безплатна консултация и 3D визуализация на вашите мебели.
+            Изпратете снимки и размери и започнете с 3D визуализация на вашите мебели.
             Огледът е 50 €, приспадат се при поръчка. 3D проектът също се приспада 100%.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">

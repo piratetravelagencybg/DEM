@@ -106,7 +106,7 @@ export default function CTABar() {
               </Link>
               <div className="flex items-center gap-2 font-body text-xs" style={{ color: 'rgba(250,250,247,0.45)' }}>
                 <Shield size={13} />
-                Безплатна оценка и оферта
+                Изпратете снимки и размери
               </div>
             </div>
           </div>

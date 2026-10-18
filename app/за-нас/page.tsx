@@ -42,7 +42,7 @@ const whyUs = [
 ]
 
 const process = [
-  { num: '01', title: 'Безплатна консултация', desc: 'Разговаряме за вашите нужди, пространство и вкус. Без задължения.' },
+  { num: '01', title: 'Консултация', desc: 'Изпращате снимки и размери и разговаряме за нуждите, пространството и вкуса ви.' },
   { num: '02', title: '3D дизайн проект',      desc: 'Платен проект, чиято сума приспадаме при поръчка на мебелите.' },
   { num: '03', title: 'Производство',          desc: 'Изработваме мебелите с прецизно CNC рязане и ръчна обработка.' },
   { num: '04', title: 'Монтаж и предаване',    desc: 'Монтираме прецизно, почистваме и предаваме готовия проект.' },
@@ -131,7 +131,7 @@ export default function AboutPage() {
                   className="inline-flex items-center gap-2 font-body font-semibold text-white rounded-full transition-all hover:-translate-y-0.5"
                   style={{ background: '#8B6F47', fontSize: '0.9rem', padding: '12px 26px', boxShadow: '0 6px 28px rgba(139,111,71,0.55)' }}
                 >
-                  Безплатна консултация →
+                  Заявете консултация →
                 </Link>
                 <Link href="/проекти/"
                   className="inline-flex items-center font-body font-semibold rounded-full transition-all hover:-translate-y-0.5"
@@ -439,7 +439,7 @@ export default function AboutPage() {
                 className="inline-flex items-center gap-2 font-body font-semibold text-white rounded-full transition-all hover:-translate-y-0.5"
                 style={{ background: '#8B6F47', fontSize: '0.9rem', padding: '13px 30px', boxShadow: '0 6px 24px rgba(139,111,71,0.45)' }}
               >
-                Поискай безплатна консултация →
+                Заявете консултация →
               </Link>
               <a href="tel:+359876081199"
                 className="inline-flex items-center gap-2 font-body font-semibold rounded-full transition-all hover:-translate-y-0.5"

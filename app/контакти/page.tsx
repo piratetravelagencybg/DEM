@@ -35,7 +35,7 @@ export default function ContactsPage() {
                 Свържете се с нас
               </h1>
               <p className="font-body text-warm-gray mt-4 leading-relaxed">
-                Dom Expert Мебел е на ваше разположение за безплатна консултация, оглед на място и изготвяне на оферта. Отговаряме в рамките на 24 часа.
+                Dom Expert Мебел е на ваше разположение за консултация, оглед на място (50 €, приспадат се при поръчка) и изготвяне на оферта. Отговаряме в рамките на 24 часа.
               </p>
               {/* GEO key facts */}
               <ul className="mt-4 space-y-1 font-body text-sm text-warm-gray">

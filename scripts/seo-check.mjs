@@ -108,7 +108,11 @@ function checkBreadcrumbs(node, errors) {
 }
 
 function visibleText(html) {
-  const main = html.split(/<main\b[^>]*>/i).slice(1).join(' ') || html
+  // Page content only: from the first <main> to the last </main>, so the
+  // site-wide header and footer do not count as duplicated text.
+  const start = html.search(/<main\b[^>]*>/i)
+  const end = html.lastIndexOf('</main>')
+  const main = start >= 0 && end > start ? html.slice(start, end) : html
   return decodeEntities(main
     .replace(/<script[\s\S]*?<\/script>/gi, ' ')
     .replace(/<style[\s\S]*?<\/style>/gi, ' ')

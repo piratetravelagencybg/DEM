@@ -232,7 +232,7 @@ export default function Hero() {
               cursor: 'pointer',
             }}
           >
-            Безплатна консултация →
+            Заявете консултация →
           </motion.a>
 
           {/* Secondary */}

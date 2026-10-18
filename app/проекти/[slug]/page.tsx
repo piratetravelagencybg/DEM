@@ -321,7 +321,7 @@ export default function ProjectPage({ params }: Props) {
               <p className="mb-3 font-body text-xs font-semibold uppercase tracking-[0.16em] text-walnut">Вашият проект</p>
               <h2 className="section-title mb-4">Искате подобно решение?</h2>
               <p className="mx-auto max-w-xl font-body leading-relaxed text-warm-gray">
-                Разкажете ни за помещението и желаните мебели. Ще се свържем с вас, за да уточним следващите стъпки и безплатния оглед.
+                Разкажете ни за помещението и желаните мебели. Ще се свържем с вас, за да уточним следващите стъпки — 3D проект или оглед.
               </p>
             </div>
             <div className="rounded-card bg-warm-white p-6 shadow-sm sm:p-8"><QuoteForm /></div>
