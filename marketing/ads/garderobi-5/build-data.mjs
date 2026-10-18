@@ -10,15 +10,15 @@ const root = join(here, '../../..');
 // groupId -> illustration palette (used only while the real photo is missing)
 // scene = room direction for the AI photo (marketing/ai/generate-images.mjs)
 const PICK = [
-  { group: '412', body: 'greyOak', front: 'whiteGloss', doors: 4, // Livorno
+  { group: '412', shape: 'Wardrobe shape: about as wide as it is tall; FOUR hinged white high-gloss doors in a light grey oak frame; two thin dark horizontal handle strips; two drawers at the lower right.', body: 'greyOak', front: 'whiteGloss', doors: 4, // Livorno
     scene: 'A light bedroom: the wardrobe stands against the wall on the left, the corner of a bed with white linen and a knitted beige throw on the right, a tall window with sheer curtains.' },
-  { group: '406', body: 'brandyOak', front: 'brandyOak', doors: 4, // Agata
+  { group: '406', shape: 'Wardrobe shape: clearly wider than it is tall; TWO wide sliding doors in dark walnut-brown wood; one trapezoid mirror panel running across the middle of both doors.', body: 'brandyOak', front: 'brandyOak', doors: 4, // Agata
     scene: 'A cosy bedroom with warm wood tones: the wardrobe against a cream wall, a linen armchair and a floor lamp beside it, a window with sheer curtains on the right.' },
-  { group: '409', body: 'brandyOak', front: 'blackGloss', doors: 3, // Federico
+  { group: '409', shape: 'Wardrobe shape: about as wide as it is tall; TWO sliding doors: the left door is mirror panels with one black high-gloss horizontal strip, the right door is brown wood panels with the same black strip.', body: 'brandyOak', front: 'blackGloss', doors: 3, // Federico
     scene: 'A modern bedroom with a touch of contrast: the wardrobe against a warm greige wall, a low bed with beige bedding in the foreground corner, two abstract framed prints, a tall window on the right.' },
-  { group: '418', body: 'greyOak', front: 'whiteGloss', doors: 4, // Treviso
+  { group: '418', shape: 'Wardrobe shape: much wider than it is tall (220 cm wide); TWO sliding doors in white high-gloss with one horizontal light grey oak band across both doors.', body: 'greyOak', front: 'whiteGloss', doors: 4, // Treviso
     scene: 'A spacious calm bedroom: the wide sliding-door wardrobe fills the back wall, the foot of a bed with cream linen and a beige throw in the foreground, a window on the left.' },
-  { group: '414', body: 'coastOak', front: 'anthracite', doors: 3, // Pulsar
+  { group: '414', shape: 'Wardrobe shape: about as wide as it is tall; FOUR hinged doors: the two outer doors are rustic light oak with black bar handles, the two middle doors are mirrors; below the mirrors one anthracite drawer and two oak drawers.', body: 'coastOak', front: 'anthracite', doors: 3, // Pulsar
     scene: 'A natural-wood bedroom: the wardrobe against a cream wall, a bench with a folded linen blanket in front of it, an olive tree by a tall window on the right.' },
 ];
 
@@ -47,6 +47,7 @@ for (const p of PICK) {
     photo: existsSync(join(here, img)) ? img : null,
     illo: { body: p.body, front: p.front, doors: p.doors },
     scene: p.scene,
+    shape: p.shape,
     ai: existsSync(join(here, 'ai', `${p.group}.png`)) ? `ai/${p.group}.png` : null,
   });
 }
