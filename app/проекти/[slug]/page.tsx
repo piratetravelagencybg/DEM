@@ -5,7 +5,15 @@ import Link from 'next/link'
 import { ArrowLeft, ArrowRight, Clock, Hammer, Layers, MapPin, PencilRuler, Ruler } from 'lucide-react'
 import QuoteForm from '@/components/ui/QuoteForm'
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
-import projects from '@/data/projects.json'
+import {
+  caseStudyProjects,
+  projectHref,
+  projectImageAlt,
+  projectImageBadge,
+  projectPlace,
+  projectStatusLabel,
+  projects,
+} from '@/lib/projects'
 import { createPageMetadata, prepareSeoDescription } from '@/lib/seo'
 
 interface Props {
@@ -20,6 +28,7 @@ const serviceByCategory = {
   spalni: { title: 'Спални по поръчка', href: '/услуги/спални-по-поръчка/' },
   dnevni: { title: 'Дневни по поръчка', href: '/услуги/дневни-по-поръчка/' },
   ofis: { title: 'Офис мебели по поръчка', href: '/услуги/офис-мебели/' },
+  saloni: { title: 'Мебели за салони за красота', href: '/услуги/обзавеждане-на-обекти/салони-за-красота/' },
 } as const
 
 const cityPageByName = {
@@ -27,6 +36,7 @@ const cityPageByName = {
   София: '/софия/',
   Дупница: '/дупница/',
   Сандански: '/сандански/',
+  Петрич: '/петрич/',
 } as const
 
 const seoDescriptionBySlug: Record<string, string> = {
@@ -55,28 +65,34 @@ const PROJECT_SOCIAL_IMAGES: Record<string, string> = {
   spalni: '/images/og/bedrooms.webp',
   dnevni: '/images/og/living.webp',
   ofis: '/images/og/office.webp',
+  saloni: '/portfolio/3d-proekt-salon-za-krasota/3d-vizualizatsiya-salon-za-krasota-obsht-izgled-1.webp',
 }
 
 export async function generateStaticParams() {
-  return projects.map((project) => ({ slug: project.slug }))
+  return caseStudyProjects.map((project) => ({ slug: project.slug }))
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const project = projects.find((candidate) => candidate.slug === params.slug)
+  const project = caseStudyProjects.find((candidate) => candidate.slug === params.slug)
   if (!project) return {}
+  const is3d = project.status === '3d'
 
   return createPageMetadata({
-    title: `${project.title} в ${project.city} | Dom Expert Мебел`,
+    title: is3d
+      ? `3D проект: ${project.title}${projectPlace(project)} | Dom Expert`
+      : `${project.title}${projectPlace(project)} | Dom Expert Мебел`,
     description: prepareSeoDescription(seoDescriptionBySlug[project.slug] || project.description),
     path: `/проекти/${project.slug}/`,
-    image: PROJECT_SOCIAL_IMAGES[project.category] || '/images/og/home.webp',
-    imageAlt: `${project.title} в ${project.city} — примерна визуализация към реализиран проект`,
+    image: is3d ? project.images[0] : PROJECT_SOCIAL_IMAGES[project.category] || '/images/og/home.webp',
+    imageAlt: projectImageAlt(project),
   })
 }
 
 export default function ProjectPage({ params }: Props) {
-  const project = projects.find((candidate) => candidate.slug === params.slug)
+  const project = caseStudyProjects.find((candidate) => candidate.slug === params.slug)
   if (!project) notFound()
+  const is3d = project.status === '3d'
+  const statusLabel = projectStatusLabel(project)
 
   const service = getService(project.category)
   const cityPage = getCityPage(project.city)
@@ -96,13 +112,14 @@ export default function ProjectPage({ params }: Props) {
     '@type': 'CreativeWork',
     '@id': `${projectUrl}#project`,
     url: projectUrl,
-    name: `${project.title} в ${project.city}`,
+    name: `${is3d ? '3D проект: ' : ''}${project.title}${projectPlace(project)}`,
     headline: project.title,
     description: project.description,
+    image: project.images.map((src) => `${SITE_URL}${src}`),
     inLanguage: 'bg-BG',
     material: materials,
     creator: { '@id': `${SITE_URL}/#business` },
-    contentLocation: { '@type': 'City', name: project.city },
+    ...(project.city ? { contentLocation: { '@type': 'City', name: project.city } } : {}),
     about: {
       '@type': 'Service',
       name: service.title,
@@ -111,7 +128,7 @@ export default function ProjectPage({ params }: Props) {
     isPartOf: {
       '@type': 'CollectionPage',
       '@id': `${SITE_URL}/проекти/#collection`,
-      name: 'Реализирани проекти',
+      name: 'Проекти',
       url: `${SITE_URL}/проекти/`,
     },
   }
@@ -151,7 +168,7 @@ export default function ProjectPage({ params }: Props) {
           <header className="relative h-[430px] sm:h-[500px] lg:h-[600px]">
             <Image
               src={project.images[0]}
-              alt={`${project.title} в ${project.city} — примерна визуализация към реализиран проект`}
+              alt={projectImageAlt(project)}
               fill
               className="object-cover"
               priority
@@ -166,7 +183,7 @@ export default function ProjectPage({ params }: Props) {
                 <ArrowLeft size={16} aria-hidden="true" /> Всички проекти
               </Link>
               <p className="mb-3 font-body text-xs font-semibold uppercase tracking-[0.18em] text-white/80">
-                Реализиран проект · {project.city}
+                {statusLabel}{project.city ? ` · ${project.city}` : ''}
               </p>
               <h1 className="max-w-4xl font-display font-semibold text-white" style={{ fontSize: 'var(--text-h1)' }}>
                 {project.title}
@@ -178,13 +195,15 @@ export default function ProjectPage({ params }: Props) {
             <div className="container-main grid gap-10 lg:grid-cols-[minmax(0,1fr)_340px] lg:gap-14">
               <div className="space-y-10">
                 <div>
-                  <p className="mb-3 font-body text-xs font-semibold uppercase tracking-[0.16em] text-walnut">Реализиран проект</p>
-                  <h2 id="project-overview-title" className="section-title mb-5 text-left">Задача и изпълнено решение</h2>
+                  <p className="mb-3 font-body text-xs font-semibold uppercase tracking-[0.16em] text-walnut">{statusLabel}</p>
+                  <h2 id="project-overview-title" className="section-title mb-5 text-left">{is3d ? 'Задача и проектно решение' : 'Задача и изпълнено решение'}</h2>
                   <div className="grid gap-5 sm:grid-cols-2">
                     <div className="rounded-card border border-walnut/10 bg-warm-white p-6 shadow-sm">
                       <h3 className="mb-3 font-display text-xl font-semibold text-charcoal">Задачата</h3>
                       <p className="font-body text-sm leading-relaxed text-warm-gray sm:text-base">
-                        Реализация на {project.title.toLocaleLowerCase('bg-BG')} за обект в {project.city}. Проектът е част от портфолиото ни за {service.title.toLocaleLowerCase('bg-BG')}.
+                        {is3d
+                          ? `3D проект на ${project.title.toLocaleLowerCase('bg-BG')}${project.city ? ` за обект в ${project.city}` : ''}, подготвен преди изработка. Проектът е част от портфолиото ни за ${service.title.toLocaleLowerCase('bg-BG')}.`
+                          : `Реализация на ${project.title.toLocaleLowerCase('bg-BG')} за обект в ${project.city}. Проектът е част от портфолиото ни за ${service.title.toLocaleLowerCase('bg-BG')}.`}
                       </p>
                     </div>
                     <div className="rounded-card border border-walnut/10 bg-warm-white p-6 shadow-sm">
@@ -195,9 +214,11 @@ export default function ProjectPage({ params }: Props) {
                 </div>
 
                 <div>
-                  <h2 className="mb-4 font-display text-2xl font-semibold text-charcoal sm:text-3xl">Потвърдени материали и изпълнение</h2>
+                  <h2 className="mb-4 font-display text-2xl font-semibold text-charcoal sm:text-3xl">{is3d ? 'Предвидени материали' : 'Потвърдени материали и изпълнение'}</h2>
                   <p className="mb-5 max-w-3xl font-body leading-relaxed text-warm-gray">
-                    За тази реализация са използвани {project.materials}. Проектът е изпълнен в {project.city} за посочения срок от {project.duration}.
+                    {is3d
+                      ? `Предвидени материали в 3D проекта: ${project.materials}. Материалите и детайлите се потвърждават преди изработка.`
+                      : `За тази реализация са използвани ${project.materials}. Проектът е изпълнен в ${project.city} за посочения срок от ${project.duration}.`}
                   </p>
                   <ul className="flex flex-wrap gap-2" aria-label="Използвани материали">
                     {materials.map((material) => (
@@ -214,10 +235,11 @@ export default function ProjectPage({ params }: Props) {
                   <h2 className="mb-5 font-display text-xl font-semibold text-charcoal">Данни за проекта</h2>
                   <dl className="space-y-5">
                     {[
+                      { icon: PencilRuler, label: 'Статус', value: statusLabel },
                       { icon: MapPin, label: 'Град', value: project.city },
                       { icon: Layers, label: 'Материали', value: project.materials },
                       { icon: Clock, label: 'Срок на реализация', value: project.duration },
-                    ].map(({ icon: Icon, label, value }) => (
+                    ].filter(({ value }) => value).map(({ icon: Icon, label, value }) => (
                       <div key={label} className="flex items-start gap-3">
                         <Icon size={18} className="mt-0.5 flex-shrink-0 text-walnut" aria-hidden="true" />
                         <div>
@@ -234,8 +256,8 @@ export default function ProjectPage({ params }: Props) {
                   <div className="divide-y divide-walnut/10">
                     {[
                       { href: service.href, label: service.title },
-                      { href: cityPage, label: `Мебели по поръчка в ${project.city}` },
-                      { href: '/проекти/', label: 'Всички реализирани проекти' },
+                      ...(project.city ? [{ href: cityPage, label: `Мебели по поръчка в ${project.city}` }] : []),
+                      { href: '/проекти/', label: 'Всички проекти' },
                     ].map((link) => (
                       <Link key={link.href} href={link.href} className="group flex items-center justify-between gap-3 py-3 font-body text-sm font-medium text-charcoal hover:text-walnut">
                         {link.label}
@@ -249,13 +271,36 @@ export default function ProjectPage({ params }: Props) {
             </div>
           </section>
 
+          {project.images.length > 1 && (
+            <section className="section-py bg-warm-white" aria-labelledby="project-gallery-title">
+              <div className="container-main">
+                <p className="mb-3 font-body text-xs font-semibold uppercase tracking-[0.16em] text-walnut">{projectImageBadge(project)}</p>
+                <h2 id="project-gallery-title" className="section-title mb-8 text-left">Всички изгледи от проекта</h2>
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                  {project.images.slice(1).map((src, index) => (
+                    <figure key={src} className="relative aspect-[4/3] overflow-hidden rounded-card bg-cream">
+                      <Image
+                        src={src}
+                        alt={projectImageAlt(project, `изглед ${index + 2}`)}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      />
+                    </figure>
+                  ))}
+                </div>
+                <p className="mt-4 font-body text-xs text-warm-gray">{project.imageCaption}</p>
+              </div>
+            </section>
+          )}
+
           <section className="section-py bg-warm-white" aria-labelledby="project-process-title">
             <div className="container-main">
               <div className="mb-9 max-w-3xl">
                 <p className="mb-3 font-body text-xs font-semibold uppercase tracking-[0.16em] text-walnut">При нова поръчка</p>
                 <h2 id="project-process-title" className="section-title mb-4 text-left">Как протича подобен проект</h2>
                 <p className="font-body leading-relaxed text-warm-gray">
-                  Това са стандартните стъпки, по които работим при нов проект за мебели по поръчка. Конкретните материали, град и срок за показаната реализация са посочени по-горе.
+                  Това са стандартните стъпки, по които работим при нов проект за мебели по поръчка. Данните за показания проект са посочени по-горе.
                 </p>
               </div>
               <ol className="grid gap-5 md:grid-cols-3">
@@ -288,22 +333,22 @@ export default function ProjectPage({ params }: Props) {
               </div>
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
                 {related.map((candidate) => (
-                  <Link key={candidate.id} href={`/проекти/${candidate.slug}/`} className="group card overflow-hidden">
+                  <Link key={candidate.id} href={projectHref(candidate)} className="group card overflow-hidden">
                     <div className="relative aspect-[4/3] overflow-hidden">
                       <Image
                         src={candidate.images[0]}
-                        alt={`${candidate.title} в ${candidate.city} — примерна визуализация към реализиран проект`}
+                        alt={projectImageAlt(candidate)}
                         fill
                         className="object-cover transition-transform duration-500 group-hover:scale-105"
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       />
                       <span className="absolute left-3 top-3 rounded-full bg-charcoal/80 px-3 py-1 font-body text-[0.65rem] font-semibold uppercase tracking-wide text-white backdrop-blur-sm">
-                        Примерна визуализация
+                        {projectImageBadge(candidate)}
                       </span>
                     </div>
                     <div className="p-5">
                       <h3 className="font-display text-xl font-semibold text-charcoal transition-colors group-hover:text-walnut">{candidate.title}</h3>
-                      <p className="mt-1 font-body text-sm text-warm-gray">{candidate.city} · {candidate.duration}</p>
+                      <p className="mt-1 font-body text-sm text-warm-gray">{[candidate.city, candidate.duration].filter(Boolean).join(' · ') || projectStatusLabel(candidate)}</p>
                       <p className="mt-3 border-t border-walnut/10 pt-3 font-body text-xs leading-relaxed text-warm-gray">
                         {candidate.imageCaption}
                       </p>

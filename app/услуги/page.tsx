@@ -75,6 +75,36 @@ export default function ServicesPage() {
                 </Link>
               )
             })}
+            <Link href="/услуги/обзавеждане-на-обекти/салони-за-красота/" className="group card overflow-hidden">
+              <div className="relative aspect-video overflow-hidden">
+                <Image
+                  src="/portfolio/3d-proekt-salon-za-krasota/3d-vizualizatsiya-salon-za-krasota-obsht-izgled-1.webp"
+                  alt="3D визуализация на салон за красота — общ изглед"
+                  fill
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+                <span className="absolute bottom-3 left-3 rounded-full bg-black/60 px-3 py-1.5 font-body text-[0.62rem] text-white backdrop-blur-md">
+                  3D визуализация
+                </span>
+              </div>
+              <div className="p-6">
+                <h2 className="font-display font-semibold text-charcoal text-xl mb-2 group-hover:text-walnut transition-colors">
+                  Мебели за салони за красота
+                </h2>
+                <p className="font-body text-warm-gray text-sm mb-4">Рецепции, фризьорски станции, маникюрни бюра и шкафове по 3D проект.</p>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {['Рецепции', 'Фризьорски станции', 'Маникюрни бюра'].map((f) => (
+                    <span key={f} className="text-xs bg-cream text-warm-gray px-2 py-1 rounded-full font-body">
+                      {f}
+                    </span>
+                  ))}
+                </div>
+                <span className="inline-flex items-center gap-1 text-walnut text-sm font-medium font-body">
+                  Научи повече <ArrowRight size={14} />
+                </span>
+              </div>
+            </Link>
           </div>
         </div>
       </div>

@@ -1,9 +1,9 @@
 import { blogPosts } from '@/data/blog-posts'
 import contentLastmod from '@/data/content-lastmod.json'
-import projects from '@/data/projects.json'
 import services from '@/data/services.json'
 import { CATALOG_LANDINGS } from '@/lib/catalog-landings'
 import { CANONICAL_SITE_ORIGIN } from '@/lib/canonical-routing'
+import { caseStudyProjects, projects } from '@/lib/projects'
 
 export type SitemapEntry = {
   /** Percent-encoded absolute URL, identical to the page canonical. */
@@ -59,11 +59,8 @@ export function getCoreSitemapEntries(): SitemapEntry[] {
     entry('/услуги/', 0.9, 'monthly', [page('/услуги/'), 'data/services.json']),
     entry('/проекти/', 0.8, 'monthly', [page('/проекти/'), 'data/projects.json']),
     entry('/3d-проекти/', 0.8, 'monthly', [page('/3d-проекти/')]),
-    entry('/3d-проекти/kuhnya-domexpert-v17/', 0.7, 'monthly', [page('/3d-проекти/kuhnya-domexpert-v17/')], [
-      '/portfolio/kuhnya-domexpert-v17/3d-proekt-kuhnya-moderna-obsht-1.webp',
-      '/portfolio/kuhnya-domexpert-v17/3d-proekt-kuhnya-moderna-frontalen-2.webp',
-      '/portfolio/kuhnya-domexpert-v17/3d-proekt-kuhnya-moderna-vrata-3.webp',
-    ]),
+    entry('/3d-проекти/kuhnya-domexpert-v17/', 0.7, 'monthly', [page('/3d-проекти/kuhnya-domexpert-v17/'), 'data/projects.json'],
+      projects.find((project) => project.page === '/3d-проекти/kuhnya-domexpert-v17/')?.images),
     entry('/блог/', 0.7, 'weekly', [page('/блог/'), 'data/blog-posts.ts']),
     entry('/контакти/', 0.8, 'monthly', [page('/контакти/')]),
     entry('/благоевград/', 0.9, 'monthly', [page('/благоевград/')]),
@@ -74,6 +71,12 @@ export function getCoreSitemapEntries(): SitemapEntry[] {
     entry('/петрич/', 0.9, 'monthly', [page('/петрич/')]),
   ]
 
+  const salonPath = '/услуги/обзавеждане-на-обекти/салони-за-красота/'
+  const objectPages = [
+    entry(salonPath, 0.85, 'monthly', [page(salonPath), 'data/projects.json'],
+      projects.find((project) => project.slug === '3d-proekt-salon-za-krasota')?.images),
+  ]
+
   const servicePages = services.map((service) => entry(
     `/услуги/${service.slug}/`,
     0.85,
@@ -81,11 +84,12 @@ export function getCoreSitemapEntries(): SitemapEntry[] {
     [page(`/услуги/${service.slug}/`), 'data/services.json', 'components/ui/ServicePageTemplate.tsx'],
   ))
 
-  const projectPages = projects.map((project) => entry(
+  const projectPages = caseStudyProjects.map((project) => entry(
     `/проекти/${project.slug}/`,
     0.7,
     'monthly',
     ['data/projects.json', 'app/проекти/[slug]/page.tsx'],
+    project.images.filter((src) => src.startsWith('/portfolio/')),
   ))
 
   // Blog posts carry their own editorial dates; use them as the source of truth.
@@ -94,7 +98,7 @@ export function getCoreSitemapEntries(): SitemapEntry[] {
     lastmod: post.dateModified || post.date,
   }))
 
-  return [...staticPages, ...servicePages, ...projectPages, ...blogPages]
+  return [...staticPages, ...servicePages, ...objectPages, ...projectPages, ...blogPages]
 }
 
 export function getCatalogSitemapEntries(): SitemapEntry[] {

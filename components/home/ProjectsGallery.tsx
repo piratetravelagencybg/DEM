@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { ArrowRight, MapPin, Clock } from 'lucide-react'
 import { motion, useInView } from 'framer-motion'
 import { useRef, useEffect } from 'react'
-import projects from '@/data/projects.json'
+import { projectHref, projectImageAlt, projectImageBadge, projects } from '@/lib/projects'
 
 const TICK_MS = 2600
 
@@ -65,7 +65,7 @@ export default function ProjectsGallery() {
               Проектни казуси
             </h2>
             <p className="mt-3 max-w-2xl font-body text-sm leading-relaxed text-warm-gray">
-              Данните са от реализирани проекти, а изображенията са примерни визуализации.
+              Реализирани обекти и 3D проекти. Изображенията са визуализации, а не снимки от обектите.
             </p>
           </div>
           <Link
@@ -90,18 +90,18 @@ export default function ProjectsGallery() {
           {items.map((project) => (
             <Link
               key={project.id}
-              href={`/проекти/${project.slug}/`}
+              href={projectHref(project)}
               className="group relative h-[340px] w-[260px] flex-shrink-0 snap-start overflow-hidden rounded-[18px] md:h-[480px] md:w-[370px] md:rounded-[20px]"
             >
               <Image
                 src={project.images[0]}
-                alt={`${project.title} — примерна визуализация към реализиран проект`}
+                alt={projectImageAlt(project)}
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
                 sizes="(max-width: 767px) 260px, 370px"
               />
               <span className="absolute left-3 top-3 z-10 rounded-full bg-charcoal/80 px-3 py-1 font-body text-[0.65rem] font-semibold uppercase tracking-wide text-white backdrop-blur-sm md:left-4 md:top-4 md:py-1.5 md:text-[0.68rem]">
-                Примерна визуализация
+                {projectImageBadge(project)}
               </span>
               <div
                 className="absolute inset-0"
@@ -109,12 +109,16 @@ export default function ProjectsGallery() {
               />
               <div className="absolute bottom-0 left-0 right-0 p-4 md:p-5">
                 <div className="mb-1 flex items-center gap-1 md:mb-2 md:gap-3">
-                  <span className="flex items-center gap-1.5 font-body" style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.65)' }}>
-                    <MapPin size={11} style={{ color: '#C4A882' }} /> {project.city}
-                  </span>
-                  <span className="hidden items-center gap-1.5 font-body md:flex" style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.6)' }}>
-                    <Clock size={11} style={{ color: '#C4A882' }} /> {project.duration}
-                  </span>
+                  {project.city && (
+                    <span className="flex items-center gap-1.5 font-body" style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.65)' }}>
+                      <MapPin size={11} style={{ color: '#C4A882' }} /> {project.city}
+                    </span>
+                  )}
+                  {project.duration && (
+                    <span className="hidden items-center gap-1.5 font-body md:flex" style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.6)' }}>
+                      <Clock size={11} style={{ color: '#C4A882' }} /> {project.duration}
+                    </span>
+                  )}
                 </div>
                 <h3 className="font-display text-[1.1rem] font-bold leading-tight text-white md:mb-1 md:text-[1.25rem]">
                   {project.title}

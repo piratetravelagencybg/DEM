@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import ServicePageTemplate from '@/components/ui/ServicePageTemplate'
 import ProjectHighlight from '@/components/ui/ProjectHighlight'
 import services from '@/data/services.json'
-import projects from '@/data/projects.json'
+import { projects } from '@/lib/projects'
 import { completePageMetadata } from '@/lib/seo'
 
 const service = services.find((s) => s.id === 'dnevni')!

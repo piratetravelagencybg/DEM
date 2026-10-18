@@ -1,16 +1,21 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { ArrowRight, Eye } from 'lucide-react'
+import { projectHref, projectPlace, projects as allProjects } from '@/lib/projects'
 
-const projects3D = [
-  {
-    slug: 'kuhnya-domexpert-v17',
-    title: '3D проект на кухня – Кашмир монохромна',
-    description: 'Модерна монохромна кухня с кашмир фронтове, тъмен мраморен гръб Laminam и остров с канали.',
-    image: '/portfolio/kuhnya-domexpert-v17/3d-proekt-kuhnya-moderna-obsht-1.webp',
-    category: 'Кухня',
-  },
-]
+const CATEGORY_LABELS: Record<string, string> = { kuhni: 'Кухня', saloni: 'Салон за красота' }
+
+const projects3D = allProjects
+  .filter((project) => project.status === '3d')
+  .map((project) => ({
+    slug: project.slug,
+    href: projectHref(project),
+    title: project.title + projectPlace(project),
+    description: project.description,
+    image: project.images[0],
+    category: CATEGORY_LABELS[project.category] ?? 'Мебели по поръчка',
+    style: '3D визуализация',
+  }))
 
 export default function Projects3DShowcase() {
   return (
@@ -33,7 +38,7 @@ export default function Projects3DShowcase() {
           {projects3D.map((project) => (
             <Link
               key={project.slug}
-              href={`/3d-проекти/${project.slug}/`}
+              href={project.href}
               className="group bg-white rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1"
               style={{ border: '1px solid #EDE5DA', boxShadow: '0 4px 24px rgba(0,0,0,0.06)' }}
             >

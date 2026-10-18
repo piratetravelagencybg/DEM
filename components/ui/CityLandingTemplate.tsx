@@ -7,7 +7,7 @@ import GoogleReviews from '@/components/home/GoogleReviews'
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
 import FAQSchema from '@/components/seo/FAQSchema'
 import ServiceSchema from '@/components/seo/ServiceSchema'
-import projects from '@/data/projects.json'
+import { projectHref, projectImageAlt, projectStatusLabel, projects } from '@/lib/projects'
 import type { ComponentProps } from 'react'
 
 type GuideProps = ComponentProps<typeof ServiceGuide>
@@ -176,11 +176,13 @@ export default function CityLandingTemplate({
       {project && (
         <ProjectHighlight
           title={`${project.title} в ${project.city}`}
+          eyebrow={projectStatusLabel(project)}
+          imageAlt={projectImageAlt(project)}
           description={project.description}
           city={project.city}
           duration={project.duration}
           image={project.images[0]}
-          href={`/проекти/${project.slug}/`}
+          href={projectHref(project)}
           imageCaption={project.imageCaption}
         />
       )}

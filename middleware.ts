@@ -33,6 +33,7 @@ const READY_FURNITURE_PREFIX = '/готови-мебели'
 const READY_INTERNAL_PREFIX = '/ready'
 const READY_SORT_INTERNAL_PREFIX = '/ready-sort'
 const LEGACY_CATALOG_QUERY_KEYS = ['category', 'type', 'sort', 'page'] as const
+const OBJECTS_HUB_PATH = '/услуги/обзавеждане-на-обекти'
 
 type PublicRedirectOptions = {
   clearSearch?: boolean
@@ -104,6 +105,11 @@ export function middleware(request: NextRequest) {
     decodedPathname = decodeURIComponent(pathname)
   } catch {
     return NextResponse.next()
+  }
+
+  // Temporary (307, not cached) until the „Обзавеждане на обекти“ hub exists.
+  if (decodedPathname === OBJECTS_HUB_PATH || decodedPathname === OBJECTS_HUB_PATH + '/') {
+    return NextResponse.redirect(buildCanonicalPublicUrl(request.url, '/услуги/', { clearSearch: true }), 307)
   }
 
   if (

@@ -8,10 +8,13 @@
     "description": "Модерна кухня с централен остров, изработена от МДФ гланц в бяло и дъб натурал. Оборудвана с вградена техника Bosch, подово осветление и гранитен плот.",
     "materials": "МДФ гланц, плот гранит",
     "duration": "5 седмици",
-    "images": ["/images/visualizations/07-modern-kitchen-island-01.webp"],
+    "images": [
+      "/images/visualizations/07-modern-kitchen-island-01.webp"
+    ],
     "imageType": "visualization",
     "imageCaption": "Примерна визуализация към описания реализиран проект. Изображението не е фотография от обекта.",
-    "featured": true
+    "featured": true,
+    "status": "realized"
   },
   {
     "id": "2",
@@ -22,10 +25,13 @@
     "description": "Вградена гардеробна система с плъзгащи огледални врати, вградено LED осветление и множество отделения за съхранение.",
     "materials": "ПДЧ, огледало, LED",
     "duration": "2 седмици",
-    "images": ["/images/visualizations/22-modern-wardrobe-sliding-doors-01.webp"],
+    "images": [
+      "/images/visualizations/22-modern-wardrobe-sliding-doors-01.webp"
+    ],
     "imageType": "visualization",
     "imageCaption": "Примерна визуализация към описания реализиран проект. Изображението не е фотография от обекта.",
-    "featured": true
+    "featured": true,
+    "status": "realized"
   },
   {
     "id": "3",
@@ -36,10 +42,13 @@
     "description": "Цялостна дневна стая с ТВ секция, библиотека и вградено осветление. Изработена в тъмно дъбово дърво с меден акцент.",
     "materials": "МДФ фурнир дъб, метален акцент",
     "duration": "4 седмици",
-    "images": ["/images/visualizations/02-home-hero-open-plan-kitchen-02.webp"],
+    "images": [
+      "/images/visualizations/02-home-hero-open-plan-kitchen-02.webp"
+    ],
     "imageType": "visualization",
     "imageCaption": "Примерна визуализация към описания реализиран проект. Изображението не е фотография от обекта.",
-    "featured": true
+    "featured": true,
+    "status": "realized"
   },
   {
     "id": "4",
@@ -50,10 +59,13 @@
     "description": "Цялостна спалня с тапицирано легло в сиво кадифе, нощни шкафчета и вграден гардероб. Минималистичен дизайн с топли тонове.",
     "materials": "МДФ, кадифена тапицерия, ПДЧ",
     "duration": "5 седмици",
-    "images": ["/images/visualizations/19-modern-bedroom-neutral-01.webp"],
+    "images": [
+      "/images/visualizations/19-modern-bedroom-neutral-01.webp"
+    ],
     "imageType": "visualization",
     "imageCaption": "Примерна визуализация към описания реализиран проект. Изображението не е фотография от обекта.",
-    "featured": true
+    "featured": true,
+    "status": "realized"
   },
   {
     "id": "5",
@@ -64,10 +76,13 @@
     "description": "Цялостно офис обзавеждане за счетоводна кантора — бюра, архивни шкафове и рецепция по поръчка.",
     "materials": "ПДЧ, МДФ",
     "duration": "3 седмици",
-    "images": ["/images/visualizations/13-modern-home-office-double-desk-01.webp"],
+    "images": [
+      "/images/visualizations/13-modern-home-office-double-desk-01.webp"
+    ],
     "imageType": "visualization",
     "imageCaption": "Примерна визуализация към описания реализиран проект. Изображението не е фотография от обекта.",
-    "featured": false
+    "featured": false,
+    "status": "realized"
   },
   {
     "id": "6",
@@ -78,9 +93,102 @@
     "description": "Класическа кухня в крем и злато с фрезовани врати, кварцов плот и вграден абсорбатор в колона.",
     "materials": "МДФ профил, кварц Silestone",
     "duration": "6 седмици",
-    "images": ["/images/visualizations/11-modern-kitchen-gold-accents-01.webp"],
+    "images": [
+      "/images/visualizations/11-modern-kitchen-gold-accents-01.webp"
+    ],
     "imageType": "visualization",
     "imageCaption": "Примерна визуализация към описания реализиран проект. Изображението не е фотография от обекта.",
-    "featured": false
+    "featured": false,
+    "status": "realized"
+  },
+  {
+    "id": "7",
+    "slug": "3d-proekt-salon-za-krasota",
+    "title": "Салон за красота",
+    "category": "saloni",
+    "city": "",
+    "description": "3D проект на салон за красота: фризьорски кът с две овални огледала с LED на дъбови летви, L-образно маникюрно бюро, ниша-арка за лакове с осветление и задно помещение за педикюр и измиване на коса. Мебелите са в дъб и кашмир мат.",
+    "materials": "ПДЧ декор дъб, МДФ кашмир мат, LED осветление",
+    "duration": "",
+    "images": [
+      "/portfolio/3d-proekt-salon-za-krasota/3d-vizualizatsiya-salon-za-krasota-obsht-izgled-1.webp",
+      "/portfolio/3d-proekt-salon-za-krasota/3d-vizualizatsiya-salon-za-krasota-friziorski-kat-2.webp",
+      "/portfolio/3d-proekt-salon-za-krasota/3d-vizualizatsiya-salon-za-krasota-manikyur-3.webp",
+      "/portfolio/3d-proekt-salon-za-krasota/3d-vizualizatsiya-salon-za-krasota-nisha-za-lakove-4.webp",
+      "/portfolio/3d-proekt-salon-za-krasota/3d-vizualizatsiya-salon-za-krasota-pedikyur-i-mivka-5.webp",
+      "/portfolio/3d-proekt-salon-za-krasota/3d-vizualizatsiya-salon-za-krasota-kam-vhoda-6.webp",
+      "/portfolio/3d-proekt-salon-za-krasota/3d-vizualizatsiya-salon-za-krasota-zona-za-chakane-7.webp",
+      "/portfolio/3d-proekt-salon-za-krasota/3d-vizualizatsiya-salon-za-krasota-portal-8.webp",
+      "/portfolio/3d-proekt-salon-za-krasota/3d-vizualizatsiya-salon-za-krasota-pedikyur-9.webp",
+      "/portfolio/3d-proekt-salon-za-krasota/3d-vizualizatsiya-salon-za-krasota-lakove-10.webp"
+    ],
+    "imageType": "visualization",
+    "imageCaption": "3D визуализация на проекта. Салонът предстои да бъде изработен.",
+    "featured": false,
+    "status": "3d"
+  },
+  {
+    "id": "8",
+    "slug": "3d-proekt-kuhnya-mramor-i-vino-blagoevgrad",
+    "title": "Кухня с мрамор и стена за вино",
+    "category": "kuhni",
+    "city": "Благоевград",
+    "description": "3D проект на кухня с дължина 4,4 м: матови тъмнокафяви фронтове, плот и гръб от бял мрамор с черни жилки, отворени горни кутии с LED и бронзов кант, извита стена за вино и колона с фурна, вградена кафемашина и охладител за вино.",
+    "materials": "Матови фронтове, мрамор, LED осветление",
+    "duration": "",
+    "images": [
+      "/portfolio/3d-proekt-kuhnya-mramor-i-vino-blagoevgrad/3d-vizualizatsiya-kuhnya-mramor-i-vino-blagoevgrad-obsht-izgled-1.webp",
+      "/portfolio/3d-proekt-kuhnya-mramor-i-vino-blagoevgrad/3d-vizualizatsiya-kuhnya-mramor-i-vino-blagoevgrad-otlyavo-2.webp",
+      "/portfolio/3d-proekt-kuhnya-mramor-i-vino-blagoevgrad/3d-vizualizatsiya-kuhnya-mramor-i-vino-blagoevgrad-otdyasno-3.webp",
+      "/portfolio/3d-proekt-kuhnya-mramor-i-vino-blagoevgrad/3d-vizualizatsiya-kuhnya-mramor-i-vino-blagoevgrad-rafove-nad-mivkata-4.webp",
+      "/portfolio/3d-proekt-kuhnya-mramor-i-vino-blagoevgrad/3d-vizualizatsiya-kuhnya-mramor-i-vino-blagoevgrad-kolona-s-uredi-5.webp",
+      "/portfolio/3d-proekt-kuhnya-mramor-i-vino-blagoevgrad/3d-vizualizatsiya-kuhnya-mramor-i-vino-blagoevgrad-stena-za-vino-6.webp",
+      "/portfolio/3d-proekt-kuhnya-mramor-i-vino-blagoevgrad/3d-vizualizatsiya-kuhnya-mramor-i-vino-blagoevgrad-vgraden-hladilnik-7.webp",
+      "/portfolio/3d-proekt-kuhnya-mramor-i-vino-blagoevgrad/3d-vizualizatsiya-kuhnya-mramor-i-vino-blagoevgrad-hladilnik-detayl-8.webp"
+    ],
+    "imageType": "visualization",
+    "imageCaption": "3D визуализация на проекта. Изображението не е снимка от изпълнен обект.",
+    "featured": false,
+    "status": "3d"
+  },
+  {
+    "id": "9",
+    "slug": "kuhnya-s-ostrov-kafe-kolona-blagoevgrad",
+    "page": "/3d-проекти/kuhnya-domexpert-v17/",
+    "title": "Кухня с остров и кафе колона",
+    "category": "kuhni",
+    "city": "Благоевград",
+    "description": "3D проект на П-образна кухня с остров 2 × 1 м с вертикални канали: рамка в тъмен taupe и фронтове в кашмир, гръб Laminam с тъмен мрамор, кафе колона със заоблен ъгъл и полилей с опални сфери над острова.",
+    "materials": "МДФ кашмир и taupe, Laminam, компакт плот",
+    "duration": "",
+    "images": [
+      "/portfolio/kuhnya-domexpert-v17/3d-vizualizatsiya-kuhnya-s-ostrov-blagoevgrad-obsht-izgled-1.webp",
+      "/portfolio/kuhnya-domexpert-v17/3d-vizualizatsiya-kuhnya-s-ostrov-blagoevgrad-frontalen-2.webp",
+      "/portfolio/kuhnya-domexpert-v17/3d-vizualizatsiya-kuhnya-s-ostrov-blagoevgrad-ostrov-poliley-3.webp",
+      "/portfolio/kuhnya-domexpert-v17/3d-vizualizatsiya-kuhnya-s-ostrov-blagoevgrad-ot-vratata-4.webp",
+      "/portfolio/kuhnya-domexpert-v17/3d-vizualizatsiya-kuhnya-s-ostrov-blagoevgrad-kafe-statsiya-5.webp",
+      "/portfolio/kuhnya-domexpert-v17/3d-vizualizatsiya-kuhnya-s-ostrov-blagoevgrad-izvit-shkaf-6.webp"
+    ],
+    "imageType": "visualization",
+    "imageCaption": "3D визуализация на проекта. Изображението не е снимка от изпълнен обект.",
+    "featured": false,
+    "status": "3d"
+  },
+  {
+    "id": "10",
+    "slug": "3d-proekt-tyasna-kuhnya-blagoevgrad",
+    "title": "Тясна кухня с колона за уреди",
+    "category": "kuhni",
+    "city": "Благоевград",
+    "description": "3D проект на кухня за тясно помещение: бели долни и горни шкафове, колона с вградени фурна и микровълнова и светъл декор за плота и гърба.",
+    "materials": "Бели фронтове, декор светло дърво",
+    "duration": "",
+    "images": [
+      "/portfolio/3d-proekt-tyasna-kuhnya-blagoevgrad/3d-vizualizatsiya-tyasna-kuhnya-blagoevgrad-kolona-s-furna-1.webp"
+    ],
+    "imageType": "visualization",
+    "imageCaption": "3D визуализация на проекта. Изображението не е снимка от изпълнен обект.",
+    "featured": false,
+    "status": "3d"
   }
 ]

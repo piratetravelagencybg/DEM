@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import ServicePageTemplate from '@/components/ui/ServicePageTemplate'
 import ServiceGuide from '@/components/ui/ServiceGuide'
+import ProjectCards from '@/components/ui/ProjectCards'
+import { projectsByCategory } from '@/lib/projects'
 import services from '@/data/services.json'
 import { completePageMetadata } from '@/lib/seo'
 
@@ -118,6 +120,18 @@ export default function KuhniPage() {
         steps={guideSteps}
         links={guideLinks}
       />
+      <section className="section-py" style={{ backgroundColor: 'var(--color-cream)' }}>
+        <div className="container-main">
+          <div className="max-w-3xl mb-10">
+            <span className="eyebrow-pill">Проекти</span>
+            <h2 className="section-title text-left">Проекти на кухни по поръчка</h2>
+            <p className="font-body text-warm-gray leading-relaxed mt-4" style={{ fontSize: '1rem' }}>
+              Реализирани кухни и 3D проекти, подготвени преди изработка. Всеки проект е обозначен, а изображенията са визуализации, а не снимки от обектите.
+            </p>
+          </div>
+          <ProjectCards items={projectsByCategory('kuhni')} />
+        </div>
+      </section>
     </ServicePageTemplate>
   )
 }

@@ -8,7 +8,7 @@ import GoogleReviews from '@/components/home/GoogleReviews'
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
 import FAQSchema from '@/components/seo/FAQSchema'
 import ServiceSchema from '@/components/seo/ServiceSchema'
-import projects from '@/data/projects.json'
+import { projectHref, projectImageAlt, projects } from '@/lib/projects'
 import { completePageMetadata } from '@/lib/seo'
 
 export const metadata: Metadata = completePageMetadata({
@@ -371,14 +371,14 @@ export default function SofiaPage() {
             {sofiaProjects.map((project) => (
               <Link
                 key={project.slug}
-                href={`/проекти/${project.slug}/`}
+                href={projectHref(project)}
                 className="group overflow-hidden rounded-2xl bg-white transition-transform duration-200 hover:-translate-y-0.5"
                 style={{ border: '1px solid #E7DDCF' }}
               >
                 <div className="relative aspect-[4/3]">
                   <Image
                     src={project.images[0]}
-                    alt={`${project.title} в ${project.city} — примерна визуализация към реализиран проект`}
+                    alt={projectImageAlt(project)}
                     fill
                     className="object-cover"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"

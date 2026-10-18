@@ -8,6 +8,8 @@ import GoogleBusinessProfile from '@/components/home/GoogleBusinessProfile'
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
 import FAQSchema from '@/components/seo/FAQSchema'
 import ServiceSchema from '@/components/seo/ServiceSchema'
+import ProjectCards from '@/components/ui/ProjectCards'
+import { projectsByCity } from '@/lib/projects'
 import { completePageMetadata } from '@/lib/seo'
 
 export const metadata: Metadata = completePageMetadata({
@@ -300,6 +302,20 @@ export default function BlagoevgradPage() {
               .
             </p>
           </div>
+        </div>
+      </section>
+
+      {/* ── Projects in Blagoevgrad ── */}
+      <section className="section-py" style={{ backgroundColor: 'var(--color-cream)' }}>
+        <div className="container-main">
+          <div className="max-w-3xl mb-10">
+            <span className="eyebrow-pill">Проекти</span>
+            <h2 className="section-title text-left">Проекти в Благоевград</h2>
+            <p className="font-body text-warm-gray leading-relaxed mt-4" style={{ fontSize: '1rem' }}>
+              Реализирани обекти и 3D проекти за клиенти в Благоевград. Всеки проект е обозначен, а изображенията са визуализации, а не снимки от обектите.
+            </p>
+          </div>
+          <ProjectCards items={projectsByCity('Благоевград')} />
         </div>
       </section>
 

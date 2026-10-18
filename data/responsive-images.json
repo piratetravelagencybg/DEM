@@ -272,11 +272,137 @@
       "640": "/images/responsive/visualizations/home-hero-mobile-640w.webp"
     }
   },
-  "/portfolio/kuhnya-domexpert-v17/3d-proekt-kuhnya-moderna-frontalen-2.webp": {
-    "width": 1500,
+  "/portfolio/3d-proekt-kuhnya-mramor-i-vino-blagoevgrad/3d-vizualizatsiya-kuhnya-mramor-i-vino-blagoevgrad-hladilnik-detayl-8.webp": {
+    "width": 1920,
     "variants": {
-      "640": "/images/responsive/portfolio/kuhnya-domexpert-v17/3d-proekt-kuhnya-moderna-frontalen-2-640w.webp",
-      "1024": "/images/responsive/portfolio/kuhnya-domexpert-v17/3d-proekt-kuhnya-moderna-frontalen-2-1024w.webp"
+      "640": "/images/responsive/portfolio/3d-proekt-kuhnya-mramor-i-vino-blagoevgrad/3d-vizualizatsiya-kuhnya-mramor-i-vino-blagoevgrad-hladilnik-detayl-8-640w.webp",
+      "1024": "/images/responsive/portfolio/3d-proekt-kuhnya-mramor-i-vino-blagoevgrad/3d-vizualizatsiya-kuhnya-mramor-i-vino-blagoevgrad-hladilnik-detayl-8-1024w.webp"
+    }
+  },
+  "/portfolio/3d-proekt-kuhnya-mramor-i-vino-blagoevgrad/3d-vizualizatsiya-kuhnya-mramor-i-vino-blagoevgrad-kolona-s-uredi-5.webp": {
+    "width": 1920,
+    "variants": {
+      "640": "/images/responsive/portfolio/3d-proekt-kuhnya-mramor-i-vino-blagoevgrad/3d-vizualizatsiya-kuhnya-mramor-i-vino-blagoevgrad-kolona-s-uredi-5-640w.webp",
+      "1024": "/images/responsive/portfolio/3d-proekt-kuhnya-mramor-i-vino-blagoevgrad/3d-vizualizatsiya-kuhnya-mramor-i-vino-blagoevgrad-kolona-s-uredi-5-1024w.webp"
+    }
+  },
+  "/portfolio/3d-proekt-kuhnya-mramor-i-vino-blagoevgrad/3d-vizualizatsiya-kuhnya-mramor-i-vino-blagoevgrad-obsht-izgled-1.webp": {
+    "width": 1920,
+    "variants": {
+      "640": "/images/responsive/portfolio/3d-proekt-kuhnya-mramor-i-vino-blagoevgrad/3d-vizualizatsiya-kuhnya-mramor-i-vino-blagoevgrad-obsht-izgled-1-640w.webp",
+      "1024": "/images/responsive/portfolio/3d-proekt-kuhnya-mramor-i-vino-blagoevgrad/3d-vizualizatsiya-kuhnya-mramor-i-vino-blagoevgrad-obsht-izgled-1-1024w.webp"
+    }
+  },
+  "/portfolio/3d-proekt-kuhnya-mramor-i-vino-blagoevgrad/3d-vizualizatsiya-kuhnya-mramor-i-vino-blagoevgrad-otdyasno-3.webp": {
+    "width": 1920,
+    "variants": {
+      "640": "/images/responsive/portfolio/3d-proekt-kuhnya-mramor-i-vino-blagoevgrad/3d-vizualizatsiya-kuhnya-mramor-i-vino-blagoevgrad-otdyasno-3-640w.webp",
+      "1024": "/images/responsive/portfolio/3d-proekt-kuhnya-mramor-i-vino-blagoevgrad/3d-vizualizatsiya-kuhnya-mramor-i-vino-blagoevgrad-otdyasno-3-1024w.webp"
+    }
+  },
+  "/portfolio/3d-proekt-kuhnya-mramor-i-vino-blagoevgrad/3d-vizualizatsiya-kuhnya-mramor-i-vino-blagoevgrad-otlyavo-2.webp": {
+    "width": 1920,
+    "variants": {
+      "640": "/images/responsive/portfolio/3d-proekt-kuhnya-mramor-i-vino-blagoevgrad/3d-vizualizatsiya-kuhnya-mramor-i-vino-blagoevgrad-otlyavo-2-640w.webp",
+      "1024": "/images/responsive/portfolio/3d-proekt-kuhnya-mramor-i-vino-blagoevgrad/3d-vizualizatsiya-kuhnya-mramor-i-vino-blagoevgrad-otlyavo-2-1024w.webp"
+    }
+  },
+  "/portfolio/3d-proekt-kuhnya-mramor-i-vino-blagoevgrad/3d-vizualizatsiya-kuhnya-mramor-i-vino-blagoevgrad-rafove-nad-mivkata-4.webp": {
+    "width": 1920,
+    "variants": {
+      "640": "/images/responsive/portfolio/3d-proekt-kuhnya-mramor-i-vino-blagoevgrad/3d-vizualizatsiya-kuhnya-mramor-i-vino-blagoevgrad-rafove-nad-mivkata-4-640w.webp",
+      "1024": "/images/responsive/portfolio/3d-proekt-kuhnya-mramor-i-vino-blagoevgrad/3d-vizualizatsiya-kuhnya-mramor-i-vino-blagoevgrad-rafove-nad-mivkata-4-1024w.webp"
+    }
+  },
+  "/portfolio/3d-proekt-kuhnya-mramor-i-vino-blagoevgrad/3d-vizualizatsiya-kuhnya-mramor-i-vino-blagoevgrad-stena-za-vino-6.webp": {
+    "width": 1920,
+    "variants": {
+      "640": "/images/responsive/portfolio/3d-proekt-kuhnya-mramor-i-vino-blagoevgrad/3d-vizualizatsiya-kuhnya-mramor-i-vino-blagoevgrad-stena-za-vino-6-640w.webp",
+      "1024": "/images/responsive/portfolio/3d-proekt-kuhnya-mramor-i-vino-blagoevgrad/3d-vizualizatsiya-kuhnya-mramor-i-vino-blagoevgrad-stena-za-vino-6-1024w.webp"
+    }
+  },
+  "/portfolio/3d-proekt-kuhnya-mramor-i-vino-blagoevgrad/3d-vizualizatsiya-kuhnya-mramor-i-vino-blagoevgrad-vgraden-hladilnik-7.webp": {
+    "width": 1920,
+    "variants": {
+      "640": "/images/responsive/portfolio/3d-proekt-kuhnya-mramor-i-vino-blagoevgrad/3d-vizualizatsiya-kuhnya-mramor-i-vino-blagoevgrad-vgraden-hladilnik-7-640w.webp",
+      "1024": "/images/responsive/portfolio/3d-proekt-kuhnya-mramor-i-vino-blagoevgrad/3d-vizualizatsiya-kuhnya-mramor-i-vino-blagoevgrad-vgraden-hladilnik-7-1024w.webp"
+    }
+  },
+  "/portfolio/3d-proekt-salon-za-krasota/3d-vizualizatsiya-salon-za-krasota-friziorski-kat-2.webp": {
+    "width": 1920,
+    "variants": {
+      "640": "/images/responsive/portfolio/3d-proekt-salon-za-krasota/3d-vizualizatsiya-salon-za-krasota-friziorski-kat-2-640w.webp",
+      "1024": "/images/responsive/portfolio/3d-proekt-salon-za-krasota/3d-vizualizatsiya-salon-za-krasota-friziorski-kat-2-1024w.webp"
+    }
+  },
+  "/portfolio/3d-proekt-salon-za-krasota/3d-vizualizatsiya-salon-za-krasota-kam-vhoda-6.webp": {
+    "width": 1920,
+    "variants": {
+      "640": "/images/responsive/portfolio/3d-proekt-salon-za-krasota/3d-vizualizatsiya-salon-za-krasota-kam-vhoda-6-640w.webp",
+      "1024": "/images/responsive/portfolio/3d-proekt-salon-za-krasota/3d-vizualizatsiya-salon-za-krasota-kam-vhoda-6-1024w.webp"
+    }
+  },
+  "/portfolio/3d-proekt-salon-za-krasota/3d-vizualizatsiya-salon-za-krasota-lakove-10.webp": {
+    "width": 1080,
+    "variants": {
+      "640": "/images/responsive/portfolio/3d-proekt-salon-za-krasota/3d-vizualizatsiya-salon-za-krasota-lakove-10-640w.webp",
+      "1024": "/images/responsive/portfolio/3d-proekt-salon-za-krasota/3d-vizualizatsiya-salon-za-krasota-lakove-10-1024w.webp"
+    }
+  },
+  "/portfolio/3d-proekt-salon-za-krasota/3d-vizualizatsiya-salon-za-krasota-manikyur-3.webp": {
+    "width": 1920,
+    "variants": {
+      "640": "/images/responsive/portfolio/3d-proekt-salon-za-krasota/3d-vizualizatsiya-salon-za-krasota-manikyur-3-640w.webp",
+      "1024": "/images/responsive/portfolio/3d-proekt-salon-za-krasota/3d-vizualizatsiya-salon-za-krasota-manikyur-3-1024w.webp"
+    }
+  },
+  "/portfolio/3d-proekt-salon-za-krasota/3d-vizualizatsiya-salon-za-krasota-nisha-za-lakove-4.webp": {
+    "width": 1920,
+    "variants": {
+      "640": "/images/responsive/portfolio/3d-proekt-salon-za-krasota/3d-vizualizatsiya-salon-za-krasota-nisha-za-lakove-4-640w.webp",
+      "1024": "/images/responsive/portfolio/3d-proekt-salon-za-krasota/3d-vizualizatsiya-salon-za-krasota-nisha-za-lakove-4-1024w.webp"
+    }
+  },
+  "/portfolio/3d-proekt-salon-za-krasota/3d-vizualizatsiya-salon-za-krasota-obsht-izgled-1.webp": {
+    "width": 1920,
+    "variants": {
+      "640": "/images/responsive/portfolio/3d-proekt-salon-za-krasota/3d-vizualizatsiya-salon-za-krasota-obsht-izgled-1-640w.webp",
+      "1024": "/images/responsive/portfolio/3d-proekt-salon-za-krasota/3d-vizualizatsiya-salon-za-krasota-obsht-izgled-1-1024w.webp"
+    }
+  },
+  "/portfolio/3d-proekt-salon-za-krasota/3d-vizualizatsiya-salon-za-krasota-pedikyur-9.webp": {
+    "width": 1080,
+    "variants": {
+      "640": "/images/responsive/portfolio/3d-proekt-salon-za-krasota/3d-vizualizatsiya-salon-za-krasota-pedikyur-9-640w.webp",
+      "1024": "/images/responsive/portfolio/3d-proekt-salon-za-krasota/3d-vizualizatsiya-salon-za-krasota-pedikyur-9-1024w.webp"
+    }
+  },
+  "/portfolio/3d-proekt-salon-za-krasota/3d-vizualizatsiya-salon-za-krasota-pedikyur-i-mivka-5.webp": {
+    "width": 1920,
+    "variants": {
+      "640": "/images/responsive/portfolio/3d-proekt-salon-za-krasota/3d-vizualizatsiya-salon-za-krasota-pedikyur-i-mivka-5-640w.webp",
+      "1024": "/images/responsive/portfolio/3d-proekt-salon-za-krasota/3d-vizualizatsiya-salon-za-krasota-pedikyur-i-mivka-5-1024w.webp"
+    }
+  },
+  "/portfolio/3d-proekt-salon-za-krasota/3d-vizualizatsiya-salon-za-krasota-portal-8.webp": {
+    "width": 1080,
+    "variants": {
+      "640": "/images/responsive/portfolio/3d-proekt-salon-za-krasota/3d-vizualizatsiya-salon-za-krasota-portal-8-640w.webp",
+      "1024": "/images/responsive/portfolio/3d-proekt-salon-za-krasota/3d-vizualizatsiya-salon-za-krasota-portal-8-1024w.webp"
+    }
+  },
+  "/portfolio/3d-proekt-salon-za-krasota/3d-vizualizatsiya-salon-za-krasota-zona-za-chakane-7.webp": {
+    "width": 1920,
+    "variants": {
+      "640": "/images/responsive/portfolio/3d-proekt-salon-za-krasota/3d-vizualizatsiya-salon-za-krasota-zona-za-chakane-7-640w.webp",
+      "1024": "/images/responsive/portfolio/3d-proekt-salon-za-krasota/3d-vizualizatsiya-salon-za-krasota-zona-za-chakane-7-1024w.webp"
+    }
+  },
+  "/portfolio/3d-proekt-tyasna-kuhnya-blagoevgrad/3d-vizualizatsiya-tyasna-kuhnya-blagoevgrad-kolona-s-furna-1.webp": {
+    "width": 1200,
+    "variants": {
+      "640": "/images/responsive/portfolio/3d-proekt-tyasna-kuhnya-blagoevgrad/3d-vizualizatsiya-tyasna-kuhnya-blagoevgrad-kolona-s-furna-1-640w.webp",
+      "1024": "/images/responsive/portfolio/3d-proekt-tyasna-kuhnya-blagoevgrad/3d-vizualizatsiya-tyasna-kuhnya-blagoevgrad-kolona-s-furna-1-1024w.webp"
     }
   },
   "/portfolio/kuhnya-domexpert-v17/3d-proekt-kuhnya-moderna-obsht-1.webp": {
@@ -286,11 +412,60 @@
       "1024": "/images/responsive/portfolio/kuhnya-domexpert-v17/3d-proekt-kuhnya-moderna-obsht-1-1024w.webp"
     }
   },
-  "/portfolio/kuhnya-domexpert-v17/3d-proekt-kuhnya-moderna-vrata-3.webp": {
-    "width": 1500,
+  "/portfolio/kuhnya-domexpert-v17/3d-vizualizatsiya-kuhnya-s-ostrov-blagoevgrad-frontalen-2.webp": {
+    "width": 1920,
     "variants": {
-      "640": "/images/responsive/portfolio/kuhnya-domexpert-v17/3d-proekt-kuhnya-moderna-vrata-3-640w.webp",
-      "1024": "/images/responsive/portfolio/kuhnya-domexpert-v17/3d-proekt-kuhnya-moderna-vrata-3-1024w.webp"
+      "640": "/images/responsive/portfolio/kuhnya-domexpert-v17/3d-vizualizatsiya-kuhnya-s-ostrov-blagoevgrad-frontalen-2-640w.webp",
+      "1024": "/images/responsive/portfolio/kuhnya-domexpert-v17/3d-vizualizatsiya-kuhnya-s-ostrov-blagoevgrad-frontalen-2-1024w.webp"
+    }
+  },
+  "/portfolio/kuhnya-domexpert-v17/3d-vizualizatsiya-kuhnya-s-ostrov-blagoevgrad-izvit-shkaf-6.webp": {
+    "width": 1920,
+    "variants": {
+      "640": "/images/responsive/portfolio/kuhnya-domexpert-v17/3d-vizualizatsiya-kuhnya-s-ostrov-blagoevgrad-izvit-shkaf-6-640w.webp",
+      "1024": "/images/responsive/portfolio/kuhnya-domexpert-v17/3d-vizualizatsiya-kuhnya-s-ostrov-blagoevgrad-izvit-shkaf-6-1024w.webp"
+    }
+  },
+  "/portfolio/kuhnya-domexpert-v17/3d-vizualizatsiya-kuhnya-s-ostrov-blagoevgrad-kafe-statsiya-5.webp": {
+    "width": 1920,
+    "variants": {
+      "640": "/images/responsive/portfolio/kuhnya-domexpert-v17/3d-vizualizatsiya-kuhnya-s-ostrov-blagoevgrad-kafe-statsiya-5-640w.webp",
+      "1024": "/images/responsive/portfolio/kuhnya-domexpert-v17/3d-vizualizatsiya-kuhnya-s-ostrov-blagoevgrad-kafe-statsiya-5-1024w.webp"
+    }
+  },
+  "/portfolio/kuhnya-domexpert-v17/3d-vizualizatsiya-kuhnya-s-ostrov-blagoevgrad-obsht-izgled-1.webp": {
+    "width": 1920,
+    "variants": {
+      "640": "/images/responsive/portfolio/kuhnya-domexpert-v17/3d-vizualizatsiya-kuhnya-s-ostrov-blagoevgrad-obsht-izgled-1-640w.webp",
+      "1024": "/images/responsive/portfolio/kuhnya-domexpert-v17/3d-vizualizatsiya-kuhnya-s-ostrov-blagoevgrad-obsht-izgled-1-1024w.webp"
+    }
+  },
+  "/portfolio/kuhnya-domexpert-v17/3d-vizualizatsiya-kuhnya-s-ostrov-blagoevgrad-ostrov-poliley-3.webp": {
+    "width": 1920,
+    "variants": {
+      "640": "/images/responsive/portfolio/kuhnya-domexpert-v17/3d-vizualizatsiya-kuhnya-s-ostrov-blagoevgrad-ostrov-poliley-3-640w.webp",
+      "1024": "/images/responsive/portfolio/kuhnya-domexpert-v17/3d-vizualizatsiya-kuhnya-s-ostrov-blagoevgrad-ostrov-poliley-3-1024w.webp"
+    }
+  },
+  "/portfolio/kuhnya-domexpert-v17/3d-vizualizatsiya-kuhnya-s-ostrov-blagoevgrad-ot-vratata-4.webp": {
+    "width": 1920,
+    "variants": {
+      "640": "/images/responsive/portfolio/kuhnya-domexpert-v17/3d-vizualizatsiya-kuhnya-s-ostrov-blagoevgrad-ot-vratata-4-640w.webp",
+      "1024": "/images/responsive/portfolio/kuhnya-domexpert-v17/3d-vizualizatsiya-kuhnya-s-ostrov-blagoevgrad-ot-vratata-4-1024w.webp"
+    }
+  },
+  "/portfolio/kuhnya-domexpert-v17/3d-vizualizatsiya-kuhnya-s-ostrov-blagoevgrad-parvo-predlozhenie-1.webp": {
+    "width": 1920,
+    "variants": {
+      "640": "/images/responsive/portfolio/kuhnya-domexpert-v17/3d-vizualizatsiya-kuhnya-s-ostrov-blagoevgrad-parvo-predlozhenie-1-640w.webp",
+      "1024": "/images/responsive/portfolio/kuhnya-domexpert-v17/3d-vizualizatsiya-kuhnya-s-ostrov-blagoevgrad-parvo-predlozhenie-1-1024w.webp"
+    }
+  },
+  "/portfolio/kuhnya-domexpert-v17/3d-vizualizatsiya-kuhnya-s-ostrov-blagoevgrad-parvo-predlozhenie-2.webp": {
+    "width": 1920,
+    "variants": {
+      "640": "/images/responsive/portfolio/kuhnya-domexpert-v17/3d-vizualizatsiya-kuhnya-s-ostrov-blagoevgrad-parvo-predlozhenie-2-640w.webp",
+      "1024": "/images/responsive/portfolio/kuhnya-domexpert-v17/3d-vizualizatsiya-kuhnya-s-ostrov-blagoevgrad-parvo-predlozhenie-2-1024w.webp"
     }
   }
 }

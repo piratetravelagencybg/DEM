@@ -88,7 +88,7 @@ export const SITE_CONFIG = {
     inspection: 'Оглед на адрес — 50 €, приспадат се от цената при поръчка',
     freeConsultation: 'Консултация по телефон по снимки и размери',
     design3D: '3D проект с приспадане при поръчка',
-    assemblyIncluded: 'Монтаж включен',
+    assemblyIncluded: 'Доставка и монтаж – уговаряме за всеки проект',
     warranty: '2 години гаранция',
     responseTime: 'до 24 часа',
   },

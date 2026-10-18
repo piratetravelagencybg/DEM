@@ -8,7 +8,7 @@ import GoogleReviews from '@/components/home/GoogleReviews'
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
 import FAQSchema from '@/components/seo/FAQSchema'
 import ServiceSchema from '@/components/seo/ServiceSchema'
-import projects from '@/data/projects.json'
+import { projects } from '@/lib/projects'
 import { completePageMetadata } from '@/lib/seo'
 
 const PAGE_URL = 'https://domexpertmebel.com/софия/кухни-по-поръчка/'
