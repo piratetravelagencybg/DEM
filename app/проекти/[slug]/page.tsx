@@ -163,7 +163,7 @@ export default function ProjectPage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(projectSchema).replace(/</g, '\\u003c') }}
       />
 
-      <main className="pt-24">
+      <div className="pt-24">
         <article>
           <header className="relative h-[430px] sm:h-[500px] lg:h-[600px]">
             <Image
@@ -372,7 +372,7 @@ export default function ProjectPage({ params }: Props) {
             <div className="rounded-card bg-warm-white p-6 shadow-sm sm:p-8"><QuoteForm /></div>
           </div>
         </section>
-      </main>
+      </div>
     </>
   )
 }

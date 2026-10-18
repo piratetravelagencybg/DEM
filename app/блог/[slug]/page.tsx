@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation'
 import { ArrowLeft, Calendar, Clock } from 'lucide-react'
 import CTABar from '@/components/home/CTABar'
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import FAQSchema from '@/components/seo/FAQSchema'
 import Badge from '@/components/ui/Badge'
 import {
   blogPosts,
@@ -215,6 +216,61 @@ function BlockRenderer({ block, index }: { block: BlogBlock; index: number }) {
         </section>
       )
     }
+    case 'table':
+      return (
+        <div className="my-7 overflow-x-auto rounded-card border border-walnut/15">
+          <table className="w-full min-w-[520px] border-collapse font-body text-sm">
+            <caption className="bg-sand/30 px-4 py-3 text-left font-semibold text-charcoal">{block.caption}</caption>
+            <thead>
+              <tr>
+                {block.headers.map((header) => (
+                  <th key={header} scope="col" className="border-b border-walnut/15 bg-warm-white px-4 py-3 text-left font-semibold text-charcoal">
+                    {header}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {block.rows.map((row, rowIndex) => (
+                <tr key={`${index}-row-${rowIndex}`} className="even:bg-sand/10">
+                  {row.map((cell, cellIndex) => {
+                    const Cell = cellIndex === 0 ? 'th' : 'td'
+                    return (
+                      <Cell
+                        key={`${index}-${rowIndex}-${cellIndex}`}
+                        {...(cellIndex === 0 ? { scope: 'row' } : {})}
+                        className={`border-b border-walnut/10 px-4 py-3 text-left align-top leading-6 ${cellIndex === 0 ? 'font-semibold text-charcoal' : 'text-warm-gray'}`}
+                      >
+                        {cell}
+                      </Cell>
+                    )
+                  })}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )
+    case 'faq': {
+      const headingId = `article-faq-${index}`
+      return (
+        <section aria-labelledby={headingId} className="my-9">
+          <h2 id={headingId} className="mb-4 font-display text-2xl font-semibold text-charcoal">
+            {block.title}
+          </h2>
+          <div className="space-y-3">
+            {block.items.map((item) => (
+              <details key={item.question} className="group rounded-card border border-walnut/15 bg-warm-white">
+                <summary className="cursor-pointer list-none px-5 py-4 font-display text-base font-semibold text-charcoal">
+                  {item.question}
+                </summary>
+                <p className="border-t border-walnut/10 px-5 py-4 font-body text-sm leading-6 text-warm-gray">{item.answer}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+      )
+    }
   }
 }
 
@@ -273,6 +329,7 @@ export default function BlogPostPage({ params }: Props) {
   const canonicalUrl = `${SITE_URL}/блог/${post.slug}/`
   const imageUrl = new URL(post.heroImage.src, SITE_URL).toString()
   const relatedPosts = relatedPostsFor(post)
+  const faqItems = post.blocks.flatMap((block) => (block.type === 'faq' ? block.items : []))
   const articleSchema = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
@@ -316,6 +373,7 @@ export default function BlogPostPage({ params }: Props) {
           __html: JSON.stringify(articleSchema).replace(/</g, '\\u003c'),
         }}
       />
+      {faqItems.length > 0 && <FAQSchema items={faqItems} />}
       <BreadcrumbSchema
         items={[
           { name: 'Начало', url: `${SITE_URL}/` },
@@ -324,7 +382,7 @@ export default function BlogPostPage({ params }: Props) {
         ]}
       />
 
-      <main className="pt-24">
+      <div className="pt-24">
         <div className="bg-cream pt-7">
           <div className="container-main max-w-5xl">
             <Link
@@ -410,7 +468,7 @@ export default function BlogPostPage({ params }: Props) {
             </div>
           </section>
         )}
-      </main>
+      </div>
 
       <CTABar />
     </>
