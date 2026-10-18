@@ -3,203 +3,121 @@
 <head>
 <meta charset="utf-8">
 <style>
-@font-face { font-family: 'Cormorant'; src: url('assets/cormorant.ttf'); font-weight: 300 700; }
+/* Layout follows the "DEM 5 Bedrooms" reel: full-bleed AI room photo fading into cream, product info below */
 @font-face { font-family: 'DMSans'; src: url('assets/dmsans.ttf'); font-weight: 100 1000; }
-:root { --cream:#F5F0E8; --walnut:#8B6F47; --walnut-dark:#6B5235; --charcoal:#2C2C2C; --tan:#E8DDD0; --sand:#D4C4A8; }
+:root { --cream:#F4EFE7; --walnut:#8B6F47; --charcoal:#2A2725; --muted:#6E655C; }
 * { margin:0; padding:0; box-sizing:border-box; }
-html, body { width:1080px; height:1920px; overflow:hidden; background:var(--cream); }
-.scene { position:absolute; inset:0; overflow:hidden; visibility:hidden; }
-.serif { font-family:'Cormorant', serif; }
-.sans { font-family:'DMSans', sans-serif; }
+html, body { width:1080px; height:1920px; overflow:hidden; background:var(--cream); font-family:'DMSans', sans-serif; }
+.slide { position:absolute; inset:0; overflow:hidden; background:var(--cream); visibility:hidden; }
+.photo { position:absolute; left:0; top:0; width:1080px; height:1380px; overflow:hidden; }
+.photo img { width:100%; height:100%; object-fit:cover; transform-origin:50% 40%; }
+.photo.catalog img { object-fit:contain; background:#fff; } /* fallback until the AI photo exists */
+.fade { position:absolute; left:0; right:0; top:900px; height:500px; background:linear-gradient(rgba(244,239,231,0), var(--cream) 92%); }
+.logo { position:absolute; left:56px; top:44px; width:250px; z-index:5; }
+.info { position:absolute; left:76px; right:76px; top:1205px; }
+.info .kind { color:var(--muted); font-size:34px; }
+.info .name { margin-top:6px; color:var(--charcoal); font-size:104px; font-weight:500; letter-spacing:-2px; line-height:1.05; }
+.info .price { margin-top:18px; color:var(--walnut); font-size:92px; font-weight:500; letter-spacing:-1px; line-height:1; }
+.info .finish { margin-top:34px; color:var(--muted); font-size:34px; }
+.info .url { margin-top:62px; color:var(--charcoal); font-size:34px; }
+.hook { position:absolute; left:76px; top:200px; color:var(--charcoal); font-size:104px; font-weight:500; letter-spacing:-2px; line-height:1.06; z-index:4; }
+.hook-veil { position:absolute; left:0; right:0; top:0; height:720px; background:linear-gradient(rgba(244,239,231,.92), rgba(244,239,231,0)); z-index:3; }
 
-/* Hook */
-#hook { background:var(--charcoal); }
-#hook .tag { position:absolute; left:90px; top:420px; color:var(--sand); font-size:30px; letter-spacing:6px; text-transform:uppercase; }
-#hook h1 { position:absolute; left:90px; right:60px; top:510px; color:var(--cream); font-weight:500; font-size:150px; line-height:1.0; letter-spacing:-1px; }
-#hook h1 span { display:block; }
-#hook h1 .l2 { font-style:italic; color:var(--sand); font-weight:400; }
-#hook .row { position:absolute; left:60px; right:60px; bottom:520px; height:560px; display:flex; justify-content:space-between; align-items:flex-end; }
-#hook .row .mini { width:176px; height:226px; }
-#hook .floor { position:absolute; left:60px; right:60px; bottom:516px; height:2px; background:var(--walnut); transform-origin:left; }
-
-/* Product */
-.prod { background:var(--cream); }
-.prod .count { position:absolute; left:90px; top:150px; color:var(--walnut); font-size:30px; letter-spacing:6px; }
-.prod .kind { position:absolute; right:90px; top:150px; color:var(--walnut-dark); font-size:30px; letter-spacing:6px; text-transform:uppercase; }
-.prod h2 { position:absolute; left:84px; right:80px; top:200px; color:var(--charcoal); font-size:170px; font-weight:500; line-height:1; letter-spacing:-1px; }
-.prod .card { position:absolute; left:90px; top:420px; width:900px; height:980px; border-radius:26px; overflow:hidden;
-  background:radial-gradient(120% 80% at 50% 30%, #FBF8F3 0%, var(--tan) 100%); box-shadow:0 30px 70px rgba(70,50,30,.18); }
-.prod .card .pic { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; }
-.prod .card.photo { background:#fff; }
-.prod .card .pic img { flex:none; width:1344px; height:756px; } /* 1920x1080 catalog shots at 0.7: product fills the card, side clutter cropped */
-.prod .card .pic svg { width:640px; height:820px; margin-top:40px; }
-.prod .finish { position:absolute; left:90px; right:90px; top:1450px; color:var(--charcoal); font-size:44px; line-height:1.25; }
-.prod .width { position:absolute; left:90px; top:1520px; color:var(--walnut-dark); font-size:36px; letter-spacing:2px; }
-.prod .price { position:absolute; left:90px; top:1620px; padding:22px 44px; border-radius:16px; background:var(--walnut); color:var(--cream); font-size:76px; font-weight:600; letter-spacing:1px; white-space:nowrap; }
-.prod .price small { font-size:40px; font-weight:500; opacity:.85; margin-right:14px; letter-spacing:2px; }
-
-/* Outro */
-#outro { background:var(--charcoal); }
-#outro .logo { position:absolute; left:50%; top:330px; width:620px; transform:translateX(-50%); }
-#outro .claim { position:absolute; left:80px; right:80px; top:820px; text-align:center; color:var(--cream); font-size:104px; line-height:1.04; font-weight:500; }
-#outro .claim em { color:var(--sand); }
-#outro .sub { position:absolute; left:80px; right:80px; top:1130px; text-align:center; color:var(--tan); font-size:42px; line-height:1.35; }
-#outro .sub b { color:var(--sand); font-weight:600; }
-#outro .url { position:absolute; left:50%; top:1420px; transform:translateX(-50%); padding:28px 56px; border-radius:16px; background:var(--walnut); color:var(--cream); font-size:50px; letter-spacing:1px; white-space:nowrap; }
+#outro .bgimg { position:absolute; inset:0 0 auto 0; height:1100px; overflow:hidden; opacity:.16; }
+#outro .bgimg img { width:100%; height:100%; object-fit:cover; }
+#outro .bgfade { position:absolute; left:0; right:0; top:500px; height:600px; background:linear-gradient(rgba(244,239,231,0), var(--cream)); }
+#outro .t { position:absolute; left:76px; right:76px; color:var(--charcoal); }
+#outro h2 { top:520px; font-size:100px; font-weight:500; letter-spacing:-2px; line-height:1.06; }
+#outro .site { top:800px; color:var(--walnut); font-size:44px; }
+#outro .f1 { top:1060px; } #outro .f2 { top:1240px; }
+#outro .f b { display:block; font-size:42px; font-weight:500; }
+#outro .f span { display:block; margin-top:8px; font-size:36px; color:var(--muted); }
+#outro .cta { top:1520px; font-size:56px; font-weight:500; }
 </style>
 </head>
 <body>
-
-<div class="scene" id="hook">
-  <div class="tag sans">ДомЕксперт Мебел</div>
-  <h1 class="serif"><span class="l1">5 гардероба</span><span class="l2">под 1 000 €</span></h1>
-  <div class="row" id="row"></div>
-  <div class="floor" id="floor"></div>
-</div>
-
-<div id="prods"></div>
-
-<div class="scene" id="outro">
-  <img class="logo" src="assets/logo-clean.png">
-  <div class="claim serif">Гардероби<br><em>по поръчка</em></div>
-  <div class="sub sans">или избери от <b>270+ модела</b><br>в онлайн каталога</div>
-  <div class="url sans">domexpertmebel.com</div>
-</div>
-
+<div id="slides"></div>
 <script src="data.js"></script>
 <script>
-// ---------- Wardrobe illustration (stand-in until the real catalog photo is downloaded) ----------
-const MAT = {
-  greyOak:    { base:'#9a918a', grain:true },
-  brandyOak:  { base:'#a2714a', grain:true },
-  coastOak:   { base:'#b89d7d', grain:true },
-  whiteGloss: { base:'#f4f2ee', gloss:true },
-  blackGloss: { base:'#1f1f22', gloss:true },
-  anthracite: { base:'#3b3d41', gloss:false },
-};
-let uid = 0;
-function wardrobeSVG({ body, front, doors }) {
-  const id = 'w' + (uid++), W = 640, H = 820, plinth = 34, top = 20, side = 22;
-  const innerW = W - side * 2, dw = innerW / doors, dh = H - plinth - top - 6;
-  const fill = (m) => MAT[m].grain ? `url(#${id}-${m})` : MAT[m].base;
-  const defs = new Set([body, front]);
-  let d = '';
-  for (const m of defs) {
-    const mat = MAT[m];
-    if (mat.grain) d += `<pattern id="${id}-${m}" patternUnits="userSpaceOnUse" width="${W}" height="${H}">
-      <rect width="${W}" height="${H}" fill="${mat.base}"/>
-      <rect width="${W}" height="${H}" filter="url(#${id}-g)" opacity=".38"/></pattern>`;
-  }
-  // doors: outer pair in body material, inner doors in front material (two-tone like the catalog finishes)
-  let ds = '';
-  for (let i = 0; i < doors; i++) {
-    const outer = (i === 0 || i === doors - 1) && doors > 2;
-    const m = outer ? body : front, x = side + i * dw, y = top + 3;
-    ds += `<rect x="${x + 2}" y="${y}" width="${dw - 4}" height="${dh}" fill="${fill(m)}" rx="2"/>`;
-    if (MAT[m].gloss) ds += `<rect x="${x + 2}" y="${y}" width="${dw - 4}" height="${dh}" fill="url(#${id}-sheen)" rx="2"/>`;
-    const hx = i % 2 === 0 ? x + dw - 22 : x + 16;
-    ds += `<rect x="${hx}" y="${y + dh * 0.42}" width="6" height="${dh * 0.16}" rx="3" fill="${MAT[m].base === '#f4f2ee' ? '#b9b2a8' : '#d9d3ca'}"/>`;
-  }
-  return `<svg viewBox="-40 -20 ${W + 80} ${H + 60}" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <filter id="${id}-g" x="0" y="0" width="100%" height="100%">
-        <feTurbulence type="fractalNoise" baseFrequency="0.006 0.16" numOctaves="3" seed="${uid * 7}"/>
-        <feColorMatrix values="0 0 0 0 .18  0 0 0 0 .12  0 0 0 0 .07  0 0 0 1.4 -.35"/>
-      </filter>
-      <linearGradient id="${id}-sheen" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0" stop-color="#fff" stop-opacity=".0"/><stop offset=".42" stop-color="#fff" stop-opacity=".0"/>
-        <stop offset=".5" stop-color="#fff" stop-opacity=".28"/><stop offset=".6" stop-color="#fff" stop-opacity=".0"/>
-      </linearGradient>
-      <radialGradient id="${id}-sh"><stop offset="0" stop-color="#3a2a1a" stop-opacity=".35"/><stop offset="1" stop-color="#3a2a1a" stop-opacity="0"/></radialGradient>
-      ${d}
-    </defs>
-    <ellipse cx="${W / 2}" cy="${H + 6}" rx="${W * 0.62}" ry="26" fill="url(#${id}-sh)"/>
-    <rect x="0" y="0" width="${W}" height="${H - plinth + 4}" fill="${fill(body)}" rx="4"/>
-    <rect x="${side - 2}" y="${top}" width="${innerW + 4}" height="${dh + 6}" fill="#00000030"/>
-    ${ds}
-    <rect x="10" y="${H - plinth}" width="${W - 20}" height="${plinth}" fill="${fill(body)}"/>
-    <rect x="10" y="${H - plinth}" width="${W - 20}" height="${plinth}" fill="#00000026"/>
-  </svg>`;
-}
-
-// ---------- Build scenes from data ----------
 const ITEMS = window.ITEMS, N = ITEMS.length;
-const fmt = (n) => n.toLocaleString('bg-BG').replace(/\s/g, ' ') + ' €';
-const prodsEl = document.getElementById('prods');
+const money = (v) => v.toLocaleString('bg-BG', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).replace(/\s/g, ' ') + ' €';
+const pic = (it) => it.ai ?? it.photo;
+const root = document.getElementById('slides');
+
 ITEMS.forEach((it, k) => {
   const s = document.createElement('div');
-  s.className = 'scene prod'; s.id = 'p' + k;
+  s.className = 'slide'; s.id = 's' + k;
   s.innerHTML = `
-    <div class="count sans">0${k + 1} / 0${N}</div>
-    <div class="kind sans">Гардероб</div>
-    <h2 class="serif">${it.name}</h2>
-    <div class="card${it.photo ? ' photo' : ''}"><div class="pic">${it.photo ? `<img src="${it.photo}">` : wardrobeSVG(it.illo)}</div></div>
-    <div class="finish sans">${it.finish}</div>
-    <div class="width sans">ШИРИНА ${it.width} СМ</div>
-    <div class="price sans"><small>САМО</small><span class="n">${fmt(it.price)}</span></div>`;
-  prodsEl.appendChild(s);
+    <div class="photo${it.ai ? '' : ' catalog'}"><img src="${pic(it)}"></div>
+    <div class="fade"></div>
+    <img class="logo" src="assets/logo-clean.png">
+    ${k === 0 ? `<div class="hook-veil"></div><div class="hook">${N} гардероба.<br>Твоят стил.</div>` : ''}
+    <div class="info">
+      <div class="kind">Гардероб · ширина ${it.width} см</div>
+      <div class="name">${it.name}</div>
+      <div class="price">${money(it.price)}</div>
+      <div class="finish">${it.finish[0].toUpperCase() + it.finish.slice(1)}</div>
+      <div class="url">domexpertmebel.com</div>
+    </div>`;
+  root.appendChild(s);
 });
-const row = document.getElementById('row');
-ITEMS.forEach((it) => { const m = document.createElement('div'); m.className = 'mini'; m.innerHTML = it.photo ? `<img src="${it.photo}" style="width:100%;height:100%;object-fit:cover;background:#fff;border-radius:10px">` : wardrobeSVG(it.illo); row.appendChild(m); });
+const outro = document.createElement('div');
+outro.className = 'slide'; outro.id = 'outro';
+outro.innerHTML = `
+  <div class="bgimg"><img src="${pic(ITEMS[N - 1])}"></div><div class="bgfade"></div>
+  <img class="logo" src="assets/logo-clean.png">
+  <h2 class="t">Открий твоя<br>гардероб.</h2>
+  <div class="t site">domexpertmebel.com</div>
+  <div class="t f f1"><b>Доставка в цяла България</b><span>Еконт / Спиди</span></div>
+  <div class="t f f2"><b>Опция за монтаж</b><span>София и Благоевград</span></div>
+  <div class="t cta">Разгледай всички модели ↗</div>`;
+root.appendChild(outro);
 
-// ---------- Timeline (cuts on beats of happy-beats vol-11, 114.8 BPM) ----------
-const CUT = [0, 3.70, 6.34, 8.96, 11.60, 14.22, 16.86, 21.6];
-const SW = 0.38; // swipe duration between scenes
+// Cuts on beats of happy-beats vol-11 (114.8 BPM)
+const CUT = [0, 3.70, 6.34, 8.96, 11.60, 14.22, 18.6];
+const SW = 0.34;
 const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
 const ease = (x) => 1 - Math.pow(1 - clamp(x), 3);
 const inOut = (x) => { x = clamp(x); return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; };
 const prog = (t, a, d) => ease((t - a) / d);
 const $ = (s, r = document) => r.querySelector(s);
-function riseIn(el, t, a, d = 0.55, dy = 46) { const p = prog(t, a, d); el.style.opacity = p; el.style.transform = `translateY(${(1 - p) * dy}px)`; }
-
-const scenes = [$('#hook'), ...ITEMS.map((_, k) => $('#p' + k)), $('#outro')];
+const rise = (el, t, a, d = 0.5, dy = 34) => { const p = prog(t, a, d); el.style.opacity = p; el.style.transform = `translateY(${(1 - p) * dy}px)`; };
+const slides = [...ITEMS.map((_, k) => $('#s' + k)), outro];
 
 window.renderAt = function (t) {
-  // Swipe transitions: scene i occupies [CUT[i], CUT[i+1]]; around each cut the old one slides left, new one slides in from right.
-  scenes.forEach((s, i) => {
+  slides.forEach((s, i) => {
     const a = CUT[i], b = CUT[i + 1];
     const vis = t >= a - SW / 2 && t <= b + SW / 2;
     s.style.visibility = vis ? 'visible' : 'hidden';
     if (!vis) return;
     let x = 0;
     if (i > 0 && t < a + SW / 2) x = (1 - inOut((t - (a - SW / 2)) / SW)) * 1080;
-    if (i < scenes.length - 1 && t > b - SW / 2) x = -inOut((t - (b - SW / 2)) / SW) * 1080;
+    if (i < slides.length - 1 && t > b - SW / 2) x = -inOut((t - (b - SW / 2)) / SW) * 1080;
     s.style.transform = `translateX(${x}px)`;
   });
 
-  // Hook
-  riseIn($('#hook .tag'), t, 0.05, 0.5, 20);
-  riseIn($('#hook .l1'), t, 0.12, 0.6);
-  riseIn($('#hook .l2'), t, 0.62, 0.6);
-  $('#floor').style.transform = `scaleX(${prog(t, 0.6, 0.9)})`;
-  [...row.children].forEach((m, k) => {
-    const p = prog(t, 1.08 + k * 0.52, 0.45);
-    m.style.opacity = p; m.style.transform = `translateY(${(1 - p) * 80}px) scale(${0.9 + 0.1 * p})`;
-  });
-
-  // Products
   ITEMS.forEach((it, k) => {
-    const s = scenes[k + 1], lt = t - CUT[k + 1];
+    const s = slides[k], lt = t - CUT[k];
     if (s.style.visibility === 'hidden') return;
-    riseIn($('.count', s), lt, 0.05, 0.4, 16);
-    riseIn($('.kind', s), lt, 0.05, 0.4, 16);
-    riseIn($('h2', s), lt, 0.12, 0.5, 40);
-    $('.pic', s).style.transform = `scale(${1.0 + clamp(lt / 3) * 0.05})`;
-    riseIn($('.finish', s), lt, 0.42, 0.45, 26);
-    riseIn($('.width', s), lt, 0.55, 0.45, 26);
-    const pp = prog(lt, 0.7, 0.4);
-    const pr = $('.price', s); pr.style.opacity = pp; pr.style.transform = `scale(${0.85 + 0.15 * pp})`; pr.style.transformOrigin = 'left center';
-    $('.n', pr).textContent = fmt(Math.round(it.price * inOut((lt - 0.7) / 0.75)));
+    const span = CUT[k + 1] - CUT[k] + SW;
+    $('.photo img', s).style.transform = `scale(${1.02 + 0.07 * clamp((lt + SW / 2) / span)})`; // slow push-in
+    const start = k === 0 ? 1.55 : 0.12; // first slide opens with the hook title
+    s.querySelectorAll('.info > div').forEach((r, j) => rise(r, lt, start + j * 0.08));
+    if (k === 0) {
+      const h = $('.hook', s), v = $('.hook-veil', s);
+      const out = clamp((lt - 1.3) / 0.4);
+      rise(h, lt, 0.1, 0.6, 40); h.style.opacity = prog(lt, 0.1, 0.6) * (1 - out);
+      v.style.opacity = 1 - out;
+    }
   });
 
-  // Outro
-  const o = scenes[scenes.length - 1], ot = t - CUT[N + 1];
-  const lp = prog(ot, 0.2, 0.8);
-  const logo = $('.logo', o); logo.style.opacity = lp; logo.style.transform = `translateX(-50%) scale(${0.94 + lp * 0.06})`;
-  riseIn($('.claim', o), ot, 0.55, 0.6);
-  riseIn($('.sub', o), ot, 1.05, 0.5, 24);
-  const up = prog(ot, 1.5, 0.5); const url = $('.url', o);
-  url.style.opacity = up; url.style.transform = `translateX(-50%) translateY(${(1 - up) * 24}px)`;
+  const ot = t - CUT[N];
+  $('.bgimg img', outro).style.transform = `scale(${1.04 + 0.03 * clamp(ot / 4)})`;
+  rise($('h2', outro), ot, 0.15, 0.6, 40);
+  rise($('.site', outro), ot, 0.45);
+  rise($('.f1', outro), ot, 0.8);
+  rise($('.f2', outro), ot, 1.0);
+  rise($('.cta', outro), ot, 1.35);
 };
 window.DURATION = CUT[CUT.length - 1];
 </script>

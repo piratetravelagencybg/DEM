@@ -1,5 +1,6 @@
 [
   {
+    "id": "412",
     "name": "Livorno",
     "finish": "сив дъб кастело + бял гланц",
     "width": 200,
@@ -10,9 +11,12 @@
       "body": "greyOak",
       "front": "whiteGloss",
       "doors": 4
-    }
+    },
+    "scene": "A light bedroom: the wardrobe stands against the wall on the left, the corner of a bed with white linen and a knitted beige throw on the right, a tall window with sheer curtains.",
+    "ai": null
   },
   {
+    "id": "406",
     "name": "Agata",
     "finish": "дъб бренди кастело",
     "width": 200,
@@ -23,9 +27,12 @@
       "body": "brandyOak",
       "front": "brandyOak",
       "doors": 4
-    }
+    },
+    "scene": "A cosy bedroom with warm wood tones: the wardrobe against a cream wall, a linen armchair and a floor lamp beside it, a window with sheer curtains on the right.",
+    "ai": null
   },
   {
+    "id": "409",
     "name": "Federico",
     "finish": "дъб бренди кастело + МДФ черен гланц",
     "width": 180,
@@ -36,9 +43,12 @@
       "body": "brandyOak",
       "front": "blackGloss",
       "doors": 3
-    }
+    },
+    "scene": "A modern bedroom with a touch of contrast: the wardrobe against a warm greige wall, a low bed with beige bedding in the foreground corner, two abstract framed prints, a tall window on the right.",
+    "ai": null
   },
   {
+    "id": "418",
     "name": "Treviso",
     "finish": "сив дъб кастело + бял гланц",
     "width": 220,
@@ -49,9 +59,12 @@
       "body": "greyOak",
       "front": "whiteGloss",
       "doors": 4
-    }
+    },
+    "scene": "A spacious calm bedroom: the wide sliding-door wardrobe fills the back wall, the foot of a bed with cream linen and a beige throw in the foreground, a window on the left.",
+    "ai": null
   },
   {
+    "id": "414",
     "name": "Pulsar",
     "finish": "крайбрежен дъб + антрацит",
     "width": 180,
@@ -62,6 +75,8 @@
       "body": "coastOak",
       "front": "anthracite",
       "doors": 3
-    }
+    },
+    "scene": "A natural-wood bedroom: the wardrobe against a cream wall, a bench with a folded linen blanket in front of it, an olive tree by a tall window on the right.",
+    "ai": null
   }
 ]

@@ -1,9 +1,10 @@
-# Downloads catalog photos for marketing ads (the Claude cloud sandbox can't reach www.mbx.bg).
+# Downloads catalog photos and makes the AI room photos for marketing ads
+# (the Claude cloud sandbox can't reach www.mbx.bg or api.openai.com).
 name: Marketing images
 on:
   push:
     branches: ['claude/**']
-    paths: ['marketing/ads/*/build-data.mjs']
+    paths: ['marketing/ads/*/build-data.mjs', 'marketing/ai/**']
   workflow_dispatch:
 permissions:
   contents: write
@@ -14,9 +15,15 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with: { node-version: 22 }
-      - run: for d in marketing/ads/*/; do [ -f "$d/build-data.mjs" ] && (cd "$d" && node build-data.mjs); done
+      - run: for d in marketing/ads/*/; do if [ -f "$d/build-data.mjs" ]; then (cd "$d" && node build-data.mjs); fi; done
+      - name: AI photos (needs repo secret OPENAI_API_KEY)
+        continue-on-error: true  # keep the photos that did succeed
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: for d in marketing/ads/*/; do if [ -f "$d/data.json" ]; then node marketing/ai/generate-images.mjs "$d"; fi; done
+      - run: for d in marketing/ads/*/; do if [ -f "$d/build-data.mjs" ]; then (cd "$d" && node build-data.mjs); fi; done  # pick up ai/*.png
       - run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add marketing/ads
-          git diff --cached --quiet || (git commit -m "Marketing: свалени снимки от каталога" && git push)
+          git diff --cached --quiet || (git commit -m "Marketing: снимки от каталога и AI снимки" && git push)

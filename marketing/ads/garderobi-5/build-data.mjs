@@ -8,12 +8,18 @@ const here = dirname(fileURLToPath(import.meta.url));
 const root = join(here, '../../..');
 
 // groupId -> illustration palette (used only while the real photo is missing)
+// scene = room direction for the AI photo (marketing/ai/generate-images.mjs)
 const PICK = [
-  { group: '412', body: 'greyOak', front: 'whiteGloss', doors: 4 }, // Livorno
-  { group: '406', body: 'brandyOak', front: 'brandyOak', doors: 4 }, // Agata
-  { group: '409', body: 'brandyOak', front: 'blackGloss', doors: 3 }, // Federico
-  { group: '418', body: 'greyOak', front: 'whiteGloss', doors: 4 }, // Treviso
-  { group: '414', body: 'coastOak', front: 'anthracite', doors: 3 }, // Pulsar
+  { group: '412', body: 'greyOak', front: 'whiteGloss', doors: 4, // Livorno
+    scene: 'A light bedroom: the wardrobe stands against the wall on the left, the corner of a bed with white linen and a knitted beige throw on the right, a tall window with sheer curtains.' },
+  { group: '406', body: 'brandyOak', front: 'brandyOak', doors: 4, // Agata
+    scene: 'A cosy bedroom with warm wood tones: the wardrobe against a cream wall, a linen armchair and a floor lamp beside it, a window with sheer curtains on the right.' },
+  { group: '409', body: 'brandyOak', front: 'blackGloss', doors: 3, // Federico
+    scene: 'A modern bedroom with a touch of contrast: the wardrobe against a warm greige wall, a low bed with beige bedding in the foreground corner, two abstract framed prints, a tall window on the right.' },
+  { group: '418', body: 'greyOak', front: 'whiteGloss', doors: 4, // Treviso
+    scene: 'A spacious calm bedroom: the wide sliding-door wardrobe fills the back wall, the foot of a bed with cream linen and a beige throw in the foreground, a window on the left.' },
+  { group: '414', body: 'coastOak', front: 'anthracite', doors: 3, // Pulsar
+    scene: 'A natural-wood bedroom: the wardrobe against a cream wall, a bench with a folded linen blanket in front of it, an olive tree by a tall window on the right.' },
 ];
 
 const groups = JSON.parse(readFileSync(join(root, 'data/mbx-import.json'), 'utf8')).groups;
@@ -32,6 +38,7 @@ for (const p of PICK) {
     } catch { /* host blocked -> illustration fallback */ }
   }
   items.push({
+    id: p.group,
     name: m[1],
     finish: m[2],
     width: +m[3],
@@ -39,10 +46,11 @@ for (const p of PICK) {
     url: `domexpertmebel.com/каталог/${v.slug}/`,
     photo: existsSync(join(here, img)) ? img : null,
     illo: { body: p.body, front: p.front, doors: p.doors },
+    scene: p.scene,
+    ai: existsSync(join(here, 'ai', `${p.group}.png`)) ? `ai/${p.group}.png` : null,
   });
 }
 items.sort((a, b) => a.price - b.price);
 writeFileSync(join(here, 'data.json'), JSON.stringify(items, null, 2) + '\n');
 writeFileSync(join(here, 'data.js'), `window.ITEMS = ${JSON.stringify(items)};\n`); // file:// pages can't fetch JSON
 console.log(items.map((i) => `${i.name} ${i.price} € photo=${!!i.photo}`).join('\n'));
-// images fetched by .github/workflows/marketing-images.yml
