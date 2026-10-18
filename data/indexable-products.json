@@ -1,0 +1,929 @@
+{
+  "rule": "unique supplier description (> 40 chars, not shared with another model) OR >= 10 GSC impressions 2026-06-01..2026-09-30",
+  "models": [
+    {
+      "key": "group:15",
+      "slug": "spalen-komplekt-federico-dab-brendi-kastelo-mdf-cheren-glants-1217",
+      "name": "Спален комплект Federico (дъб бренди кастело + МДФ черен гланц)",
+      "variants": 3,
+      "reason": "unique-description"
+    },
+    {
+      "key": "group:17",
+      "slug": "spalen-komplekt-trento-dab-brendi-kastelo-byal-glants-1223",
+      "name": "Спален комплект Trento (дъб бренди кастело + бял гланц)",
+      "variants": 3,
+      "reason": "unique-description"
+    },
+    {
+      "key": "group:19",
+      "slug": "spalen-komplekt-salerno-byal-dab-koustland-karbonovo-darvo-1229",
+      "name": "Спален комплект Salerno (бял дъб коустланд + карбоново дърво)",
+      "variants": 3,
+      "reason": "unique-description"
+    },
+    {
+      "key": "group:20",
+      "slug": "spalen-komplekt-livorno-kraybrezhen-dab-byal-glants-1232",
+      "name": "Спален комплект Livorno (крайбрежен дъб + бял гланц)",
+      "variants": 3,
+      "reason": "unique-description"
+    },
+    {
+      "key": "group:22",
+      "slug": "spalen-komplekt-treviso-siv-dab-kastelo-saten-1235",
+      "name": "Спален комплект Treviso (сив дъб кастело + сатен)",
+      "variants": 3,
+      "reason": "unique-description"
+    },
+    {
+      "key": "group:23",
+      "slug": "spalen-komplekt-pulsar-meden-dab-karbonovo-darvo-1238",
+      "name": "Спален комплект Pulsar (меден дъб + карбоново дърво)",
+      "variants": 4,
+      "reason": "unique-description"
+    },
+    {
+      "key": "group:24",
+      "slug": "spalen-komplekt-agata-byal-dab-koustland-mdf-antratsit-glants-1317",
+      "name": "Спален комплект Agata (бял дъб коустланд + МДФ антрацит гланц)",
+      "variants": 3,
+      "reason": "unique-description"
+    },
+    {
+      "key": "group:62",
+      "slug": "sektsiya-kiara-5-zlaten-dab-harbar-byal-glants-c100032",
+      "name": "Секция Kiara 5 (златен дъб харбър + бял гланц)",
+      "variants": 2,
+      "reason": "unique-description"
+    },
+    {
+      "key": "group:101",
+      "slug": "sektsiya-zita-dab-brendi-kastelo-mdf-byal-glants-393",
+      "name": "Секция Zita (дъб бренди кастело + МДФ бял гланц)",
+      "variants": 3,
+      "reason": "unique-description,gsc-20"
+    },
+    {
+      "key": "group:110",
+      "slug": "spalen-komplekt-integra-zlaten-dab-harbar-mdf-byal-glants-428",
+      "name": "Спален комплект Integra (златен дъб харбър + МДФ бял гланц)",
+      "variants": 3,
+      "reason": "unique-description"
+    },
+    {
+      "key": "group:112",
+      "slug": "sektsiya-verdana-siv-dab-kastelo-tamen-diamant-u963-st9-egger-412",
+      "name": "Секция Verdana (сив дъб кастело + тъмен диамант U963 ST9 EGGER)",
+      "variants": 2,
+      "reason": "unique-description"
+    },
+    {
+      "key": "group:120",
+      "slug": "spalen-komplekt-zanardi-a-kraybrezhen-dab-saten-2052",
+      "name": "Спален комплект Zanardi A (крайбрежен дъб + сатен)",
+      "variants": 2,
+      "reason": "unique-description"
+    },
+    {
+      "key": "group:121",
+      "slug": "spalen-komplekt-zanardi-b-dab-fosil-evouk-saten-1126",
+      "name": "Спален комплект Zanardi B (дъб фосил евоук + сатен)",
+      "variants": 2,
+      "reason": "unique-description"
+    },
+    {
+      "key": "group:122",
+      "slug": "spalen-komplekt-zanardi-c-dab-fosil-evouk-saten-1143",
+      "name": "Спален комплект Zanardi C (дъб фосил евоук + сатен)",
+      "variants": 2,
+      "reason": "unique-description"
+    },
+    {
+      "key": "group:123",
+      "slug": "spalen-komplekt-maximo-dab-brendi-kastelo-meko-cherno-u899-st9-egger-1515",
+      "name": "Спален комплект Maximo (дъб бренди кастело + меко черно U899 ST9 EGGER)",
+      "variants": 2,
+      "reason": "unique-description"
+    },
+    {
+      "key": "group:127",
+      "slug": "spalen-komplekt-ava-160-byalo-kashmir-mdf-byal-glants-mdf-sivo-deluks-glants-1340",
+      "name": "Спален комплект Ava 160 (бяло + кашмир + МДФ бял гланц + МДФ сиво делукс гланц)",
+      "variants": 2,
+      "reason": "unique-description"
+    },
+    {
+      "key": "group:131",
+      "slug": "sektsiya-helen-siv-dab-kastelo-mdf-byal-glants-42",
+      "name": "Секция Helen (сив дъб кастело + МДФ бял гланц)",
+      "variants": 3,
+      "reason": "unique-description"
+    },
+    {
+      "key": "group:255",
+      "slug": "spalen-komplekt-ronda-dab-brendi-kastelo-mdf-cheren-glants-454",
+      "name": "Спален комплект Ronda (дъб бренди кастело + МДФ черен гланц)",
+      "variants": 2,
+      "reason": "unique-description"
+    },
+    {
+      "key": "group:410",
+      "slug": "leglo-federico-dab-brendi-kastelo-mdf-cheren-glants-160-h-200-sm-2292",
+      "name": "Легло Federico (дъб бренди кастело + МДФ черен гланц, 160 х 200 см)",
+      "variants": 9,
+      "reason": "gsc-12"
+    },
+    {
+      "key": "group:975",
+      "slug": "garderob-sline-01-studeno-sivo-mdf-sivo-trend-glants-140-v01-4155",
+      "name": "Гардероб SLine 01 (студено сиво + МДФ сиво тренд гланц, 140, V01)",
+      "variants": 117,
+      "reason": "gsc-13"
+    },
+    {
+      "key": "group:977",
+      "slug": "spalen-komplekt-modern-3-siv-dab-kastelo-mdf-byal-glants-4382",
+      "name": "Спален комплект Modern 3 (сив дъб кастело + МДФ бял гланц)",
+      "variants": 2,
+      "reason": "unique-description"
+    },
+    {
+      "key": "group:985",
+      "slug": "garderob-sline-05-zlaten-dab-harbar-mdf-byal-glants-140-v01-5154",
+      "name": "Гардероб SLine 05 (златен дъб харбър + МДФ бял гланц, 140, V01)",
+      "variants": 117,
+      "reason": "gsc-10"
+    },
+    {
+      "key": "group:987",
+      "slug": "spalen-komplekt-modern-siv-dab-kastelo-mdf-byal-glants-5381",
+      "name": "Спален комплект Modern (сив дъб кастело + МДФ бял гланц)",
+      "variants": 3,
+      "reason": "unique-description"
+    },
+    {
+      "key": "group:994",
+      "slug": "visok-shkaf-za-dnevna-venus-byalo-6779",
+      "name": "Висок шкаф за дневна Venus (бяло)",
+      "variants": 2,
+      "reason": "unique-description"
+    },
+    {
+      "key": "group:1005",
+      "slug": "garderob-stella-s-tematichni-drazhki-football-8767",
+      "name": "Гардероб Stella с тематични дръжки (football)",
+      "variants": 3,
+      "reason": "unique-description"
+    },
+    {
+      "key": "group:1006",
+      "slug": "detski-komplekt-masa-2-stola-timi-byalo-8738",
+      "name": "Детски комплект маса + 2 столa TIMI (бяло)",
+      "variants": 4,
+      "reason": "unique-description"
+    },
+    {
+      "key": "group:1007",
+      "slug": "detski-komplekt-masa-stol-timi-byalo-8743",
+      "name": "Детски комплект маса + стол TIMI (бяло)",
+      "variants": 6,
+      "reason": "unique-description"
+    },
+    {
+      "key": "group:1010",
+      "slug": "spalen-komplekt-viena-siv-dab-kastelo-mdf-antratsit-glants-8762",
+      "name": "Спален комплект Viena (сив дъб кастело + МДФ антрацит гланц)",
+      "variants": 4,
+      "reason": "unique-description"
+    },
+    {
+      "key": "group:1012",
+      "slug": "detsko-byuro-tako-antratsit-8776",
+      "name": "Детско бюро TAKO (антрацит)",
+      "variants": 2,
+      "reason": "unique-description"
+    },
+    {
+      "key": "group:1014",
+      "slug": "spalen-komplekt-modena-kraybrezhen-dab-antratsit-8872",
+      "name": "Спален комплект Modena (крайбрежен дъб + антрацит)",
+      "variants": 4,
+      "reason": "unique-description"
+    },
+    {
+      "key": "group:1015",
+      "slug": "detsko-leglo-anna-140-h-70-sm-9019",
+      "name": "Детско легло ANNA (140 х 70 см)",
+      "variants": 2,
+      "reason": "unique-description"
+    },
+    {
+      "key": "group:1016",
+      "slug": "detsko-leglo-anna-s-print-140-h-70-sm-princess-8998",
+      "name": "Детско легло ANNA с принт (140 х 70 см, princess)",
+      "variants": 18,
+      "reason": "unique-description"
+    },
+    {
+      "key": "group:1019",
+      "slug": "spalen-komplekt-toledo-dab-brendi-kastelo-karbonovo-darvo-8820",
+      "name": "Спален комплект Toledo (дъб бренди кастело + карбоново дърво)",
+      "variants": 3,
+      "reason": "unique-description"
+    },
+    {
+      "key": "group:1034",
+      "slug": "detsko-leglo-anna-s-chekmedzhe-140-h-70-sm-9021",
+      "name": "Детско легло ANNA с чекмедже (140 х 70 см)",
+      "variants": 2,
+      "reason": "unique-description"
+    },
+    {
+      "key": "group:1035",
+      "slug": "detsko-leglo-anna-s-print-i-chekmedzhe-140-h-70-sm-unicorn-and-girl-9025",
+      "name": "Детско легло ANNA с принт и чекмедже (140 х 70 см, unicorn and girl)",
+      "variants": 18,
+      "reason": "unique-description"
+    },
+    {
+      "key": "group:1038",
+      "slug": "spalen-komplekt-line-konfiguratsiya-1-140-v01-140-h-200-sm-rolkovi-rinaldi-03-9123",
+      "name": "Спален комплект Line - конфигурация 1 (140, V01, 140 х 200 см, ролкови, Rinaldi 03)",
+      "variants": 2,
+      "reason": "unique-description"
+    },
+    {
+      "key": "group:1041",
+      "slug": "shkaf-za-obuvki-sas-sedalka-i-zakachalka-andy-grafit-9428",
+      "name": "Шкаф за обувки със седалка и закачалка ANDY (графит)",
+      "variants": 5,
+      "reason": "unique-description,gsc-14"
+    },
+    {
+      "key": "group:1043",
+      "slug": "spalen-komplekt-line-konfiguratsiya-3-180-v10-140-h-200-sm-rolkovi-rinaldi-03-9127",
+      "name": "Спален комплект Line - конфигурация 3 (180, V10, 140 х 200 см, ролкови, Rinaldi 03)",
+      "variants": 2,
+      "reason": "unique-description"
+    },
+    {
+      "key": "group:1044",
+      "slug": "spalen-komplekt-line-konfiguratsiya-4-140-v01-140-h-200-sm-rolkovi-rinaldi-03-9399",
+      "name": "Спален комплект Line - конфигурация 4 (140, V01, 140 х 200 см, ролкови, Rinaldi 03)",
+      "variants": 3,
+      "reason": "unique-description"
+    },
+    {
+      "key": "group:1054",
+      "slug": "paspartu-line-19-140-9448",
+      "name": "Паспарту Line 19 (140)",
+      "variants": 5,
+      "reason": "unique-description"
+    },
+    {
+      "key": "group:1055",
+      "slug": "paspartu-line-20-180-9455",
+      "name": "Паспарту Line 20 (180)",
+      "variants": 5,
+      "reason": "unique-description"
+    },
+    {
+      "key": "group:1056",
+      "slug": "shkaf-za-dnevna-venus-byalo-9463",
+      "name": "Шкаф за дневна Venus (бяло)",
+      "variants": 2,
+      "reason": "unique-description"
+    },
+    {
+      "key": "group:1170",
+      "slug": "tv-shkaf-focus-s-metalni-kraka-135-artisan-9692",
+      "name": "ТВ шкаф Focus с метални крака (135, артисан)",
+      "variants": 12,
+      "reason": "gsc-11"
+    },
+    {
+      "key": "group:1172",
+      "slug": "skrin-za-igrachki-inga-sivo-sartse-9712",
+      "name": "Скрин за играчки Inga (сиво сърце)",
+      "variants": 5,
+      "reason": "unique-description"
+    },
+    {
+      "key": "group:1280",
+      "slug": "detsko-leglo-fala-140-h-70-sm-10276",
+      "name": "Детско легло FALA (140 х 70 см)",
+      "variants": 2,
+      "reason": "unique-description"
+    },
+    {
+      "key": "group:1287",
+      "slug": "detsko-leglo-fala-s-chekmedzhe-140-h-70-sm-10352",
+      "name": "Детско легло FALA с чекмедже (140 х 70 см)",
+      "variants": 2,
+      "reason": "unique-description"
+    },
+    {
+      "key": "group:1296",
+      "slug": "detsko-leglo-farmer-s-razlichni-motivi-140-h-70-sm-john-deer-10383",
+      "name": "Детско легло FARMER с различни мотиви (140 х 70 см, john deer)",
+      "variants": 8,
+      "reason": "unique-description"
+    },
+    {
+      "key": "group:1297",
+      "slug": "detsko-leglo-kareta-140-h-70-sm-10399",
+      "name": "Детско легло Kareta (140 х 70 см)",
+      "variants": 2,
+      "reason": "unique-description"
+    },
+    {
+      "key": "group:1298",
+      "slug": "detsko-leglo-formula-s-razlichni-motivi-f25-10409",
+      "name": "Детско легло Formula с различни мотиви (f25)",
+      "variants": 2,
+      "reason": "unique-description"
+    },
+    {
+      "key": "group:1300",
+      "slug": "detsko-leglo-emma-s-chekmedzhe-140-h-70-sm-rozova-10417",
+      "name": "Детско легло Emma с чекмедже (140 х 70 см, розова)",
+      "variants": 6,
+      "reason": "unique-description"
+    },
+    {
+      "key": "group:1301",
+      "slug": "dvoyno-leglo-emma-rozova-10437",
+      "name": "Двойно легло Emma (розова)",
+      "variants": 2,
+      "reason": "unique-description"
+    },
+    {
+      "key": "group:1303",
+      "slug": "detsko-leglo-eryk-160-x-80-s-chekmedzhe-i-tsvetni-paneli-pepel-ot-rozi-10446",
+      "name": "Детско легло Eryk 160 x 80 с чекмедже и цветни панели (пепел от рози)",
+      "variants": 3,
+      "reason": "unique-description,gsc-10"
+    },
+    {
+      "key": "group:1305",
+      "slug": "dvoyno-leglo-eryk-byala-10453",
+      "name": "Двойно легло Eryk (бяла)",
+      "variants": 2,
+      "reason": "unique-description"
+    },
+    {
+      "key": "group:1306",
+      "slug": "etazherka-s-vrata-loni-antratsit-10458",
+      "name": "Етажерка с врата Loni (антрацит)",
+      "variants": 3,
+      "reason": "unique-description"
+    },
+    {
+      "key": "group:1309",
+      "slug": "dvoyno-leglo-helios-s-matrak-i-tsvetni-paneli-grafit-10466",
+      "name": "Двойно легло HELIOS с матрак и цветни панели (графит)",
+      "variants": 3,
+      "reason": "unique-description"
+    },
+    {
+      "key": "group:1310",
+      "slug": "dvoyno-leglo-helios-da-grafit-10474",
+      "name": "Двойно легло HELIOS (да, графит)",
+      "variants": 4,
+      "reason": "unique-description"
+    },
+    {
+      "key": "group:1387",
+      "slug": "spalen-komplekt-integra-2-dab-brendi-kastelo-mdf-cheren-glants-10995",
+      "name": "Спален комплект Integra 2 (дъб бренди кастело + МДФ черен гланц)",
+      "variants": 2,
+      "reason": "unique-description"
+    },
+    {
+      "key": "group:1402",
+      "slug": "sektsiya-era-plus-dab-arlingtan-naturalen-h3303-st10-egger-tamen-diamant-u963-st9-egger-11031",
+      "name": "Секция Era Plus (дъб арлингтън натурален H3303 ST10 EGGER + тъмен диамант U963 ST9 EGGER)",
+      "variants": 2,
+      "reason": "unique-description"
+    },
+    {
+      "key": "group:1417",
+      "slug": "vertikalno-sgavaemo-stenno-leglo-verto-90x200-byal-11097",
+      "name": "Вертикално сгъваемо стенно легло VERTO 90x200 (Бял)",
+      "variants": 4,
+      "reason": "unique-description"
+    },
+    {
+      "key": "group:1418",
+      "slug": "vertikalno-sgavaemo-stenno-leglo-verto-120x200-byal-11102",
+      "name": "Вертикално сгъваемо стенно легло VERTO 120x200 (Бял)",
+      "variants": 4,
+      "reason": "unique-description"
+    },
+    {
+      "key": "group:1419",
+      "slug": "vertikalno-sgavaemo-stenno-leglo-verto-140x200-byal-11106",
+      "name": "Вертикално сгъваемо стенно легло VERTO 140x200 (Бял)",
+      "variants": 4,
+      "reason": "unique-description"
+    },
+    {
+      "key": "group:1435",
+      "slug": "vertikalno-sgavaemo-stenno-leglo-verto-160x200-byal-11151",
+      "name": "Вертикално сгъваемо стенно легло VERTO 160x200 (Бял)",
+      "variants": 4,
+      "reason": "unique-description"
+    },
+    {
+      "key": "group:1449",
+      "slug": "byuro-flexi-reguliruemos-elektrichesko-povdigane-artisan-cherno-140-11190",
+      "name": "Бюро Flexi регулируемо,с електрическо повдигане (артисан + черно, 140)",
+      "variants": 6,
+      "reason": "unique-description"
+    },
+    {
+      "key": "group:1457",
+      "slug": "skrin-malmo-m6-120-sm-byalo-11204",
+      "name": "Скрин MALMO M6 120 см (бяло)",
+      "variants": 4,
+      "reason": "unique-description"
+    },
+    {
+      "key": "item:357",
+      "slug": "spalen-komplekt-integra-m-453",
+      "name": "Спален комплект Integra M",
+      "variants": 1,
+      "reason": "unique-description"
+    },
+    {
+      "key": "item:394",
+      "slug": "spalen-komplekt-ava-180-368",
+      "name": "Спален комплект Ava 180",
+      "variants": 1,
+      "reason": "unique-description"
+    },
+    {
+      "key": "item:402",
+      "slug": "sektsiya-pulso-a-353",
+      "name": "Секция Pulso A",
+      "variants": 1,
+      "reason": "unique-description"
+    },
+    {
+      "key": "item:403",
+      "slug": "sektsiya-pulso-b-354",
+      "name": "Секция Pulso B",
+      "variants": 1,
+      "reason": "unique-description"
+    },
+    {
+      "key": "item:404",
+      "slug": "spalen-komplekt-rayven-432",
+      "name": "Спален комплект Rayven",
+      "variants": 1,
+      "reason": "unique-description"
+    },
+    {
+      "key": "item:407",
+      "slug": "sektsiya-era-464",
+      "name": "Секция Era",
+      "variants": 1,
+      "reason": "unique-description"
+    },
+    {
+      "key": "item:408",
+      "slug": "sektsiya-jenifer-465",
+      "name": "Секция Jenifer",
+      "variants": 1,
+      "reason": "unique-description"
+    },
+    {
+      "key": "item:409",
+      "slug": "sektsiya-stela-466",
+      "name": "Секция Stela",
+      "variants": 1,
+      "reason": "unique-description"
+    },
+    {
+      "key": "item:580",
+      "slug": "sektsiya-riana-1500",
+      "name": "Секция Riana",
+      "variants": 1,
+      "reason": "unique-description"
+    },
+    {
+      "key": "item:1415",
+      "slug": "spalen-komplekt-mateo-2225",
+      "name": "Спален комплект Mateo",
+      "variants": 1,
+      "reason": "unique-description"
+    },
+    {
+      "key": "item:1416",
+      "slug": "spalen-komplekt-linero-2226",
+      "name": "Спален комплект Linero",
+      "variants": 1,
+      "reason": "unique-description"
+    },
+    {
+      "key": "item:1417",
+      "slug": "spalen-komplekt-linero-2-2227",
+      "name": "Спален комплект Linero 2",
+      "variants": 1,
+      "reason": "unique-description"
+    },
+    {
+      "key": "item:1418",
+      "slug": "spalen-komplekt-mateo-2-2228",
+      "name": "Спален комплект Mateo 2",
+      "variants": 1,
+      "reason": "unique-description,gsc-12"
+    },
+    {
+      "key": "item:3351",
+      "slug": "spalen-komplekt-arson-882",
+      "name": "Спален комплект Arson",
+      "variants": 1,
+      "reason": "unique-description"
+    },
+    {
+      "key": "item:3352",
+      "slug": "spalen-komplekt-arson-2-883",
+      "name": "Спален комплект Arson 2",
+      "variants": 1,
+      "reason": "unique-description"
+    },
+    {
+      "key": "item:4578",
+      "slug": "kuhnenski-pomoshtnik-helper-5380",
+      "name": "Kухненски помощник Helper",
+      "variants": 1,
+      "reason": "unique-description"
+    },
+    {
+      "key": "item:4580",
+      "slug": "spalen-komplekt-modern-5382",
+      "name": "Спален комплект Modern",
+      "variants": 1,
+      "reason": "unique-description"
+    },
+    {
+      "key": "item:7956",
+      "slug": "noshtno-shkafche-emi-8760",
+      "name": "Нощно шкафче Emi",
+      "variants": 1,
+      "reason": "unique-description"
+    },
+    {
+      "key": "item:8322",
+      "slug": "spalen-komplekt-line-konfiguratsiya-2-140-v01-140-h-200-sm-rolkovi-rinaldi-03-9126",
+      "name": "Спален комплект Line - конфигурация 2 (140, V01, 140 х 200 см, ролкови, Rinaldi 03)",
+      "variants": 1,
+      "reason": "unique-description"
+    },
+    {
+      "key": "item:8756",
+      "slug": "tv-shkaf-viva-s-darveni-kracheta-9560",
+      "name": "ТВ шкаф Viva с дървени крачета",
+      "variants": 1,
+      "reason": "unique-description"
+    },
+    {
+      "key": "item:9607",
+      "slug": "detsko-leglo-felix-10413",
+      "name": "Детско легло Felix",
+      "variants": 1,
+      "reason": "unique-description"
+    },
+    {
+      "key": "item:9786",
+      "slug": "leglo-integra-plus-160h200-s-povdigasht-mehanizam-10580",
+      "name": "Легло Integra Plus 160х200 с повдигащ механизъм",
+      "variants": 1,
+      "reason": "unique-description"
+    },
+    {
+      "key": "item:9787",
+      "slug": "leglo-integra-plus-160h200-s-chekmedzheta-10581",
+      "name": "Легло Integra Plus 160х200 с чекмеджета",
+      "variants": 1,
+      "reason": "unique-description"
+    },
+    {
+      "key": "item:9788",
+      "slug": "tabla-za-leglo-integra-plus-10582",
+      "name": "Табла за легло Integra Plus",
+      "variants": 1,
+      "reason": "unique-description"
+    },
+    {
+      "key": "item:9789",
+      "slug": "rakla-za-leglo-integra-plus-160h200-10583",
+      "name": "Ракла за легло Integra Plus 160х200",
+      "variants": 1,
+      "reason": "unique-description"
+    },
+    {
+      "key": "item:9790",
+      "slug": "noshtno-shkafche-integra-plus-10584",
+      "name": "Нощно шкафче Integra Plus",
+      "variants": 1,
+      "reason": "unique-description"
+    },
+    {
+      "key": "item:9791",
+      "slug": "skrin-integra-plus-10585",
+      "name": "Скрин Integra Plus",
+      "variants": 1,
+      "reason": "unique-description"
+    },
+    {
+      "key": "item:9792",
+      "slug": "ednokrilen-garderob-integra-plus-10586",
+      "name": "Еднокрилен гардероб Integra Plus",
+      "variants": 1,
+      "reason": "unique-description"
+    },
+    {
+      "key": "item:9793",
+      "slug": "dvukrilen-garderob-integra-plus-10587",
+      "name": "Двукрилен гардероб Integra Plus",
+      "variants": 1,
+      "reason": "unique-description"
+    },
+    {
+      "key": "item:9794",
+      "slug": "aglov-garderob-integra-plus-10588",
+      "name": "Ъглов гардероб Integra Plus",
+      "variants": 1,
+      "reason": "unique-description"
+    },
+    {
+      "key": "item:9795",
+      "slug": "nadstroyka-integra-plus-10589",
+      "name": "Надстройка Integra Plus",
+      "variants": 1,
+      "reason": "unique-description"
+    },
+    {
+      "key": "item:9796",
+      "slug": "garderob-s-plazgashti-vrati-integra-plus-10590",
+      "name": "Гардероб с плъзгащи врати Integra Plus",
+      "variants": 1,
+      "reason": "unique-description"
+    },
+    {
+      "key": "item:9797",
+      "slug": "ogledalo-integra-plus-10591",
+      "name": "Огледало Integra Plus",
+      "variants": 1,
+      "reason": "unique-description"
+    },
+    {
+      "key": "item:9801",
+      "slug": "spalen-komplekt-integra-plus-10595",
+      "name": "Спален комплект Integra Plus",
+      "variants": 1,
+      "reason": "unique-description"
+    },
+    {
+      "key": "item:9805",
+      "slug": "spalen-komplekt-integra-plus-2-10599",
+      "name": "Спален комплект Integra Plus 2",
+      "variants": 1,
+      "reason": "unique-description"
+    },
+    {
+      "key": "item:10184",
+      "slug": "spalen-komplekt-integra-plus-3-10978",
+      "name": "Спален комплект Integra Plus 3",
+      "variants": 1,
+      "reason": "unique-description"
+    },
+    {
+      "key": "item:10185",
+      "slug": "spalen-komplekt-integra-plus-4-10979",
+      "name": "Спален комплект Integra Plus 4",
+      "variants": 1,
+      "reason": "unique-description"
+    },
+    {
+      "key": "item:10186",
+      "slug": "spalen-komplekt-integra-plus-5-10980",
+      "name": "Спален комплект Integra Plus 5",
+      "variants": 1,
+      "reason": "unique-description"
+    },
+    {
+      "key": "item:10187",
+      "slug": "spalen-komplekt-integra-plus-6-10981",
+      "name": "Спален комплект Integra Plus 6",
+      "variants": 1,
+      "reason": "unique-description"
+    },
+    {
+      "key": "item:10232",
+      "slug": "sektsiya-stela-plus-11022",
+      "name": "Секция Stela Plus",
+      "variants": 1,
+      "reason": "unique-description"
+    },
+    {
+      "key": "item:10238",
+      "slug": "sektsiya-zita-plus-11028",
+      "name": "Секция Zita Plus",
+      "variants": 1,
+      "reason": "unique-description"
+    },
+    {
+      "key": "item:10239",
+      "slug": "sektsiya-jenifer-plus-11029",
+      "name": "Секция Jenifer Plus",
+      "variants": 1,
+      "reason": "unique-description"
+    },
+    {
+      "key": "item:10243",
+      "slug": "spalen-komplekt-modern-plus-11033",
+      "name": "Спален комплект Modern Plus",
+      "variants": 1,
+      "reason": "unique-description"
+    },
+    {
+      "key": "item:10247",
+      "slug": "spalen-komplekt-modern-3-plus-11037",
+      "name": "Спален комплект Modern 3 Plus",
+      "variants": 1,
+      "reason": "unique-description"
+    },
+    {
+      "key": "item:10250",
+      "slug": "spalen-komplekt-zanardi-a-plus-11040",
+      "name": "Спален комплект Zanardi A Plus",
+      "variants": 1,
+      "reason": "unique-description"
+    },
+    {
+      "key": "item:10252",
+      "slug": "spalen-komplekt-zanardi-b-plus-11042",
+      "name": "Спален комплект Zanardi B Plus",
+      "variants": 1,
+      "reason": "unique-description"
+    },
+    {
+      "key": "item:10255",
+      "slug": "spalen-komplekt-zanardi-c-plus-11045",
+      "name": "Спален комплект Zanardi C Plus",
+      "variants": 1,
+      "reason": "unique-description"
+    },
+    {
+      "key": "item:10257",
+      "slug": "spalen-komplekt-maximo-plus-11047",
+      "name": "Спален комплект Maximo Plus",
+      "variants": 1,
+      "reason": "unique-description"
+    },
+    {
+      "key": "item:10320",
+      "slug": "spalen-komplekt-arson-plus-11110",
+      "name": "Спален комплект Arson Plus",
+      "variants": 1,
+      "reason": "unique-description"
+    },
+    {
+      "key": "item:10321",
+      "slug": "spalen-komplekt-arson-2-plus-11111",
+      "name": "Спален комплект Arson 2 Plus",
+      "variants": 1,
+      "reason": "unique-description"
+    },
+    {
+      "key": "item:10324",
+      "slug": "spalen-komplekt-ava-plus-11114",
+      "name": "Спален комплект Ava Plus",
+      "variants": 1,
+      "reason": "unique-description"
+    },
+    {
+      "key": "item:10328",
+      "slug": "spalen-komplekt-trento-plus-11118",
+      "name": "Спален комплект Trento Plus",
+      "variants": 1,
+      "reason": "unique-description"
+    },
+    {
+      "key": "item:10332",
+      "slug": "spalen-komplekt-treviso-plus-11122",
+      "name": "Спален комплект Treviso Plus",
+      "variants": 1,
+      "reason": "unique-description"
+    },
+    {
+      "key": "item:10333",
+      "slug": "spalen-komplekt-trinity-11123",
+      "name": "Спален комплект Trinity",
+      "variants": 1,
+      "reason": "unique-description"
+    },
+    {
+      "key": "item:10360",
+      "slug": "uchilishtno-byuro-puffi-s-chekmedzhe-11150",
+      "name": "Училищно бюро PUFFI с чекмедже",
+      "variants": 1,
+      "reason": "unique-description"
+    },
+    {
+      "key": "item:10368",
+      "slug": "skrin-emily-s-grafika-na-zayche-11158",
+      "name": "Скрин Еmily с графика на зайче",
+      "variants": 1,
+      "reason": "unique-description"
+    },
+    {
+      "key": "item:10369",
+      "slug": "skrin-emily-fashion-11159",
+      "name": "Скрин Emily Fashion",
+      "variants": 1,
+      "reason": "unique-description"
+    },
+    {
+      "key": "item:10370",
+      "slug": "skrin-emily-s-grafika-game-11160",
+      "name": "Скрин Emily с графика Game",
+      "variants": 1,
+      "reason": "unique-description"
+    },
+    {
+      "key": "item:10371",
+      "slug": "skrin-emily-s-grafika-sweet-bear-11161",
+      "name": "Скрин Emily с графика Sweet bear",
+      "variants": 1,
+      "reason": "unique-description"
+    },
+    {
+      "key": "item:10376",
+      "slug": "garderob-stella-s-dve-vrati-chekmedzhe-i-grafika-zayche-11166",
+      "name": "Гардероб Stella с две врати, чекмедже и графика зайче",
+      "variants": 1,
+      "reason": "unique-description"
+    },
+    {
+      "key": "item:10377",
+      "slug": "garderob-stella-s-dve-vrati-chekmedzhe-i-grafika-sweet-bear-11167",
+      "name": "Гардероб Stella с две врати, чекмедже и графика Sweet bear",
+      "variants": 1,
+      "reason": "unique-description"
+    },
+    {
+      "key": "item:10384",
+      "slug": "leglo-madera-160x200sm-11174",
+      "name": "Легло MADERA 160x200см",
+      "variants": 1,
+      "reason": "unique-description"
+    },
+    {
+      "key": "item:10388",
+      "slug": "byuro-basic-11178",
+      "name": "Бюро BASIC",
+      "variants": 1,
+      "reason": "unique-description"
+    },
+    {
+      "key": "item:10422",
+      "slug": "puffi-skrin-s-dve-vrati-i-chekmedzhe-11212",
+      "name": "PUFFI Скрин с две врати и чекмедже",
+      "variants": 1,
+      "reason": "unique-description"
+    },
+    {
+      "key": "item:10423",
+      "slug": "puffi-skrin-s-chekmedzheta-i-raft-11213",
+      "name": "PUFFI Скрин с чекмеджета и рафт",
+      "variants": 1,
+      "reason": "unique-description"
+    },
+    {
+      "key": "item:10435",
+      "slug": "noshtno-shkafche-puffi-s-chekmedzhe-byalo-klen-11225",
+      "name": "Нощно шкафче PUFFI с чекмедже - бяло / клен",
+      "variants": 1,
+      "reason": "unique-description"
+    },
+    {
+      "key": "item:10436",
+      "slug": "puffi-kashta-biblioteka-s-raftove-za-knigi-i-igrachki-byalaklen-11226",
+      "name": "PUFFI Къща библиотека с рафтове за книги и играчки - бяла/клен",
+      "variants": 1,
+      "reason": "unique-description"
+    },
+    {
+      "key": "item:10440",
+      "slug": "puffi-garderob-s-dve-vrati-s-chekmedzhe-raftove-parapeti-byalo-klen-11230",
+      "name": "PUFFI гардероб с две врати с чекмедже, рафтове, парапети - бяло / клен",
+      "variants": 1,
+      "reason": "unique-description"
+    }
+  ]
+}

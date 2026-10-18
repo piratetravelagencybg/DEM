@@ -4,6 +4,8 @@ import services from '@/data/services.json'
 import { CATALOG_LANDINGS } from '@/lib/catalog-landings'
 import { CANONICAL_SITE_ORIGIN } from '@/lib/canonical-routing'
 import { caseStudyProjects, projects } from '@/lib/projects'
+import { indexableProductSlugs } from '@/lib/indexable-products'
+import { getMbxProductBySlug } from '@/lib/mbx'
 
 export type SitemapEntry = {
   /** Percent-encoded absolute URL, identical to the page canonical. */
@@ -102,12 +104,24 @@ export function getCoreSitemapEntries(): SitemapEntry[] {
 }
 
 export function getCatalogSitemapEntries(): SitemapEntry[] {
-  return CATALOG_LANDINGS.map((landing) => entry(
+  const landings = CATALOG_LANDINGS.map((landing) => entry(
     landing.path,
     landing.priority,
     landing.changeFrequency,
     ['lib/catalog-landings.ts', 'data/mbx-catalog.json'],
   ))
+
+  // Representative URLs of the indexable models (data/indexable-products.json).
+  const products = indexableProductSlugs.flatMap((slug) => {
+    const product = getMbxProductBySlug(slug)
+    if (!product) return []
+    return [{
+      ...entry(`/каталог/${slug}/`, 0.5, 'weekly', []),
+      lastmod: (product.lastUpdate || '').slice(0, 10) || lastmodOf(['data/mbx-import.json']),
+    }]
+  })
+
+  return [...landings, ...products]
 }
 
 function escapeXml(value: string) {

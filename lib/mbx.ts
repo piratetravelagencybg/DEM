@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import mbxImport from '@/data/mbx-import.json'
+import { getCatalogProductUrl, getIndexableRepresentativeSlug } from '@/lib/indexable-products'
 import {
   formatPrice,
   getAvailabilityLabel,
@@ -365,7 +366,10 @@ function buildProductMetaDescription(product: MbxVariant) {
 export function buildProductMetadata(product: MbxVariant): Metadata {
   const title = buildProductTitle(product)
   const description = buildProductMetaDescription(product)
-  const canonical = `https://domexpertmebel.com/каталог/${product.slug}/`
+  // Indexable models: one representative URL is indexed and every variant of
+  // the model canonicalizes to it. All other models stay noindex, follow.
+  const representativeSlug = getIndexableRepresentativeSlug(product)
+  const canonical = getCatalogProductUrl(representativeSlug ?? product.slug)
   // Use a stable local 1200x630 social card. Product photography remains in
   // Product schema and on the page, while crawlers never depend on MBX or the
   // disabled Vercel image transformer for Open Graph previews.
@@ -374,7 +378,7 @@ export function buildProductMetadata(product: MbxVariant): Metadata {
     title: { absolute: title },
     description,
     alternates: { canonical },
-    robots: { index: false, follow: true },
+    robots: representativeSlug ? { index: true, follow: true } : { index: false, follow: true },
     openGraph: {
       type: 'website',
       locale: 'bg_BG',

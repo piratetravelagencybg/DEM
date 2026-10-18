@@ -13,7 +13,8 @@
     "test:seo:live": "node scripts/verify-seo-live.mjs",
     "sitemap:lastmod": "node scripts/generate-content-lastmod.mjs",
     "seo:check": "node scripts/seo-check.mjs",
-    "images:responsive": "node scripts/generate-responsive-images.mjs"
+    "images:responsive": "node scripts/generate-responsive-images.mjs",
+    "catalog:indexable": "node scripts/generate-indexable-products.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",

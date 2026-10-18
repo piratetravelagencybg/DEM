@@ -7,6 +7,7 @@ import ProductGallery from '@/components/product/ProductGallery'
 import SafeProductImage from '@/components/product/SafeProductImage'
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
 import { selectCrawlableVariants } from '@/lib/product-variants'
+import { isIndexableRepresentative } from '@/lib/indexable-products'
 
 interface Props { params: { slug: string } }
 
@@ -34,7 +35,8 @@ export default function ProductPage({ params }: Props) {
   const content = buildProductContent(product)
   const related = getRelatedMbxProducts(product)
 
-  const productSchema = typeof product.priceVat === 'number' && product.priceVat > 0
+  // Product schema only on the indexed representative URL of a model.
+  const productSchema = isIndexableRepresentative(product) && typeof product.priceVat === 'number' && product.priceVat > 0
     ? buildProductStructuredData(product, visibleVariants)
     : null
 
