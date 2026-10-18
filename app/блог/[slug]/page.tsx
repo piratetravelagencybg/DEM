@@ -275,7 +275,7 @@ export default function BlogPostPage({ params }: Props) {
   const relatedPosts = relatedPostsFor(post)
   const articleSchema = {
     '@context': 'https://schema.org',
-    '@type': 'Article',
+    '@type': 'BlogPosting',
     headline: post.title,
     description: post.description,
     inLanguage: 'bg-BG',

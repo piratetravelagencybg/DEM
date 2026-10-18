@@ -10,7 +10,7 @@ const service = services.find((s) => s.id === 'interior-design')!
 
 export const metadata: Metadata = completePageMetadata({
   title: { absolute: 'Интериорен дизайн с изработка на мебели | Dom Expert Мебел' },
-  description: 'Интериорен дизайн на помещения с изработка на мебелите в собствена работилница. От 25 €/кв.м, минимум 30 кв.м. Дизайн + производство = един изпълнител от идея до монтаж.',
+  description: 'Интериорен дизайн с изработка на мебелите в собствена работилница. От 25 €/кв.м, минимум 30 кв.м. Един екип от идеята до монтажа.',
   alternates: { canonical: 'https://domexpertmebel.com/услуги/интериорен-дизайн/' },
   openGraph: {
     type: 'website',

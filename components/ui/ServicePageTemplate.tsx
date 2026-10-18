@@ -61,7 +61,8 @@ export default function ServicePageTemplate({
       <ServiceSchema
         name={title}
         url={pageUrl}
-        city={['Благоевград', 'София', 'Дупница', 'Сандански']}
+        city={[...SITE_CONFIG.cities.primary]}
+        serviceType={title}
         description={schemaDescription ?? subtitle}
       />
       <FAQSchema items={faq} />

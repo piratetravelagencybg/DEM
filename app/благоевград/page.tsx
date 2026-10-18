@@ -7,21 +7,20 @@ import GoogleReviews from '@/components/home/GoogleReviews'
 import GoogleBusinessProfile from '@/components/home/GoogleBusinessProfile'
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
 import FAQSchema from '@/components/seo/FAQSchema'
-import LocalBusinessSchema from '@/components/seo/LocalBusinessSchema'
 import ServiceSchema from '@/components/seo/ServiceSchema'
 import { completePageMetadata } from '@/lib/seo'
 
 export const metadata: Metadata = completePageMetadata({
-  title: { absolute: 'Мебели по поръчка Благоевград | Dom Expert Мебел' },
-  description: 'Мебели по поръчка в Благоевград. Кухни, гардероби, спални — семейна фирма опит от 2012 г. и конкурентни цени. Оглед 50 €, приспадат се. Тел: 0876 081 199',
+  title: { absolute: 'Мебели по поръчка Благоевград – кухни и спални | Dom Expert' },
+  description: 'Семейна мебелна работилница в Благоевград от 2012 г. Кухни, гардероби и спални по поръчка с 3D проект. 5★ в Google, 2 г. гаранция. ☎ 0876 081 199',
   alternates: { canonical: 'https://domexpertmebel.com/благоевград/' },
   openGraph: {
     type: 'website',
     locale: 'bg_BG',
     siteName: 'Dom Expert Мебел',
     url: 'https://domexpertmebel.com/благоевград/',
-    title: 'Мебели по поръчка Благоевград | Dom Expert Мебел',
-    description: 'Мебели по поръчка в Благоевград. Кухни, гардероби, спални — семейна фирма с опит от 2012 г.',
+    title: 'Мебели по поръчка Благоевград – кухни и спални | Dom Expert',
+    description: 'Семейна мебелна работилница в Благоевград от 2012 г. Кухни, гардероби и спални по поръчка с 3D проект. 5★ в Google, 2 г. гаранция. ☎ 0876 081 199',
     images: [{ url: '/images/og/home.webp', width: 1200, height: 630, alt: 'Примерна интериорна визуализация за мебели по поръчка в Благоевград' }],
   },
 })
@@ -148,7 +147,6 @@ const guideLinks = [
 export default function BlagoevgradPage() {
   return (
     <>
-      <LocalBusinessSchema />
       <ServiceSchema
         name="Мебели по поръчка в Благоевград"
         url="https://domexpertmebel.com/благоевград/"
@@ -280,6 +278,31 @@ export default function BlagoevgradPage() {
         links={guideLinks}
       />
 
+      {/* ── Kitchens in Blagoevgrad ── */}
+      <section className="section-py" style={{ backgroundColor: 'var(--color-warm-white)' }}>
+        <div className="container-main max-w-3xl">
+          <span className="eyebrow-pill">Кухни</span>
+          <h2 className="font-display font-bold heading-gradient mb-5" style={{ fontSize: 'clamp(1.6rem, 4vw, 2.2rem)' }}>
+            Кухни по поръчка в Благоевград
+          </h2>
+          <div className="space-y-4 font-body text-warm-gray leading-relaxed" style={{ fontSize: '1rem' }}>
+            <p>
+              Кухнята е проектът, при който точните размери и добре планираното разпределение имат най-голямо значение. Затова започваме с оглед на адрес в Благоевград — 50 €, които се приспадат от цената при поръчка.
+            </p>
+            <p>
+              След огледа изготвяме 3D проект на кухнята (от 100 €, също се приспада при поръчка), за да видите разположението на шкафовете, уредите и плота преди изработка. След одобрение изработваме кухнята в собствения ни цех в Благоевград за 4–6 седмици, а монтажът се извършва от нашия екип.
+            </p>
+            <p>
+              Повече за видовете кухни, материалите и механизмите вижте на страницата за{' '}
+              <Link href="/услуги/кухни-по-поръчка/" className="text-walnut font-medium underline underline-offset-2 hover:no-underline">
+                кухни по поръчка в Благоевград
+              </Link>
+              .
+            </p>
+          </div>
+        </div>
+      </section>
+
       <GoogleBusinessProfile />
 
       <GoogleReviews />
@@ -327,6 +350,7 @@ export default function BlagoevgradPage() {
               { label: 'Мебели София', href: '/софия/' },
               { label: 'Мебели Дупница', href: '/дупница/' },
               { label: 'Мебели Сандански', href: '/сандански/' },
+              { label: 'Мебели Петрич', href: '/петрич/' },
             ].map((l) => (
               <Link
                 key={l.href}

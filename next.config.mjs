@@ -15,12 +15,13 @@ const nextConfig = {
   },
   images: {
     // Vercel's managed optimizer currently rejects uncached requests with
-    // OPTIMIZED_IMAGE_REQUEST_PAYMENT_REQUIRED. The source files are already
-    // WebP and MBX serves responsive WebP endpoints, so serving them directly
-    // is both reliable and substantially cheaper.
-    unoptimized: true,
-    formats: ['image/webp'],
-    minimumCacheTTL: 86400,
+    // OPTIMIZED_IMAGE_REQUEST_PAYMENT_REQUIRED. Instead of a runtime optimizer,
+    // the custom loader serves pre-generated 640w/1024w WebP variants
+    // (npm run images:responsive) and the original file for desktop widths.
+    loader: 'custom',
+    loaderFile: './lib/image-loader.ts',
+    deviceSizes: [640, 1024, 1920],
+    imageSizes: [320],
     remotePatterns: [
       { protocol: 'https', hostname: 'images.unsplash.com' },
       { protocol: 'https', hostname: 'www.mbx.bg' }

@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import Badge from '@/components/ui/Badge'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
 import SectionHeader from '@/components/ui/SectionHeader'
 import {
   blogPosts,
@@ -84,6 +85,10 @@ export default function BlogPage() {
 
   return (
     <div className="bg-cream pt-24 section-py">
+      <BreadcrumbSchema items={[
+        { name: 'Начало', url: 'https://domexpertmebel.com/' },
+        { name: 'Блог', url: 'https://domexpertmebel.com/блог/' },
+      ]} />
       <div className="container-main">
         <SectionHeader
           level={1}

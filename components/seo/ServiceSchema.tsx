@@ -3,11 +3,12 @@ interface ServiceSchemaProps {
   url: string
   city: string | string[]
   description?: string
+  serviceType?: string
 }
 
 const BUSINESS_ID = 'https://domexpertmebel.com/#business'
 
-export default function ServiceSchema({ name, url, city, description }: ServiceSchemaProps) {
+export default function ServiceSchema({ name, url, city, description, serviceType = 'Мебели по поръчка' }: ServiceSchemaProps) {
   const cities = Array.isArray(city) ? city : [city]
   const schema = {
     '@context': 'https://schema.org',
@@ -15,7 +16,7 @@ export default function ServiceSchema({ name, url, city, description }: ServiceS
     '@id': `${url}#service`,
     name,
     ...(description ? { description } : {}),
-    serviceType: 'Проектиране, изработка и монтаж на мебели по поръчка',
+    serviceType,
     url,
     provider: {
       '@id': BUSINESS_ID,

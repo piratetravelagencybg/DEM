@@ -10,12 +10,13 @@ import GoogleReviews from '@/components/home/GoogleReviews'
 import GoogleBusinessProfile from '@/components/home/GoogleBusinessProfile'
 import CTABar from '@/components/home/CTABar'
 import LocalBusinessSchema from '@/components/seo/LocalBusinessSchema'
+import SiteSchema from '@/components/seo/SiteSchema'
 import { getAllMbxProducts } from '@/lib/mbx'
 import { createPageMetadata } from '@/lib/seo'
 
 export const metadata: Metadata = createPageMetadata({
-  title: 'Мебели по поръчка | Dom Expert Мебел',
-  description: 'Мебели по поръчка за кухня, спалня, дневна и офис. Оглед 50 €, приспадат се, платен 3D проект с приспадане при поръчка, монтаж и 2 г. гаранция.',
+  title: 'Мебели по поръчка | 3D проект и монтаж | Dom Expert Мебел',
+  description: 'Кухни, гардероби и спални по поръчка с 3D проект преди изработка. 100+ проекта от 2012 г., 2 г. гаранция, 5★ в Google. Оглед 50 € – приспада се.',
   path: '/',
   imageAlt: 'Мебели по поръчка от Dom Expert Мебел',
 })
@@ -25,6 +26,7 @@ export default function HomePage() {
 
   return (
     <>
+      <SiteSchema />
       <LocalBusinessSchema />
       <Hero />
       <ServicesGrid />

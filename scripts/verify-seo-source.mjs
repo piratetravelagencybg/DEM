@@ -150,7 +150,7 @@ await check('curated landing and pagination builders always emit trailing slashe
 })
 
 await check('sitemap source excludes redirects, aliases and the noindex privacy page', async () => {
-  const sitemapSource = await readFile(path.join(repositoryRoot, 'app', 'sitemap.ts'), 'utf8')
+  const sitemapSource = await readFile(path.join(repositoryRoot, 'lib', 'sitemap-entries.ts'), 'utf8')
   assert.equal(sitemapSource.includes('www.domexpertmebel.com'), false)
   assert.equal(sitemapSource.includes('/product/'), false)
   assert.equal(sitemapSource.includes('/produkt/'), false)

@@ -9,6 +9,7 @@ export default function LocalBusinessSchema() {
     alternateName: 'Dom Expert',
     description: 'Семейна фирма за мебели по поръчка в Благоевград, София и региона. Оглед 50 €, приспадат се, платен 3D проект с приспадане при поръчка и 2 години гаранция.',
     foundingDate: SITE_CONFIG.foundingDate,
+    parentOrganization: { '@id': `${SITE_CONFIG.siteUrl}/#organization` },
     url: SITE_CONFIG.siteUrl,
     telephone: SITE_CONFIG.phoneInternational,
     email: SITE_CONFIG.email,
@@ -35,10 +36,13 @@ export default function LocalBusinessSchema() {
       },
     ],
     priceRange: '$$',
-    areaServed: SITE_CONFIG.cities.primary.map((city) => ({
-      '@type': 'City',
-      name: city,
-    })),
+    areaServed: [
+      ...SITE_CONFIG.cities.primary.map((city) => ({
+        '@type': 'City',
+        name: city,
+      })),
+      { '@type': 'Country', name: SITE_CONFIG.address.countryName },
+    ],
     image: `${SITE_CONFIG.siteUrl}/images/og/home.webp`,
     logo: `${SITE_CONFIG.siteUrl}/images/logo-icon.webp`,
     hasOfferCatalog: {

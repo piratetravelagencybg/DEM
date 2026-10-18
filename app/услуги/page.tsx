@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { ArrowRight } from 'lucide-react'
 import SectionHeader from '@/components/ui/SectionHeader'
 import CTABar from '@/components/home/CTABar'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
 import services from '@/data/services.json'
 import { getImageDisclosure } from '@/lib/image-credits'
 import { createPageMetadata } from '@/lib/seo'
@@ -19,6 +20,10 @@ export const metadata: Metadata = createPageMetadata({
 export default function ServicesPage() {
   return (
     <>
+      <BreadcrumbSchema items={[
+        { name: 'Начало', url: 'https://domexpertmebel.com/' },
+        { name: 'Услуги', url: 'https://domexpertmebel.com/услуги/' },
+      ]} />
       <div className="pt-24 section-py bg-cream">
         <div className="container-main">
           <SectionHeader

@@ -1,30 +1,9 @@
-import { CATALOG_LANDINGS } from '@/lib/catalog-landings'
+import { getCatalogSitemapEntries, sitemapResponse } from '@/lib/sitemap-entries'
 
-const BASE = 'https://domexpertmebel.com'
+// Kept for URLs already submitted in Search Console. /sitemap.xml is the
+// primary sitemap and contains these entries too.
+export const dynamic = 'force-static'
 
-export async function GET() {
-  const catalogPages = CATALOG_LANDINGS.map((landing) => ({
-    url: BASE + landing.path,
-    priority: landing.priority,
-    changeFrequency: landing.changeFrequency,
-  }))
-
-  const xml = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${catalogPages
-  .map(
-    (page) => `  <url>
-    <loc>${page.url}</loc>
-    <changefreq>${page.changeFrequency}</changefreq>
-    <priority>${page.priority}</priority>
-  </url>`,
-  )
-  .join('\n')}
-</urlset>`
-
-  return new Response(xml, {
-    headers: {
-      'Content-Type': 'application/xml',
-    },
-  })
+export function GET() {
+  return sitemapResponse(getCatalogSitemapEntries())
 }

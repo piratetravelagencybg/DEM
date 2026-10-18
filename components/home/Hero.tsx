@@ -3,6 +3,10 @@
 import { motion } from 'framer-motion'
 import HeroRatingBadge from './HeroRatingBadge'
 import { SITE_CONFIG } from '@/lib/site-config'
+import { responsiveSrcSet } from '@/lib/image-loader'
+
+const HERO_MOBILE = '/images/visualizations/home-hero-mobile.webp'
+const HERO_DESKTOP = '/images/visualizations/03-home-hero-open-plan-kitchen-03.webp'
 
 export default function Hero() {
   return (
@@ -18,10 +22,13 @@ export default function Hero() {
       <picture>
         <source
           media="(max-width: 767px)"
-          srcSet="/images/visualizations/home-hero-mobile.webp"
+          srcSet={responsiveSrcSet(HERO_MOBILE) ?? HERO_MOBILE}
+          sizes="100vw"
         />
         <img
-          src="/images/visualizations/03-home-hero-open-plan-kitchen-03.webp"
+          src={HERO_DESKTOP}
+          srcSet={responsiveSrcSet(HERO_DESKTOP)}
+          sizes="100vw"
           alt="Примерна интериорна визуализация на кухня и дневна по поръчка"
           width={1672}
           height={941}
@@ -92,10 +99,10 @@ export default function Hero() {
         </motion.div>
 
         {/* H1 — bold, NOT italic */}
+        {/* No entrance animation: the H1 is the mobile LCP element and must
+            be visible in the server-rendered HTML. */}
         <motion.h1
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.65, delay: 0.32 }}
+          initial={false}
           style={{
             fontFamily: 'var(--font-display)',
             fontSize: 'clamp(2.4rem, 9vw, 5rem)',

@@ -10,7 +10,7 @@ const service = services.find((s) => s.id === '3d-visualization')!
 
 export const metadata: Metadata = completePageMetadata({
   title: { absolute: '3D визуализация на мебели и интериор | Dom Expert Мебел' },
-  description: '3D визуализация на кухни, гардероби, спални и дневни преди изработка. От 100 € за кухня, от 50 € за други мебели — 100% приспадане при поръчка. Дистанционно за цяла България.',
+  description: '3D визуализация на кухни, гардероби, спални и дневни преди изработка. Кухня от 100 €, друга мебел от 50 € – приспада се. Дистанционно за цяла България.',
   alternates: { canonical: 'https://domexpertmebel.com/услуги/3d-визуализация/' },
   openGraph: {
     type: 'website',

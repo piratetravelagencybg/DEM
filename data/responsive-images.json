@@ -1,0 +1,296 @@
+{
+  "/images/logo-icon.png": {
+    "width": 1024,
+    "variants": {
+      "640": "/images/responsive/logo-icon-640w.webp"
+    }
+  },
+  "/images/products/divan.webp": {
+    "width": 1122,
+    "variants": {
+      "640": "/images/responsive/products/divan-640w.webp",
+      "1024": "/images/responsive/products/divan-1024w.webp"
+    }
+  },
+  "/images/products/masa.webp": {
+    "width": 1122,
+    "variants": {
+      "640": "/images/responsive/products/masa-640w.webp",
+      "1024": "/images/responsive/products/masa-1024w.webp"
+    }
+  },
+  "/images/products/stol.webp": {
+    "width": 1122,
+    "variants": {
+      "640": "/images/responsive/products/stol-640w.webp",
+      "1024": "/images/responsive/products/stol-1024w.webp"
+    }
+  },
+  "/images/products/tv-shkaf.webp": {
+    "width": 1122,
+    "variants": {
+      "640": "/images/responsive/products/tv-shkaf-640w.webp",
+      "1024": "/images/responsive/products/tv-shkaf-1024w.webp"
+    }
+  },
+  "/images/real/dnevna-04.webp": {
+    "width": 1000,
+    "variants": {
+      "640": "/images/responsive/real/dnevna-04-640w.webp"
+    }
+  },
+  "/images/real/spalna-03.webp": {
+    "width": 1000,
+    "variants": {
+      "640": "/images/responsive/real/spalna-03-640w.webp"
+    }
+  },
+  "/images/real/spalna-05.webp": {
+    "width": 1000,
+    "variants": {
+      "640": "/images/responsive/real/spalna-05-640w.webp"
+    }
+  },
+  "/images/real/spalna-06.webp": {
+    "width": 1000,
+    "variants": {
+      "640": "/images/responsive/real/spalna-06-640w.webp"
+    }
+  },
+  "/images/stock/assembly-tools-pexels.webp": {
+    "width": 1200,
+    "variants": {
+      "640": "/images/responsive/stock/assembly-tools-pexels-640w.webp",
+      "1024": "/images/responsive/stock/assembly-tools-pexels-1024w.webp"
+    }
+  },
+  "/images/stock/carpenter-measuring-pexels.webp": {
+    "width": 1600,
+    "variants": {
+      "640": "/images/responsive/stock/carpenter-measuring-pexels-640w.webp",
+      "1024": "/images/responsive/stock/carpenter-measuring-pexels-1024w.webp"
+    }
+  },
+  "/images/stock/floor-plan-unsplash.webp": {
+    "width": 1200,
+    "variants": {
+      "640": "/images/responsive/stock/floor-plan-unsplash-640w.webp",
+      "1024": "/images/responsive/stock/floor-plan-unsplash-1024w.webp"
+    }
+  },
+  "/images/stock/material-samples-pexels.webp": {
+    "width": 1200,
+    "variants": {
+      "640": "/images/responsive/stock/material-samples-pexels-640w.webp",
+      "1024": "/images/responsive/stock/material-samples-pexels-1024w.webp"
+    }
+  },
+  "/images/stock/measuring-wall-pexels.webp": {
+    "width": 1600,
+    "variants": {
+      "640": "/images/responsive/stock/measuring-wall-pexels-640w.webp",
+      "1024": "/images/responsive/stock/measuring-wall-pexels-1024w.webp"
+    }
+  },
+  "/images/stock/wood-router-unsplash.webp": {
+    "width": 1200,
+    "variants": {
+      "640": "/images/responsive/stock/wood-router-unsplash-640w.webp"
+    }
+  },
+  "/images/visualizations/01-home-hero-open-plan-kitchen-01.webp": {
+    "width": 1400,
+    "variants": {
+      "640": "/images/responsive/visualizations/01-home-hero-open-plan-kitchen-01-640w.webp",
+      "1024": "/images/responsive/visualizations/01-home-hero-open-plan-kitchen-01-1024w.webp"
+    }
+  },
+  "/images/visualizations/02-home-hero-open-plan-kitchen-02.webp": {
+    "width": 1600,
+    "variants": {
+      "640": "/images/responsive/visualizations/02-home-hero-open-plan-kitchen-02-640w.webp",
+      "1024": "/images/responsive/visualizations/02-home-hero-open-plan-kitchen-02-1024w.webp"
+    }
+  },
+  "/images/visualizations/03-home-hero-open-plan-kitchen-03.webp": {
+    "width": 1600,
+    "variants": {
+      "640": "/images/responsive/visualizations/03-home-hero-open-plan-kitchen-03-640w.webp",
+      "1024": "/images/responsive/visualizations/03-home-hero-open-plan-kitchen-03-1024w.webp"
+    }
+  },
+  "/images/visualizations/04-home-hero-open-plan-kitchen-04.webp": {
+    "width": 1600,
+    "variants": {
+      "640": "/images/responsive/visualizations/04-home-hero-open-plan-kitchen-04-640w.webp",
+      "1024": "/images/responsive/visualizations/04-home-hero-open-plan-kitchen-04-1024w.webp"
+    }
+  },
+  "/images/visualizations/05-modern-kitchen-oak-01.webp": {
+    "width": 1536,
+    "variants": {
+      "640": "/images/responsive/visualizations/05-modern-kitchen-oak-01-640w.webp",
+      "1024": "/images/responsive/visualizations/05-modern-kitchen-oak-01-1024w.webp"
+    }
+  },
+  "/images/visualizations/06-modern-kitchen-oak-02.webp": {
+    "width": 1537,
+    "variants": {
+      "640": "/images/responsive/visualizations/06-modern-kitchen-oak-02-640w.webp",
+      "1024": "/images/responsive/visualizations/06-modern-kitchen-oak-02-1024w.webp"
+    }
+  },
+  "/images/visualizations/07-modern-kitchen-island-01.webp": {
+    "width": 1536,
+    "variants": {
+      "640": "/images/responsive/visualizations/07-modern-kitchen-island-01-640w.webp",
+      "1024": "/images/responsive/visualizations/07-modern-kitchen-island-01-1024w.webp"
+    }
+  },
+  "/images/visualizations/08-modern-kitchen-island-02.webp": {
+    "width": 1600,
+    "variants": {
+      "640": "/images/responsive/visualizations/08-modern-kitchen-island-02-640w.webp",
+      "1024": "/images/responsive/visualizations/08-modern-kitchen-island-02-1024w.webp"
+    }
+  },
+  "/images/visualizations/09-modern-kitchen-island-03.webp": {
+    "width": 1600,
+    "variants": {
+      "640": "/images/responsive/visualizations/09-modern-kitchen-island-03-640w.webp",
+      "1024": "/images/responsive/visualizations/09-modern-kitchen-island-03-1024w.webp"
+    }
+  },
+  "/images/visualizations/10-modern-kitchen-dining-01.webp": {
+    "width": 1536,
+    "variants": {
+      "640": "/images/responsive/visualizations/10-modern-kitchen-dining-01-640w.webp",
+      "1024": "/images/responsive/visualizations/10-modern-kitchen-dining-01-1024w.webp"
+    }
+  },
+  "/images/visualizations/11-modern-kitchen-gold-accents-01.webp": {
+    "width": 1448,
+    "variants": {
+      "640": "/images/responsive/visualizations/11-modern-kitchen-gold-accents-01-640w.webp",
+      "1024": "/images/responsive/visualizations/11-modern-kitchen-gold-accents-01-1024w.webp"
+    }
+  },
+  "/images/visualizations/12-modern-home-office-01.webp": {
+    "width": 1400,
+    "variants": {
+      "640": "/images/responsive/visualizations/12-modern-home-office-01-640w.webp",
+      "1024": "/images/responsive/visualizations/12-modern-home-office-01-1024w.webp"
+    }
+  },
+  "/images/visualizations/13-modern-home-office-double-desk-01.webp": {
+    "width": 1400,
+    "variants": {
+      "640": "/images/responsive/visualizations/13-modern-home-office-double-desk-01-640w.webp",
+      "1024": "/images/responsive/visualizations/13-modern-home-office-double-desk-01-1024w.webp"
+    }
+  },
+  "/images/visualizations/14-modern-home-office-library-01.webp": {
+    "width": 1400,
+    "variants": {
+      "640": "/images/responsive/visualizations/14-modern-home-office-library-01-640w.webp",
+      "1024": "/images/responsive/visualizations/14-modern-home-office-library-01-1024w.webp"
+    }
+  },
+  "/images/visualizations/15-modern-home-office-compact-01.webp": {
+    "width": 1400,
+    "variants": {
+      "640": "/images/responsive/visualizations/15-modern-home-office-compact-01-640w.webp",
+      "1024": "/images/responsive/visualizations/15-modern-home-office-compact-01-1024w.webp"
+    }
+  },
+  "/images/visualizations/17-modern-kids-room-twin-beds-01.webp": {
+    "width": 1400,
+    "variants": {
+      "640": "/images/responsive/visualizations/17-modern-kids-room-twin-beds-01-640w.webp",
+      "1024": "/images/responsive/visualizations/17-modern-kids-room-twin-beds-01-1024w.webp"
+    }
+  },
+  "/images/visualizations/18-modern-kids-room-loft-bed-01.webp": {
+    "width": 1448,
+    "variants": {
+      "640": "/images/responsive/visualizations/18-modern-kids-room-loft-bed-01-640w.webp",
+      "1024": "/images/responsive/visualizations/18-modern-kids-room-loft-bed-01-1024w.webp"
+    }
+  },
+  "/images/visualizations/19-modern-bedroom-neutral-01.webp": {
+    "width": 1448,
+    "variants": {
+      "640": "/images/responsive/visualizations/19-modern-bedroom-neutral-01-640w.webp",
+      "1024": "/images/responsive/visualizations/19-modern-bedroom-neutral-01-1024w.webp"
+    }
+  },
+  "/images/visualizations/20-modern-wardrobe-walk-in-01.webp": {
+    "width": 1400,
+    "variants": {
+      "640": "/images/responsive/visualizations/20-modern-wardrobe-walk-in-01-640w.webp",
+      "1024": "/images/responsive/visualizations/20-modern-wardrobe-walk-in-01-1024w.webp"
+    }
+  },
+  "/images/visualizations/21-modern-wardrobe-bedroom-01.webp": {
+    "width": 1448,
+    "variants": {
+      "640": "/images/responsive/visualizations/21-modern-wardrobe-bedroom-01-640w.webp",
+      "1024": "/images/responsive/visualizations/21-modern-wardrobe-bedroom-01-1024w.webp"
+    }
+  },
+  "/images/visualizations/22-modern-wardrobe-sliding-doors-01.webp": {
+    "width": 1400,
+    "variants": {
+      "640": "/images/responsive/visualizations/22-modern-wardrobe-sliding-doors-01-640w.webp",
+      "1024": "/images/responsive/visualizations/22-modern-wardrobe-sliding-doors-01-1024w.webp"
+    }
+  },
+  "/images/visualizations/23-modern-wardrobe-open-storage-01.webp": {
+    "width": 1400,
+    "variants": {
+      "640": "/images/responsive/visualizations/23-modern-wardrobe-open-storage-01-640w.webp",
+      "1024": "/images/responsive/visualizations/23-modern-wardrobe-open-storage-01-1024w.webp"
+    }
+  },
+  "/images/visualizations/24-modern-wardrobe-led-lighting-01.webp": {
+    "width": 1400,
+    "variants": {
+      "640": "/images/responsive/visualizations/24-modern-wardrobe-led-lighting-01-640w.webp",
+      "1024": "/images/responsive/visualizations/24-modern-wardrobe-led-lighting-01-1024w.webp"
+    }
+  },
+  "/images/visualizations/25-modern-wardrobe-dressing-room-01.webp": {
+    "width": 1400,
+    "variants": {
+      "640": "/images/responsive/visualizations/25-modern-wardrobe-dressing-room-01-640w.webp",
+      "1024": "/images/responsive/visualizations/25-modern-wardrobe-dressing-room-01-1024w.webp"
+    }
+  },
+  "/images/visualizations/home-hero-mobile.webp": {
+    "width": 900,
+    "variants": {
+      "640": "/images/responsive/visualizations/home-hero-mobile-640w.webp"
+    }
+  },
+  "/portfolio/kuhnya-domexpert-v17/3d-proekt-kuhnya-moderna-frontalen-2.webp": {
+    "width": 1500,
+    "variants": {
+      "640": "/images/responsive/portfolio/kuhnya-domexpert-v17/3d-proekt-kuhnya-moderna-frontalen-2-640w.webp",
+      "1024": "/images/responsive/portfolio/kuhnya-domexpert-v17/3d-proekt-kuhnya-moderna-frontalen-2-1024w.webp"
+    }
+  },
+  "/portfolio/kuhnya-domexpert-v17/3d-proekt-kuhnya-moderna-obsht-1.webp": {
+    "width": 1500,
+    "variants": {
+      "640": "/images/responsive/portfolio/kuhnya-domexpert-v17/3d-proekt-kuhnya-moderna-obsht-1-640w.webp",
+      "1024": "/images/responsive/portfolio/kuhnya-domexpert-v17/3d-proekt-kuhnya-moderna-obsht-1-1024w.webp"
+    }
+  },
+  "/portfolio/kuhnya-domexpert-v17/3d-proekt-kuhnya-moderna-vrata-3.webp": {
+    "width": 1500,
+    "variants": {
+      "640": "/images/responsive/portfolio/kuhnya-domexpert-v17/3d-proekt-kuhnya-moderna-vrata-3-640w.webp",
+      "1024": "/images/responsive/portfolio/kuhnya-domexpert-v17/3d-proekt-kuhnya-moderna-vrata-3-1024w.webp"
+    }
+  }
+}

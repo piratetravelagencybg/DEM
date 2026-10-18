@@ -2,6 +2,29 @@ import type { Metadata } from 'next'
 
 const SITE_URL = 'https://domexpertmebel.com'
 const DEFAULT_IMAGE = '/images/og/home.webp'
+export const TITLE_MAX_LENGTH = 60
+export const DESCRIPTION_MAX_LENGTH = 160
+
+/**
+ * Hand-written metadata is not truncated automatically, so report overlong
+ * values in the build output instead of letting Google cut them.
+ */
+const charCount = (value: string) => Array.from(value).length
+
+function warnOnSeoLength(title: unknown, description: unknown, source: unknown) {
+  const where = typeof source === 'string' ? source : 'unknown page'
+  const titleText = typeof title === 'string'
+    ? title
+    : title && typeof title === 'object' && 'absolute' in title && typeof title.absolute === 'string'
+      ? title.absolute
+      : undefined
+  if (titleText && charCount(titleText) > TITLE_MAX_LENGTH) {
+    console.warn(`[seo] title is ${charCount(titleText)} chars (> ${TITLE_MAX_LENGTH}) on ${where}: ${titleText}`)
+  }
+  if (typeof description === 'string' && charCount(description) > DESCRIPTION_MAX_LENGTH) {
+    console.warn(`[seo] description is ${charCount(description)} chars (> ${DESCRIPTION_MAX_LENGTH}) on ${where}: ${description}`)
+  }
+}
 
 type PageMetadataOptions = {
   title: string
@@ -63,7 +86,7 @@ function buildSocialImage(
   }
 }
 
-export function shortenSeoTitle(value: string, maxLength = 55) {
+export function shortenSeoTitle(value: string, maxLength = TITLE_MAX_LENGTH) {
   const normalized = value.replace(/\s+/g, ' ').trim()
   if (normalized.length <= maxLength) return normalized
   const candidate = normalized.slice(0, maxLength - 1)
@@ -122,6 +145,7 @@ export function createPageMetadata({
 }
 
 export function completePageMetadata(metadata: Metadata): Metadata {
+  warnOnSeoLength(metadata.title, metadata.description, metadata.alternates?.canonical?.toString())
   const openGraph = metadata.openGraph
   if (!openGraph) return metadata
 

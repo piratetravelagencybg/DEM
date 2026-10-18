@@ -12,7 +12,7 @@ import { SITE_CONFIG } from '@/lib/site-config'
 
 export const metadata: Metadata = completePageMetadata({
   title: { absolute: 'Мебели по поръчка Петрич | Dom Expert Мебел' },
-  description: 'Мебели по поръчка в Петрич — кухни, гардероби, спални и дневни. Оглед 50 €, приспадат се, 3D проект с приспадане, монтаж и 2 г. гаранция. Опит от 2012 г. Тел: 0876 081 199',
+  description: 'Мебели по поръчка в Петрич – кухни, гардероби, спални и дневни. Оглед 50 €, приспада се, 3D проект, монтаж и 2 г. гаранция. ☎ 0876 081 199',
   alternates: { canonical: 'https://domexpertmebel.com/петрич/' },
   openGraph: {
     type: 'website',

@@ -10,16 +10,16 @@ import ServiceSchema from '@/components/seo/ServiceSchema'
 import { completePageMetadata } from '@/lib/seo'
 
 export const metadata: Metadata = completePageMetadata({
-  title: { absolute: 'Мебели по поръчка София | Dom Expert Мебел' },
-  description: 'Мебели по поръчка в София — кухни, гардероби и спални. Оглед 50 €, приспадат се, опит от 2012 г. и 2 г. гаранция. Тел: 0876 081 199',
+  title: { absolute: 'Мебели по поръчка София | 3D проект и монтаж | Dom Expert' },
+  description: 'Кухни, гардероби и спални по поръчка за София с 3D проект преди изработка. 30+ проекта в София, собствено производство от 2012 г., 2 г. гаранция.',
   alternates: { canonical: 'https://domexpertmebel.com/софия/' },
   openGraph: {
     type: 'website',
     locale: 'bg_BG',
     siteName: 'Dom Expert Мебел',
     url: 'https://domexpertmebel.com/софия/',
-    title: 'Мебели по поръчка София | Dom Expert Мебел',
-    description: 'Dom Expert Мебел от Благоевград обслужва София с оглед на адрес, изработка и монтаж на мебели по поръчка.',
+    title: 'Мебели по поръчка София | 3D проект и монтаж | Dom Expert',
+    description: 'Кухни, гардероби и спални по поръчка за София с 3D проект преди изработка. 30+ проекта в София, собствено производство от 2012 г., 2 г. гаранция.',
     images: [{ url: '/images/og/home.webp', width: 1200, height: 630, alt: 'Примерна интериорна визуализация за мебели по поръчка в София' }],
   },
 })

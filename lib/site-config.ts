@@ -38,7 +38,7 @@ export const SITE_CONFIG = {
     weekend: 'Събота и Неделя: Почивни дни',
   },
 
-  foundingDate: '2012-01-01', // Основана 2012 г.
+  foundingDate: '2012', // Основана 2012 г. (точната дата не е известна)
 
   stats: {
     experience: 'от 2012 г.',

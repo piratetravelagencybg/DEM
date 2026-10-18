@@ -6,16 +6,16 @@ import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
 import { completePageMetadata } from '@/lib/seo'
 
 export const metadata: Metadata = completePageMetadata({
-  title: { absolute: '3D проекти и интериорен дизайн – портфолио | Dom Expert Мебел' },
-  description: '3D визуализации и реализирани проекти на кухни, гардероби и мебели по поръчка. Вдъхновете се от нашите дизайни.',
+  title: { absolute: '3D проекти и интериорен дизайн – портфолио | Dom Expert' },
+  description: '3D визуализации на кухни, гардероби и мебели по поръчка, изготвени преди изработка. Идеи за разпределение, материали и осветление от наши проекти.',
   alternates: { canonical: 'https://domexpertmebel.com/3d-проекти/' },
   openGraph: {
     type: 'website',
     locale: 'bg_BG',
     siteName: 'Dom Expert Мебел',
     url: 'https://domexpertmebel.com/3d-проекти/',
-    title: '3D проекти и интериорен дизайн – портфолио | Dom Expert Мебел',
-    description: '3D визуализации и реализирани проекти на кухни, гардероби и мебели по поръчка.',
+    title: '3D проекти и интериорен дизайн – портфолио | Dom Expert',
+    description: '3D визуализации на кухни, гардероби и мебели по поръчка, изготвени преди изработка. Идеи за разпределение, материали и осветление от наши проекти.',
     images: [{ url: '/portfolio/kuhnya-domexpert-v17/3d-proekt-kuhnya-moderna-obsht-1.webp', width: 1500, height: 1000, alt: '3D визуализация на модерна кухня' }],
   },
 })

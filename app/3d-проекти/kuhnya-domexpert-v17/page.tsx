@@ -6,7 +6,7 @@ import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
 import { completePageMetadata } from '@/lib/seo'
 
 export const metadata: Metadata = completePageMetadata({
-  title: { absolute: '3D проект на модерна кухня с остров – кашмир и Laminam | Dom Expert Мебел' },
+  title: { absolute: '3D проект на кухня с остров – кашмир и Laminam | Dom Expert' },
   description: 'П-образна кухня с остров, кашмир фронтове, Laminam мраморен гръб, LED осветление и кафе станция. Детайлна 3D визуализация и видео разходка.',
   alternates: { canonical: 'https://domexpertmebel.com/3d-проекти/kuhnya-domexpert-v17/' },
   openGraph: {
@@ -14,7 +14,7 @@ export const metadata: Metadata = completePageMetadata({
     locale: 'bg_BG',
     siteName: 'Dom Expert Мебел',
     url: 'https://domexpertmebel.com/3d-проекти/kuhnya-domexpert-v17/',
-    title: '3D проект на модерна кухня с остров – кашмир и Laminam | Dom Expert Мебел',
+    title: '3D проект на кухня с остров – кашмир и Laminam | Dom Expert',
     description: 'П-образна кухня с остров, кашмир фронтове, Laminam мраморен гръб, LED осветление и кафе станция.',
     images: [{ url: '/portfolio/kuhnya-domexpert-v17/3d-proekt-kuhnya-moderna-obsht-1.webp', width: 1500, height: 1000, alt: '3D визуализация на модерна кухня – кашмир – Dom Expert Мебел' }],
   },

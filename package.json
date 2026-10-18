@@ -10,7 +10,10 @@
     "import:mbx": "node scripts/import-mbx-feed.mjs",
     "test:catalog": "node scripts/verify-catalog-architecture.mjs",
     "test:seo:source": "node scripts/verify-seo-source.mjs",
-    "test:seo:live": "node scripts/verify-seo-live.mjs"
+    "test:seo:live": "node scripts/verify-seo-live.mjs",
+    "sitemap:lastmod": "node scripts/generate-content-lastmod.mjs",
+    "seo:check": "node scripts/seo-check.mjs",
+    "images:responsive": "node scripts/generate-responsive-images.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
