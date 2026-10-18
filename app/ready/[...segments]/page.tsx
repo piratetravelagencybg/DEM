@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import FAQSchema from '@/components/seo/FAQSchema'
+import { getCatalogLandingContent } from '@/lib/catalog-landing-content'
 import CuratedCatalogView, {
   type CuratedBreadcrumb,
   type CuratedCatalogCard,
@@ -155,6 +157,13 @@ function getRequestCanonical(_landing: CatalogLanding, cleanCanonical: string, _
   return cleanCanonical
 }
 
+/** Short chip label: drop „Готови“ and keep the lower-case style of the chips. */
+function getNavigationLabel(h1: string) {
+  const label = h1.replace(/^Готови\s+/i, '')
+  const startsWithWord = label.length > 1 && label[1] === label[1].toLocaleLowerCase('bg-BG')
+  return startsWithWord ? label[0].toLocaleLowerCase('bg-BG') + label.slice(1) : label
+}
+
 function getPageHeading(landing: CatalogLanding, page: number) {
   return page === 1 ? landing.h1 : `${landing.h1} – страница ${page}`
 }
@@ -300,7 +309,7 @@ export default function ReadyFurnitureLandingPage({ params, searchParams }: Prop
     .filter((landing) => landing.kind !== 'collection')
     .map((landing) => ({
       href: landing.path,
-      label: landing.slug === '' ? 'Всички мебели' : landing.h1.replace(/^Готови\s+/i, ''),
+      label: landing.slug === '' ? 'Всички мебели' : getNavigationLabel(landing.h1),
       active: landing.slug === parsed.landing.slug,
     }))
 
@@ -311,9 +320,12 @@ export default function ReadyFurnitureLandingPage({ params, searchParams }: Prop
     modelCount: getLandingDataset(landing)?.models.length ?? 0,
   }))
 
+  const content = parsed.page === 1 ? getCatalogLandingContent(parsed.landing.slug) : undefined
+
   return (
     <>
       <BreadcrumbSchema items={schemaBreadcrumbs} />
+      {content && <FAQSchema items={content.faq} />}
       <CuratedCatalogView
         landingSlug={parsed.landing.slug}
         landingPath={parsed.landing.path}
@@ -329,6 +341,7 @@ export default function ReadyFurnitureLandingPage({ params, searchParams }: Prop
         collectionLinks={collectionLinks}
         breadcrumbs={breadcrumbs}
         isCollectionHub={parsed.landing.kind === 'collection-hub'}
+        content={content}
       />
     </>
   )

@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import type { CatalogLandingContent } from '@/lib/catalog-landing-content'
 import {
   ArrowRight,
   Boxes,
@@ -58,6 +59,7 @@ type Props = {
   collectionLinks: readonly CuratedCollectionLink[]
   breadcrumbs: readonly CuratedBreadcrumb[]
   isCollectionHub: boolean
+  content?: CatalogLandingContent
 }
 
 const SORT_OPTIONS: ReadonlyArray<{ id: CuratedCatalogSort; label: string }> = [
@@ -178,6 +180,7 @@ export default function CuratedCatalogView({
   collectionLinks,
   breadcrumbs,
   isCollectionHub,
+  content,
 }: Props) {
   const firstVisible = (page - 1) * 36 + 1
   const lastVisible = Math.min(page * 36, totalModels)
@@ -213,7 +216,11 @@ export default function CuratedCatalogView({
             <h1 className="heading-gradient font-display text-[2rem] font-bold leading-[1.06] sm:text-[2.55rem] md:text-[3.35rem]">
               {h1}
             </h1>
-            {intro && (
+            {content ? content.intro.map((paragraph) => (
+              <p key={paragraph} className="mt-4 max-w-[780px] font-body text-[0.92rem] leading-7 text-warm-gray md:text-[1.02rem]">
+                {paragraph}
+              </p>
+            )) : intro && (
               <p className="mt-4 max-w-[780px] font-body text-[0.92rem] leading-7 text-warm-gray md:text-[1.02rem]">
                 {intro}
               </p>
@@ -351,6 +358,34 @@ export default function CuratedCatalogView({
               </Link>
             ) : <span className="h-10 w-[92px]" aria-hidden="true" />}
           </nav>
+        )}
+
+        {content && (
+          <section aria-labelledby="catalog-faq-title" className="mx-auto mt-14 max-w-3xl">
+            <div className="mb-8 rounded-2xl border border-[#E8DED2] bg-white p-6 text-center md:p-8">
+              <p className="font-body text-[0.95rem] leading-7 text-charcoal">{content.custom.text}</p>
+              <Link
+                href={content.custom.href}
+                className="mt-4 inline-flex items-center gap-1.5 font-body text-sm font-semibold text-walnut hover:underline underline-offset-2"
+              >
+                {content.custom.label} <ChevronRight size={15} />
+              </Link>
+            </div>
+            <h2 id="catalog-faq-title" className="mb-5 text-center font-display text-[1.6rem] font-bold text-charcoal md:text-[2rem]">
+              Въпроси за {h1.toLocaleLowerCase('bg-BG')}
+            </h2>
+            <div className="space-y-3">
+              {content.faq.map((item) => (
+                <details key={item.question} className="group rounded-2xl border border-[#E8DED2] bg-white">
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-3 px-5 py-4 font-display text-[1rem] font-semibold text-charcoal">
+                    {item.question}
+                    <ChevronRight size={16} className="flex-shrink-0 text-walnut transition-transform group-open:rotate-90" />
+                  </summary>
+                  <p className="border-t border-[#E8DED2] px-5 py-4 font-body text-[0.9rem] leading-relaxed text-warm-gray">{item.answer}</p>
+                </details>
+              ))}
+            </div>
+          </section>
         )}
       </div>
     </div>

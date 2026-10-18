@@ -21,7 +21,6 @@ export type Project = {
   status: ProjectStatus
 }
 
-// TODO: град на 3d-proekt-salon-za-krasota — попълни city в data/projects.json.
 export const projects = rawProjects as Project[]
 
 /** Projects that get a case-study page under /проекти/<slug>/. */

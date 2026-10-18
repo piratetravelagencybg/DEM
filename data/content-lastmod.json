@@ -11,7 +11,7 @@
   "app/product/[slug]/page.tsx": "2026-07-30",
   "app/produkt/[slug]/page.tsx": "2026-08-18",
   "app/ready-sort/[[...segments]]/page.tsx": "2026-08-04",
-  "app/ready/[...segments]/page.tsx": "2026-09-07",
+  "app/ready/[...segments]/page.tsx": "2026-10-18",
   "app/ready/page.tsx": "2026-08-04",
   "app/sitemap-catalog.xml/route.ts": "2026-10-18",
   "app/sitemap-core.xml/route.ts": "2026-10-18",
@@ -56,6 +56,7 @@
   "components/home/Visualization3D.tsx": "2026-08-18",
   "components/ui/Badge.tsx": "2026-06-16",
   "components/ui/CityLandingTemplate.tsx": "2026-10-18",
+  "components/ui/CityLinks.tsx": "2026-10-18",
   "components/ui/ProjectCards.tsx": "2026-10-18",
   "components/ui/ProjectHighlight.tsx": "2026-10-18",
   "components/ui/Projects3DShowcase.tsx": "2026-10-18",
@@ -72,5 +73,5 @@
   "data/responsive-images.json": "2026-10-18",
   "data/reviews.json": "2026-10-02",
   "data/services.json": "2026-10-18",
-  "lib/catalog-landings.ts": "2026-10-02"
+  "lib/catalog-landings.ts": "2026-10-18"
 }
