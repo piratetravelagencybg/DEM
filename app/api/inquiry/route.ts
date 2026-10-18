@@ -113,14 +113,35 @@ ${photoFiles.length > 0 ? `Прикачени снимки: ${photoFiles.length}
 ${validatedData.source_page ? `Източник: ${validatedData.source_page}` : ''}
 `.trim()
 
-    await resendClient.emails.send({
+    // noreply@ has no mailbox (the domain has no MX record), so replies must
+    // go to the customer — or, without a customer email, to the inbox that
+    // receives the inquiries — never to the From address.
+    const replyTo = validatedData.email || recipientEmail
+
+    // The Resend SDK does not throw on API errors; it returns { data, error }.
+    // Treat an error as a failed submission so the form never shows a false success.
+    const { data, error: sendError } = await resendClient.emails.send({
       from: 'Dom Expert Мебел <noreply@domexpertmebel.com>',
       to: recipientEmail,
+      replyTo,
       subject: emailSubject,
       text: emailBody,
       attachments: attachments.length > 0 ? attachments : undefined,
     })
 
+    if (sendError || !data?.id) {
+      console.error('Inquiry email was not accepted by Resend:', {
+        name: sendError?.name,
+        message: sendError?.message,
+        sourcePage: validatedData.source_page,
+      })
+      return NextResponse.json(
+        { error: 'Грешка при изпращане на запитването' },
+        { status: 502 },
+      )
+    }
+
+    console.info('Inquiry email accepted by Resend:', { id: data.id, sourcePage: validatedData.source_page })
     return NextResponse.json({ success: true }, { status: 200 })
   } catch (error) {
     if (error instanceof z.ZodError) {
