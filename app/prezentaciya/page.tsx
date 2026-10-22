@@ -19,6 +19,13 @@ const projects = [
   { src: '/images/visualizations/24-modern-wardrobe-led-lighting-01.webp', caption: 'Гардероб с LED осветление' },
 ]
 
+const V = '/video/prezentaciya'
+const videos = [
+  { src: `${V}/kuhnya.mp4`, poster: `${V}/kuhnya.jpg`, caption: 'Кухня по поръчка' },
+  { src: `${V}/salon.mp4`, poster: `${V}/salon.jpg`, caption: 'Салон за красота' },
+  { src: `${V}/garderob.mp4`, poster: `${V}/garderob.jpg`, caption: 'Гардероб по поръчка' },
+]
+
 const why = [
   ['Цени на производител', 'Работим от собствения ни цех — без посредник и без търговска надценка по веригата.'],
   ['Egger и Blum', 'Плоскости Egger и механизми Blum, а при нужда — по-изгодни материали с добро качество за цената.'],
@@ -86,6 +93,21 @@ export default function Presentation() {
                   <Image src={p.src} alt={p.caption} fill sizes="(max-width: 640px) 100vw, 380px" className="object-cover" />
                 </div>
                 <figcaption className="font-body text-warm-gray mt-2" style={{ fontSize: '0.9rem' }}>{p.caption}</figcaption>
+              </figure>
+            ))}
+          </div>
+        </section>
+
+        {/* 3D видео — вертикални, плъзгат се настрани; зареждат се чак при натискане */}
+        <section className="pb-12">
+          <p className="font-body uppercase tracking-[0.18em] text-walnut" style={{ fontSize: '0.75rem' }}>3D видео</p>
+          <h2 className="font-display text-charcoal mt-1" style={{ fontSize: 'clamp(1.6rem, 6vw, 2.2rem)' }}>Вижте проектите в движение</h2>
+          <p className="font-body text-warm-gray mt-2" style={{ fontSize: '0.95rem' }}>Натиснете видео, за да го пуснете. Плъзнете настрани за следващото.</p>
+          <div className="mt-6 flex gap-4 overflow-x-auto pb-3" style={{ scrollSnapType: 'x mandatory', WebkitOverflowScrolling: 'touch' }}>
+            {videos.map((v) => (
+              <figure key={v.src} className="m-0 shrink-0" style={{ width: 'min(72vw, 260px)', scrollSnapAlign: 'start' }}>
+                <video src={v.src} poster={v.poster} controls playsInline preload="none" className="w-full rounded-xl bg-charcoal" style={{ aspectRatio: '9 / 16', objectFit: 'cover' }} />
+                <figcaption className="font-body text-warm-gray mt-2" style={{ fontSize: '0.9rem' }}>{v.caption}</figcaption>
               </figure>
             ))}
           </div>
