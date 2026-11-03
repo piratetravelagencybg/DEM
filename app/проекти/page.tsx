@@ -9,11 +9,11 @@ import { projectHref, projects } from '@/lib/projects'
 import { createPageMetadata } from '@/lib/seo'
 
 export const metadata: Metadata = createPageMetadata({
-  title: 'Проектни казуси за мебели по поръчка | Dom Expert Мебел',
+  title: 'Проектни казуси за мебели по поръчка | Дом Експерт Мебел',
   description: 'Реализирани обекти и 3D проекти на кухни, гардероби, спални, дневни, офиси и салони с град, материали и ясно обозначени визуализации.',
   path: '/проекти/',
   image: '/images/og/home.webp',
-  imageAlt: 'Проектен казус на Dom Expert Мебел',
+  imageAlt: 'Проектен казус на Дом Експерт Мебел',
 })
 
 const realizedCount = projects.filter((project) => project.status === 'realized').length
@@ -29,7 +29,7 @@ const serviceLinks = [
 
 const projectListSchema = {
   '@type': 'ItemList',
-  name: 'Проекти на Dom Expert Мебел',
+  name: 'Проекти на Дом Експерт Мебел',
   numberOfItems: projects.length,
   itemListElement: projects.map((project, index) => {
     const url = new URL(projectHref(project), 'https://domexpertmebel.com').href
@@ -56,7 +56,7 @@ const projectCollectionSchema = {
   '@id': 'https://domexpertmebel.com/проекти/#collection',
   url: 'https://domexpertmebel.com/проекти/',
   name: 'Проектни казуси за мебели по поръчка',
-  description: `${realizedCount} реализирани проекта и ${designCount} 3D проекта на Dom Expert Мебел с информация за град и материали.`,
+  description: `${realizedCount} реализирани проекта и ${designCount} 3D проекта на Дом Експерт Мебел с информация за град и материали.`,
   mainEntity: projectListSchema,
 }
 

@@ -43,12 +43,12 @@ export function generateMetadata({ params }: Props): Metadata {
 
   const description = prepareSeoDescription(
     post.description,
-    'Прочетете практичните насоки от Dom Expert Мебел.',
+    'Прочетете практичните насоки от Дом Експерт Мебел.',
   )
-  const imageAlt = `${post.title} – Dom Expert Мебел`
+  const imageAlt = `${post.title} – Дом Експерт Мебел`
   const socialImage = BLOG_SOCIAL_IMAGES[post.category] || '/images/og/home.webp'
   const baseMetadata = createPageMetadata({
-    title: `${post.title} | Dom Expert Мебел`,
+    title: `${post.title} | Дом Експерт Мебел`,
     description,
     path: `/блог/${post.slug}/`,
     image: socialImage,
@@ -352,12 +352,12 @@ export default function BlogPostPage({ params }: Props) {
     dateModified: post.dateModified ?? post.date,
     author: {
       '@type': 'Organization',
-      name: 'Dom Expert Мебел',
+      name: 'Дом Експерт Мебел',
       url: SITE_URL,
     },
     publisher: {
       '@type': 'Organization',
-      name: 'Dom Expert Мебел',
+      name: 'Дом Експерт Мебел',
       logo: {
         '@type': 'ImageObject',
         url: `${SITE_URL}/images/logo-icon.webp`,

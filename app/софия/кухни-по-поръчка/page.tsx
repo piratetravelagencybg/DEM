@@ -12,7 +12,7 @@ import { projects } from '@/lib/projects'
 import { completePageMetadata } from '@/lib/seo'
 
 const PAGE_URL = 'https://domexpertmebel.com/софия/кухни-по-поръчка/'
-const TITLE = 'Кухни по поръчка София – 3D проект и монтаж | Dom Expert'
+const TITLE = 'Кухни по поръчка София – 3D проект и монтаж | Дом Експерт'
 const DESCRIPTION = 'Кухня по поръчка за София: оглед, 3D проект, изработка в собствен цех и монтаж. 3D проект от 100 € – приспада се при поръчка. 2 г. гаранция.'
 
 export const metadata: Metadata = completePageMetadata({
@@ -22,7 +22,7 @@ export const metadata: Metadata = completePageMetadata({
   openGraph: {
     type: 'website',
     locale: 'bg_BG',
-    siteName: 'Dom Expert Мебел',
+    siteName: 'Дом Експерт Мебел',
     url: PAGE_URL,
     title: TITLE,
     description: DESCRIPTION,

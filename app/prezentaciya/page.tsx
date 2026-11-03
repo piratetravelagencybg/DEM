@@ -5,7 +5,7 @@ import { createPageMetadata } from '@/lib/seo'
 // Кратка презентация за хотели, партньори и собственици — линкът се праща във Viber/имейл.
 // Отваря се навсякъде (вграденият браузър на Viber/Android не показва PDF). Не се индексира.
 export const metadata: Metadata = createPageMetadata({
-  title: 'Презентация — Dom Expert Мебел',
+  title: 'Презентация — Дом Експерт Мебел',
   description: 'Мебели по поръчка от производителя: собствен цех в Благоевград, 14 години опит, кухни, гардероби, спални и обзавеждане за хотели.',
   path: '/prezentaciya/',
   index: false,
@@ -55,10 +55,10 @@ export default function Presentation() {
     <article className="bg-warm-white">
       {/* Корица */}
       <section className="relative" style={{ minHeight: '78vh', display: 'flex', alignItems: 'flex-end' }}>
-        <Image src={projects[0].src} alt="Кухня по поръчка — 3D визуализация от Dom Expert Мебел" fill priority sizes="100vw" className="object-cover" />
+        <Image src={projects[0].src} alt="Кухня по поръчка — 3D визуализация от Дом Експерт Мебел" fill priority sizes="100vw" className="object-cover" />
         <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(0,0,0,0.05) 30%, rgba(20,14,10,0.85) 100%)' }} />
         <div className="relative w-full px-5 pb-10 pt-24 mx-auto" style={{ maxWidth: 760 }}>
-          <p className="font-body uppercase tracking-[0.2em] text-sand" style={{ fontSize: '0.75rem' }}>Dom Expert Мебел · DEM</p>
+          <p className="font-body uppercase tracking-[0.2em] text-sand" style={{ fontSize: '0.75rem' }}>Дом Експерт Мебел · DEM</p>
           <h1 className="font-display text-white mt-2" style={{ fontSize: 'clamp(2.1rem, 8vw, 3.4rem)', lineHeight: 1.08 }}>Мебели по поръчка<br />от производителя</h1>
           <p className="font-body text-white/85 mt-4" style={{ fontSize: '1.05rem', lineHeight: 1.6 }}>
             Собствен цех в Благоевград и 14 години опит — кухни, гардероби и спални, както и обзавеждане за хотели и обществени сгради.

@@ -4,7 +4,7 @@ import { completePageMetadata } from '@/lib/seo'
 import { SERVED_CITIES, SITE_CONFIG } from '@/lib/site-config'
 
 const PAGE_URL = 'https://domexpertmebel.com/за-дизайнери/'
-const TITLE = 'Изработка на мебели по проект на дизайнер | Dom Expert'
+const TITLE = 'Изработка на мебели по проект на дизайнер | Дом Експерт'
 const DESCRIPTION = 'Изработка на мебели по проект на интериорен дизайнер или архитект: по вашите чертежи, в собствена работилница, с монтаж. София, Благоевград и региона.'
 
 export const metadata: Metadata = completePageMetadata({
@@ -14,7 +14,7 @@ export const metadata: Metadata = completePageMetadata({
   openGraph: {
     type: 'website',
     locale: 'bg_BG',
-    siteName: 'Dom Expert Мебел',
+    siteName: 'Дом Експерт Мебел',
     url: PAGE_URL,
     title: TITLE,
     description: DESCRIPTION,
@@ -100,7 +100,7 @@ export default function ForDesignersPage() {
       breadcrumbs={[{ name: 'За дизайнери', href: '/за-дизайнери/' }]}
       eyebrow="За дизайнери и архитекти"
       title="Изработка на мебели по проект на дизайнер или архитект"
-      intro="Вие проектирате, ние изработваме и монтираме — точно по чертежа. Dom Expert Мебел е семейна работилница от 2012 г. със собствено производство в Благоевград и проекти в София и региона."
+      intro="Вие проектирате, ние изработваме и монтираме — точно по чертежа. Дом Експерт Мебел е семейна работилница от 2012 г. със собствено производство в Благоевград и проекти в София и региона."
       facts={[
         'Собствено производство от 2012 г.',
         `${SITE_CONFIG.stats.projects}, от тях ${SITE_CONFIG.stats.projectsSofia} в София`,

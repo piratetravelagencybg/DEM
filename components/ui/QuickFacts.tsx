@@ -33,7 +33,7 @@ export default function QuickFactsSection() {
     <section className="section-py" style={{ backgroundColor: 'var(--color-cream)' }}>
       <div className="container-main max-w-5xl">
         <div className="text-center mb-8">
-          <span className="eyebrow-pill">Dom Expert Мебел</span>
+          <span className="eyebrow-pill">Дом Експерт Мебел</span>
           <h2 className="font-display font-bold heading-gradient" style={{ fontSize: 'clamp(1.6rem, 4vw, 2.2rem)' }}>
             Бързи факти
           </h2>

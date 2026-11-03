@@ -3,7 +3,7 @@ import { Star, ExternalLink } from 'lucide-react'
 import { completePageMetadata } from '@/lib/seo'
 
 export const metadata: Metadata = completePageMetadata({
-  title: { absolute: 'Остави отзив | Dom Expert Мебел' },
+  title: { absolute: 'Остави отзив | Дом Експерт Мебел' },
   description: 'Благодарим ви! Споделете вашето мнение в Google.',
   robots: { index: false, follow: false }, // noindex per requirements
 })
@@ -41,7 +41,7 @@ export default function ReviewPage() {
         {/* Message */}
         <p className="font-body text-warm-gray text-lg leading-relaxed mb-8 max-w-lg mx-auto">
           Вашето мнение е важно за нас и помага на бъдещи клиенти да вземат информирано решение.
-          Споделете вашия опит с Dom Expert Мебел в Google.
+          Споделете вашия опит с Дом Експерт Мебел в Google.
         </p>
 
         {/* Google Review Button */}

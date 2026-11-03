@@ -9,7 +9,7 @@ export const calculatorConfig = raw as {
   currency: string
 }
 
-/** True only when every price and factor has been filled in by Dom Expert. */
+/** True only when every price and factor has been filled in by Дом Експерт. */
 export const calculatorReady =
   calculatorConfig.materials.every((material) => material.min !== null && material.max !== null) &&
   calculatorConfig.shapes.every((shape) => shape.factor !== null)

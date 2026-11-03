@@ -4,7 +4,7 @@ import { projectsByCategory } from '@/lib/projects'
 import { completePageMetadata } from '@/lib/seo'
 
 const PAGE_URL = 'https://domexpertmebel.com/софия/гардероби-по-поръчка/'
-const TITLE = 'Гардероби по поръчка София – 3D проект и монтаж | Dom Expert'
+const TITLE = 'Гардероби по поръчка София – 3D и монтаж | Дом Експерт Мебел'
 const DESCRIPTION = 'Вградени гардероби и гардеробни по поръчка за София: 3D проект от 50 €, оглед 50 € – приспадат се. Собствено производство, монтаж и 2 г. гаранция.'
 
 export const metadata: Metadata = completePageMetadata({
@@ -14,7 +14,7 @@ export const metadata: Metadata = completePageMetadata({
   openGraph: {
     type: 'website',
     locale: 'bg_BG',
-    siteName: 'Dom Expert Мебел',
+    siteName: 'Дом Експерт Мебел',
     url: PAGE_URL,
     title: TITLE,
     description: DESCRIPTION,

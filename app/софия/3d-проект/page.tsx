@@ -5,7 +5,7 @@ import { completePageMetadata } from '@/lib/seo'
 import { SITE_CONFIG } from '@/lib/site-config'
 
 const PAGE_URL = 'https://domexpertmebel.com/софия/3d-проект/'
-const TITLE = '3D проект на кухня и мебели София – от 100 € | Dom Expert'
+const TITLE = '3D проект на кухня и мебели София – от 100 € | Дом Експерт'
 const DESCRIPTION = '3D проект на кухня за София от 100 €, на гардероб или спалня от 50 €. Дистанционно по снимки и размери, сумата се приспада при поръчка на мебелите.'
 
 export const metadata: Metadata = completePageMetadata({
@@ -15,7 +15,7 @@ export const metadata: Metadata = completePageMetadata({
   openGraph: {
     type: 'website',
     locale: 'bg_BG',
-    siteName: 'Dom Expert Мебел',
+    siteName: 'Дом Експерт Мебел',
     url: PAGE_URL,
     title: TITLE,
     description: DESCRIPTION,

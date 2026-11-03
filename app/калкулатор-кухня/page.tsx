@@ -7,7 +7,7 @@ import { completePageMetadata } from '@/lib/seo'
 import { SITE_CONFIG } from '@/lib/site-config'
 
 const PAGE_URL = 'https://domexpertmebel.com/калкулатор-кухня/'
-const TITLE = 'Калкулатор за кухня по поръчка – цена на метър | Dom Expert'
+const TITLE = 'Калкулатор за кухня по поръчка – цена на метър | Дом Експерт'
 const DESCRIPTION = 'Калкулатор за кухня по поръчка: въведете дължината, формата и материала на фронтовете и вижте ориентировъчна цена. Точна оферта след 3D проект.'
 
 export const metadata: Metadata = completePageMetadata({
@@ -19,7 +19,7 @@ export const metadata: Metadata = completePageMetadata({
   openGraph: {
     type: 'website',
     locale: 'bg_BG',
-    siteName: 'Dom Expert Мебел',
+    siteName: 'Дом Експерт Мебел',
     url: PAGE_URL,
     title: TITLE,
     description: DESCRIPTION,

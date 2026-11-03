@@ -23,13 +23,13 @@ const dmSans = DM_Sans({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://domexpertmebel.com'),
-  applicationName: 'Dom Expert Мебел',
+  applicationName: 'Дом Експерт Мебел',
   title: {
-    default: 'Мебели по поръчка Благоевград и София | Dom Expert Мебел',
-    template: '%s | Dom Expert Мебел',
+    default: 'Мебели по поръчка София и Благоевград | Дом Експерт Мебел',
+    template: '%s | Дом Експерт Мебел',
   },
   description: 'Семейна фирма за мебели по поръчка. Кухни, гардероби, спални и офис мебели с оглед — 50 €, приспадат се, монтаж и 2 години гаранция.',
-  authors: [{ name: 'Dom Expert Мебел' }],
+  authors: [{ name: 'Дом Експерт Мебел' }],
   manifest: '/site.webmanifest',
   icons: {
     icon: [
@@ -42,15 +42,15 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'bg_BG',
-    siteName: 'Dom Expert Мебел',
-    title: 'Мебели по поръчка Благоевград и София | Dom Expert Мебел',
+    siteName: 'Дом Експерт Мебел',
+    title: 'Мебели по поръчка София и Благоевград | Дом Експерт Мебел',
     description: 'Семейна фирма за мебели по поръчка. Оглед 50 €, приспадат се, платен 3D проект с приспадане при поръчка и 2 години гаранция.',
     url: 'https://domexpertmebel.com/',
-    images: [{ url: '/images/og/home.webp', width: 1200, height: 630, type: 'image/webp', alt: 'Мебели по поръчка – Dom Expert Мебел' }],
+    images: [{ url: '/images/og/home.webp', width: 1200, height: 630, type: 'image/webp', alt: 'Мебели по поръчка – Дом Експерт Мебел' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Мебели по поръчка | Dom Expert Мебел',
+    title: 'Мебели по поръчка | Дом Експерт Мебел',
     description: 'Мебели по поръчка в Благоевград, София и региона.',
     images: ['/images/og/home.webp'],
   },

@@ -10,7 +10,7 @@ import { getImageDisclosure } from '@/lib/image-credits'
 import { createPageMetadata } from '@/lib/seo'
 
 export const metadata: Metadata = createPageMetadata({
-  title: 'Услуги — Мебели по поръчка | Dom Expert Мебел',
+  title: 'Услуги — Мебели по поръчка | Дом Експерт Мебел',
   description: 'Кухни, гардероби, спални, дневни и офис мебели по поръчка в Благоевград, София и региона. Оглед 50 €, приспадат се, монтаж и 2 г. гаранция.',
   path: '/услуги/',
   image: '/images/og/kitchens.webp',

@@ -7,8 +7,8 @@ import { completePageMetadata } from '@/lib/seo'
 import { PARTNER_TYPE_LABELS, partners, partnersIndexable, type PartnerType } from '@/lib/partners'
 
 const PAGE_URL = 'https://domexpertmebel.com/партньори/'
-const TITLE = 'Партньори – дизайнери и ремонтни фирми | Dom Expert'
-const DESCRIPTION = 'Интериорни дизайнери, архитекти, ремонтни фирми и доставчици, с които Dom Expert Мебел работи по проекти за мебели по поръчка.'
+const TITLE = 'Партньори – дизайнери и ремонтни фирми | Дом Експерт Мебел'
+const DESCRIPTION = 'Интериорни дизайнери, архитекти, ремонтни фирми и доставчици, с които Дом Експерт Мебел работи по проекти за мебели по поръчка.'
 
 export const metadata: Metadata = completePageMetadata({
   title: { absolute: TITLE },
@@ -18,11 +18,11 @@ export const metadata: Metadata = completePageMetadata({
   openGraph: {
     type: 'website',
     locale: 'bg_BG',
-    siteName: 'Dom Expert Мебел',
+    siteName: 'Дом Експерт Мебел',
     url: PAGE_URL,
     title: TITLE,
     description: DESCRIPTION,
-    images: [{ url: '/images/og/home.webp', width: 1200, height: 630, alt: 'Партньори на Dom Expert Мебел' }],
+    images: [{ url: '/images/og/home.webp', width: 1200, height: 630, alt: 'Партньори на Дом Експерт Мебел' }],
   },
 })
 

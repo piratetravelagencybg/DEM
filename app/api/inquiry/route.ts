@@ -121,7 +121,7 @@ ${validatedData.source_page ? `Източник: ${validatedData.source_page}` :
     // The Resend SDK does not throw on API errors; it returns { data, error }.
     // Treat an error as a failed submission so the form never shows a false success.
     const { data, error: sendError } = await resendClient.emails.send({
-      from: 'Dom Expert Мебел <noreply@domexpertmebel.com>',
+      from: 'Дом Експерт Мебел <noreply@domexpertmebel.com>',
       to: recipientEmail,
       replyTo,
       subject: emailSubject,

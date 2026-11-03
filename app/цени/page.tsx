@@ -7,8 +7,8 @@ import { completePageMetadata } from '@/lib/seo'
 import { SITE_CONFIG } from '@/lib/site-config'
 
 const PAGE_URL = 'https://domexpertmebel.com/цени/'
-const TITLE = 'Цени – оглед, 3D проект и интериорен дизайн | Dom Expert'
-const DESCRIPTION = 'Цени на Dom Expert Мебел: оглед 50 €, 3D проект на кухня от 100 €, на друга мебел от 50 € – приспадат се. Интериорен дизайн от 25 €/кв.м.'
+const TITLE = 'Цени – оглед, 3D проект и интериорен дизайн | Дом Експерт'
+const DESCRIPTION = 'Цени на Дом Експерт Мебел: оглед 50 €, 3D проект на кухня от 100 €, на друга мебел от 50 € – приспадат се. Интериорен дизайн от 25 €/кв.м.'
 
 export const metadata: Metadata = completePageMetadata({
   title: { absolute: TITLE },
@@ -17,11 +17,11 @@ export const metadata: Metadata = completePageMetadata({
   openGraph: {
     type: 'website',
     locale: 'bg_BG',
-    siteName: 'Dom Expert Мебел',
+    siteName: 'Дом Експерт Мебел',
     url: PAGE_URL,
     title: TITLE,
     description: DESCRIPTION,
-    images: [{ url: '/images/og/home.webp', width: 1200, height: 630, alt: 'Цени на Dom Expert Мебел' }],
+    images: [{ url: '/images/og/home.webp', width: 1200, height: 630, alt: 'Цени на Дом Експерт Мебел' }],
   },
 })
 
@@ -89,7 +89,7 @@ const offerCatalogSchema = {
   '@context': 'https://schema.org',
   '@type': 'OfferCatalog',
   '@id': `${PAGE_URL}#prices`,
-  name: 'Цени на Dom Expert Мебел',
+  name: 'Цени на Дом Експерт Мебел',
   url: PAGE_URL,
   itemListElement: [
     {
@@ -154,7 +154,7 @@ export default function PricesPage() {
           </nav>
           <span className="eyebrow-pill">Цени</span>
           <h1 className="font-display font-bold text-charcoal leading-[1.05] mt-2" style={{ fontSize: 'var(--text-h1)' }}>
-            Цени
+            Цени за мебели по поръчка, 3D проект и интериорен дизайн
           </h1>
           <p className="font-body text-warm-gray leading-relaxed mt-5" style={{ fontSize: '1.05rem', maxWidth: '44rem' }}>
             Огледът и 3D проектът са с фиксирани цени и се приспадат при поръчка. Мебелите по поръчка получават конкретна оферта след 3D проекта, защото цената им зависи от размерите, материалите и механизмите.

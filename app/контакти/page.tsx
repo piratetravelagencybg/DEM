@@ -8,10 +8,10 @@ import { GOOGLE_BUSINESS_PROFILE_URL } from '@/lib/business'
 import { createPageMetadata } from '@/lib/seo'
 
 export const metadata: Metadata = createPageMetadata({
-  title: 'Контакти | Dom Expert Мебел',
-  description: 'Свържете се с Dom Expert Мебел за консултация и оферта за мебели по поръчка. Тел: 0876 081 199 | domexpertmebel@gmail.com | Благоевград',
+  title: 'Контакти | Дом Експерт Мебел',
+  description: 'Свържете се с Дом Експерт Мебел за консултация и оферта за мебели по поръчка. Тел: 0876 081 199 | domexpertmebel@gmail.com | Благоевград',
   path: '/контакти/',
-  imageAlt: 'Контакти на Dom Expert Мебел',
+  imageAlt: 'Контакти на Дом Експерт Мебел',
 })
 
 export default function ContactsPage() {
@@ -35,7 +35,7 @@ export default function ContactsPage() {
                 Свържете се с нас
               </h1>
               <p className="font-body text-warm-gray mt-4 leading-relaxed">
-                Dom Expert Мебел е на ваше разположение за консултация, оглед на място (50 €, приспадат се при поръчка) и изготвяне на оферта. Отговаряме в рамките на 24 часа.
+                Дом Експерт Мебел е на ваше разположение за консултация, оглед на място (50 €, приспадат се при поръчка) и изготвяне на оферта. Отговаряме в рамките на 24 часа.
               </p>
               {/* GEO key facts */}
               <ul className="mt-4 space-y-1 font-body text-sm text-warm-gray">
@@ -95,7 +95,7 @@ export default function ContactsPage() {
                   href={GOOGLE_BUSINESS_PROFILE_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="Отвори профила на Dom Expert Мебел в Google Maps"
+                  aria-label="Отвори профила на Дом Експерт Мебел в Google Maps"
                   className="group rounded-card overflow-hidden h-56 bg-light-tan flex items-center justify-center transition-colors hover:bg-cream"
                 >
                   <div className="text-center text-warm-gray font-body text-sm px-6">

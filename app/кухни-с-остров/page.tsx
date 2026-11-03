@@ -5,7 +5,7 @@ import { completePageMetadata } from '@/lib/seo'
 import { SERVED_CITIES, SITE_CONFIG } from '@/lib/site-config'
 
 const PAGE_URL = 'https://domexpertmebel.com/кухни-с-остров/'
-const TITLE = 'Кухня с остров по поръчка – 3D проект и идеи | Dom Expert'
+const TITLE = 'Кухня с остров по поръчка – 3D проект и идеи | Дом Експерт'
 const DESCRIPTION = 'Кухня с остров по поръчка: колко място трябва, какво побира островът и как изглежда в 3D. 3D проект на кухня от 100 € – приспада се при поръчка.'
 
 export const metadata: Metadata = completePageMetadata({
@@ -15,7 +15,7 @@ export const metadata: Metadata = completePageMetadata({
   openGraph: {
     type: 'website',
     locale: 'bg_BG',
-    siteName: 'Dom Expert Мебел',
+    siteName: 'Дом Експерт Мебел',
     url: PAGE_URL,
     title: TITLE,
     description: DESCRIPTION,

@@ -13,12 +13,12 @@ import {
 import { createPageMetadata } from '@/lib/seo'
 
 export const metadata: Metadata = createPageMetadata({
-  title: 'Блог за мебели и интериор | Dom Expert Мебел',
+  title: 'Блог за мебели и интериор | Дом Експерт Мебел',
   description:
     'Практични съвети за кухни, гардероби, готови мебели, измерване, материали и обзавеждане. Научете как да планирате правилния избор и поръчка.',
   path: '/блог/',
   image: '/images/og/home.webp',
-  imageAlt: 'Блог на Dom Expert Мебел',
+  imageAlt: 'Блог на Дом Експерт Мебел',
 })
 
 function ImageCaption({ image }: { image: BlogImage }) {

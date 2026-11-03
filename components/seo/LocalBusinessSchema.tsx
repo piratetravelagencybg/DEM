@@ -6,7 +6,7 @@ export default function LocalBusinessSchema() {
     '@type': ['LocalBusiness', 'FurnitureStore'],
     '@id': `${SITE_CONFIG.siteUrl}/#business`,
     name: SITE_CONFIG.name,
-    alternateName: 'Dom Expert',
+    alternateName: 'Дом Експерт',
     description: 'Семейна фирма за мебели по поръчка в Благоевград, София и региона. Оглед 50 €, приспадат се, платен 3D проект с приспадане при поръчка и 2 години гаранция.',
     foundingDate: SITE_CONFIG.foundingDate,
     parentOrganization: { '@id': `${SITE_CONFIG.siteUrl}/#organization` },

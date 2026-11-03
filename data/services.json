@@ -141,10 +141,10 @@
     "icon": "Box",
     "image": "/images/visualizations/05-modern-kitchen-oak-01.webp",
     "gallery": [
-      { "src": "/images/visualizations/06-modern-kitchen-oak-02.webp", "alt": "3D визуализация на модерна кухня в дъб – Dom Expert Мебел" },
-      { "src": "/images/visualizations/07-modern-kitchen-island-01.webp", "alt": "3D визуализация на кухня с остров – Dom Expert Мебел" },
-      { "src": "/images/visualizations/21-modern-wardrobe-bedroom-01.webp", "alt": "3D визуализация на спалня с гардероб – Dom Expert Мебел" },
-      { "src": "/images/visualizations/19-modern-bedroom-neutral-01.webp", "alt": "3D визуализация на спалня в неутрални тонове – Dom Expert Мебел" }
+      { "src": "/images/visualizations/06-modern-kitchen-oak-02.webp", "alt": "3D визуализация на модерна кухня в дъб – Дом Експерт Мебел" },
+      { "src": "/images/visualizations/07-modern-kitchen-island-01.webp", "alt": "3D визуализация на кухня с остров – Дом Експерт Мебел" },
+      { "src": "/images/visualizations/21-modern-wardrobe-bedroom-01.webp", "alt": "3D визуализация на спалня с гардероб – Дом Експерт Мебел" },
+      { "src": "/images/visualizations/19-modern-bedroom-neutral-01.webp", "alt": "3D визуализация на спалня в неутрални тонове – Дом Експерт Мебел" }
     ],
     "features": ["От 100 € за кухня", "От 50 € за гардероб/спалня/дневна", "100% приспадане при поръчка", "Дистанционно за цяла България"],
     "faq": [

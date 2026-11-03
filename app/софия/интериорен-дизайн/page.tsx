@@ -6,7 +6,7 @@ import { completePageMetadata } from '@/lib/seo'
 import { SITE_CONFIG } from '@/lib/site-config'
 
 const PAGE_URL = 'https://domexpertmebel.com/софия/интериорен-дизайн/'
-const TITLE = 'Интериорен дизайн София – цени от 25 €/кв.м | Dom Expert'
+const TITLE = 'Интериорен дизайн София – цени от 25 €/кв.м | Дом Експерт'
 const DESCRIPTION = 'Интериорен дизайн на апартамент в София с изработка на мебелите в собствен цех. От 25 €/кв.м, минимум 30 кв.м. 3D визуализация на всяко помещение.'
 
 export const metadata: Metadata = completePageMetadata({
@@ -16,7 +16,7 @@ export const metadata: Metadata = completePageMetadata({
   openGraph: {
     type: 'website',
     locale: 'bg_BG',
-    siteName: 'Dom Expert Мебел',
+    siteName: 'Дом Експерт Мебел',
     url: PAGE_URL,
     title: TITLE,
     description: DESCRIPTION,

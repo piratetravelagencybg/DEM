@@ -9,15 +9,15 @@ import { completePageMetadata } from '@/lib/seo'
 const service = services.find((s) => s.id === 'kuhni')!
 
 export const metadata: Metadata = completePageMetadata({
-  title: { absolute: 'Кухни по поръчка – 3D проект и монтаж | Dom Expert' },
+  title: { absolute: 'Кухни по поръчка – 3D проект и монтаж | Дом Експерт Мебел' },
   description: 'Кухни по поръчка с 3D проект преди изработка. Оглед 50 € и 3D проект от 100 € – приспадат се при поръчка. Собствено производство, монтаж и 2 г. гаранция.',
   alternates: { canonical: 'https://domexpertmebel.com/услуги/кухни-по-поръчка/' },
   openGraph: {
     type: 'website',
     locale: 'bg_BG',
-    siteName: 'Dom Expert Мебел',
+    siteName: 'Дом Експерт Мебел',
     url: 'https://domexpertmebel.com/услуги/кухни-по-поръчка/',
-    title: 'Кухни по поръчка – 3D проект и монтаж | Dom Expert',
+    title: 'Кухни по поръчка – 3D проект и монтаж | Дом Експерт Мебел',
     description: 'Кухни по поръчка с 3D проект преди изработка. Оглед 50 € и 3D проект от 100 € – приспадат се при поръчка. Собствено производство, монтаж и 2 г. гаранция.',
     images: [{ url: '/images/og/kitchens.webp', width: 1200, height: 630, alt: 'Кухня по поръчка' }],
   },

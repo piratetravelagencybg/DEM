@@ -6,8 +6,8 @@
 import { BUSINESS_COORDINATES, GOOGLE_BUSINESS_PROFILE_URL } from './business'
 
 export const SITE_CONFIG = {
-  name: 'Dom Expert Мебел',
-  legalName: 'Dom Expert Мебел',
+  name: 'Дом Експерт Мебел',
+  legalName: 'Дом Експерт Мебел',
   phone: '0876 081 199',
   phoneInternational: '+359876081199',
   email: 'domexpertmebel@gmail.com',
@@ -116,7 +116,7 @@ export const SITE_CONFIG = {
   },
 
   siteUrl: 'https://domexpertmebel.com',
-  siteName: 'Dom Expert Мебел',
+  siteName: 'Дом Експерт Мебел',
 } as const
 
 // Помощни функции

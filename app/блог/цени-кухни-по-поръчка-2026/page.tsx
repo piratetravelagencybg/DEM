@@ -5,8 +5,8 @@ import data from '@/data/kitchen-prices-2026.json'
 import { completePageMetadata } from '@/lib/seo'
 
 const PAGE_URL = 'https://domexpertmebel.com/блог/цени-кухни-по-поръчка-2026/'
-const TITLE = 'Цени на кухни по поръчка 2026 – данни от оферти | Dom Expert'
-const DESCRIPTION = 'Колко струва кухня по поръчка през 2026 г.: средни цени на линеен метър по материал на фронтовете, изчислени от реалните оферти на Dom Expert Мебел.'
+const TITLE = 'Цени на кухни по поръчка 2026 – данни | Дом Експерт Мебел'
+const DESCRIPTION = 'Колко струва кухня по поръчка през 2026 г.: средни цени на линеен метър по материал на фронтовете, изчислени от реалните оферти на Дом Експерт Мебел.'
 
 type PriceRow = { material: string; avgPerMeter: number | null }
 
@@ -24,7 +24,7 @@ export const metadata: Metadata = completePageMetadata({
   openGraph: {
     type: 'article',
     locale: 'bg_BG',
-    siteName: 'Dom Expert Мебел',
+    siteName: 'Дом Експерт Мебел',
     url: PAGE_URL,
     title: TITLE,
     description: DESCRIPTION,
@@ -48,7 +48,7 @@ const datasetSchema = {
   '@context': 'https://schema.org',
   '@type': 'Dataset',
   name: 'Средни цени на кухни по поръчка по материал, 2026',
-  description: `Средна цена на линеен метър кухня по поръчка по материал на фронтовете, изчислена от ${data.offersCount} оферти на Dom Expert Мебел през 2026 г.`,
+  description: `Средна цена на линеен метър кухня по поръчка по материал на фронтовете, изчислена от ${data.offersCount} оферти на Дом Експерт Мебел през 2026 г.`,
   url: PAGE_URL,
   creator: { '@id': 'https://domexpertmebel.com/#business' },
   temporalCoverage: '2026',
@@ -90,7 +90,7 @@ export default function KitchenPrices2026Page() {
           <div className="space-y-4 font-body text-warm-gray leading-relaxed mt-6" style={{ fontSize: '1.02rem' }}>
             <p>
               {ready
-                ? `Данните са изчислени от ${data.offersCount} оферти за кухни по поръчка, които Dom Expert Мебел е изготвил през 2026 г. Цените са средни за линеен метър според материала на фронтовете.`
+                ? `Данните са изчислени от ${data.offersCount} оферти за кухни по поръчка, които Дом Експерт Мебел е изготвил през 2026 г. Цените са средни за линеен метър според материала на фронтовете.`
                 : 'Данните за тази статия се обработват.'}
             </p>
           </div>
@@ -129,7 +129,7 @@ export default function KitchenPrices2026Page() {
           <div className="space-y-4 font-body text-warm-gray leading-relaxed mt-10" style={{ fontSize: '1rem' }}>
             <h2 className="section-title text-left">Цитиране</h2>
             <p>
-              Данните могат да се цитират свободно с позоваване на Dom Expert Мебел и линк към тази страница. Вижте също{' '}
+              Данните могат да се цитират свободно с позоваване на Дом Експерт Мебел и линк към тази страница. Вижте също{' '}
               <Link href="/блог/ot-kakvo-zavisi-tsenata-na-kuhnya-po-poruchka/" className="text-walnut font-medium underline underline-offset-2 hover:no-underline">
                 от какво зависи цената на кухня по поръчка
               </Link>

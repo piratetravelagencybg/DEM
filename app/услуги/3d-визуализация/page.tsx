@@ -9,15 +9,15 @@ import { SITE_CONFIG } from '@/lib/site-config'
 const service = services.find((s) => s.id === '3d-visualization')!
 
 export const metadata: Metadata = completePageMetadata({
-  title: { absolute: '3D проект на кухня и мебели – от 100 € | Dom Expert Мебел' },
+  title: { absolute: '3D проект на кухня и мебели – от 100 € | Дом Експерт Мебел' },
   description: '3D проект на кухня от 100 €, на гардероб, спалня или дневна от 50 € – приспада се при поръчка. Проект на кухня и дистанционно за цяла България.',
   alternates: { canonical: 'https://domexpertmebel.com/услуги/3d-визуализация/' },
   openGraph: {
     type: 'website',
     locale: 'bg_BG',
-    siteName: 'Dom Expert Мебел',
+    siteName: 'Дом Експерт Мебел',
     url: 'https://domexpertmebel.com/услуги/3d-визуализация/',
-    title: '3D проект на кухня и мебели – от 100 € | Dom Expert Мебел',
+    title: '3D проект на кухня и мебели – от 100 € | Дом Експерт Мебел',
     description: '3D визуализация на кухни, гардероби, спални и дневни преди изработка. От 100 € — 100% приспадане при поръчка.',
     images: [{ url: '/images/og/3d-visualization.webp', width: 1200, height: 630, alt: '3D визуализация на мебели по поръчка' }],
   },
@@ -149,6 +149,7 @@ export default function Visualization3DPage() {
   return (
     <ServicePageTemplate
       title={service.title}
+      h1="3D проект на кухня и мебели"
       subtitle={`Изготвяме 3D проект на мебелите преди изработка — след оглед или дистанционно по снимки и размери, за цялата страна. 3D проектът на кухня е от ${SITE_CONFIG.pricing.visualization.kitchen.from} ${SITE_CONFIG.pricing.visualization.kitchen.currency}, на друга мебел от ${SITE_CONFIG.pricing.visualization.other.from} ${SITE_CONFIG.pricing.visualization.other.currency} според размера на проекта; сумата се приспада изцяло при поръчка, а изработката отнема 4–6 седмици след одобрение.`}
       heroImage={service.image}
       heroVideo={{

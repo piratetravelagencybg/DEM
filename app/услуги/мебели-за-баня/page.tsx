@@ -4,7 +4,7 @@ import { completePageMetadata } from '@/lib/seo'
 import { SERVED_CITIES, SITE_CONFIG } from '@/lib/site-config'
 
 const PAGE_URL = 'https://domexpertmebel.com/услуги/мебели-за-баня/'
-const TITLE = 'Мебели за баня по поръчка – 3D проект и монтаж | Dom Expert'
+const TITLE = 'Мебели за баня по поръчка – 3D проект и монтаж | Дом Експерт'
 const DESCRIPTION = 'Мебели за баня по поръчка: шкаф под мивка, колони и шкафове за пералня по точни размери. 3D проект от 50 € – приспада се. Изработка и монтаж.'
 
 export const metadata: Metadata = completePageMetadata({
@@ -14,7 +14,7 @@ export const metadata: Metadata = completePageMetadata({
   openGraph: {
     type: 'website',
     locale: 'bg_BG',
-    siteName: 'Dom Expert Мебел',
+    siteName: 'Дом Експерт Мебел',
     url: PAGE_URL,
     title: TITLE,
     description: DESCRIPTION,

@@ -19,18 +19,18 @@ const storyImageCredit = getImageCredit(storyImage)
 const processImageCredit = getImageCredit(processImage)
 
 export const metadata: Metadata = completePageMetadata({
-  title: { absolute: 'За Dom Expert Мебел | Семейна мебелна фирма' },
+  title: { absolute: 'За Дом Експерт Мебел | Семейна мебелна фирма' },
   description:
-    'Научете историята на Dom Expert Мебел — семейна мебелна фирма от Благоевград с опит от 2012 г. и повече от 100 реализирани проекта.',
+    'Научете историята на Дом Експерт Мебел — семейна мебелна фирма от Благоевград с опит от 2012 г. и повече от 100 реализирани проекта.',
   alternates: { canonical: 'https://domexpertmebel.com/за-нас/' },
   openGraph: {
-    title: 'За Dom Expert Мебел | Семейна мебелна фирма',
+    title: 'За Дом Експерт Мебел | Семейна мебелна фирма',
     description: 'Историята на семейна мебелна фирма от Благоевград с опит от 2012 г. и повече от 100 реализирани проекта.',
     url: 'https://domexpertmebel.com/за-нас/',
     type: 'website',
     locale: 'bg_BG',
-    siteName: 'Dom Expert Мебел',
-    images: [{ url: '/images/og/home.webp', width: 1200, height: 630, alt: 'Мебели по поръчка – Dom Expert Мебел' }],
+    siteName: 'Дом Експерт Мебел',
+    images: [{ url: '/images/og/home.webp', width: 1200, height: 630, alt: 'Мебели по поръчка – Дом Експерт Мебел' }],
   },
 })
 
@@ -120,7 +120,7 @@ export default function AboutPage() {
                 className="font-display font-bold text-white"
                 style={{ fontSize: 'clamp(2.5rem, 7.5vw, 5.5rem)', lineHeight: 1.03, maxWidth: '15ch', marginBottom: '1.1rem' }}
               >
-                Семейната история на Dom Expert Мебел
+                Семейната история на Дом Експерт Мебел
               </h1>
               <p className="font-body" style={{
                 fontSize: 'clamp(0.95rem, 2vw, 1.1rem)', color: 'rgba(255,255,255,0.65)',
@@ -170,7 +170,7 @@ export default function AboutPage() {
                 <div className="space-y-4">
                   <p className="font-body leading-relaxed" style={{ fontSize: '1.02rem', color: '#3C3830', lineHeight: 1.75 }}>
                     Всичко започна с просто желание — да правим мебели, каквито сами бихме искали у дома.
-                    От 2012 г. основахме Dom Expert Мебел като малка семейна работилница с ясна цел:{' '}
+                    От 2012 г. основахме Дом Експерт Мебел като малка семейна работилница с ясна цел:{' '}
                     <strong style={{ color: '#1C1208', fontWeight: 700 }}>качество, честност и внимание към всеки детайл.</strong>
                   </p>
                   <p className="font-body leading-relaxed" style={{ fontSize: '1.02rem', color: '#3C3830', lineHeight: 1.75 }}>

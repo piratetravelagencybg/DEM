@@ -18,7 +18,7 @@ export default function GoogleBusinessProfile() {
           <div>
             <span className="eyebrow-pill">Google Business Profile</span>
             <h2 className="font-display font-bold heading-gradient leading-tight mt-2" style={{ fontSize: 'clamp(1.8rem, 4.5vw, 2.6rem)' }}>
-              Намерете Dom Expert Мебел в Google
+              Намерете Дом Експерт Мебел в Google
             </h2>
             <p className="font-body text-warm-gray leading-relaxed mt-4 max-w-2xl">
               Отворете официалния ни профил за точна локация, маршрут и информация за бизнеса.

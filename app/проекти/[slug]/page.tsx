@@ -78,10 +78,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!project) return {}
   const is3d = project.status === '3d'
 
+  const titleCore = `${is3d ? '3D проект: ' : ''}${project.title}${projectPlace(project)}`
+  // Full brand when it fits in 60 characters, short brand otherwise.
+  const brand = titleCore.length + 20 <= 60 ? 'Дом Експерт Мебел' : 'Дом Експерт'
+
   return createPageMetadata({
-    title: is3d
-      ? `3D проект: ${project.title}${projectPlace(project)} | Dom Expert`
-      : `${project.title}${projectPlace(project)} | Dom Expert Мебел`,
+    title: `${titleCore} | ${brand}`,
     description: prepareSeoDescription(seoDescriptionBySlug[project.slug] || project.description),
     path: `/проекти/${project.slug}/`,
     image: is3d ? project.images[0] : PROJECT_SOCIAL_IMAGES[project.category] || '/images/og/home.webp',
