@@ -232,7 +232,7 @@ export default function KuhnyaDomExpertV17Page() {
             <video
               controls
               preload="metadata"
-              poster="/video/kitchen-tour-poster.webp"
+              poster="/video/kitchen-tour-16x9-poster.webp"
               className="w-full h-full"
               style={{ backgroundColor: '#1A1714' }}
             >

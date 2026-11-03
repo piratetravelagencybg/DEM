@@ -118,16 +118,23 @@
     ],
     "imageType": "visualization",
     "featured": false,
-    "status": "3d"
+    "status": "3d",
+    "video": {
+      "src": "/video/salon-za-krasota/reel.mp4",
+      "poster": "/video/salon-za-krasota/reel-poster.webp",
+      "width": 1080,
+      "height": 1920,
+      "uploadDate": "2026-11-03"
+    }
   },
   {
     "id": "8",
     "slug": "3d-proekt-kuhnya-mramor-i-vino-blagoevgrad",
-    "title": "Кухня с мрамор и стена за вино",
+    "title": "Кухня със скосен ъгъл",
     "category": "kuhni",
     "city": "Благоевград",
-    "description": "3D проект на кухня с дължина 4,4 м: матови тъмнокафяви фронтове, плот и гръб от бял мрамор с черни жилки, отворени горни кутии с LED и бронзов кант, извита стена за вино и колона с фурна, вградена кафемашина и охладител за вино.",
-    "materials": "Матови фронтове, мрамор, LED осветление",
+    "description": "Кухня със скосен ъгъл, колона с вграден хладилник, кафе машина и охладител за вино, фурна и плот 90 см.",
+    "materials": "Фронт U741 / U767, плот, Blum",
     "duration": "",
     "images": [
       "/portfolio/3d-proekt-kuhnya-mramor-i-vino-blagoevgrad/3d-vizualizatsiya-kuhnya-mramor-i-vino-blagoevgrad-obsht-izgled-1.webp",

@@ -39,7 +39,7 @@ export default function ContactsPage() {
               </p>
               {/* GEO key facts */}
               <ul className="mt-4 space-y-1 font-body text-sm text-warm-gray">
-                <li>• Работно време: Понеделник–Петък, 09:00–18:00</li>
+                <li>• Работно време: Понеделник–Петък, 10:00–18:00</li>
                 <li>• Телефон: <a href="tel:+359876081199" className="text-walnut hover:underline">0876 081 199</a></li>
                 <li>• Имейл: <a href="mailto:domexpertmebel@gmail.com" className="text-walnut hover:underline">domexpertmebel@gmail.com</a></li>
                 <li>
@@ -65,7 +65,7 @@ export default function ContactsPage() {
                     { icon: Phone, label: 'Телефон', value: '0876 081 199', href: 'tel:+359876081199' },
                     { icon: Mail, label: 'Имейл', value: 'domexpertmebel@gmail.com', href: 'mailto:domexpertmebel@gmail.com' },
                     { icon: MapPin, label: 'Адрес', value: 'ул. Стамболийски 52, 2700 Благоевград', href: GOOGLE_BUSINESS_PROFILE_URL },
-                    { icon: Clock, label: 'Работно време', value: 'Понеделник — Петък: 09:00 — 18:00', href: null },
+                    { icon: Clock, label: 'Работно време', value: 'Понеделник — Петък: 10:00 — 18:00', href: null },
                   ].map(({ icon: Icon, label, value, href }) => (
                     <div key={label} className="flex items-start gap-4 bg-warm-white p-4 rounded-card">
                       <div className="w-10 h-10 rounded-xl bg-cream flex items-center justify-center flex-shrink-0">

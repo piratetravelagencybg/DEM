@@ -6,6 +6,8 @@ import { CANONICAL_SITE_ORIGIN } from '@/lib/canonical-routing'
 import { caseStudyProjects, projects } from '@/lib/projects'
 import { indexableProductSlugs } from '@/lib/indexable-products'
 import { getMbxProductBySlug } from '@/lib/mbx'
+import { partnersIndexable } from '@/lib/partners'
+import { calculatorReady } from '@/lib/kitchen-calculator'
 
 export type SitemapEntry = {
   /** Percent-encoded absolute URL, identical to the page canonical. */
@@ -71,6 +73,17 @@ export function getCoreSitemapEntries(): SitemapEntry[] {
     entry('/дупница/', 0.9, 'monthly', [page('/дупница/')]),
     entry('/сандански/', 0.9, 'monthly', [page('/сандански/')]),
     entry('/петрич/', 0.9, 'monthly', [page('/петрич/')]),
+    entry('/софия/гардероби-по-поръчка/', 0.85, 'monthly', [page('/софия/гардероби-по-поръчка/'), 'components/ui/LandingPage.tsx']),
+    entry('/софия/интериорен-дизайн/', 0.85, 'monthly', [page('/софия/интериорен-дизайн/'), 'components/ui/LandingPage.tsx']),
+    entry('/софия/3d-проект/', 0.85, 'monthly', [page('/софия/3d-проект/'), 'components/ui/LandingPage.tsx']),
+    entry('/цени/', 0.8, 'monthly', [page('/цени/'), 'lib/site-config.ts']),
+    entry('/кухни-с-остров/', 0.8, 'monthly', [page('/кухни-с-остров/'), 'data/projects.json']),
+    entry('/услуги/мебели-за-баня/', 0.8, 'monthly', [page('/услуги/мебели-за-баня/')]),
+    entry('/услуги/обзавеждане-на-ваканционни-апартаменти/', 0.8, 'monthly', [page('/услуги/обзавеждане-на-ваканционни-апартаменти/')]),
+    entry('/за-дизайнери/', 0.7, 'monthly', [page('/за-дизайнери/')]),
+    // noindex pages join the sitemap only once their data is filled in.
+    ...(partnersIndexable ? [entry('/партньори/', 0.6, 'monthly', [page('/партньори/'), 'data/partners.json'])] : []),
+    ...(calculatorReady ? [entry('/калкулатор-кухня/', 0.7, 'monthly', [page('/калкулатор-кухня/'), 'data/kitchen-calculator.json'])] : []),
   ]
 
   const salonPath = '/услуги/обзавеждане-на-обекти/салони-за-красота/'

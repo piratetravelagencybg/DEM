@@ -103,6 +103,17 @@ export default function Visualization3D() {
           <Link href="/контакти/" className="btn-primary w-full justify-center md:w-auto">
             Поискай проект →
           </Link>
+          <p className="mt-5 font-body text-[0.88rem] text-warm-gray">
+            Вижте още{' '}
+            <Link href="/услуги/3d-визуализация/" className="font-medium text-walnut underline underline-offset-2 hover:no-underline">
+              3D проект на кухня
+            </Link>
+            {' '}и{' '}
+            <Link href="/услуги/интериорен-дизайн/" className="font-medium text-walnut underline underline-offset-2 hover:no-underline">
+              интериорен дизайн с цени
+            </Link>
+            .
+          </p>
         </motion.div>
       </div>
     </section>

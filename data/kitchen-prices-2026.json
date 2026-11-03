@@ -1,0 +1,14 @@
+{
+  "_todo": "Данните са TODO — попълват се само от Dom Expert (реални оферти за 2026 г.). Докато published е false, статията е noindex, не е в sitemap и не е в списъка на блога.",
+  "published": false,
+  "datePublished": null,
+  "offersCount": null,
+  "rows": [
+    { "material": "ПДЧ", "avgPerMeter": null },
+    { "material": "МДФ с фолио", "avgPerMeter": null },
+    { "material": "Боядисан МДФ", "avgPerMeter": null },
+    { "material": "Гланц", "avgPerMeter": null }
+  ],
+  "currency": "€",
+  "findings": []
+}

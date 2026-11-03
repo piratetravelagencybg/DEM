@@ -33,15 +33,17 @@ const projectListSchema = {
   numberOfItems: projects.length,
   itemListElement: projects.map((project, index) => {
     const url = new URL(projectHref(project), 'https://domexpertmebel.com').href
+    const name = project.title + (project.city ? ' — ' + project.city : '')
     return {
       '@type': 'ListItem',
       position: index + 1,
+      name,
       url,
       item: {
         '@type': 'WebPage',
         '@id': url,
         url,
-        name: project.title + (project.city ? ' — ' + project.city : ''),
+        name,
         description: project.description,
       },
     }

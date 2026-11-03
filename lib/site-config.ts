@@ -34,7 +34,7 @@ export const SITE_CONFIG = {
 
   hours: {
     weekdays: 'Понеделник–Петък',
-    time: '09:00–18:00',
+    time: '10:00–18:00',
     weekend: 'Събота и Неделя: Почивни дни',
   },
 

@@ -10,10 +10,11 @@ import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
 import FAQSchema from '@/components/seo/FAQSchema'
 import ServiceSchema from '@/components/seo/ServiceSchema'
 import { projectHref, projectImageAlt, projects } from '@/lib/projects'
+import { SOFIA_PAGES } from '@/lib/sofia-pages'
 import { completePageMetadata } from '@/lib/seo'
 
 export const metadata: Metadata = completePageMetadata({
-  title: { absolute: 'Мебели по поръчка София | 3D проект и монтаж | Dom Expert' },
+  title: { absolute: 'Мебели по поръчка София – кухни, гардероби, 3D | Dom Expert' },
   description: 'Кухни, гардероби и спални по поръчка за София с 3D проект преди изработка. 30+ проекта в София, собствено производство от 2012 г., 2 г. гаранция.',
   alternates: { canonical: 'https://domexpertmebel.com/софия/' },
   openGraph: {
@@ -21,7 +22,7 @@ export const metadata: Metadata = completePageMetadata({
     locale: 'bg_BG',
     siteName: 'Dom Expert Мебел',
     url: 'https://domexpertmebel.com/софия/',
-    title: 'Мебели по поръчка София | 3D проект и монтаж | Dom Expert',
+    title: 'Мебели по поръчка София – кухни, гардероби, 3D | Dom Expert',
     description: 'Кухни, гардероби и спални по поръчка за София с 3D проект преди изработка. 30+ проекта в София, собствено производство от 2012 г., 2 г. гаранция.',
     images: [{ url: '/images/og/home.webp', width: 1200, height: 630, alt: 'Мебели по поръчка в София' }],
   },
@@ -115,7 +116,7 @@ const furnitureBlocks = [
     title: 'Гардероби и гардеробни в София',
     text: 'В новите сгради и в по-старите апартаменти в София нишите рядко са стандартни. Изработваме вградени гардероби и гардеробни по точни размери, а вътрешното разпределение — рафтове, лостове, чекмеджета — планираме в 3D проекта.',
     links: [
-      { href: '/услуги/гардероби-по-поръчка/', label: 'гардероби по поръчка' },
+      { href: '/софия/гардероби-по-поръчка/', label: 'гардероби по поръчка в София' },
       { href: '/блог/vutreshno-razpredelenie-na-garderob/', label: 'как да разпределим гардероба' },
     ],
   },
@@ -124,7 +125,7 @@ const furnitureBlocks = [
     text: 'Спалнята по поръчка събира в един проект леглото, нощните шкафчета и гардероба, в една визия и с размери, които пасват на стаята. В 3D проекта виждате как ще изглежда цялата стая, преди изработка.',
     links: [
       { href: '/услуги/спални-по-поръчка/', label: 'спални по поръчка' },
-      { href: '/услуги/3d-визуализация/', label: '3D проект преди изработка' },
+      { href: '/софия/3d-проект/', label: '3D проект за София' },
     ],
   },
 ]
@@ -139,14 +140,19 @@ const guideLinks = [
     description: 'Процес, материали, срокове и цени за кухня в София.',
   },
   {
-    href: '/услуги/3d-визуализация/',
-    label: '3D визуализация',
-    description: 'Дистанционен 3D проект за цялата страна.',
+    href: '/софия/гардероби-по-поръчка/',
+    label: 'Гардероби по поръчка в София',
+    description: 'Вградени гардероби и гардеробни по размер.',
   },
   {
-    href: '/услуги/интериорен-дизайн/',
-    label: 'Интериорен дизайн',
-    description: 'Пълен интериорен дизайн с изработка на мебелите.',
+    href: '/софия/3d-проект/',
+    label: '3D проект за София',
+    description: 'Дистанционен 3D проект по снимки и размери.',
+  },
+  {
+    href: '/софия/интериорен-дизайн/',
+    label: 'Интериорен дизайн в София',
+    description: 'Интериорен проект с изработка на мебелите.',
   },
   {
     href: '/услуги/офис-мебели/',
@@ -172,12 +178,7 @@ const features = [
   'Един екип от дизайна до монтажа',
 ]
 
-const quickLinks = [
-  { label: 'Кухни София', href: '/софия/кухни-по-поръчка/' },
-  { label: 'Гардероби', href: '/услуги/гардероби-по-поръчка/' },
-  { label: 'Спални', href: '/услуги/спални-по-поръчка/' },
-  { label: 'Проекти', href: '/проекти/' },
-]
+const quickLinks = SOFIA_PAGES.map((page) => ({ label: page.short, href: page.href }))
 
 export default function SofiaPage() {
   return (
@@ -227,7 +228,7 @@ export default function SofiaPage() {
             <div className="space-y-6">
               <span className="eyebrow-pill">София</span>
               <h1 className="font-display font-bold text-charcoal leading-[1.05]" style={{ fontSize: 'var(--text-h1)' }}>
-                Мебели по поръчка в София — 3D проект, изработка и монтаж
+                Мебели по поръчка в София
               </h1>
               <p className="font-body text-warm-gray leading-relaxed" style={{ fontSize: '1.05rem' }}>
                 Dom Expert Мебел изработва кухни, гардероби и спални по поръчка за София с 3D проект преди изработка, собствено производство в Благоевград и монтаж от нашия екип. Огледът е 50 €, 3D проектът е от 100 € за кухня и от 50 € за друга мебел — и двете се приспадат при поръчка, а срокът е 4–6 седмици след одобрение на проекта.

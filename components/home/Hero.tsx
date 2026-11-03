@@ -136,6 +136,14 @@ export default function Hero() {
           <HeroRatingBadge />
         </motion.div>
 
+        <a
+          href="/софия/"
+          className="mt-4 inline-flex w-fit items-center gap-1.5 font-body font-semibold text-white underline-offset-4 hover:underline"
+          style={{ fontSize: '0.88rem' }}
+        >
+          Работим в София – {SITE_CONFIG.stats.projectsSofia} проекта →
+        </a>
+
         <div style={{ flex: 1, minHeight: '2rem' }} />
 
         {/* Stats */}

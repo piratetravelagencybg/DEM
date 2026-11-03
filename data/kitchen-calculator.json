@@ -1,0 +1,16 @@
+{
+  "_todo": "Цените за линеен метър и коефициентите за форма са TODO — попълват се само от Dom Expert. Докато има null, калкулаторът не показва диапазон, а страницата е noindex.",
+  "materials": [
+    { "id": "pdch", "label": "ПДЧ", "min": null, "max": null },
+    { "id": "mdf-folio", "label": "МДФ с фолио", "min": null, "max": null },
+    { "id": "mdf-boya", "label": "Боядисан МДФ", "min": null, "max": null },
+    { "id": "glants", "label": "Гланц", "min": null, "max": null }
+  ],
+  "shapes": [
+    { "id": "prava", "label": "Права", "factor": null },
+    { "id": "g-obrazna", "label": "Г-образна", "factor": null },
+    { "id": "p-obrazna", "label": "П-образна", "factor": null },
+    { "id": "ostrov", "label": "С остров", "factor": null }
+  ],
+  "currency": "€"
+}

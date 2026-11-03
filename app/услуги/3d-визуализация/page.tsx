@@ -9,21 +9,44 @@ import { SITE_CONFIG } from '@/lib/site-config'
 const service = services.find((s) => s.id === '3d-visualization')!
 
 export const metadata: Metadata = completePageMetadata({
-  title: { absolute: '3D визуализация на мебели и интериор | Dom Expert Мебел' },
-  description: '3D визуализация на кухни, гардероби, спални и дневни преди изработка. Кухня от 100 €, друга мебел от 50 € – приспада се. Дистанционно за цяла България.',
+  title: { absolute: '3D проект на кухня и мебели – от 100 € | Dom Expert Мебел' },
+  description: '3D проект на кухня от 100 €, на гардероб, спалня или дневна от 50 € – приспада се при поръчка. Проект на кухня и дистанционно за цяла България.',
   alternates: { canonical: 'https://domexpertmebel.com/услуги/3d-визуализация/' },
   openGraph: {
     type: 'website',
     locale: 'bg_BG',
     siteName: 'Dom Expert Мебел',
     url: 'https://domexpertmebel.com/услуги/3d-визуализация/',
-    title: '3D визуализация на мебели и интериор | Dom Expert Мебел',
+    title: '3D проект на кухня и мебели – от 100 € | Dom Expert Мебел',
     description: '3D визуализация на кухни, гардероби, спални и дневни преди изработка. От 100 € — 100% приспадане при поръчка.',
     images: [{ url: '/images/og/3d-visualization.webp', width: 1200, height: 630, alt: '3D визуализация на мебели по поръчка' }],
   },
 })
 
+const videoObjectSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'VideoObject',
+  name: '3D проект на кухня с остров — видео разходка',
+  description: 'Видео разходка в 3D проект на кухня с остров, подготвен преди изработка: LED осветление, вградени уреди, чекмеджета и кафе станция.',
+  thumbnailUrl: 'https://domexpertmebel.com/video/kitchen-tour-16x9-poster.webp',
+  contentUrl: 'https://domexpertmebel.com/video/kitchen-tour-16x9-compressed.mp4',
+  uploadDate: '2026-10-02',
+  duration: 'PT30S',
+}
+
 const guideSections = [
+  {
+    title: 'Проект на кухня: какво виждате преди изработка',
+    paragraphs: [
+      'Кухнята е мебелта, при която грешките струват най-скъпо — уредите, мивката и изводите са фиксирани, а всеки сантиметър има значение. Затова 3D проектът на кухня показва не само визията, но и разпределението на модулите, местата на уредите, плота и осветлението.',
+      `3D проектът на кухня е от ${SITE_CONFIG.pricing.visualization.kitchen.from} ${SITE_CONFIG.pricing.visualization.kitchen.currency} според размера ѝ и се приспада изцяло, ако поръчате изработката при нас. Може да се направи дистанционно — по снимки, размери и позициите на изводите.`,
+    ],
+    bullets: [
+      'Форма на кухнята: права, ъглова, П-образна или с остров',
+      'Места на уредите, мивката и аспирацията',
+      'Материали и цветове на фронтовете и плота',
+    ],
+  },
   {
     title: 'Какво включва 3D проектът',
     paragraphs: [
@@ -111,9 +134,14 @@ const guideLinks = [
     description: 'Цялостен дизайн на помещение или апартамент с 3D визуализации.',
   },
   {
-    href: '/проекти/',
-    label: 'Реализирани проекти',
-    description: 'Вижте примери от 3D визуализации и реални изпълнения.',
+    href: '/софия/3d-проект/',
+    label: '3D проект за София',
+    description: 'Дистанционен 3D проект за кухня или мебели в София.',
+  },
+  {
+    href: '/3d-проекти/',
+    label: '3D проекти',
+    description: 'Визуализации от наши проекти преди изработка.',
   },
 ]
 
@@ -133,6 +161,10 @@ export default function Visualization3DPage() {
       slug={service.slug}
       schemaDescription="Професионална 3D визуализация на кухни, гардероби, спални и дневни преди изработка с 100% приспадане при поръчка на мебелите."
     >
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(videoObjectSchema).replace(/</g, '\\u003c') }}
+      />
       <ServiceGuide
         title="Как работи 3D визуализацията преди изработка"
         intro="3D проектът ви дава пълна яснота какво ще получите — размери, материали, цветове, разпределение. Виждате крайния резултат преди да започне изработката и можете да правите промени докато всичко не е точно такова, каквото искате. При поръчка на мебелите приспадаме 100% от платената сума за проекта."

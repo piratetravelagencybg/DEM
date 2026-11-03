@@ -268,6 +268,7 @@ export default function ProjectPage({ params }: Props) {
                   <div className="divide-y divide-walnut/10">
                     {[
                       { href: service.href, label: service.title },
+                      ...(is3d ? [{ href: '/услуги/3d-визуализация/', label: '3D проект преди изработка' }] : []),
                       ...(project.city ? [{ href: cityPage, label: `Мебели по поръчка в ${project.city}` }] : []),
                       { href: '/проекти/', label: 'Всички проекти' },
                     ].map((link) => (

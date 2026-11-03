@@ -21,7 +21,7 @@ export const metadata: Metadata = completePageMetadata({
   },
 })
 
-const CATEGORY_LABELS: Record<string, string> = { kuhni: 'Кухня', saloni: 'Салон за красота' }
+const CATEGORY_LABELS: Record<string, string> = { kuhni: 'Кухня', saloni: 'Салон за красота', garderob: 'Гардероб', detska: 'Детска стая' }
 
 const projects = allProjects
   .filter((project) => project.status === '3d')

@@ -52,7 +52,7 @@ export default function GoogleBusinessProfile() {
               <Clock3 size={19} className="text-walnut flex-shrink-0 mt-0.5" aria-hidden="true" />
               <div>
                 <p className="font-body font-semibold text-charcoal text-sm">Работно време</p>
-                <p className="font-body text-warm-gray text-sm mt-1">Понеделник–петък, 09:00–18:00</p>
+                <p className="font-body text-warm-gray text-sm mt-1">Понеделник–петък, 10:00–18:00</p>
               </div>
             </div>
           </div>
