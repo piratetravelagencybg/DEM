@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import CityLandingTemplate from '@/components/ui/CityLandingTemplate'
 import { completePageMetadata } from '@/lib/seo'
+import { SITE_CONFIG } from '@/lib/site-config'
 
 const DESCRIPTION = 'Мебели по поръчка в Петрич – кухни, гардероби, спални и дневни. Оглед 50 €, приспада се, 3D проект, монтаж и 2 г. гаранция. ☎ 0876 081 199'
 
@@ -44,10 +45,10 @@ const faq = [
     question: 'За колко време са готови мебелите?',
     answer: 'Цехът има нужда от 4–6 седмици, след като одобрите проекта. После екипът ни ги довозва до Петрич и ги сглобява в ден, който сте избрали.',
   },
-  {
+  ...(SITE_CONFIG.stats.hasProjectsPetrich ? [{
     question: 'Имате ли реализирани проекти в Петрич?',
     answer: 'Да, работили сме за клиенти в Петрич. В портфолиото можете да видите и проекти от съседния регион, например класическата кухня в Сандански.',
-  },
+  }] : []),
 ]
 
 export default function PetrichPage() {

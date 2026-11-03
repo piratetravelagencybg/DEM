@@ -45,7 +45,8 @@ export const SITE_CONFIG = {
     experienceYears: new Date().getFullYear() - 2012,
     projects: '100+ проекта',
     projectsCount: 100,
-    projectsSofia: '30+',
+    projectsSofia: '30+', // потвърдено от собственика, 03.11.2026
+    hasProjectsPetrich: true, // реални проекти в Петрич — потвърдено от собственика, 03.11.2026
     warranty: '2 години',
     warrantyYears: 2,
     deliveryTime: '4–6 седмици',
