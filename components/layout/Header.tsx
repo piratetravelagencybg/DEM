@@ -5,25 +5,48 @@ import Link from 'next/link'
 import Image from 'next/image'
 import dynamic from 'next/dynamic'
 import { Menu, Phone, ShoppingBag, ChevronDown } from 'lucide-react'
+import { SITE_CONFIG } from '@/lib/site-config'
 
 const MobileMenu = dynamic(() => import('./MobileMenu'), { ssr: false })
 
-const navLinks = [
-  { label: 'Услуги', href: '/услуги/' },
-  // Shown in the desktop bar from xl up; below that they fit only in the mobile menu.
-  { label: 'Интериорен дизайн', href: '/услуги/интериорен-дизайн/', wideOnly: true },
-  { label: 'София', href: '/софия/', wideOnly: true },
-  { label: 'Блог', href: '/блог/' },
+type NavLink = { label: string; href: string }
+
+// Shown in the desktop bar from 1440px up; below that they live in the
+// „Услуги“ and „Градове“ dropdowns so nothing wraps or touches.
+const wideLinks: NavLink[] = [
+  { label: 'Интериорен дизайн', href: '/услуги/интериорен-дизайн/' },
+  { label: 'София', href: '/софия/' },
+]
+const trailLinks: NavLink[] = [
   { label: 'За нас', href: '/за-нас/' },
   { label: 'Контакти', href: '/контакти/' },
 ]
 
-const projectsLinks = [
+const servicesLinks: NavLink[] = [
+  { label: 'Всички услуги', href: '/услуги/' },
+  { label: 'Кухни по поръчка', href: '/услуги/кухни-по-поръчка/' },
+  { label: 'Гардероби по поръчка', href: '/услуги/гардероби-по-поръчка/' },
+  { label: 'Спални по поръчка', href: '/услуги/спални-по-поръчка/' },
+  { label: 'Дневни по поръчка', href: '/услуги/дневни-по-поръчка/' },
+  { label: 'Офис мебели', href: '/услуги/офис-мебели/' },
+  { label: 'Мебели за баня', href: '/услуги/мебели-за-баня/' },
+  { label: '3D проект', href: '/услуги/3d-визуализация/' },
+  { label: 'Интериорен дизайн', href: '/услуги/интериорен-дизайн/' },
+]
+// The mobile menu keeps every page, including the blog.
+const mobileLinks: NavLink[] = [
+  { label: 'Услуги', href: '/услуги/' },
+  ...wideLinks,
+  { label: 'Блог', href: '/блог/' },
+  ...trailLinks,
+]
+
+const projectsLinks: NavLink[] = [
   { label: 'Проектни казуси', href: '/проекти/' },
   { label: '3D проекти', href: '/3d-проекти/' },
 ]
 
-const cities = [
+const cities: NavLink[] = [
   { label: 'Благоевград', href: '/благоевград/' },
   { label: 'София', href: '/софия/' },
   { label: 'Дупница', href: '/дупница/' },
@@ -31,11 +54,86 @@ const cities = [
   { label: 'Петрич', href: '/петрич/' },
 ]
 
+function NavDropdown({
+  label,
+  href,
+  items,
+  scrolled,
+}: {
+  label: string
+  href: string
+  items: NavLink[]
+  scrolled: boolean
+}) {
+  const [open, setOpen] = useState(false)
+
+  return (
+    <div
+      className="relative"
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
+      onFocus={() => setOpen(true)}
+      onBlur={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setOpen(false)
+      }}
+    >
+      <Link
+        href={href}
+        className="font-body text-sm whitespace-nowrap transition-colors duration-200 relative group flex items-center gap-1"
+        style={{ color: scrolled ? '#2C2C2C' : 'rgba(255,255,255,0.85)' }}
+        aria-haspopup="true"
+        aria-expanded={open}
+      >
+        {label}
+        <ChevronDown size={14} className={`transition-transform duration-200 ${open ? 'rotate-180' : ''}`} aria-hidden="true" />
+        <span
+          className="absolute -bottom-0.5 left-0 w-0 h-0.5 transition-all duration-200 group-hover:w-full"
+          style={{ background: scrolled ? '#8B6F47' : 'white' }}
+        />
+      </Link>
+
+      {/* Always in the HTML, hidden with CSS */}
+      <div
+        className="absolute top-full left-0 pt-2"
+        style={{ pointerEvents: open ? 'auto' : 'none' }}
+      >
+        <div
+          className="min-w-[180px] rounded-2xl overflow-hidden transition-all duration-200"
+          style={{
+            background: scrolled ? '#FFFFFF' : 'rgba(31,25,20,0.96)',
+            backdropFilter: 'blur(12px)',
+            WebkitBackdropFilter: 'blur(12px)',
+            border: `1px solid ${scrolled ? '#E8DDD0' : 'rgba(255,255,255,0.12)'}`,
+            boxShadow: '0 8px 24px rgba(0,0,0,0.15)',
+            opacity: open ? 1 : 0,
+            transform: open ? 'translateY(0)' : 'translateY(-8px)',
+          }}
+        >
+          {items.map((item, index) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              tabIndex={open ? 0 : -1}
+              className="block px-4 py-2.5 font-body text-sm whitespace-nowrap transition-colors duration-150"
+              style={{
+                color: scrolled ? '#2C2C2C' : 'rgba(255,255,255,0.85)',
+                borderBottom: index < items.length - 1 ? `1px solid ${scrolled ? '#F0EBE3' : 'rgba(255,255,255,0.08)'}` : 'none',
+              }}
+              onMouseEnter={(e) => { e.currentTarget.style.background = scrolled ? '#F7F3ED' : 'rgba(255,255,255,0.08)' }}
+              onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent' }}
+            >
+              {item.label}
+            </Link>
+          ))}
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-  const [citiesDropdownOpen, setCitiesDropdownOpen] = useState(false)
-  const [projectsDropdownOpen, setProjectsDropdownOpen] = useState(false)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20)
@@ -45,6 +143,25 @@ export default function Header() {
 
   const textColor = scrolled ? '#2C2C2C' : 'white'
   const subtitleColor = scrolled ? '#6B6560' : 'rgba(255,255,255,0.6)'
+  const linkColor = scrolled ? '#2C2C2C' : 'rgba(255,255,255,0.85)'
+
+  const navLink = (link: NavLink, className = '') => (
+    <Link
+      key={link.href}
+      href={link.href}
+      className={`font-body text-sm whitespace-nowrap transition-colors duration-200 relative group ${className}`}
+      style={{ color: linkColor }}
+    >
+      {link.label}
+      <span
+        className="absolute -bottom-0.5 left-0 w-0 h-0.5 transition-all duration-200 group-hover:w-full"
+        style={{ background: scrolled ? '#8B6F47' : 'white' }}
+      />
+    </Link>
+  )
+
+  // „Готови мебели“ and „Консултация“ share one size and shape.
+  const pillButton = 'inline-flex h-10 items-center justify-center gap-1.5 rounded-full px-4 font-body text-sm font-semibold whitespace-nowrap transition-all duration-200 hover:-translate-y-0.5'
 
   return (
     <>
@@ -58,8 +175,8 @@ export default function Header() {
           borderBottom: `1px solid ${scrolled ? 'rgba(232,221,208,0.9)' : 'rgba(255,255,255,0.09)'}`,
         }}
       >
-        <div className="px-4 sm:px-6 lg:px-8 max-w-[1280px] mx-auto">
-          <div className="flex items-center justify-between h-16 lg:h-20">
+        <div className="px-4 sm:px-6 lg:px-8 max-w-[1440px] mx-auto">
+          <div className="flex items-center justify-between gap-8 h-16 lg:h-20">
 
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2.5 flex-shrink-0">
@@ -78,7 +195,7 @@ export default function Header() {
               />
               <div>
                 <div
-                  className="font-display font-semibold text-[1.02rem] sm:text-lg leading-tight transition-colors duration-300"
+                  className="font-display font-semibold text-[1.02rem] sm:text-lg leading-tight whitespace-nowrap transition-colors duration-300"
                   style={{ color: textColor }}
                 >
                   ДомЕксперт
@@ -93,168 +210,46 @@ export default function Header() {
             </Link>
 
             {/* Desktop nav */}
-            <nav className="hidden lg:flex items-center gap-5">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={`font-body text-sm whitespace-nowrap transition-colors duration-200 relative group ${link.wideOnly ? 'hidden xl:inline-block' : ''}`}
-                  style={{ color: scrolled ? '#2C2C2C' : 'rgba(255,255,255,0.85)' }}
-                >
-                  {link.label}
-                  <span
-                    className="absolute -bottom-0.5 left-0 w-0 h-0.5 transition-all duration-200 group-hover:w-full"
-                    style={{ background: scrolled ? '#8B6F47' : 'white' }}
-                  />
-                </Link>
-              ))}
-
-              {/* Projects Dropdown */}
-              <div
-                className="relative"
-                onMouseEnter={() => setProjectsDropdownOpen(true)}
-                onMouseLeave={() => setProjectsDropdownOpen(false)}
-              >
-                <Link
-                  href="/проекти/"
-                  className="font-body text-sm transition-colors duration-200 relative group flex items-center gap-1"
-                  style={{ color: scrolled ? '#2C2C2C' : 'rgba(255,255,255,0.85)' }}
-                >
-                  Проекти
-                  <ChevronDown
-                    size={14}
-                    className={`transition-transform duration-200 ${projectsDropdownOpen ? 'rotate-180' : ''}`}
-                  />
-                  <span
-                    className="absolute -bottom-0.5 left-0 w-0 h-0.5 transition-all duration-200 group-hover:w-full"
-                    style={{ background: scrolled ? '#8B6F47' : 'white' }}
-                  />
-                </Link>
-
-                {/* Dropdown Menu - Always in HTML, hidden with CSS */}
-                <div
-                  className="absolute top-full left-0 mt-2 min-w-[180px] rounded-2xl overflow-hidden transition-all duration-200"
-                  style={{
-                    background: scrolled ? '#FFFFFF' : 'rgba(31,25,20,0.96)',
-                    backdropFilter: 'blur(12px)',
-                    WebkitBackdropFilter: 'blur(12px)',
-                    border: `1px solid ${scrolled ? '#E8DDD0' : 'rgba(255,255,255,0.12)'}`,
-                    boxShadow: '0 8px 24px rgba(0,0,0,0.15)',
-                    opacity: projectsDropdownOpen ? 1 : 0,
-                    pointerEvents: projectsDropdownOpen ? 'auto' : 'none',
-                    transform: projectsDropdownOpen ? 'translateY(0)' : 'translateY(-8px)',
-                  }}
-                >
-                  {projectsLinks.map((project, index) => (
-                    <Link
-                      key={project.href}
-                      href={project.href}
-                      className="block px-4 py-2.5 font-body text-sm transition-colors duration-150"
-                      style={{
-                        color: scrolled ? '#2C2C2C' : 'rgba(255,255,255,0.85)',
-                        borderBottom: index < projectsLinks.length - 1 ? `1px solid ${scrolled ? '#F0EBE3' : 'rgba(255,255,255,0.08)'}` : 'none',
-                        background: 'transparent',
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.background = scrolled ? '#F7F3ED' : 'rgba(255,255,255,0.08)'
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.background = 'transparent'
-                      }}
-                    >
-                      {project.label}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-
-              {/* Cities Dropdown */}
-              <div
-                className="relative"
-                onMouseEnter={() => setCitiesDropdownOpen(true)}
-                onMouseLeave={() => setCitiesDropdownOpen(false)}
-              >
-                <Link
-                  href="/благоевград/"
-                  className="font-body text-sm transition-colors duration-200 relative group flex items-center gap-1"
-                  style={{ color: scrolled ? '#2C2C2C' : 'rgba(255,255,255,0.85)' }}
-                >
-                  Градове
-                  <ChevronDown
-                    size={14}
-                    className={`transition-transform duration-200 ${citiesDropdownOpen ? 'rotate-180' : ''}`}
-                  />
-                  <span
-                    className="absolute -bottom-0.5 left-0 w-0 h-0.5 transition-all duration-200 group-hover:w-full"
-                    style={{ background: scrolled ? '#8B6F47' : 'white' }}
-                  />
-                </Link>
-
-                {/* Dropdown Menu - Always in HTML, hidden with CSS */}
-                <div
-                  className="absolute top-full left-0 mt-2 min-w-[180px] rounded-2xl overflow-hidden transition-all duration-200"
-                  style={{
-                    background: scrolled ? '#FFFFFF' : 'rgba(31,25,20,0.96)',
-                    backdropFilter: 'blur(12px)',
-                    WebkitBackdropFilter: 'blur(12px)',
-                    border: `1px solid ${scrolled ? '#E8DDD0' : 'rgba(255,255,255,0.12)'}`,
-                    boxShadow: '0 8px 24px rgba(0,0,0,0.15)',
-                    opacity: citiesDropdownOpen ? 1 : 0,
-                    pointerEvents: citiesDropdownOpen ? 'auto' : 'none',
-                    transform: citiesDropdownOpen ? 'translateY(0)' : 'translateY(-8px)',
-                  }}
-                >
-                  {cities.map((city, index) => (
-                    <Link
-                      key={city.href}
-                      href={city.href}
-                      className="block px-4 py-2.5 font-body text-sm transition-colors duration-150"
-                      style={{
-                        color: scrolled ? '#2C2C2C' : 'rgba(255,255,255,0.85)',
-                        borderBottom: index < cities.length - 1 ? `1px solid ${scrolled ? '#F0EBE3' : 'rgba(255,255,255,0.08)'}` : 'none',
-                        background: 'transparent',
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.background = scrolled ? '#F7F3ED' : 'rgba(255,255,255,0.08)'
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.background = 'transparent'
-                      }}
-                    >
-                      {city.label}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-
-              {/* Shop button in nav */}
-              <Link
-                href="/готови-мебели/"
-                className="inline-flex items-center gap-1.5 font-body font-semibold text-sm px-4 py-2 rounded-full transition-all duration-200 hover:-translate-y-0.5"
-                style={{
-                  background: scrolled ? '#8B6F47' : 'rgba(255,255,255,0.15)',
-                  color: 'white',
-                  border: `1px solid ${scrolled ? 'transparent' : 'rgba(255,255,255,0.35)'}`,
-                  backdropFilter: scrolled ? 'none' : 'blur(8px)',
-                  boxShadow: scrolled ? '0 4px 16px rgba(139,111,71,0.35)' : 'none',
-                }}
-              >
-                <ShoppingBag size={13} />
-                Готови мебели
-              </Link>
+            <nav className="hidden lg:flex flex-1 min-w-0 items-center justify-center gap-5 xl:gap-6" aria-label="Основна навигация">
+              <NavDropdown label="Услуги" href="/услуги/" items={servicesLinks} scrolled={scrolled} />
+              {wideLinks.map((link) => navLink(link, 'hidden min-[1440px]:inline-block'))}
+              <NavDropdown label="Проекти" href="/проекти/" items={projectsLinks} scrolled={scrolled} />
+              <NavDropdown label="Градове" href="/благоевград/" items={cities} scrolled={scrolled} />
+              {trailLinks.map((link) => navLink(link))}
             </nav>
 
             {/* Right side */}
-            <div className="flex items-center gap-3">
+            <div className="flex flex-shrink-0 items-center gap-3">
               <a
-                href="tel:+359876081199"
-                className="hidden md:flex items-center gap-2 text-sm font-medium transition-colors"
-                style={{ color: scrolled ? '#2C2C2C' : 'rgba(255,255,255,0.85)' }}
+                href={`tel:${SITE_CONFIG.phoneInternational}`}
+                className="hidden md:inline-flex items-center gap-2 text-sm font-medium whitespace-nowrap transition-colors"
+                style={{ color: linkColor }}
+                aria-label={`Обадете се на ${SITE_CONFIG.phone}`}
               >
-                <Phone size={15} style={{ color: scrolled ? '#8B6F47' : 'rgba(255,255,255,0.7)' }} />
-                0876 081 199
+                <Phone size={16} style={{ color: scrolled ? '#8B6F47' : 'rgba(255,255,255,0.7)' }} aria-hidden="true" />
+                <span className="hidden xl:inline">{SITE_CONFIG.phone}</span>
               </a>
-              <Link href="/контакти/" className="hidden lg:block btn-primary text-sm py-2.5">
+              <Link
+                href="/готови-мебели/"
+                className={`hidden lg:inline-flex ${pillButton}`}
+                style={{
+                  background: scrolled ? 'rgba(139,111,71,0.08)' : 'rgba(255,255,255,0.12)',
+                  color: scrolled ? '#6B5236' : 'white',
+                  border: `1px solid ${scrolled ? 'rgba(139,111,71,0.35)' : 'rgba(255,255,255,0.35)'}`,
+                }}
+              >
+                <ShoppingBag size={14} aria-hidden="true" />
+                Готови мебели
+              </Link>
+              <Link
+                href="/контакти/"
+                className={`hidden lg:inline-flex ${pillButton} text-white`}
+                style={{
+                  background: '#8B6F47',
+                  border: '1px solid #8B6F47',
+                  boxShadow: '0 4px 16px rgba(139,111,71,0.35)',
+                }}
+              >
                 Консултация
               </Link>
 
@@ -277,7 +272,7 @@ export default function Header() {
         </div>
       </header>
 
-      {menuOpen && <MobileMenu open onClose={() => setMenuOpen(false)} navLinks={navLinks} projectsLinks={projectsLinks} cities={cities} />}
+      {menuOpen && <MobileMenu open onClose={() => setMenuOpen(false)} navLinks={mobileLinks} projectsLinks={projectsLinks} cities={cities} />}
     </>
   )
 }
