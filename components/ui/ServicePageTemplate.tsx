@@ -196,7 +196,7 @@ export default function ServicePageTemplate({
                 ) : (
                   <Image
                     src={heroImage}
-                    alt={`${title} – ${heroDisclosure?.toLocaleLowerCase('bg-BG') || 'илюстрация'}`}
+                    alt={heroDisclosure ? `${title} – ${heroDisclosure.toLocaleLowerCase('bg-BG')}` : title}
                     fill
                     className="object-cover"
                     priority

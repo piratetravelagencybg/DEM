@@ -15,7 +15,7 @@ export const metadata: Metadata = completePageMetadata({
     url: 'https://domexpertmebel.com/сандански/',
     title: 'Мебели по поръчка Сандански | Dom Expert Мебел',
     description: DESCRIPTION,
-    images: [{ url: '/images/og/home.webp', width: 1200, height: 630, alt: 'Примерна интериорна визуализация за мебели по поръчка в Сандански' }],
+    images: [{ url: '/images/og/home.webp', width: 1200, height: 630, alt: 'Мебели по поръчка в Сандански' }],
   },
 })
 

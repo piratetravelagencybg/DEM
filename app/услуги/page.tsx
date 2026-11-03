@@ -14,7 +14,7 @@ export const metadata: Metadata = createPageMetadata({
   description: 'Кухни, гардероби, спални, дневни и офис мебели по поръчка в Благоевград, София и региона. Оглед 50 €, приспадат се, монтаж и 2 г. гаранция.',
   path: '/услуги/',
   image: '/images/og/kitchens.webp',
-  imageAlt: 'Примерна визуализация на мебели по поръчка',
+  imageAlt: 'Мебели по поръчка',
 })
 
 export default function ServicesPage() {
@@ -45,7 +45,7 @@ export default function ServicesPage() {
                   <div className="relative aspect-video overflow-hidden">
                     <Image
                       src={s.image}
-                      alt={`${s.title} — ${disclosure?.toLocaleLowerCase('bg-BG') || 'илюстрация'}`}
+                      alt={disclosure ? `${s.title} — ${disclosure.toLocaleLowerCase('bg-BG')}` : s.title}
                       fill
                       className="object-cover transition-transform duration-300 group-hover:scale-105"
                       sizes="(max-width: 768px) 100vw, 33vw"

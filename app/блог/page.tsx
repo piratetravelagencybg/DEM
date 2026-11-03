@@ -18,7 +18,7 @@ export const metadata: Metadata = createPageMetadata({
     'Практични съвети за кухни, гардероби, готови мебели, измерване, материали и обзавеждане. Научете как да планирате правилния избор и поръчка.',
   path: '/блог/',
   image: '/images/og/home.webp',
-  imageAlt: 'Примерна интериорна визуализация – блог на Dom Expert Мебел',
+  imageAlt: 'Блог на Dom Expert Мебел',
 })
 
 function ImageCaption({ image }: { image: BlogImage }) {
@@ -64,16 +64,18 @@ function PostMedia({
       >
         <Image
           src={image.src}
-          alt={`${image.alt}. ${image.caption}`}
+          alt={image.caption ? `${image.alt}. ${image.caption}` : image.alt}
           fill
           className="object-cover transition-transform duration-500 group-hover/image:scale-[1.03]"
           sizes={sizes}
           priority={priority}
         />
       </Link>
-      <figcaption className="px-4 py-2 font-body text-[11px] leading-relaxed text-white/75">
-        <ImageCaption image={image} />
-      </figcaption>
+      {image.caption && (
+        <figcaption className="px-4 py-2 font-body text-[11px] leading-relaxed text-white/75">
+          <ImageCaption image={image} />
+        </figcaption>
+      )}
     </figure>
   )
 }

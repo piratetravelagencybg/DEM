@@ -30,7 +30,7 @@ export const metadata: Metadata = completePageMetadata({
     type: 'website',
     locale: 'bg_BG',
     siteName: 'Dom Expert Мебел',
-    images: [{ url: '/images/og/home.webp', width: 1200, height: 630, alt: 'Примерна интериорна визуализация за мебели по поръчка' }],
+    images: [{ url: '/images/og/home.webp', width: 1200, height: 630, alt: 'Мебели по поръчка – Dom Expert Мебел' }],
   },
 })
 
@@ -73,7 +73,7 @@ export default function AboutPage() {
         >
           <Image
             src={aboutHeroImage}
-            alt="Примерна интериорна визуализация на обзавеждане по поръчка"
+            alt="Обзавеждане по поръчка"
             fill
             className="object-cover"
             sizes="100vw"
@@ -83,16 +83,18 @@ export default function AboutPage() {
             position: 'absolute', inset: 0,
             background: 'linear-gradient(to bottom, rgba(8,5,2,0.32) 0%, rgba(8,5,2,0.18) 35%, rgba(8,5,2,0.75) 75%, rgba(8,5,2,0.92) 100%)',
           }} />
-          <span
-            className="font-body"
-            style={{
-              position: 'absolute', zIndex: 20, top: '5.5rem', right: 'max(1.25rem, calc((100vw - 1120px) / 2))',
-              borderRadius: 100, padding: '6px 12px', fontSize: '0.65rem',
-              color: 'white', background: 'rgba(0,0,0,0.58)', backdropFilter: 'blur(8px)',
-            }}
-          >
-            {getImageDisclosure(aboutHeroImage)}
-          </span>
+          {getImageDisclosure(aboutHeroImage) && (
+            <span
+              className="font-body"
+              style={{
+                position: 'absolute', zIndex: 20, top: '5.5rem', right: 'max(1.25rem, calc((100vw - 1120px) / 2))',
+                borderRadius: 100, padding: '6px 12px', fontSize: '0.65rem',
+                color: 'white', background: 'rgba(0,0,0,0.58)', backdropFilter: 'blur(8px)',
+              }}
+            >
+              {getImageDisclosure(aboutHeroImage)}
+            </span>
+          )}
 
           <div style={{
             position: 'relative', zIndex: 10, flex: 1,
@@ -234,15 +236,12 @@ export default function AboutPage() {
             <div className="relative overflow-hidden rounded-2xl" style={{ aspectRatio: '21/9' }}>
               <Image
                 src={kitchenVisualization}
-                alt="Примерна визуализация на модерна кухня по поръчка"
+                alt="Модерна кухня по поръчка"
                 fill
                 className="object-cover"
                 sizes="100vw"
               />
             </div>
-            <p className="font-body text-center" style={{ fontSize: '0.75rem', color: '#A09890', marginTop: 12, fontStyle: 'italic' }}>
-              Примерна визуализация за вдъхновение — изображението не е снимка на реализиран обект.
-            </p>
           </div>
         </section>
 
@@ -393,18 +392,22 @@ export default function AboutPage() {
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="relative overflow-hidden rounded-2xl" style={{ aspectRatio: '3/4' }}>
-                <Image src={wardrobeVisualization} alt="Примерна визуализация на гардероб с вътрешно осветление"
+                <Image src={wardrobeVisualization} alt="Гардероб с вътрешно осветление"
                   fill className="object-cover" sizes="(max-width: 640px) 100vw, 50vw" />
-                <span className="absolute bottom-3 left-3 rounded-full bg-black/60 px-3 py-1.5 font-body text-[0.62rem] text-white backdrop-blur-md">
-                  {getImageDisclosure(wardrobeVisualization)}
-                </span>
+                {getImageDisclosure(wardrobeVisualization) && (
+                  <span className="absolute bottom-3 left-3 rounded-full bg-black/60 px-3 py-1.5 font-body text-[0.62rem] text-white backdrop-blur-md">
+                    {getImageDisclosure(wardrobeVisualization)}
+                  </span>
+                )}
               </div>
               <div className="relative overflow-hidden rounded-2xl" style={{ aspectRatio: '3/4' }}>
-                <Image src={livingVisualization} alt="Примерна визуализация на отворена дневна зона"
+                <Image src={livingVisualization} alt="Отворена дневна зона"
                   fill className="object-cover" sizes="(max-width: 640px) 100vw, 50vw" />
-                <span className="absolute bottom-3 left-3 rounded-full bg-black/60 px-3 py-1.5 font-body text-[0.62rem] text-white backdrop-blur-md">
-                  {getImageDisclosure(livingVisualization)}
-                </span>
+                {getImageDisclosure(livingVisualization) && (
+                  <span className="absolute bottom-3 left-3 rounded-full bg-black/60 px-3 py-1.5 font-body text-[0.62rem] text-white backdrop-blur-md">
+                    {getImageDisclosure(livingVisualization)}
+                  </span>
+                )}
               </div>
             </div>
             <div className="text-center mt-7">

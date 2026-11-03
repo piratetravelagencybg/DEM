@@ -15,7 +15,7 @@ export const metadata: Metadata = completePageMetadata({
     url: 'https://domexpertmebel.com/дупница/',
     title: 'Мебели по поръчка Дупница | Dom Expert Мебел',
     description: DESCRIPTION,
-    images: [{ url: '/images/og/home.webp', width: 1200, height: 630, alt: 'Примерна интериорна визуализация за мебели по поръчка в Дупница' }],
+    images: [{ url: '/images/og/home.webp', width: 1200, height: 630, alt: 'Мебели по поръчка в Дупница' }],
   },
 })
 

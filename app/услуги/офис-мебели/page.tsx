@@ -74,7 +74,7 @@ export const metadata: Metadata = completePageMetadata({
     url: 'https://domexpertmebel.com/услуги/офис-мебели/',
     title: TITLE,
     description: DESCRIPTION,
-    images: [{ url: '/images/og/office.webp', width: 1200, height: 630, alt: 'Примерна визуализация на офис мебели по поръчка' }],
+    images: [{ url: '/images/og/office.webp', width: 1200, height: 630, alt: 'Офис мебели по поръчка' }],
   },
 })
 
@@ -107,7 +107,6 @@ export default function OfisMebeliPage() {
         href={projectHref(featuredProject)}
         eyebrow={projectStatusLabel(featuredProject)}
         imageAlt={projectImageAlt(featuredProject)}
-        imageCaption={featuredProject.imageCaption}
       />
     </ServicePageTemplate>
   )

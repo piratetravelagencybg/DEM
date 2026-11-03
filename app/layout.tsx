@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     title: 'Мебели по поръчка Благоевград и София | Dom Expert Мебел',
     description: 'Семейна фирма за мебели по поръчка. Оглед 50 €, приспадат се, платен 3D проект с приспадане при поръчка и 2 години гаранция.',
     url: 'https://domexpertmebel.com/',
-    images: [{ url: '/images/og/home.webp', width: 1200, height: 630, type: 'image/webp', alt: 'Примерна интериорна визуализация – Dom Expert Мебел' }],
+    images: [{ url: '/images/og/home.webp', width: 1200, height: 630, type: 'image/webp', alt: 'Мебели по поръчка – Dom Expert Мебел' }],
   },
   twitter: {
     card: 'summary_large_image',

@@ -44,7 +44,7 @@ export default function AboutSection() {
           {/* Background image */}
           <Image
             src={aboutImage}
-            alt="Примерна интериорна визуализация на обзавеждане по поръчка"
+            alt="Обзавеждане по поръчка"
             fill
             className="object-cover"
             sizes="(max-width: 768px) 100vw, 80vw"

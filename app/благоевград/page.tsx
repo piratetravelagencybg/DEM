@@ -25,7 +25,7 @@ export const metadata: Metadata = completePageMetadata({
     url: 'https://domexpertmebel.com/благоевград/',
     title: 'Мебели по поръчка Благоевград – кухни и спални | Dom Expert',
     description: 'Семейна мебелна работилница в Благоевград от 2012 г. Кухни, гардероби и спални по поръчка с 3D проект. 5★ в Google, 2 г. гаранция. ☎ 0876 081 199',
-    images: [{ url: '/images/og/home.webp', width: 1200, height: 630, alt: 'Примерна интериорна визуализация за мебели по поръчка в Благоевград' }],
+    images: [{ url: '/images/og/home.webp', width: 1200, height: 630, alt: 'Мебели по поръчка в Благоевград' }],
   },
 })
 
@@ -307,7 +307,7 @@ export default function BlagoevgradPage() {
             <span className="eyebrow-pill">Проекти</span>
             <h2 className="section-title text-left">Проекти в Благоевград</h2>
             <p className="font-body text-warm-gray leading-relaxed mt-4" style={{ fontSize: '1rem' }}>
-              Реализирани обекти и 3D проекти за клиенти в Благоевград. Всеки проект е обозначен, а изображенията са визуализации, а не снимки от обектите.
+              Реализирани обекти и 3D проекти за клиенти в Благоевград.
             </p>
           </div>
           <ProjectCards items={projectsByCity('Благоевград')} />

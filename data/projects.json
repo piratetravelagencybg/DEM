@@ -12,7 +12,6 @@
       "/images/visualizations/07-modern-kitchen-island-01.webp"
     ],
     "imageType": "visualization",
-    "imageCaption": "Примерна визуализация към описания реализиран проект. Изображението не е фотография от обекта.",
     "featured": true,
     "status": "realized"
   },
@@ -29,7 +28,6 @@
       "/images/visualizations/22-modern-wardrobe-sliding-doors-01.webp"
     ],
     "imageType": "visualization",
-    "imageCaption": "Примерна визуализация към описания реализиран проект. Изображението не е фотография от обекта.",
     "featured": true,
     "status": "realized"
   },
@@ -46,7 +44,6 @@
       "/images/visualizations/02-home-hero-open-plan-kitchen-02.webp"
     ],
     "imageType": "visualization",
-    "imageCaption": "Примерна визуализация към описания реализиран проект. Изображението не е фотография от обекта.",
     "featured": true,
     "status": "realized"
   },
@@ -63,7 +60,6 @@
       "/images/visualizations/19-modern-bedroom-neutral-01.webp"
     ],
     "imageType": "visualization",
-    "imageCaption": "Примерна визуализация към описания реализиран проект. Изображението не е фотография от обекта.",
     "featured": true,
     "status": "realized"
   },
@@ -80,7 +76,6 @@
       "/images/visualizations/13-modern-home-office-double-desk-01.webp"
     ],
     "imageType": "visualization",
-    "imageCaption": "Примерна визуализация към описания реализиран проект. Изображението не е фотография от обекта.",
     "featured": false,
     "status": "realized"
   },
@@ -97,7 +92,6 @@
       "/images/visualizations/11-modern-kitchen-gold-accents-01.webp"
     ],
     "imageType": "visualization",
-    "imageCaption": "Примерна визуализация към описания реализиран проект. Изображението не е фотография от обекта.",
     "featured": false,
     "status": "realized"
   },
@@ -123,7 +117,6 @@
       "/portfolio/3d-proekt-salon-za-krasota/3d-vizualizatsiya-salon-za-krasota-lakove-10.webp"
     ],
     "imageType": "visualization",
-    "imageCaption": "3D визуализация на проекта. Салонът предстои да бъде изработен.",
     "featured": false,
     "status": "3d"
   },
@@ -147,7 +140,6 @@
       "/portfolio/3d-proekt-kuhnya-mramor-i-vino-blagoevgrad/3d-vizualizatsiya-kuhnya-mramor-i-vino-blagoevgrad-hladilnik-detayl-8.webp"
     ],
     "imageType": "visualization",
-    "imageCaption": "3D визуализация на проекта. Изображението не е снимка от изпълнен обект.",
     "featured": false,
     "status": "3d"
   },
@@ -170,7 +162,6 @@
       "/portfolio/kuhnya-domexpert-v17/3d-vizualizatsiya-kuhnya-s-ostrov-blagoevgrad-izvit-shkaf-6.webp"
     ],
     "imageType": "visualization",
-    "imageCaption": "3D визуализация на проекта. Изображението не е снимка от изпълнен обект.",
     "featured": false,
     "status": "3d"
   },
@@ -187,8 +178,91 @@
       "/portfolio/3d-proekt-tyasna-kuhnya-blagoevgrad/3d-vizualizatsiya-tyasna-kuhnya-blagoevgrad-kolona-s-furna-1.webp"
     ],
     "imageType": "visualization",
-    "imageCaption": "3D визуализация на проекта. Изображението не е снимка от изпълнен обект.",
     "featured": false,
     "status": "3d"
+  },
+  {
+    "id": "11",
+    "slug": "detska-staya-kolichki",
+    "title": "Детска стая с легло с колички",
+    "category": "detska",
+    "city": "",
+    "description": "Детска стая 2,45 × 3,42 м с вградени модули, легло с колички, гардероб и LED осветление.",
+    "materials": "ПДЧ, LED",
+    "duration": "",
+    "images": [
+      "/portfolio/detska-staya-kolichki/3d-vizualizatsiya-detska-staya-obsht-izgled-1.webp",
+      "/portfolio/detska-staya-kolichki/3d-vizualizatsiya-detska-staya-kam-legloto-2.webp",
+      "/portfolio/detska-staya-kolichki/3d-vizualizatsiya-detska-staya-kam-byuroto-3.webp",
+      "/portfolio/detska-staya-kolichki/3d-vizualizatsiya-detska-staya-kam-garderoba-4.webp",
+      "/portfolio/detska-staya-kolichki/3d-vizualizatsiya-detska-staya-nosht-led-5.webp",
+      "/portfolio/detska-staya-kolichki/3d-vizualizatsiya-detska-staya-kray-na-garderoba-6.webp",
+      "/portfolio/detska-staya-kolichki/3d-vizualizatsiya-detska-staya-nisha-ot-vratata-7.webp",
+      "/portfolio/detska-staya-kolichki/3d-vizualizatsiya-detska-staya-detayl-led-osvetlenie-8.webp",
+      "/portfolio/detska-staya-kolichki/3d-vizualizatsiya-detska-staya-detska-lampa-9.webp"
+    ],
+    "imageType": "visualization",
+    "featured": false,
+    "status": "3d",
+    "video": {
+      "src": "/video/detska-staya/reel.mp4",
+      "poster": "/video/detska-staya/reel-poster.webp",
+      "width": 1080,
+      "height": 1920,
+      "uploadDate": "2026-11-03"
+    }
+  },
+  {
+    "id": "12",
+    "slug": "garderob-byal-glants",
+    "title": "Гардероб в бял гланц",
+    "category": "garderob",
+    "city": "",
+    "description": "Вграден гардероб в бял гланц с ъглови модули, LED осветление и стъклена витрина с чекмеджета.",
+    "materials": "Гланц, LED, стъкло",
+    "duration": "",
+    "images": [
+      "/portfolio/garderob-byal-glants/3d-vizualizatsiya-garderob-byal-glants-obsht-izgled-1.webp",
+      "/portfolio/garderob-byal-glants/3d-vizualizatsiya-garderob-byal-glants-zadna-stena-2.webp",
+      "/portfolio/garderob-byal-glants/3d-vizualizatsiya-garderob-byal-glants-agal-3.webp",
+      "/portfolio/garderob-byal-glants/3d-vizualizatsiya-garderob-byal-glants-izgled-otgore-4.webp"
+    ],
+    "imageType": "visualization",
+    "featured": false,
+    "status": "3d",
+    "video": {
+      "src": "/video/garderob-byal-glants/reel.mp4",
+      "poster": "/video/garderob-byal-glants/reel-poster.webp",
+      "width": 1080,
+      "height": 1920,
+      "uploadDate": "2026-11-03"
+    }
+  },
+  {
+    "id": "13",
+    "slug": "kuhnya-promyana",
+    "title": "Г-образна кухня с тъмен дъб",
+    "category": "kuhni",
+    "city": "",
+    "description": "Г-образна кухня с кремав гланц и тъмен дъб, гранитна мивка, газов котлон и колона с фурна.",
+    "materials": "Гланц, дъб, гранит, Gola",
+    "duration": "",
+    "images": [
+      "/portfolio/kuhnya-promyana/3d-vizualizatsiya-g-obrazna-kuhnya-obsht-izgled-1.webp",
+      "/portfolio/kuhnya-promyana/3d-vizualizatsiya-g-obrazna-kuhnya-frontalen-2.webp",
+      "/portfolio/kuhnya-promyana/3d-vizualizatsiya-g-obrazna-kuhnya-mivka-3.webp",
+      "/portfolio/kuhnya-promyana/3d-vizualizatsiya-g-obrazna-kuhnya-otdyasno-4.webp",
+      "/portfolio/kuhnya-promyana/3d-vizualizatsiya-g-obrazna-kuhnya-kray-na-kriloto-5.webp"
+    ],
+    "imageType": "visualization",
+    "featured": false,
+    "status": "3d",
+    "video": {
+      "src": "/video/kuhnya-promyana/kuhnya-16x9.mp4",
+      "poster": "/video/kuhnya-promyana/kuhnya-16x9-poster.webp",
+      "width": 1920,
+      "height": 1080,
+      "uploadDate": "2026-11-03"
+    }
   }
 ]

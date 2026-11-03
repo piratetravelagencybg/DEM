@@ -23,7 +23,7 @@ export const metadata: Metadata = completePageMetadata({
     url: 'https://domexpertmebel.com/софия/',
     title: 'Мебели по поръчка София | 3D проект и монтаж | Dom Expert',
     description: 'Кухни, гардероби и спални по поръчка за София с 3D проект преди изработка. 30+ проекта в София, собствено производство от 2012 г., 2 г. гаранция.',
-    images: [{ url: '/images/og/home.webp', width: 1200, height: 630, alt: 'Примерна интериорна визуализация за мебели по поръчка в София' }],
+    images: [{ url: '/images/og/home.webp', width: 1200, height: 630, alt: 'Мебели по поръчка в София' }],
   },
 })
 
@@ -365,7 +365,7 @@ export default function SofiaPage() {
             <span className="eyebrow-pill">Проекти</span>
             <h2 className="section-title text-left">Проекти в София</h2>
             <p className="font-body text-warm-gray leading-relaxed mt-4" style={{ fontSize: '1rem' }}>
-              Реализирали сме над 30 проекта в София. Тук показваме описаните в портфолиото; изображенията са визуализации, а не снимки от обектите.
+              Реализирали сме над 30 проекта в София. Тук показваме описаните в портфолиото.
             </p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -396,7 +396,6 @@ export default function SofiaPage() {
                     <span className="inline-flex items-center gap-1.5"><MapPin size={13} className="text-walnut" aria-hidden="true" />{project.city}</span>
                     <span className="inline-flex items-center gap-1.5"><Clock3 size={13} className="text-walnut" aria-hidden="true" />{project.duration}</span>
                   </div>
-                  <p className="font-body text-warm-gray mt-3" style={{ fontSize: '0.72rem' }}>{project.imageCaption}</p>
                 </div>
               </Link>
             ))}

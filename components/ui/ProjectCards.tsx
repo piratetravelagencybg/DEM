@@ -15,6 +15,7 @@ const categoryLabels: Record<string, string> = {
   dnevni: 'Дневна',
   ofis: 'Офис',
   saloni: 'Салон за красота',
+  detska: 'Детска стая',
 }
 
 /** Card grid of projects; labels follow each project's status. */
@@ -42,9 +43,11 @@ export default function ProjectCards({
               className="object-cover transition-transform duration-500 group-hover:scale-105"
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             />
-            <span className="absolute left-3 top-3 z-10 rounded-full bg-charcoal/80 px-3 py-1 font-body text-[0.65rem] font-semibold uppercase tracking-wide text-white backdrop-blur-sm">
-              {projectImageBadge(project)}
-            </span>
+            {projectImageBadge(project) && (
+              <span className="absolute left-3 top-3 z-10 rounded-full bg-charcoal/80 px-3 py-1 font-body text-[0.65rem] font-semibold uppercase tracking-wide text-white backdrop-blur-sm">
+                {projectImageBadge(project)}
+              </span>
+            )}
             <div className="absolute inset-0 bg-gradient-to-t from-charcoal/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
           </div>
           <div className="p-5">
@@ -60,9 +63,6 @@ export default function ProjectCards({
               </p>
             )}
             <p className="font-body text-warm-gray text-sm mt-2 line-clamp-2">{project.description}</p>
-            <p className="mt-3 border-t border-walnut/10 pt-3 font-body text-xs leading-relaxed text-warm-gray">
-              {project.imageCaption}
-            </p>
           </div>
         </Link>
       ))}

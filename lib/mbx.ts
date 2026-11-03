@@ -391,7 +391,7 @@ export function buildProductMetadata(product: MbxVariant): Metadata {
         width: 1200,
         height: 630,
         type: 'image/webp',
-        alt: 'Примерна интериорна визуализация – Dom Expert Мебел',
+        alt: 'Готови мебели – Dom Expert Мебел',
       }],
     },
     twitter: {

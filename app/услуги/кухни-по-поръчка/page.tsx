@@ -19,7 +19,7 @@ export const metadata: Metadata = completePageMetadata({
     url: 'https://domexpertmebel.com/услуги/кухни-по-поръчка/',
     title: 'Кухни по поръчка – 3D проект и монтаж | Dom Expert',
     description: 'Кухни по поръчка с 3D проект преди изработка. Оглед 50 € и 3D проект от 100 € – приспадат се при поръчка. Собствено производство, монтаж и 2 г. гаранция.',
-    images: [{ url: '/images/og/kitchens.webp', width: 1200, height: 630, alt: 'Примерна визуализация на кухня по поръчка' }],
+    images: [{ url: '/images/og/kitchens.webp', width: 1200, height: 630, alt: 'Кухня по поръчка' }],
   },
 })
 
@@ -139,7 +139,7 @@ export default function KuhniPage() {
             <span className="eyebrow-pill">Проекти</span>
             <h2 className="section-title text-left">Проекти на кухни по поръчка</h2>
             <p className="font-body text-warm-gray leading-relaxed mt-4" style={{ fontSize: '1rem' }}>
-              Реализирани кухни и 3D проекти, подготвени преди изработка. Всеки проект е обозначен, а изображенията са визуализации, а не снимки от обектите.
+              Реализирани кухни и 3D проекти, подготвени преди изработка.
             </p>
           </div>
           <ProjectCards items={projectsByCategory('kuhni')} />

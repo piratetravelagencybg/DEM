@@ -38,15 +38,5 @@ export function getImageDisclosure(src: string) {
   const credit = getImageCredit(src)
   if (credit) return `Илюстративна снимка: ${credit.label}`
 
-  if (
-    src.startsWith('/images/visualizations/')
-    || src.startsWith('/images/real/')
-    || src.startsWith('/images/hero/')
-    || src.startsWith('/images/services/')
-    || src.startsWith('/images/projects/')
-  ) {
-    return 'Примерна визуализация'
-  }
-
   return undefined
 }

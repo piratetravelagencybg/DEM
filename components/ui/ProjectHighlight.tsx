@@ -21,7 +21,7 @@ export default function ProjectHighlight({
   duration,
   image,
   href,
-  imageCaption = 'Примерна визуализация към описания реализиран проект. Изображението не е фотография от обекта.',
+  imageCaption,
   eyebrow = 'Реализиран проект',
   imageAlt,
 }: ProjectHighlightProps) {
@@ -35,14 +35,16 @@ export default function ProjectHighlight({
           <div className="relative min-h-[260px] md:min-h-[360px]">
             <Image
               src={image}
-              alt={imageAlt ?? title + ' — примерна визуализация към реализиран проект в ' + city}
+              alt={imageAlt ?? title + (city ? ' в ' + city : '')}
               fill
               className="object-cover"
               sizes="(max-width: 768px) 100vw, 50vw"
             />
-            <p className="absolute inset-x-4 bottom-4 rounded-xl bg-charcoal/85 px-4 py-2 font-body text-xs leading-relaxed text-white backdrop-blur-sm">
-              {imageCaption}
-            </p>
+            {imageCaption && (
+              <p className="absolute inset-x-4 bottom-4 rounded-xl bg-charcoal/85 px-4 py-2 font-body text-xs leading-relaxed text-white backdrop-blur-sm">
+                {imageCaption}
+              </p>
+            )}
           </div>
           <div className="flex flex-col justify-center p-6 md:p-10">
             <span className="eyebrow-pill self-start">{eyebrow}</span>

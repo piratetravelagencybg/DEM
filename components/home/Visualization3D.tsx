@@ -50,7 +50,7 @@ export default function Visualization3D() {
         >
           <Image
             src={visualizationImage}
-            alt="Примерна 3D визуализация на кухня по поръчка с остров"
+            alt="3D визуализация на кухня по поръчка с остров"
             fill
             className="object-cover"
             sizes="(max-width: 767px) calc(100vw - 40px), 50vw"
