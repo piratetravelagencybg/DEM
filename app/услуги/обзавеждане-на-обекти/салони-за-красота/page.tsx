@@ -10,7 +10,7 @@ import FAQSchema from '@/components/seo/FAQSchema'
 import ServiceSchema from '@/components/seo/ServiceSchema'
 import { projectHref, projectImageAlt, projects } from '@/lib/projects'
 import { completePageMetadata } from '@/lib/seo'
-import { SITE_CONFIG } from '@/lib/site-config'
+import { SERVED_CITIES, SITE_CONFIG } from '@/lib/site-config'
 
 const PATH = '/услуги/обзавеждане-на-обекти/салони-за-красота/'
 const PAGE_URL = 'https://domexpertmebel.com' + PATH
@@ -70,7 +70,7 @@ const faq = [
   },
   {
     question: 'Работите ли извън Благоевград?',
-    answer: `Да. Обслужваме ${SITE_CONFIG.cities.primary.join(', ')}, а 3D проект по снимки и размери можем да изготвим дистанционно за цялата страна.`,
+    answer: `Да. Обслужваме ${SERVED_CITIES.join(', ')}, а 3D проект по снимки и размери можем да изготвим дистанционно за цялата страна.`,
   },
 ]
 
@@ -107,7 +107,7 @@ export default function BeautySalonsPage() {
       <ServiceSchema
         name="Мебели за салони за красота"
         url={PAGE_URL}
-        city={[...SITE_CONFIG.cities.primary]}
+        city={SERVED_CITIES}
         serviceType="Мебели за салони за красота по поръчка"
         description="Проектиране с 3D проект, изработка и монтаж на мебели за салони за красота, фризьорски и козметични салони: рецепции, фризьорски станции, маникюрни бюра, ниши и шкафове."
       />

@@ -5,7 +5,7 @@ import Projects3DShowcase from '@/components/ui/Projects3DShowcase'
 import InteriorDesignPricing from '@/components/ui/InteriorDesignPricing'
 import services from '@/data/services.json'
 import { completePageMetadata } from '@/lib/seo'
-import { SITE_CONFIG } from '@/lib/site-config'
+import { SERVED_CITIES, SITE_CONFIG } from '@/lib/site-config'
 
 const service = services.find((s) => s.id === 'interior-design')!
 
@@ -72,7 +72,7 @@ const guideSections = [
   {
     title: 'Градове и региони',
     paragraphs: [
-      `Работим в ${SITE_CONFIG.cities.primary.join(', ')} и региона. За по-големи проекти в ${SITE_CONFIG.cities.region} можем да организираме оглед и изпълнение.`,
+      `Работим в ${SERVED_CITIES.join(', ')} и региона. За по-големи проекти в ${SITE_CONFIG.cities.region} можем да организираме оглед и изпълнение.`,
       'Базирани сме в Благоевград, където е и нашата работилница. Огледът на адрес е 50 € и се приспада при поръчка.',
       'За по-отдалечени обекти цената на огледа и транспорта се уточнява предварително. При по-големи проекти разходите за транспорт обикновено са незначителни спрямо общата стойност.',
     ],

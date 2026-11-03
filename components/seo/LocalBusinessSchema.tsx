@@ -1,4 +1,4 @@
-import { SITE_CONFIG } from '@/lib/site-config'
+import { SERVED_CITIES, SITE_CONFIG } from '@/lib/site-config'
 
 export default function LocalBusinessSchema() {
   const schema = {
@@ -37,7 +37,7 @@ export default function LocalBusinessSchema() {
     ],
     priceRange: '$$',
     areaServed: [
-      ...SITE_CONFIG.cities.primary.map((city) => ({
+      ...SERVED_CITIES.map((city) => ({
         '@type': 'City',
         name: city,
       })),

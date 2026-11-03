@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import LandingPage from '@/components/ui/LandingPage'
 import { completePageMetadata } from '@/lib/seo'
-import { SITE_CONFIG } from '@/lib/site-config'
+import { SERVED_CITIES, SITE_CONFIG } from '@/lib/site-config'
 
 const PAGE_URL = 'https://domexpertmebel.com/услуги/мебели-за-баня/'
 const TITLE = 'Мебели за баня по поръчка – 3D проект и монтаж | Dom Expert'
@@ -119,7 +119,7 @@ export default function BathroomFurniturePage() {
         name: 'Мебели за баня по поръчка',
         serviceType: 'Мебели за баня по поръчка',
         description: 'Проектиране с 3D проект, изработка в собствена работилница и монтаж на мебели за баня по поръчка.',
-        areaServed: [...SITE_CONFIG.cities.primary],
+        areaServed: SERVED_CITIES,
       }}
       guide={{
         eyebrow: 'Мебели за баня',

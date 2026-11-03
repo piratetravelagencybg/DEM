@@ -9,7 +9,7 @@ import LocalBusinessSchema from '@/components/seo/LocalBusinessSchema'
 import ServiceSchema from '@/components/seo/ServiceSchema'
 import CityLinks from '@/components/ui/CityLinks'
 import { getImageCredit, getImageDisclosure } from '@/lib/image-credits'
-import { SITE_CONFIG } from '@/lib/site-config'
+import { SERVED_CITIES, SITE_CONFIG } from '@/lib/site-config'
 import type { ReactNode } from 'react'
 
 interface ServiceFAQ {
@@ -64,7 +64,7 @@ export default function ServicePageTemplate({
       <ServiceSchema
         name={title}
         url={pageUrl}
-        city={[...SITE_CONFIG.cities.primary]}
+        city={SERVED_CITIES}
         serviceType={title}
         description={schemaDescription ?? subtitle}
       />

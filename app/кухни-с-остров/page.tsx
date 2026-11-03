@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import LandingPage from '@/components/ui/LandingPage'
 import { projects } from '@/lib/projects'
 import { completePageMetadata } from '@/lib/seo'
-import { SITE_CONFIG } from '@/lib/site-config'
+import { SERVED_CITIES, SITE_CONFIG } from '@/lib/site-config'
 
 const PAGE_URL = 'https://domexpertmebel.com/кухни-с-остров/'
 const TITLE = 'Кухня с остров по поръчка – 3D проект и идеи | Dom Expert'
@@ -128,7 +128,7 @@ export default function IslandKitchensPage() {
         name: 'Кухни с остров по поръчка',
         serviceType: 'Кухни по поръчка',
         description: 'Проектиране с 3D проект, изработка в собствена работилница и монтаж на кухни с остров по поръчка.',
-        areaServed: [...SITE_CONFIG.cities.primary],
+        areaServed: SERVED_CITIES,
       }}
       guide={{
         eyebrow: 'Кухня с остров',

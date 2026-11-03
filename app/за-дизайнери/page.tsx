@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import LandingPage from '@/components/ui/LandingPage'
 import { completePageMetadata } from '@/lib/seo'
-import { SITE_CONFIG } from '@/lib/site-config'
+import { SERVED_CITIES, SITE_CONFIG } from '@/lib/site-config'
 
 const PAGE_URL = 'https://domexpertmebel.com/за-дизайнери/'
 const TITLE = 'Изработка на мебели по проект на дизайнер | Dom Expert'
@@ -114,7 +114,7 @@ export default function ForDesignersPage() {
         name: 'Изработка на мебели по проект на дизайнер',
         serviceType: 'Изработка на мебели по поръчка',
         description: 'Изработка и монтаж на мебели по проект на интериорен дизайнер или архитект, в собствена работилница в Благоевград.',
-        areaServed: [...SITE_CONFIG.cities.primary],
+        areaServed: SERVED_CITIES,
       }}
       guide={{
         eyebrow: 'Партньорство',

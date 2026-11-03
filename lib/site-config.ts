@@ -54,6 +54,13 @@ export const SITE_CONFIG = {
     deliveryWeeksMax: 6,
   },
 
+  // Срокове за проектиране — потвърдени от собственика, 03.11.2026
+  timelines: {
+    design3D: '3–5 работни дни',
+    interiorDesignRoom: '1–2 седмици',
+    interiorDesignApartment: '3–4 седмици',
+  },
+
   // Цени за 3D проект
   pricing: {
     inspection: {
@@ -97,6 +104,8 @@ export const SITE_CONFIG = {
   // Обслужвани градове
   cities: {
     primary: ['Благоевград', 'София', 'Дупница', 'Сандански', 'Петрич'],
+    // Обслужвани, но без собствена градска страница — потвърдено от собственика, 03.11.2026
+    alsoServed: ['Банско', 'Разлог'],
     region: 'Югозападна България',
     remote3D: true, // Дистанционен 3D проект за цяла България
   },
@@ -133,5 +142,8 @@ export function getInteriorDesignPrice() {
     minimum: `минимум ${minimumSqm} кв.м`,
   }
 }
+
+/** Всички обслужвани градове — за areaServed в schema и за текстове. */
+export const SERVED_CITIES = [...SITE_CONFIG.cities.primary, ...SITE_CONFIG.cities.alsoServed]
 
 export type SiteConfig = typeof SITE_CONFIG
