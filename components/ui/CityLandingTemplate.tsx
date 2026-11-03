@@ -184,7 +184,6 @@ export default function CityLandingTemplate({
           duration={project.duration}
           image={project.images[0]}
           href={projectHref(project)}
-          imageCaption={project.imageCaption}
         />
       )}
 

@@ -65,7 +65,7 @@ export default function ProjectsGallery() {
               Проектни казуси
             </h2>
             <p className="mt-3 max-w-2xl font-body text-sm leading-relaxed text-warm-gray">
-              Реализирани обекти и 3D проекти. Изображенията са визуализации, а не снимки от обектите.
+              Реализирани обекти и 3D проекти от нашата работилница.
             </p>
           </div>
           <Link
@@ -100,9 +100,11 @@ export default function ProjectsGallery() {
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
                 sizes="(max-width: 767px) 260px, 370px"
               />
-              <span className="absolute left-3 top-3 z-10 rounded-full bg-charcoal/80 px-3 py-1 font-body text-[0.65rem] font-semibold uppercase tracking-wide text-white backdrop-blur-sm md:left-4 md:top-4 md:py-1.5 md:text-[0.68rem]">
-                {projectImageBadge(project)}
-              </span>
+              {projectImageBadge(project) && (
+                <span className="absolute left-3 top-3 z-10 rounded-full bg-charcoal/80 px-3 py-1 font-body text-[0.65rem] font-semibold uppercase tracking-wide text-white backdrop-blur-sm md:left-4 md:top-4 md:py-1.5 md:text-[0.68rem]">
+                  {projectImageBadge(project)}
+                </span>
+              )}
               <div
                 className="absolute inset-0"
                 style={{ background: 'linear-gradient(to top, rgba(10,7,4,0.88) 0%, rgba(10,7,4,0.15) 55%, transparent 80%)' }}

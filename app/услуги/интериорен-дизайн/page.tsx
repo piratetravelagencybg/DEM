@@ -2,22 +2,23 @@ import type { Metadata } from 'next'
 import ServicePageTemplate from '@/components/ui/ServicePageTemplate'
 import ServiceGuide from '@/components/ui/ServiceGuide'
 import Projects3DShowcase from '@/components/ui/Projects3DShowcase'
+import InteriorDesignPricing from '@/components/ui/InteriorDesignPricing'
 import services from '@/data/services.json'
 import { completePageMetadata } from '@/lib/seo'
-import { SITE_CONFIG } from '@/lib/site-config'
+import { SERVED_CITIES, SITE_CONFIG } from '@/lib/site-config'
 
 const service = services.find((s) => s.id === 'interior-design')!
 
 export const metadata: Metadata = completePageMetadata({
-  title: { absolute: 'Интериорен дизайн с изработка на мебели | Dom Expert Мебел' },
-  description: 'Интериорен дизайн с изработка на мебелите в собствена работилница. От 25 €/кв.м, минимум 30 кв.м. Един екип от идеята до монтажа.',
+  title: { absolute: 'Интериорен дизайн – цени от 25 €/кв.м | Дом Експерт Мебел' },
+  description: 'Интериорен дизайн на апартамент с цени от 25 €/кв.м, минимум 30 кв.м. 3D визуализации и изработка на мебелите в собствена работилница.',
   alternates: { canonical: 'https://domexpertmebel.com/услуги/интериорен-дизайн/' },
   openGraph: {
     type: 'website',
     locale: 'bg_BG',
-    siteName: 'Dom Expert Мебел',
+    siteName: 'Дом Експерт Мебел',
     url: 'https://domexpertmebel.com/услуги/интериорен-дизайн/',
-    title: 'Интериорен дизайн с изработка на мебели | Dom Expert Мебел',
+    title: 'Интериорен дизайн – цени от 25 €/кв.м | Дом Експерт Мебел',
     description: 'Интериорен дизайн с изработка на мебелите в собствена работилница. От 25 €/кв.м. Един изпълнител от идея до монтаж.',
     images: [{ url: '/images/og/interior-design.webp', width: 1200, height: 630, alt: 'Интериорен дизайн с изработка на мебели по поръчка' }],
   },
@@ -71,8 +72,8 @@ const guideSections = [
   {
     title: 'Градове и региони',
     paragraphs: [
-      `Работим в ${SITE_CONFIG.cities.primary.join(', ')} и региона. За по-големи проекти в ${SITE_CONFIG.cities.region} можем да организираме оглед и изпълнение.`,
-      'Базирани сме в Благоевград, където е и нашата работилница. Това ни позволява да реагираме бързо, да правим огледи без допълнителни такси и да организираме доставка и монтаж ефективно.',
+      `Работим в ${SERVED_CITIES.join(', ')} и региона. За по-големи проекти в ${SITE_CONFIG.cities.region} можем да организираме оглед и изпълнение.`,
+      'Базирани сме в Благоевград, където е и нашата работилница. Огледът на адрес е 50 € и се приспада при поръчка.',
       'За по-отдалечени обекти цената на огледа и транспорта се уточнява предварително. При по-големи проекти разходите за транспорт обикновено са незначителни спрямо общата стойност.',
     ],
   },
@@ -112,6 +113,11 @@ const guideLinks = [
     description: 'Вижте примери от завършени интериорни проекти.',
   },
   {
+    href: '/софия/интериорен-дизайн/',
+    label: 'Интериорен дизайн в София',
+    description: 'Интериорен проект и мебели за жилища в София.',
+  },
+  {
     href: '/контакти/',
     label: 'Заявете оглед',
     description: 'Изпратете снимки и размери — ще ви върнем предложение и оферта.',
@@ -122,6 +128,7 @@ export default function InteriorDesignPage() {
   return (
     <ServicePageTemplate
       title={service.title}
+      h1="Интериорен дизайн – проект и цени"
       subtitle={`Правим пълен интериорен дизайн на помещенията — разпределение, материали, цветове, осветление и 3D визуализации — и изработваме мебелите в собствената си работилница в Благоевград. Дизайнът е от ${SITE_CONFIG.pricing.interiorDesign.pricePerSqm} ${SITE_CONFIG.pricing.interiorDesign.currency}/кв.м при минимум ${SITE_CONFIG.pricing.interiorDesign.minimumSqm} кв.м, а мебелите се изработват за 4–6 седмици след одобрение на проекта.`}
       heroImage={service.image}
       gallery={service.gallery}
@@ -137,6 +144,7 @@ export default function InteriorDesignPage() {
         steps={guideSteps}
         links={guideLinks}
       />
+      <InteriorDesignPricing title="Цени за интериорен дизайн" />
       <Projects3DShowcase />
     </ServicePageTemplate>
   )

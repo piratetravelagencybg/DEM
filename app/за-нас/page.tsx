@@ -19,18 +19,18 @@ const storyImageCredit = getImageCredit(storyImage)
 const processImageCredit = getImageCredit(processImage)
 
 export const metadata: Metadata = completePageMetadata({
-  title: { absolute: 'За Dom Expert Мебел | Семейна мебелна фирма' },
+  title: { absolute: 'За Дом Експерт Мебел | Семейна мебелна фирма' },
   description:
-    'Научете историята на Dom Expert Мебел — семейна мебелна фирма от Благоевград с опит от 2012 г. и повече от 100 реализирани проекта.',
+    'Научете историята на Дом Експерт Мебел — семейна мебелна фирма от Благоевград с опит от 2012 г. и повече от 100 реализирани проекта.',
   alternates: { canonical: 'https://domexpertmebel.com/за-нас/' },
   openGraph: {
-    title: 'За Dom Expert Мебел | Семейна мебелна фирма',
+    title: 'За Дом Експерт Мебел | Семейна мебелна фирма',
     description: 'Историята на семейна мебелна фирма от Благоевград с опит от 2012 г. и повече от 100 реализирани проекта.',
     url: 'https://domexpertmebel.com/за-нас/',
     type: 'website',
     locale: 'bg_BG',
-    siteName: 'Dom Expert Мебел',
-    images: [{ url: '/images/og/home.webp', width: 1200, height: 630, alt: 'Примерна интериорна визуализация за мебели по поръчка' }],
+    siteName: 'Дом Експерт Мебел',
+    images: [{ url: '/images/og/home.webp', width: 1200, height: 630, alt: 'Мебели по поръчка – Дом Експерт Мебел' }],
   },
 })
 
@@ -73,7 +73,7 @@ export default function AboutPage() {
         >
           <Image
             src={aboutHeroImage}
-            alt="Примерна интериорна визуализация на обзавеждане по поръчка"
+            alt="Обзавеждане по поръчка"
             fill
             className="object-cover"
             sizes="100vw"
@@ -83,16 +83,18 @@ export default function AboutPage() {
             position: 'absolute', inset: 0,
             background: 'linear-gradient(to bottom, rgba(8,5,2,0.32) 0%, rgba(8,5,2,0.18) 35%, rgba(8,5,2,0.75) 75%, rgba(8,5,2,0.92) 100%)',
           }} />
-          <span
-            className="font-body"
-            style={{
-              position: 'absolute', zIndex: 20, top: '5.5rem', right: 'max(1.25rem, calc((100vw - 1120px) / 2))',
-              borderRadius: 100, padding: '6px 12px', fontSize: '0.65rem',
-              color: 'white', background: 'rgba(0,0,0,0.58)', backdropFilter: 'blur(8px)',
-            }}
-          >
-            {getImageDisclosure(aboutHeroImage)}
-          </span>
+          {getImageDisclosure(aboutHeroImage) && (
+            <span
+              className="font-body"
+              style={{
+                position: 'absolute', zIndex: 20, top: '5.5rem', right: 'max(1.25rem, calc((100vw - 1120px) / 2))',
+                borderRadius: 100, padding: '6px 12px', fontSize: '0.65rem',
+                color: 'white', background: 'rgba(0,0,0,0.58)', backdropFilter: 'blur(8px)',
+              }}
+            >
+              {getImageDisclosure(aboutHeroImage)}
+            </span>
+          )}
 
           <div style={{
             position: 'relative', zIndex: 10, flex: 1,
@@ -118,7 +120,7 @@ export default function AboutPage() {
                 className="font-display font-bold text-white"
                 style={{ fontSize: 'clamp(2.5rem, 7.5vw, 5.5rem)', lineHeight: 1.03, maxWidth: '15ch', marginBottom: '1.1rem' }}
               >
-                Семейната история на Dom Expert Мебел
+                Семейната история на Дом Експерт Мебел
               </h1>
               <p className="font-body" style={{
                 fontSize: 'clamp(0.95rem, 2vw, 1.1rem)', color: 'rgba(255,255,255,0.65)',
@@ -168,7 +170,7 @@ export default function AboutPage() {
                 <div className="space-y-4">
                   <p className="font-body leading-relaxed" style={{ fontSize: '1.02rem', color: '#3C3830', lineHeight: 1.75 }}>
                     Всичко започна с просто желание — да правим мебели, каквито сами бихме искали у дома.
-                    От 2012 г. основахме Dom Expert Мебел като малка семейна работилница с ясна цел:{' '}
+                    От 2012 г. основахме Дом Експерт Мебел като малка семейна работилница с ясна цел:{' '}
                     <strong style={{ color: '#1C1208', fontWeight: 700 }}>качество, честност и внимание към всеки детайл.</strong>
                   </p>
                   <p className="font-body leading-relaxed" style={{ fontSize: '1.02rem', color: '#3C3830', lineHeight: 1.75 }}>
@@ -234,15 +236,12 @@ export default function AboutPage() {
             <div className="relative overflow-hidden rounded-2xl" style={{ aspectRatio: '21/9' }}>
               <Image
                 src={kitchenVisualization}
-                alt="Примерна визуализация на модерна кухня по поръчка"
+                alt="Модерна кухня по поръчка"
                 fill
                 className="object-cover"
                 sizes="100vw"
               />
             </div>
-            <p className="font-body text-center" style={{ fontSize: '0.75rem', color: '#A09890', marginTop: 12, fontStyle: 'italic' }}>
-              Примерна визуализация за вдъхновение — изображението не е снимка на реализиран обект.
-            </p>
           </div>
         </section>
 
@@ -393,18 +392,22 @@ export default function AboutPage() {
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="relative overflow-hidden rounded-2xl" style={{ aspectRatio: '3/4' }}>
-                <Image src={wardrobeVisualization} alt="Примерна визуализация на гардероб с вътрешно осветление"
+                <Image src={wardrobeVisualization} alt="Гардероб с вътрешно осветление"
                   fill className="object-cover" sizes="(max-width: 640px) 100vw, 50vw" />
-                <span className="absolute bottom-3 left-3 rounded-full bg-black/60 px-3 py-1.5 font-body text-[0.62rem] text-white backdrop-blur-md">
-                  {getImageDisclosure(wardrobeVisualization)}
-                </span>
+                {getImageDisclosure(wardrobeVisualization) && (
+                  <span className="absolute bottom-3 left-3 rounded-full bg-black/60 px-3 py-1.5 font-body text-[0.62rem] text-white backdrop-blur-md">
+                    {getImageDisclosure(wardrobeVisualization)}
+                  </span>
+                )}
               </div>
               <div className="relative overflow-hidden rounded-2xl" style={{ aspectRatio: '3/4' }}>
-                <Image src={livingVisualization} alt="Примерна визуализация на отворена дневна зона"
+                <Image src={livingVisualization} alt="Отворена дневна зона"
                   fill className="object-cover" sizes="(max-width: 640px) 100vw, 50vw" />
-                <span className="absolute bottom-3 left-3 rounded-full bg-black/60 px-3 py-1.5 font-body text-[0.62rem] text-white backdrop-blur-md">
-                  {getImageDisclosure(livingVisualization)}
-                </span>
+                {getImageDisclosure(livingVisualization) && (
+                  <span className="absolute bottom-3 left-3 rounded-full bg-black/60 px-3 py-1.5 font-body text-[0.62rem] text-white backdrop-blur-md">
+                    {getImageDisclosure(livingVisualization)}
+                  </span>
+                )}
               </div>
             </div>
             <div className="text-center mt-7">

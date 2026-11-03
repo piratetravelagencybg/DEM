@@ -254,7 +254,7 @@ export function generateMetadata({ params, searchParams }: Props): Metadata {
     openGraph: {
       type: 'website',
       locale: 'bg_BG',
-      siteName: 'Dom Expert Мебел',
+      siteName: 'Дом Експерт Мебел',
       title,
       description,
       url: canonical,

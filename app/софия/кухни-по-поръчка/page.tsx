@@ -12,7 +12,7 @@ import { projects } from '@/lib/projects'
 import { completePageMetadata } from '@/lib/seo'
 
 const PAGE_URL = 'https://domexpertmebel.com/софия/кухни-по-поръчка/'
-const TITLE = 'Кухни по поръчка София – 3D проект и монтаж | Dom Expert'
+const TITLE = 'Кухни по поръчка София – 3D проект и монтаж | Дом Експерт'
 const DESCRIPTION = 'Кухня по поръчка за София: оглед, 3D проект, изработка в собствен цех и монтаж. 3D проект от 100 € – приспада се при поръчка. 2 г. гаранция.'
 
 export const metadata: Metadata = completePageMetadata({
@@ -22,11 +22,11 @@ export const metadata: Metadata = completePageMetadata({
   openGraph: {
     type: 'website',
     locale: 'bg_BG',
-    siteName: 'Dom Expert Мебел',
+    siteName: 'Дом Експерт Мебел',
     url: PAGE_URL,
     title: TITLE,
     description: DESCRIPTION,
-    images: [{ url: '/images/og/kitchens.webp', width: 1200, height: 630, alt: 'Примерна визуализация на кухня по поръчка за София' }],
+    images: [{ url: '/images/og/kitchens.webp', width: 1200, height: 630, alt: 'Кухня по поръчка за София' }],
   },
 })
 
@@ -247,14 +247,11 @@ export default function SofiaKitchensPage() {
             <div className="relative min-h-[260px] md:min-h-[360px]">
               <Image
                 src={sofiaKitchen.images[0]}
-                alt="Кухня с остров в София — примерна визуализация към реализиран проект"
+                alt="Кухня с остров в София"
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
-              <p className="absolute inset-x-4 bottom-4 rounded-xl bg-charcoal/85 px-4 py-2 font-body text-xs leading-relaxed text-white backdrop-blur-sm">
-                {sofiaKitchen.imageCaption}
-              </p>
             </div>
             <div className="flex flex-col justify-center p-6 md:p-10">
               <span className="eyebrow-pill self-start">Казус от София</span>

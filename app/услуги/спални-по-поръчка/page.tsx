@@ -9,17 +9,17 @@ import { completePageMetadata } from '@/lib/seo'
 const service = services.find((s) => s.id === 'spalni')!
 
 export const metadata: Metadata = completePageMetadata({
-  title: { absolute: 'Спални по поръчка – легла и гардероби | Dom Expert' },
+  title: { absolute: 'Спални по поръчка – легла и гардероби | Дом Експерт Мебел' },
   description: 'Спални по поръчка: тапицирани легла, легла с ракла, нощни шкафчета и гардероби с 3D проект преди изработка. Собствена работилница, 2 г. гаранция.',
   alternates: { canonical: 'https://domexpertmebel.com/услуги/спални-по-поръчка/' },
   openGraph: {
     type: 'website',
     locale: 'bg_BG',
-    siteName: 'Dom Expert Мебел',
+    siteName: 'Дом Експерт Мебел',
     url: 'https://domexpertmebel.com/услуги/спални-по-поръчка/',
-    title: 'Спални по поръчка – легла и гардероби | Dom Expert',
+    title: 'Спални по поръчка – легла и гардероби | Дом Експерт Мебел',
     description: 'Спални по поръчка: тапицирани легла, легла с ракла, нощни шкафчета и гардероби с 3D проект преди изработка. Собствена работилница, 2 г. гаранция.',
-    images: [{ url: '/images/og/bedrooms.webp', width: 1200, height: 630, alt: 'Примерна визуализация на спалня по поръчка' }],
+    images: [{ url: '/images/og/bedrooms.webp', width: 1200, height: 630, alt: 'Спалня по поръчка' }],
   },
 })
 
@@ -145,7 +145,7 @@ export default function SpalniPage() {
             <span className="eyebrow-pill">Проекти</span>
             <h2 className="section-title text-left">Проекти на спални по поръчка</h2>
             <p className="font-body text-warm-gray leading-relaxed mt-4" style={{ fontSize: '1rem' }}>
-              Реализирани спални с данни за материали и срок. Изображенията са визуализации, а не снимки от обектите.
+              Реализирани спални с данни за материали и срок.
             </p>
           </div>
           <ProjectCards items={projectsByCategory('spalni')} />

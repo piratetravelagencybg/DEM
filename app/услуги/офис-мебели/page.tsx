@@ -9,7 +9,7 @@ import { completePageMetadata } from '@/lib/seo'
 const service = services.find((s) => s.id === 'ofis')!
 const featuredProject = projects.find((project) => project.slug === 'ofis-blagoevgrad')!
 
-const TITLE = 'Офис мебели по поръчка – бюра и рецепции | Dom Expert'
+const TITLE = 'Офис мебели по поръчка – бюра и рецепции | Дом Експерт Мебел'
 const DESCRIPTION = 'Офис обзавеждане по поръчка: бюра, рецепции за офис, шкафове и конферентни маси с 3D проект преди изработка. Собствена работилница, 2 г. гаранция.'
 
 const guideSections = [
@@ -70,11 +70,11 @@ export const metadata: Metadata = completePageMetadata({
   openGraph: {
     type: 'website',
     locale: 'bg_BG',
-    siteName: 'Dom Expert Мебел',
+    siteName: 'Дом Експерт Мебел',
     url: 'https://domexpertmebel.com/услуги/офис-мебели/',
     title: TITLE,
     description: DESCRIPTION,
-    images: [{ url: '/images/og/office.webp', width: 1200, height: 630, alt: 'Примерна визуализация на офис мебели по поръчка' }],
+    images: [{ url: '/images/og/office.webp', width: 1200, height: 630, alt: 'Офис мебели по поръчка' }],
   },
 })
 
@@ -107,7 +107,6 @@ export default function OfisMebeliPage() {
         href={projectHref(featuredProject)}
         eyebrow={projectStatusLabel(featuredProject)}
         imageAlt={projectImageAlt(featuredProject)}
-        imageCaption={featuredProject.imageCaption}
       />
     </ServicePageTemplate>
   )

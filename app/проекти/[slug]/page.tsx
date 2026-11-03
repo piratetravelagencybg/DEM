@@ -29,6 +29,7 @@ const serviceByCategory = {
   dnevni: { title: 'Дневни по поръчка', href: '/услуги/дневни-по-поръчка/' },
   ofis: { title: 'Офис мебели по поръчка', href: '/услуги/офис-мебели/' },
   saloni: { title: 'Мебели за салони за красота', href: '/услуги/обзавеждане-на-обекти/салони-за-красота/' },
+  detska: { title: 'Детски мебели по поръчка', href: '/услуги/спални-по-поръчка/' },
 } as const
 
 const cityPageByName = {
@@ -77,10 +78,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!project) return {}
   const is3d = project.status === '3d'
 
+  const titleCore = `${is3d ? '3D проект: ' : ''}${project.title}${projectPlace(project)}`
+  // Full brand when it fits in 60 characters, short brand otherwise.
+  const brand = titleCore.length + 20 <= 60 ? 'Дом Експерт Мебел' : 'Дом Експерт'
+
   return createPageMetadata({
-    title: is3d
-      ? `3D проект: ${project.title}${projectPlace(project)} | Dom Expert`
-      : `${project.title}${projectPlace(project)} | Dom Expert Мебел`,
+    title: `${titleCore} | ${brand}`,
     description: prepareSeoDescription(seoDescriptionBySlug[project.slug] || project.description),
     path: `/проекти/${project.slug}/`,
     image: is3d ? project.images[0] : PROJECT_SOCIAL_IMAGES[project.category] || '/images/og/home.webp',
@@ -162,6 +165,20 @@ export default function ProjectPage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(projectSchema).replace(/</g, '\\u003c') }}
       />
+      {project.video && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'VideoObject',
+            name: `Видео: ${project.title}`,
+            description: project.description,
+            thumbnailUrl: `${SITE_URL}${project.video.poster}`,
+            contentUrl: `${SITE_URL}${project.video.src}`,
+            uploadDate: project.video.uploadDate,
+          }).replace(/</g, '\\u003c') }}
+        />
+      )}
 
       <div className="pt-24">
         <article>
@@ -175,9 +192,6 @@ export default function ProjectPage({ params }: Props) {
               sizes="100vw"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-charcoal/85 via-charcoal/25 to-transparent" />
-            <p className="absolute left-4 right-4 top-4 z-10 ml-auto max-w-xl rounded-xl bg-charcoal/85 px-4 py-2 font-body text-xs leading-relaxed text-white backdrop-blur-sm sm:left-auto sm:right-6 sm:top-6">
-              {project.imageCaption}
-            </p>
             <div className="absolute inset-x-0 bottom-0 container-main pb-8 sm:pb-12">
               <Link href="/проекти/" className="mb-5 inline-flex items-center gap-2 font-body text-sm text-white/80 transition-colors hover:text-white">
                 <ArrowLeft size={16} aria-hidden="true" /> Всички проекти
@@ -256,6 +270,7 @@ export default function ProjectPage({ params }: Props) {
                   <div className="divide-y divide-walnut/10">
                     {[
                       { href: service.href, label: service.title },
+                      ...(is3d ? [{ href: '/услуги/3d-визуализация/', label: '3D проект преди изработка' }] : []),
                       ...(project.city ? [{ href: cityPage, label: `Мебели по поръчка в ${project.city}` }] : []),
                       { href: '/проекти/', label: 'Всички проекти' },
                     ].map((link) => (
@@ -271,11 +286,29 @@ export default function ProjectPage({ params }: Props) {
             </div>
           </section>
 
-          {project.images.length > 1 && (
+          {(project.images.length > 1 || project.video) && (
             <section className="section-py bg-warm-white" aria-labelledby="project-gallery-title">
               <div className="container-main">
-                <p className="mb-3 font-body text-xs font-semibold uppercase tracking-[0.16em] text-walnut">{projectImageBadge(project)}</p>
+                {projectImageBadge(project) && (
+                  <p className="mb-3 font-body text-xs font-semibold uppercase tracking-[0.16em] text-walnut">{projectImageBadge(project)}</p>
+                )}
                 <h2 id="project-gallery-title" className="section-title mb-8 text-left">Всички изгледи от проекта</h2>
+                {project.video && (
+                  <div className={`mb-6 ${project.video.height > project.video.width ? 'mx-auto max-w-sm' : 'max-w-4xl'}`}>
+                    <video
+                      controls
+                      playsInline
+                      preload="none"
+                      poster={project.video.poster}
+                      width={project.video.width}
+                      height={project.video.height}
+                      className="h-auto w-full rounded-card bg-charcoal"
+                      aria-label={`Видео: ${project.title}`}
+                    >
+                      <source src={project.video.src} type="video/mp4" />
+                    </video>
+                  </div>
+                )}
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
                   {project.images.slice(1).map((src, index) => (
                     <figure key={src} className="relative aspect-[4/3] overflow-hidden rounded-card bg-cream">
@@ -289,7 +322,6 @@ export default function ProjectPage({ params }: Props) {
                     </figure>
                   ))}
                 </div>
-                <p className="mt-4 font-body text-xs text-warm-gray">{project.imageCaption}</p>
               </div>
             </section>
           )}
@@ -342,16 +374,15 @@ export default function ProjectPage({ params }: Props) {
                         className="object-cover transition-transform duration-500 group-hover:scale-105"
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       />
-                      <span className="absolute left-3 top-3 rounded-full bg-charcoal/80 px-3 py-1 font-body text-[0.65rem] font-semibold uppercase tracking-wide text-white backdrop-blur-sm">
-                        {projectImageBadge(candidate)}
-                      </span>
+                      {projectImageBadge(candidate) && (
+                        <span className="absolute left-3 top-3 rounded-full bg-charcoal/80 px-3 py-1 font-body text-[0.65rem] font-semibold uppercase tracking-wide text-white backdrop-blur-sm">
+                          {projectImageBadge(candidate)}
+                        </span>
+                      )}
                     </div>
                     <div className="p-5">
                       <h3 className="font-display text-xl font-semibold text-charcoal transition-colors group-hover:text-walnut">{candidate.title}</h3>
                       <p className="mt-1 font-body text-sm text-warm-gray">{[candidate.city, candidate.duration].filter(Boolean).join(' · ') || projectStatusLabel(candidate)}</p>
-                      <p className="mt-3 border-t border-walnut/10 pt-3 font-body text-xs leading-relaxed text-warm-gray">
-                        {candidate.imageCaption}
-                      </p>
                     </div>
                   </Link>
                 ))}

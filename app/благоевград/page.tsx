@@ -15,17 +15,17 @@ import { projectsByCity } from '@/lib/projects'
 import { completePageMetadata } from '@/lib/seo'
 
 export const metadata: Metadata = completePageMetadata({
-  title: { absolute: 'Мебели по поръчка Благоевград – кухни и спални | Dom Expert' },
+  title: { absolute: 'Мебели по поръчка Благоевград – кухни и спални | Дом Експерт' },
   description: 'Семейна мебелна работилница в Благоевград от 2012 г. Кухни, гардероби и спални по поръчка с 3D проект. 5★ в Google, 2 г. гаранция. ☎ 0876 081 199',
   alternates: { canonical: 'https://domexpertmebel.com/благоевград/' },
   openGraph: {
     type: 'website',
     locale: 'bg_BG',
-    siteName: 'Dom Expert Мебел',
+    siteName: 'Дом Експерт Мебел',
     url: 'https://domexpertmebel.com/благоевград/',
-    title: 'Мебели по поръчка Благоевград – кухни и спални | Dom Expert',
+    title: 'Мебели по поръчка Благоевград – кухни и спални | Дом Експерт',
     description: 'Семейна мебелна работилница в Благоевград от 2012 г. Кухни, гардероби и спални по поръчка с 3D проект. 5★ в Google, 2 г. гаранция. ☎ 0876 081 199',
-    images: [{ url: '/images/og/home.webp', width: 1200, height: 630, alt: 'Примерна интериорна визуализация за мебели по поръчка в Благоевград' }],
+    images: [{ url: '/images/og/home.webp', width: 1200, height: 630, alt: 'Мебели по поръчка в Благоевград' }],
   },
 })
 
@@ -199,7 +199,7 @@ export default function BlagoevgradPage() {
                 Мебели по поръчка в Благоевград
               </h1>
               <p className="font-body text-warm-gray leading-relaxed" style={{ fontSize: '1.05rem' }}>
-                Dom Expert Мебел е семейна мебелна работилница в Благоевград, която от 2012 г. проектира и изработва кухни, гардероби, спални и офис мебели по поръчка — с 3D проект преди изработка и монтаж от нашия екип. Огледът е 50 €, 3D проектът е от 100 € за кухня и от 50 € за друга мебел (и двете се приспадат при поръчка), а изработката отнема 4–6 седмици след одобрение.
+                Дом Експерт Мебел е семейна мебелна работилница в Благоевград, която от 2012 г. проектира и изработва кухни, гардероби, спални и офис мебели по поръчка — с 3D проект преди изработка и монтаж от нашия екип. Огледът е 50 €, 3D проектът е от 100 € за кухня и от 50 € за друга мебел (и двете се приспадат при поръчка), а изработката отнема 4–6 седмици след одобрение.
               </p>
 
               <QuickFactsList />
@@ -307,7 +307,7 @@ export default function BlagoevgradPage() {
             <span className="eyebrow-pill">Проекти</span>
             <h2 className="section-title text-left">Проекти в Благоевград</h2>
             <p className="font-body text-warm-gray leading-relaxed mt-4" style={{ fontSize: '1rem' }}>
-              Реализирани обекти и 3D проекти за клиенти в Благоевград. Всеки проект е обозначен, а изображенията са визуализации, а не снимки от обектите.
+              Реализирани обекти и 3D проекти за клиенти в Благоевград.
             </p>
           </div>
           <ProjectCards items={projectsByCity('Благоевград')} />

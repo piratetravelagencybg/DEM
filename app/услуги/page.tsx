@@ -10,11 +10,11 @@ import { getImageDisclosure } from '@/lib/image-credits'
 import { createPageMetadata } from '@/lib/seo'
 
 export const metadata: Metadata = createPageMetadata({
-  title: 'Услуги — Мебели по поръчка | Dom Expert Мебел',
+  title: 'Услуги — Мебели по поръчка | Дом Експерт Мебел',
   description: 'Кухни, гардероби, спални, дневни и офис мебели по поръчка в Благоевград, София и региона. Оглед 50 €, приспадат се, монтаж и 2 г. гаранция.',
   path: '/услуги/',
   image: '/images/og/kitchens.webp',
-  imageAlt: 'Примерна визуализация на мебели по поръчка',
+  imageAlt: 'Мебели по поръчка',
 })
 
 export default function ServicesPage() {
@@ -45,7 +45,7 @@ export default function ServicesPage() {
                   <div className="relative aspect-video overflow-hidden">
                     <Image
                       src={s.image}
-                      alt={`${s.title} — ${disclosure?.toLocaleLowerCase('bg-BG') || 'илюстрация'}`}
+                      alt={disclosure ? `${s.title} — ${disclosure.toLocaleLowerCase('bg-BG')}` : s.title}
                       fill
                       className="object-cover transition-transform duration-300 group-hover:scale-105"
                       sizes="(max-width: 768px) 100vw, 33vw"
@@ -105,6 +105,30 @@ export default function ServicesPage() {
                 </span>
               </div>
             </Link>
+            {[
+              {
+                href: '/услуги/мебели-за-баня/',
+                title: 'Мебели за баня',
+                text: 'Шкаф под мивка, колони и шкафове за пералня по точни размери и около изводите.',
+              },
+              {
+                href: '/услуги/обзавеждане-на-ваканционни-апартаменти/',
+                title: 'Обзавеждане на ваканционни апартаменти',
+                text: 'Цял апартамент в един 3D проект — за Банско, Разлог и Сандански.',
+              },
+            ].map((card) => (
+              <Link key={card.href} href={card.href} className="group card flex flex-col justify-between p-6">
+                <div>
+                  <h2 className="font-display font-semibold text-charcoal text-xl mb-2 group-hover:text-walnut transition-colors">
+                    {card.title}
+                  </h2>
+                  <p className="font-body text-warm-gray text-sm mb-4">{card.text}</p>
+                </div>
+                <span className="inline-flex items-center gap-1 text-walnut text-sm font-medium font-body">
+                  Научи повече <ArrowRight size={14} />
+                </span>
+              </Link>
+            ))}
           </div>
         </div>
       </div>

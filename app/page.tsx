@@ -18,10 +18,10 @@ import { getAllMbxProducts } from '@/lib/mbx'
 import { createPageMetadata } from '@/lib/seo'
 
 export const metadata: Metadata = createPageMetadata({
-  title: 'Мебели по поръчка | 3D проект и монтаж | Dom Expert Мебел',
+  title: 'Мебели по поръчка София и Благоевград | Дом Експерт Мебел',
   description: 'Кухни, гардероби и спални по поръчка с 3D проект преди изработка. 100+ проекта от 2012 г., 2 г. гаранция, 5★ в Google. Оглед 50 € – приспада се.',
   path: '/',
-  imageAlt: 'Мебели по поръчка от Dom Expert Мебел',
+  imageAlt: 'Мебели по поръчка от Дом Експерт Мебел',
 })
 
 export default function HomePage() {

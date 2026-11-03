@@ -7,7 +7,7 @@ import { completePageMetadata } from '@/lib/seo'
 import { projects } from '@/lib/projects'
 
 const PAGE_URL = 'https://domexpertmebel.com/3d-проекти/kuhnya-domexpert-v17/'
-const TITLE = '3D проект на кухня с остров в Благоевград | Dom Expert'
+const TITLE = '3D проект на кухня с остров в Благоевград | Дом Експерт'
 const DESCRIPTION = '3D проект на П-образна кухня с остров в Благоевград: рамка в taupe, фронтове в кашмир, гръб Laminam и кафе колона. От първо предложение до одобрен дизайн.'
 
 const project = projects.find((item) => item.page === '/3d-проекти/kuhnya-domexpert-v17/')!
@@ -19,7 +19,7 @@ export const metadata: Metadata = completePageMetadata({
   openGraph: {
     type: 'article',
     locale: 'bg_BG',
-    siteName: 'Dom Expert Мебел',
+    siteName: 'Дом Експерт Мебел',
     url: PAGE_URL,
     title: TITLE,
     description: DESCRIPTION,
@@ -232,7 +232,7 @@ export default function KuhnyaDomExpertV17Page() {
             <video
               controls
               preload="metadata"
-              poster="/video/kitchen-tour-poster.webp"
+              poster="/video/kitchen-tour-16x9-poster.webp"
               className="w-full h-full"
               style={{ backgroundColor: '#1A1714' }}
             >

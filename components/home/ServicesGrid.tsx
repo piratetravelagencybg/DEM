@@ -56,7 +56,7 @@ function FeaturedCard({ s }: { s: (typeof services)[0] }) {
     >
       <Image
         src={s.image}
-        alt={`${s.title} – ${s.image.includes('/stock/') ? 'илюстративна снимка' : 'примерна визуализация'}`}
+        alt={s.image.includes('/stock/') ? `${s.title} – илюстративна снимка` : s.title}
         fill
         className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
         sizes="(max-width: 768px) 100vw, 66vw"
@@ -88,9 +88,11 @@ function FeaturedCard({ s }: { s: (typeof services)[0] }) {
         </div>
       )}
 
-      <span className="absolute right-4 top-4 z-10 rounded-full bg-black/55 px-2.5 py-1 font-body text-[0.55rem] font-semibold text-white backdrop-blur-md">
-        {s.image.includes('/stock/') ? 'Илюстративна снимка' : 'Примерна визуализация'}
-      </span>
+      {s.image.includes('/stock/') && (
+        <span className="absolute right-4 top-4 z-10 rounded-full bg-black/55 px-2.5 py-1 font-body text-[0.55rem] font-semibold text-white backdrop-blur-md">
+          Илюстративна снимка
+        </span>
+      )}
 
       {/* Bottom text */}
       <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 z-10">
@@ -121,7 +123,7 @@ function SmallCard({ s }: { s: (typeof services)[0] }) {
     >
       <Image
         src={s.image}
-        alt={`${s.title} – ${s.image.includes('/stock/') ? 'илюстративна снимка' : 'примерна визуализация'}`}
+        alt={s.image.includes('/stock/') ? `${s.title} – илюстративна снимка` : s.title}
         fill
         className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
         sizes="(max-width: 768px) 50vw, 33vw"

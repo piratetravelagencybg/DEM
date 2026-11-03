@@ -9,11 +9,11 @@ import { projectHref, projects } from '@/lib/projects'
 import { createPageMetadata } from '@/lib/seo'
 
 export const metadata: Metadata = createPageMetadata({
-  title: 'Проектни казуси за мебели по поръчка | Dom Expert Мебел',
+  title: 'Проектни казуси за мебели по поръчка | Дом Експерт Мебел',
   description: 'Реализирани обекти и 3D проекти на кухни, гардероби, спални, дневни, офиси и салони с град, материали и ясно обозначени визуализации.',
   path: '/проекти/',
   image: '/images/og/home.webp',
-  imageAlt: 'Примерна визуализация към проектен казус на Dom Expert Мебел',
+  imageAlt: 'Проектен казус на Дом Експерт Мебел',
 })
 
 const realizedCount = projects.filter((project) => project.status === 'realized').length
@@ -29,19 +29,21 @@ const serviceLinks = [
 
 const projectListSchema = {
   '@type': 'ItemList',
-  name: 'Проекти на Dom Expert Мебел',
+  name: 'Проекти на Дом Експерт Мебел',
   numberOfItems: projects.length,
   itemListElement: projects.map((project, index) => {
     const url = new URL(projectHref(project), 'https://domexpertmebel.com').href
+    const name = project.title + (project.city ? ' — ' + project.city : '')
     return {
       '@type': 'ListItem',
       position: index + 1,
+      name,
       url,
       item: {
         '@type': 'WebPage',
         '@id': url,
         url,
-        name: project.title + (project.city ? ' — ' + project.city : ''),
+        name,
         description: project.description,
       },
     }
@@ -54,7 +56,7 @@ const projectCollectionSchema = {
   '@id': 'https://domexpertmebel.com/проекти/#collection',
   url: 'https://domexpertmebel.com/проекти/',
   name: 'Проектни казуси за мебели по поръчка',
-  description: `${realizedCount} реализирани проекта и ${designCount} 3D проекта на Dom Expert Мебел с информация за град и материали. Изображенията са визуализации, а не снимки от обектите.`,
+  description: `${realizedCount} реализирани проекта и ${designCount} 3D проекта на Дом Експерт Мебел с информация за град и материали.`,
   mainEntity: projectListSchema,
 }
 
@@ -75,7 +77,7 @@ export default function ProjectsPage() {
             level={1}
             eyebrow="Проектни казуси"
             title="Проекти: реализирани обекти и 3D проекти"
-            subtitle={`${realizedCount} реализирани проекта с данни за град, материали и срок и ${designCount} 3D проекта, подготвени преди изработка. Всеки проект е обозначен; изображенията са визуализации, а не снимки от обектите.`}
+            subtitle={`${realizedCount} реализирани проекта с данни за град, материали и срок и ${designCount} 3D проекта, подготвени преди изработка.`}
           />
 
           <ProjectCards items={projects} headingLevel="h2" />
@@ -96,7 +98,6 @@ export default function ProjectsPage() {
                 <ul className="space-y-3 mt-6">
                   {[
                     'Етикет „Реализиран проект“ или „3D проект“ на всяка карта',
-                    'Визуализациите са ясно обозначени и не са снимки от обекти',
                     'Град, материали и срок, когато са потвърдени',
                     'Връзка към съответната услуга и запитване за подобен проект',
                   ].map((item) => (

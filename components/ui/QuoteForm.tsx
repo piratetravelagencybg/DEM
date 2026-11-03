@@ -65,7 +65,13 @@ async function compressImage(file: File): Promise<File> {
   })
 }
 
-export default function QuoteForm({ defaultService = '' }: { defaultService?: string }) {
+export default function QuoteForm({
+  defaultService = '',
+  defaultMessage = '',
+}: {
+  defaultService?: string
+  defaultMessage?: string
+}) {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
   const [photos, setPhotos] = useState<File[]>([])
   const [photoError, setPhotoError] = useState<string>('')
@@ -73,7 +79,7 @@ export default function QuoteForm({ defaultService = '' }: { defaultService?: st
 
   const { register, handleSubmit, formState: { errors }, reset } = useForm<FormData>({
     resolver: zodResolver(schema),
-    defaultValues: { service: defaultService, honeypot: '' },
+    defaultValues: { service: defaultService, message: defaultMessage, honeypot: '' },
   })
 
   const handlePhotoChange = async (e: React.ChangeEvent<HTMLInputElement>) => {

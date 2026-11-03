@@ -43,12 +43,12 @@ export function generateMetadata({ params }: Props): Metadata {
 
   const description = prepareSeoDescription(
     post.description,
-    'Прочетете практичните насоки от Dom Expert Мебел.',
+    'Прочетете практичните насоки от Дом Експерт Мебел.',
   )
-  const imageAlt = `Примерна интериорна визуализация към тема „${post.category}“`
+  const imageAlt = `${post.title} – Дом Експерт Мебел`
   const socialImage = BLOG_SOCIAL_IMAGES[post.category] || '/images/og/home.webp'
   const baseMetadata = createPageMetadata({
-    title: `${post.title} | Dom Expert Мебел`,
+    title: `${post.title} | Дом Експерт Мебел`,
     description,
     path: `/блог/${post.slug}/`,
     image: socialImage,
@@ -128,9 +128,11 @@ function ArticleFigure({ image, priority = false }: { image: BlogImage; priority
           priority={priority}
         />
       </div>
-      <figcaption className="border-t border-walnut/10 px-4 py-3 font-body text-xs leading-relaxed text-warm-gray">
-        <ImageCaption image={image} />
-      </figcaption>
+      {image.caption && (
+        <figcaption className="border-t border-walnut/10 px-4 py-3 font-body text-xs leading-relaxed text-warm-gray">
+          <ImageCaption image={image} />
+        </figcaption>
+      )}
     </figure>
   )
 }
@@ -295,15 +297,17 @@ function RelatedPostCard({ post }: { post: BlogPost }) {
         >
           <Image
             src={post.heroImage.src}
-            alt={`${post.heroImage.alt}. ${post.heroImage.caption}`}
+            alt={post.heroImage.caption ? `${post.heroImage.alt}. ${post.heroImage.caption}` : post.heroImage.alt}
             fill
             className="object-cover transition-transform duration-500 hover:scale-[1.03]"
             sizes="(max-width: 768px) 100vw, 33vw"
           />
         </Link>
-        <figcaption className="px-3 py-2 font-body text-[11px] leading-relaxed text-white/75">
-          <ImageCaption image={post.heroImage} />
-        </figcaption>
+        {post.heroImage.caption && (
+          <figcaption className="px-3 py-2 font-body text-[11px] leading-relaxed text-white/75">
+            <ImageCaption image={post.heroImage} />
+          </figcaption>
+        )}
       </figure>
       <div className="p-5">
         <Badge className="mb-3">{post.category}</Badge>
@@ -341,19 +345,19 @@ export default function BlogPostPage({ params }: Props) {
       '@type': 'ImageObject',
       url: imageUrl,
       description: post.heroImage.alt,
-      caption: post.heroImage.caption,
+      ...(post.heroImage.caption ? { caption: post.heroImage.caption } : {}),
       ...(post.heroImage.credit ? { creditText: post.heroImage.credit } : {}),
     },
     datePublished: post.date,
     dateModified: post.dateModified ?? post.date,
     author: {
       '@type': 'Organization',
-      name: 'Dom Expert Мебел',
+      name: 'Дом Експерт Мебел',
       url: SITE_URL,
     },
     publisher: {
       '@type': 'Organization',
-      name: 'Dom Expert Мебел',
+      name: 'Дом Експерт Мебел',
       logo: {
         '@type': 'ImageObject',
         url: `${SITE_URL}/images/logo-icon.webp`,

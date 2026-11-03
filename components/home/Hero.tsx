@@ -29,7 +29,7 @@ export default function Hero() {
           src={HERO_DESKTOP}
           srcSet={responsiveSrcSet(HERO_DESKTOP)}
           sizes="100vw"
-          alt="Примерна интериорна визуализация на кухня и дневна по поръчка"
+          alt="Кухня и дневна по поръчка"
           width={1672}
           height={941}
           loading="eager"
@@ -49,12 +49,6 @@ export default function Hero() {
       <div className="absolute inset-0 z-[1] md:hidden" style={{
         background: 'linear-gradient(180deg, rgba(10,7,4,0.72) 0%, rgba(10,7,4,0.48) 38%, rgba(10,7,4,0.14) 58%, rgba(10,7,4,0.88) 100%)',
       }} />
-
-      <span
-        className="absolute right-4 top-20 z-[2] rounded-full bg-black/45 px-3 py-1.5 font-body text-[0.58rem] font-semibold text-white backdrop-blur-md"
-      >
-        Примерна интериорна визуализация
-      </span>
 
       {/* Content */}
       <div style={{
@@ -141,6 +135,14 @@ export default function Hero() {
         >
           <HeroRatingBadge />
         </motion.div>
+
+        <a
+          href="/софия/"
+          className="mt-4 inline-flex w-fit items-center gap-1.5 font-body font-semibold text-white underline-offset-4 hover:underline"
+          style={{ fontSize: '0.88rem' }}
+        >
+          Работим в София – {SITE_CONFIG.stats.projectsSofia} проекта →
+        </a>
 
         <div style={{ flex: 1, minHeight: '2rem' }} />
 

@@ -405,6 +405,97 @@
       "1024": "/images/responsive/portfolio/3d-proekt-tyasna-kuhnya-blagoevgrad/3d-vizualizatsiya-tyasna-kuhnya-blagoevgrad-kolona-s-furna-1-1024w.webp"
     }
   },
+  "/portfolio/detska-staya-kolichki/3d-vizualizatsiya-detska-staya-detayl-led-osvetlenie-8.webp": {
+    "width": 1600,
+    "variants": {
+      "640": "/images/responsive/portfolio/detska-staya-kolichki/3d-vizualizatsiya-detska-staya-detayl-led-osvetlenie-8-640w.webp",
+      "1024": "/images/responsive/portfolio/detska-staya-kolichki/3d-vizualizatsiya-detska-staya-detayl-led-osvetlenie-8-1024w.webp"
+    }
+  },
+  "/portfolio/detska-staya-kolichki/3d-vizualizatsiya-detska-staya-detska-lampa-9.webp": {
+    "width": 1600,
+    "variants": {
+      "640": "/images/responsive/portfolio/detska-staya-kolichki/3d-vizualizatsiya-detska-staya-detska-lampa-9-640w.webp",
+      "1024": "/images/responsive/portfolio/detska-staya-kolichki/3d-vizualizatsiya-detska-staya-detska-lampa-9-1024w.webp"
+    }
+  },
+  "/portfolio/detska-staya-kolichki/3d-vizualizatsiya-detska-staya-kam-byuroto-3.webp": {
+    "width": 1600,
+    "variants": {
+      "640": "/images/responsive/portfolio/detska-staya-kolichki/3d-vizualizatsiya-detska-staya-kam-byuroto-3-640w.webp",
+      "1024": "/images/responsive/portfolio/detska-staya-kolichki/3d-vizualizatsiya-detska-staya-kam-byuroto-3-1024w.webp"
+    }
+  },
+  "/portfolio/detska-staya-kolichki/3d-vizualizatsiya-detska-staya-kam-garderoba-4.webp": {
+    "width": 1600,
+    "variants": {
+      "640": "/images/responsive/portfolio/detska-staya-kolichki/3d-vizualizatsiya-detska-staya-kam-garderoba-4-640w.webp",
+      "1024": "/images/responsive/portfolio/detska-staya-kolichki/3d-vizualizatsiya-detska-staya-kam-garderoba-4-1024w.webp"
+    }
+  },
+  "/portfolio/detska-staya-kolichki/3d-vizualizatsiya-detska-staya-kam-legloto-2.webp": {
+    "width": 1600,
+    "variants": {
+      "640": "/images/responsive/portfolio/detska-staya-kolichki/3d-vizualizatsiya-detska-staya-kam-legloto-2-640w.webp",
+      "1024": "/images/responsive/portfolio/detska-staya-kolichki/3d-vizualizatsiya-detska-staya-kam-legloto-2-1024w.webp"
+    }
+  },
+  "/portfolio/detska-staya-kolichki/3d-vizualizatsiya-detska-staya-kray-na-garderoba-6.webp": {
+    "width": 1600,
+    "variants": {
+      "640": "/images/responsive/portfolio/detska-staya-kolichki/3d-vizualizatsiya-detska-staya-kray-na-garderoba-6-640w.webp",
+      "1024": "/images/responsive/portfolio/detska-staya-kolichki/3d-vizualizatsiya-detska-staya-kray-na-garderoba-6-1024w.webp"
+    }
+  },
+  "/portfolio/detska-staya-kolichki/3d-vizualizatsiya-detska-staya-nisha-ot-vratata-7.webp": {
+    "width": 1600,
+    "variants": {
+      "640": "/images/responsive/portfolio/detska-staya-kolichki/3d-vizualizatsiya-detska-staya-nisha-ot-vratata-7-640w.webp",
+      "1024": "/images/responsive/portfolio/detska-staya-kolichki/3d-vizualizatsiya-detska-staya-nisha-ot-vratata-7-1024w.webp"
+    }
+  },
+  "/portfolio/detska-staya-kolichki/3d-vizualizatsiya-detska-staya-nosht-led-5.webp": {
+    "width": 1600,
+    "variants": {
+      "640": "/images/responsive/portfolio/detska-staya-kolichki/3d-vizualizatsiya-detska-staya-nosht-led-5-640w.webp",
+      "1024": "/images/responsive/portfolio/detska-staya-kolichki/3d-vizualizatsiya-detska-staya-nosht-led-5-1024w.webp"
+    }
+  },
+  "/portfolio/detska-staya-kolichki/3d-vizualizatsiya-detska-staya-obsht-izgled-1.webp": {
+    "width": 1600,
+    "variants": {
+      "640": "/images/responsive/portfolio/detska-staya-kolichki/3d-vizualizatsiya-detska-staya-obsht-izgled-1-640w.webp",
+      "1024": "/images/responsive/portfolio/detska-staya-kolichki/3d-vizualizatsiya-detska-staya-obsht-izgled-1-1024w.webp"
+    }
+  },
+  "/portfolio/garderob-byal-glants/3d-vizualizatsiya-garderob-byal-glants-agal-3.webp": {
+    "width": 1920,
+    "variants": {
+      "640": "/images/responsive/portfolio/garderob-byal-glants/3d-vizualizatsiya-garderob-byal-glants-agal-3-640w.webp",
+      "1024": "/images/responsive/portfolio/garderob-byal-glants/3d-vizualizatsiya-garderob-byal-glants-agal-3-1024w.webp"
+    }
+  },
+  "/portfolio/garderob-byal-glants/3d-vizualizatsiya-garderob-byal-glants-izgled-otgore-4.webp": {
+    "width": 1600,
+    "variants": {
+      "640": "/images/responsive/portfolio/garderob-byal-glants/3d-vizualizatsiya-garderob-byal-glants-izgled-otgore-4-640w.webp",
+      "1024": "/images/responsive/portfolio/garderob-byal-glants/3d-vizualizatsiya-garderob-byal-glants-izgled-otgore-4-1024w.webp"
+    }
+  },
+  "/portfolio/garderob-byal-glants/3d-vizualizatsiya-garderob-byal-glants-obsht-izgled-1.webp": {
+    "width": 1920,
+    "variants": {
+      "640": "/images/responsive/portfolio/garderob-byal-glants/3d-vizualizatsiya-garderob-byal-glants-obsht-izgled-1-640w.webp",
+      "1024": "/images/responsive/portfolio/garderob-byal-glants/3d-vizualizatsiya-garderob-byal-glants-obsht-izgled-1-1024w.webp"
+    }
+  },
+  "/portfolio/garderob-byal-glants/3d-vizualizatsiya-garderob-byal-glants-zadna-stena-2.webp": {
+    "width": 1920,
+    "variants": {
+      "640": "/images/responsive/portfolio/garderob-byal-glants/3d-vizualizatsiya-garderob-byal-glants-zadna-stena-2-640w.webp",
+      "1024": "/images/responsive/portfolio/garderob-byal-glants/3d-vizualizatsiya-garderob-byal-glants-zadna-stena-2-1024w.webp"
+    }
+  },
   "/portfolio/kuhnya-domexpert-v17/3d-proekt-kuhnya-moderna-obsht-1.webp": {
     "width": 1500,
     "variants": {
@@ -466,6 +557,40 @@
     "variants": {
       "640": "/images/responsive/portfolio/kuhnya-domexpert-v17/3d-vizualizatsiya-kuhnya-s-ostrov-blagoevgrad-parvo-predlozhenie-2-640w.webp",
       "1024": "/images/responsive/portfolio/kuhnya-domexpert-v17/3d-vizualizatsiya-kuhnya-s-ostrov-blagoevgrad-parvo-predlozhenie-2-1024w.webp"
+    }
+  },
+  "/portfolio/kuhnya-promyana/3d-vizualizatsiya-g-obrazna-kuhnya-frontalen-2.webp": {
+    "width": 1440,
+    "variants": {
+      "640": "/images/responsive/portfolio/kuhnya-promyana/3d-vizualizatsiya-g-obrazna-kuhnya-frontalen-2-640w.webp",
+      "1024": "/images/responsive/portfolio/kuhnya-promyana/3d-vizualizatsiya-g-obrazna-kuhnya-frontalen-2-1024w.webp"
+    }
+  },
+  "/portfolio/kuhnya-promyana/3d-vizualizatsiya-g-obrazna-kuhnya-kray-na-kriloto-5.webp": {
+    "width": 1200,
+    "variants": {
+      "640": "/images/responsive/portfolio/kuhnya-promyana/3d-vizualizatsiya-g-obrazna-kuhnya-kray-na-kriloto-5-640w.webp",
+      "1024": "/images/responsive/portfolio/kuhnya-promyana/3d-vizualizatsiya-g-obrazna-kuhnya-kray-na-kriloto-5-1024w.webp"
+    }
+  },
+  "/portfolio/kuhnya-promyana/3d-vizualizatsiya-g-obrazna-kuhnya-mivka-3.webp": {
+    "width": 810,
+    "variants": {
+      "640": "/images/responsive/portfolio/kuhnya-promyana/3d-vizualizatsiya-g-obrazna-kuhnya-mivka-3-640w.webp"
+    }
+  },
+  "/portfolio/kuhnya-promyana/3d-vizualizatsiya-g-obrazna-kuhnya-obsht-izgled-1.webp": {
+    "width": 1470,
+    "variants": {
+      "640": "/images/responsive/portfolio/kuhnya-promyana/3d-vizualizatsiya-g-obrazna-kuhnya-obsht-izgled-1-640w.webp",
+      "1024": "/images/responsive/portfolio/kuhnya-promyana/3d-vizualizatsiya-g-obrazna-kuhnya-obsht-izgled-1-1024w.webp"
+    }
+  },
+  "/portfolio/kuhnya-promyana/3d-vizualizatsiya-g-obrazna-kuhnya-otdyasno-4.webp": {
+    "width": 1334,
+    "variants": {
+      "640": "/images/responsive/portfolio/kuhnya-promyana/3d-vizualizatsiya-g-obrazna-kuhnya-otdyasno-4-640w.webp",
+      "1024": "/images/responsive/portfolio/kuhnya-promyana/3d-vizualizatsiya-g-obrazna-kuhnya-otdyasno-4-1024w.webp"
     }
   }
 }

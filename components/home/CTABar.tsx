@@ -94,7 +94,7 @@ export default function CTABar() {
                 <a href="tel:+359876081199" className="font-display text-white text-3xl font-semibold hover:text-walnut transition-colors">
                   0876 081 199
                 </a>
-                <p className="font-body text-xs mt-1" style={{ color: 'rgba(250,250,247,0.45)' }}>Пон – Пет. 09:00 – 18:00</p>
+                <p className="font-body text-xs mt-1" style={{ color: 'rgba(250,250,247,0.45)' }}>Пон – Пет. 10:00 – 18:00</p>
               </div>
             </div>
             <div className="flex flex-col items-center md:items-end gap-3">

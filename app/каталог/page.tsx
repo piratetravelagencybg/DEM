@@ -16,7 +16,7 @@ import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
 
 const BASE_URL = 'https://domexpertmebel.com'
 const CATALOG_IMAGE = '/images/og/home.webp'
-const DEFAULT_DESCRIPTION = 'Разгледайте мебели от MBX с актуални цени, снимки и наличности. Филтрирайте по стая и вид мебел и поръчайте с консултация от Dom Expert Мебел.'
+const DEFAULT_DESCRIPTION = 'Разгледайте мебели от MBX с актуални цени, снимки и наличности. Филтрирайте по стая и вид мебел и поръчайте с консултация от Дом Експерт Мебел.'
 
 export const revalidate = 86400
 
@@ -31,9 +31,11 @@ export function buildCatalogMetadata(state: CatalogRouteState): Metadata {
     : category !== 'all'
       ? 'Мебели за ' + categoryLabel.toLowerCase()
       : 'Каталог мебели'
-  const title = titleBase + (state.page > 1 ? ' – стр. ' + state.page : '') + ' | Dom Expert'
+  const titleCore = titleBase + (state.page > 1 ? ' – стр. ' + state.page : '')
+  // Full brand when it fits in 60 characters, short brand otherwise.
+  const title = titleCore + (titleCore.length + 20 <= 60 ? ' | Дом Експерт Мебел' : ' | Дом Експерт')
   const descriptionCopy = type !== 'all' || category !== 'all'
-    ? 'Разгледайте ' + typeLabel.toLowerCase() + (category !== 'all' ? ' за ' + categoryLabel.toLowerCase() : '') + ' от MBX с актуални цени, снимки и наличности. Сравнете модели и варианти и поръчайте с консултация от Dom Expert Мебел.'
+    ? 'Разгледайте ' + typeLabel.toLowerCase() + (category !== 'all' ? ' за ' + categoryLabel.toLowerCase() : '') + ' от MBX с актуални цени, снимки и наличности. Сравнете модели и варианти и поръчайте с консултация от Дом Експерт Мебел.'
     : DEFAULT_DESCRIPTION
   const description = descriptionCopy.length > 155
     ? descriptionCopy.slice(0, 154).replace(/\s+\S*$/, '').replace(/[.,;:–—-]+$/, '') + '…'
@@ -50,11 +52,11 @@ export function buildCatalogMetadata(state: CatalogRouteState): Metadata {
     openGraph: {
       type: 'website',
       locale: 'bg_BG',
-      siteName: 'Dom Expert Мебел',
+      siteName: 'Дом Експерт Мебел',
       title,
       description,
       url: canonical,
-      images: [{ url: CATALOG_IMAGE, width: 1200, height: 630, type: 'image/webp', alt: 'Каталог мебели от Dom Expert Мебел' }],
+      images: [{ url: CATALOG_IMAGE, width: 1200, height: 630, type: 'image/webp', alt: 'Каталог мебели от Дом Експерт Мебел' }],
     },
     twitter: {
       card: 'summary_large_image',

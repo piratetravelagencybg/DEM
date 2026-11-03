@@ -6,8 +6,8 @@
 import { BUSINESS_COORDINATES, GOOGLE_BUSINESS_PROFILE_URL } from './business'
 
 export const SITE_CONFIG = {
-  name: 'Dom Expert Мебел',
-  legalName: 'Dom Expert Мебел',
+  name: 'Дом Експерт Мебел',
+  legalName: 'Дом Експерт Мебел',
   phone: '0876 081 199',
   phoneInternational: '+359876081199',
   email: 'domexpertmebel@gmail.com',
@@ -34,7 +34,7 @@ export const SITE_CONFIG = {
 
   hours: {
     weekdays: 'Понеделник–Петък',
-    time: '09:00–18:00',
+    time: '10:00–18:00',
     weekend: 'Събота и Неделя: Почивни дни',
   },
 
@@ -45,12 +45,20 @@ export const SITE_CONFIG = {
     experienceYears: new Date().getFullYear() - 2012,
     projects: '100+ проекта',
     projectsCount: 100,
-    projectsSofia: '30+',
+    projectsSofia: '30+', // потвърдено от собственика, 03.11.2026
+    hasProjectsPetrich: true, // реални проекти в Петрич — потвърдено от собственика, 03.11.2026
     warranty: '2 години',
     warrantyYears: 2,
     deliveryTime: '4–6 седмици',
     deliveryWeeksMin: 4,
     deliveryWeeksMax: 6,
+  },
+
+  // Срокове за проектиране — потвърдени от собственика, 03.11.2026
+  timelines: {
+    design3D: '3–5 работни дни',
+    interiorDesignRoom: '1–2 седмици',
+    interiorDesignApartment: '3–4 седмици',
   },
 
   // Цени за 3D проект
@@ -96,6 +104,8 @@ export const SITE_CONFIG = {
   // Обслужвани градове
   cities: {
     primary: ['Благоевград', 'София', 'Дупница', 'Сандански', 'Петрич'],
+    // Обслужвани, но без собствена градска страница — потвърдено от собственика, 03.11.2026
+    alsoServed: ['Банско', 'Разлог'],
     region: 'Югозападна България',
     remote3D: true, // Дистанционен 3D проект за цяла България
   },
@@ -106,7 +116,7 @@ export const SITE_CONFIG = {
   },
 
   siteUrl: 'https://domexpertmebel.com',
-  siteName: 'Dom Expert Мебел',
+  siteName: 'Дом Експерт Мебел',
 } as const
 
 // Помощни функции
@@ -132,5 +142,8 @@ export function getInteriorDesignPrice() {
     minimum: `минимум ${minimumSqm} кв.м`,
   }
 }
+
+/** Всички обслужвани градове — за areaServed в schema и за текстове. */
+export const SERVED_CITIES = [...SITE_CONFIG.cities.primary, ...SITE_CONFIG.cities.alsoServed]
 
 export type SiteConfig = typeof SITE_CONFIG

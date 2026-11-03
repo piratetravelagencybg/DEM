@@ -2,6 +2,15 @@ import rawProjects from '@/data/projects.json'
 
 export type ProjectStatus = 'realized' | '3d'
 
+export type ProjectVideo = {
+  src: string
+  poster: string
+  width: number
+  height: number
+  /** ISO date the video was published on the site (VideoObject uploadDate). */
+  uploadDate: string
+}
+
 export type Project = {
   id: string
   slug: string
@@ -16,7 +25,7 @@ export type Project = {
   duration: string
   images: string[]
   imageType: 'photo' | 'visualization'
-  imageCaption: string
+  video?: ProjectVideo
   featured: boolean
   status: ProjectStatus
 }
@@ -34,10 +43,10 @@ export function projectStatusLabel(project: Project) {
   return project.status === '3d' ? '3D проект' : 'Реализиран проект'
 }
 
-/** Short badge shown on top of the image. */
+/** Short badge shown on top of the image, or null when none is shown. */
 export function projectImageBadge(project: Project) {
   if (project.imageType === 'photo') return 'Реализиран проект'
-  return project.status === '3d' ? '3D визуализация' : 'Примерна визуализация'
+  return project.status === '3d' ? '3D визуализация' : null
 }
 
 export function projectPlace(project: Project) {
@@ -47,9 +56,7 @@ export function projectPlace(project: Project) {
 export function projectImageAlt(project: Project, view?: string) {
   const subject = project.title + projectPlace(project) + (view ? ` — ${view}` : '')
   if (project.imageType === 'photo') return `${subject} — реализиран проект`
-  return project.status === '3d'
-    ? `3D визуализация: ${subject}`
-    : `${subject} — примерна визуализация към реализиран проект`
+  return project.status === '3d' ? `3D визуализация: ${subject}` : subject
 }
 
 export function projectsByCity(city: string) {

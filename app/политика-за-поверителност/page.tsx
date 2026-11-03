@@ -3,8 +3,8 @@ import Link from 'next/link'
 import { createPageMetadata } from '@/lib/seo'
 
 export const metadata: Metadata = createPageMetadata({
-  title: 'Политика за поверителност | Dom Expert Мебел',
-  description: 'Политика за поверителност и защита на личните данни на Dom Expert Мебел съгласно GDPR. Научете как събираме, използваме и защитаваме информацията.',
+  title: 'Политика за поверителност | Дом Експерт Мебел',
+  description: 'Политика за поверителност и защита на личните данни на Дом Експерт Мебел съгласно GDPR. Научете как събираме, използваме и защитаваме информацията.',
   path: '/политика-за-поверителност/',
   index: false,
 })
@@ -29,7 +29,7 @@ export default function PrivacyPolicyPage() {
           <section>
             <h2 className="font-display font-semibold text-charcoal text-xl mb-3">1. Администратор на лични данни</h2>
             <p>
-              <strong className="text-charcoal">Dom Expert Мебел</strong> (ДомЕксперт Мебел) е администратор на личните данни, събирани чрез уебсайта <strong>domexpertmebel.com</strong>.
+              <strong className="text-charcoal">Дом Експерт Мебел</strong> (ДомЕксперт Мебел) е администратор на личните данни, събирани чрез уебсайта <strong>domexpertmebel.com</strong>.
             </p>
             <p>За въпроси, свързани с личните данни, можете да се свържете с нас на:</p>
             <ul className="list-disc pl-5 space-y-1">

@@ -9,17 +9,17 @@ import { completePageMetadata } from '@/lib/seo'
 const service = services.find((s) => s.id === 'kuhni')!
 
 export const metadata: Metadata = completePageMetadata({
-  title: { absolute: 'Кухни по поръчка – 3D проект и монтаж | Dom Expert' },
+  title: { absolute: 'Кухни по поръчка – 3D проект и монтаж | Дом Експерт Мебел' },
   description: 'Кухни по поръчка с 3D проект преди изработка. Оглед 50 € и 3D проект от 100 € – приспадат се при поръчка. Собствено производство, монтаж и 2 г. гаранция.',
   alternates: { canonical: 'https://domexpertmebel.com/услуги/кухни-по-поръчка/' },
   openGraph: {
     type: 'website',
     locale: 'bg_BG',
-    siteName: 'Dom Expert Мебел',
+    siteName: 'Дом Експерт Мебел',
     url: 'https://domexpertmebel.com/услуги/кухни-по-поръчка/',
-    title: 'Кухни по поръчка – 3D проект и монтаж | Dom Expert',
+    title: 'Кухни по поръчка – 3D проект и монтаж | Дом Експерт Мебел',
     description: 'Кухни по поръчка с 3D проект преди изработка. Оглед 50 € и 3D проект от 100 € – приспадат се при поръчка. Собствено производство, монтаж и 2 г. гаранция.',
-    images: [{ url: '/images/og/kitchens.webp', width: 1200, height: 630, alt: 'Примерна визуализация на кухня по поръчка' }],
+    images: [{ url: '/images/og/kitchens.webp', width: 1200, height: 630, alt: 'Кухня по поръчка' }],
   },
 })
 
@@ -107,6 +107,11 @@ const guideLinks = [
     description: 'Какво да е готово, преди да монтираме.',
   },
   {
+    href: '/кухни-с-остров/',
+    label: 'Кухни с остров',
+    description: 'Кога островът работи и колко място трябва.',
+  },
+  {
     href: '/софия/кухни-по-поръчка/',
     label: 'Кухни по поръчка в София',
     description: '3D проект, изработка и монтаж на кухни за София.',
@@ -139,7 +144,7 @@ export default function KuhniPage() {
             <span className="eyebrow-pill">Проекти</span>
             <h2 className="section-title text-left">Проекти на кухни по поръчка</h2>
             <p className="font-body text-warm-gray leading-relaxed mt-4" style={{ fontSize: '1rem' }}>
-              Реализирани кухни и 3D проекти, подготвени преди изработка. Всеки проект е обозначен, а изображенията са визуализации, а не снимки от обектите.
+              Реализирани кухни и 3D проекти, подготвени преди изработка.
             </p>
           </div>
           <ProjectCards items={projectsByCategory('kuhni')} />

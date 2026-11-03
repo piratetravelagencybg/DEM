@@ -7,11 +7,11 @@
     "icon": "ChefHat",
     "image": "/images/visualizations/05-modern-kitchen-oak-01.webp",
     "gallery": [
-      { "src": "/images/visualizations/06-modern-kitchen-oak-02.webp", "alt": "Примерна визуализация на модерна кухня в дъб и светли тонове" },
-      { "src": "/images/visualizations/07-modern-kitchen-island-01.webp", "alt": "Примерна визуализация на кухня с остров" },
-      { "src": "/images/visualizations/09-modern-kitchen-island-03.webp", "alt": "Примерна визуализация на кухненско разпределение с остров" },
-      { "src": "/images/visualizations/10-modern-kitchen-dining-01.webp", "alt": "Примерна визуализация на кухня с трапезна зона" },
-      { "src": "/images/visualizations/11-modern-kitchen-gold-accents-01.webp", "alt": "Примерна визуализация на кухня с топли метални акценти" }
+      { "src": "/images/visualizations/06-modern-kitchen-oak-02.webp", "alt": "Модерна кухня в дъб и светли тонове" },
+      { "src": "/images/visualizations/07-modern-kitchen-island-01.webp", "alt": "Кухня с остров" },
+      { "src": "/images/visualizations/09-modern-kitchen-island-03.webp", "alt": "Кухненско разпределение с остров" },
+      { "src": "/images/visualizations/10-modern-kitchen-dining-01.webp", "alt": "Кухня с трапезна зона" },
+      { "src": "/images/visualizations/11-modern-kitchen-gold-accents-01.webp", "alt": "Кухня с топли метални акценти" }
     ],
     "features": ["МДФ, ПДЧ, гланц", "3D проект с приспадане при поръчка", "Доставка и монтаж – уговаряме за всеки проект", "Гаранция 2 г."],
     "faq": [
@@ -31,10 +31,10 @@
     "icon": "Package",
     "image": "/images/visualizations/21-modern-wardrobe-bedroom-01.webp",
     "gallery": [
-      { "src": "/images/visualizations/20-modern-wardrobe-walk-in-01.webp", "alt": "Примерна визуализация на гардеробна стая" },
-      { "src": "/images/visualizations/23-modern-wardrobe-open-storage-01.webp", "alt": "Примерна визуализация на отворено вътрешно разпределение на гардероб" },
-      { "src": "/images/visualizations/24-modern-wardrobe-led-lighting-01.webp", "alt": "Примерна визуализация на гардероб с вътрешно осветление" },
-      { "src": "/images/visualizations/25-modern-wardrobe-dressing-room-01.webp", "alt": "Примерна визуализация на гардеробна с място за съхранение" }
+      { "src": "/images/visualizations/20-modern-wardrobe-walk-in-01.webp", "alt": "Гардеробна стая" },
+      { "src": "/images/visualizations/23-modern-wardrobe-open-storage-01.webp", "alt": "Отворено вътрешно разпределение на гардероб" },
+      { "src": "/images/visualizations/24-modern-wardrobe-led-lighting-01.webp", "alt": "Гардероб с вътрешно осветление" },
+      { "src": "/images/visualizations/25-modern-wardrobe-dressing-room-01.webp", "alt": "Гардеробна с място за съхранение" }
     ],
     "features": ["Вградени и корпусни", "Плъзгащи врати", "LED осветление", "По ваши размери"],
     "faq": [
@@ -64,11 +64,11 @@
     "icon": "Bed",
     "image": "/images/visualizations/19-modern-bedroom-neutral-01.webp",
     "gallery": [
-      { "src": "/images/visualizations/19-modern-bedroom-neutral-01.webp", "alt": "Примерна визуализация на спалня в неутрални тонове" },
-      { "src": "/images/visualizations/21-modern-wardrobe-bedroom-01.webp", "alt": "Примерна визуализация на спалня с гардероб" },
-      { "src": "/images/real/spalna-03.webp", "alt": "Примерна визуализация на спален комплект в дървесен декор" },
-      { "src": "/images/real/spalna-05.webp", "alt": "Примерна визуализация на спалня с декоративно осветление" },
-      { "src": "/images/real/spalna-06.webp", "alt": "Примерна визуализация на легло и нощни шкафчета" }
+      { "src": "/images/visualizations/19-modern-bedroom-neutral-01.webp", "alt": "Спалня в неутрални тонове" },
+      { "src": "/images/visualizations/21-modern-wardrobe-bedroom-01.webp", "alt": "Спалня с гардероб" },
+      { "src": "/images/real/spalna-03.webp", "alt": "Спален комплект в дървесен декор" },
+      { "src": "/images/real/spalna-05.webp", "alt": "Спалня с декоративно осветление" },
+      { "src": "/images/real/spalna-06.webp", "alt": "Легло и нощни шкафчета" }
     ],
     "features": ["Тапицирани легла", "Легла с ракла или чекмеджета", "Вградено осветление", "Цялостен дизайн"],
     "faq": [
@@ -88,9 +88,9 @@
     "icon": "Tv",
     "image": "/images/visualizations/04-home-hero-open-plan-kitchen-04.webp",
     "gallery": [
-      { "src": "/images/visualizations/01-home-hero-open-plan-kitchen-01.webp", "alt": "Примерна визуализация на отворена дневна зона" },
-      { "src": "/images/visualizations/02-home-hero-open-plan-kitchen-02.webp", "alt": "Примерна визуализация на дневна и кухня в общо пространство" },
-      { "src": "/images/real/dnevna-04.webp", "alt": "Примерна визуализация на стелаж и мебели за дневна" }
+      { "src": "/images/visualizations/01-home-hero-open-plan-kitchen-01.webp", "alt": "Отворена дневна зона" },
+      { "src": "/images/visualizations/02-home-hero-open-plan-kitchen-02.webp", "alt": "Дневна и кухня в общо пространство" },
+      { "src": "/images/real/dnevna-04.webp", "alt": "Стелаж и мебели за дневна" }
     ],
     "features": ["ТВ секции", "Стелажи и библиотеки", "Холни маси", "Индивидуален дизайн"],
     "faq": [
@@ -120,9 +120,9 @@
     "icon": "Briefcase",
     "image": "/images/visualizations/13-modern-home-office-double-desk-01.webp",
     "gallery": [
-      { "src": "/images/visualizations/12-modern-home-office-01.webp", "alt": "Примерна визуализация на работно място с бюро и шкафове" },
-      { "src": "/images/visualizations/14-modern-home-office-library-01.webp", "alt": "Примерна визуализация на офис с библиотека" },
-      { "src": "/images/visualizations/15-modern-home-office-compact-01.webp", "alt": "Примерна визуализация на компактен домашен офис" }
+      { "src": "/images/visualizations/12-modern-home-office-01.webp", "alt": "Работно място с бюро и шкафове" },
+      { "src": "/images/visualizations/14-modern-home-office-library-01.webp", "alt": "Офис с библиотека" },
+      { "src": "/images/visualizations/15-modern-home-office-compact-01.webp", "alt": "Компактен домашен офис" }
     ],
     "features": ["Бюра и ергономия", "Конферентни маси", "Архивни шкафове", "Корпоративен дизайн"],
     "faq": [
@@ -141,10 +141,10 @@
     "icon": "Box",
     "image": "/images/visualizations/05-modern-kitchen-oak-01.webp",
     "gallery": [
-      { "src": "/images/visualizations/06-modern-kitchen-oak-02.webp", "alt": "3D визуализация на модерна кухня в дъб – Dom Expert Мебел" },
-      { "src": "/images/visualizations/07-modern-kitchen-island-01.webp", "alt": "3D визуализация на кухня с остров – Dom Expert Мебел" },
-      { "src": "/images/visualizations/21-modern-wardrobe-bedroom-01.webp", "alt": "3D визуализация на спалня с гардероб – Dom Expert Мебел" },
-      { "src": "/images/visualizations/19-modern-bedroom-neutral-01.webp", "alt": "3D визуализация на спалня в неутрални тонове – Dom Expert Мебел" }
+      { "src": "/images/visualizations/06-modern-kitchen-oak-02.webp", "alt": "3D визуализация на модерна кухня в дъб – Дом Експерт Мебел" },
+      { "src": "/images/visualizations/07-modern-kitchen-island-01.webp", "alt": "3D визуализация на кухня с остров – Дом Експерт Мебел" },
+      { "src": "/images/visualizations/21-modern-wardrobe-bedroom-01.webp", "alt": "3D визуализация на спалня с гардероб – Дом Експерт Мебел" },
+      { "src": "/images/visualizations/19-modern-bedroom-neutral-01.webp", "alt": "3D визуализация на спалня в неутрални тонове – Дом Експерт Мебел" }
     ],
     "features": ["От 100 € за кухня", "От 50 € за гардероб/спалня/дневна", "100% приспадане при поръчка", "Дистанционно за цяла България"],
     "faq": [
@@ -182,9 +182,9 @@
     "icon": "PenTool",
     "image": "/images/visualizations/01-home-hero-open-plan-kitchen-01.webp",
     "gallery": [
-      { "src": "/images/visualizations/02-home-hero-open-plan-kitchen-02.webp", "alt": "Примерна визуализация на интериорен дизайн на отворено пространство" },
-      { "src": "/images/visualizations/04-home-hero-open-plan-kitchen-04.webp", "alt": "Примерна визуализация на дневна и кухня в обща зона" },
-      { "src": "/images/visualizations/19-modern-bedroom-neutral-01.webp", "alt": "Примерна визуализация на интериорен дизайн на спалня" }
+      { "src": "/images/visualizations/02-home-hero-open-plan-kitchen-02.webp", "alt": "Интериорен дизайн на отворено пространство" },
+      { "src": "/images/visualizations/04-home-hero-open-plan-kitchen-04.webp", "alt": "Дневна и кухня в обща зона" },
+      { "src": "/images/visualizations/19-modern-bedroom-neutral-01.webp", "alt": "Интериорен дизайн на спалня" }
     ],
     "features": ["От 25 €/кв.м", "Минимум 30 кв.м", "Дизайн + собствено производство", "3D визуализации на всяко помещение"],
     "faq": [

@@ -112,7 +112,7 @@ export function createPageMetadata({
   description,
   path,
   image = DEFAULT_IMAGE,
-  imageAlt = 'Dom Expert Мебел',
+  imageAlt = 'Дом Експерт Мебел',
   index = true,
   keywords,
 }: PageMetadataOptions): Metadata {
@@ -129,7 +129,7 @@ export function createPageMetadata({
     openGraph: {
       type: 'website',
       locale: 'bg_BG',
-      siteName: 'Dom Expert Мебел',
+      siteName: 'Дом Експерт Мебел',
       title: safeTitle,
       description: safeDescription,
       url: canonical,

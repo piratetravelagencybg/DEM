@@ -1,4 +1,4 @@
-import { SITE_CONFIG } from '@/lib/site-config'
+import { SERVED_CITIES, SITE_CONFIG } from '@/lib/site-config'
 
 export default function LocalBusinessSchema() {
   const schema = {
@@ -6,7 +6,7 @@ export default function LocalBusinessSchema() {
     '@type': ['LocalBusiness', 'FurnitureStore'],
     '@id': `${SITE_CONFIG.siteUrl}/#business`,
     name: SITE_CONFIG.name,
-    alternateName: 'Dom Expert',
+    alternateName: 'Дом Експерт',
     description: 'Семейна фирма за мебели по поръчка в Благоевград, София и региона. Оглед 50 €, приспадат се, платен 3D проект с приспадане при поръчка и 2 години гаранция.',
     foundingDate: SITE_CONFIG.foundingDate,
     parentOrganization: { '@id': `${SITE_CONFIG.siteUrl}/#organization` },
@@ -31,13 +31,13 @@ export default function LocalBusinessSchema() {
       {
         '@type': 'OpeningHoursSpecification',
         dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-        opens: '09:00',
+        opens: '10:00',
         closes: '18:00',
       },
     ],
     priceRange: '$$',
     areaServed: [
-      ...SITE_CONFIG.cities.primary.map((city) => ({
+      ...SERVED_CITIES.map((city) => ({
         '@type': 'City',
         name: city,
       })),

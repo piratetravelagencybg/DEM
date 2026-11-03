@@ -9,7 +9,7 @@ export default function SiteSchema() {
         '@type': 'Organization',
         '@id': `${SITE_CONFIG.siteUrl}/#organization`,
         name: SITE_CONFIG.name,
-        alternateName: 'Dom Expert',
+        alternateName: 'Дом Експерт',
         url: `${SITE_CONFIG.siteUrl}/`,
         logo: {
           '@type': 'ImageObject',

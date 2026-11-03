@@ -9,7 +9,7 @@ import LocalBusinessSchema from '@/components/seo/LocalBusinessSchema'
 import ServiceSchema from '@/components/seo/ServiceSchema'
 import CityLinks from '@/components/ui/CityLinks'
 import { getImageCredit, getImageDisclosure } from '@/lib/image-credits'
-import { SITE_CONFIG } from '@/lib/site-config'
+import { SERVED_CITIES, SITE_CONFIG } from '@/lib/site-config'
 import type { ReactNode } from 'react'
 
 interface ServiceFAQ {
@@ -29,6 +29,8 @@ interface HeroVideo {
 
 interface ServicePageProps {
   title: string
+  /** H1 text when it should differ from the service title (breadcrumb, schema). */
+  h1?: string
   subtitle: string
   heroImage: string
   heroVideo?: HeroVideo
@@ -43,6 +45,7 @@ interface ServicePageProps {
 
 export default function ServicePageTemplate({
   title,
+  h1,
   subtitle,
   heroImage,
   heroVideo,
@@ -64,7 +67,7 @@ export default function ServicePageTemplate({
       <ServiceSchema
         name={title}
         url={pageUrl}
-        city={[...SITE_CONFIG.cities.primary]}
+        city={SERVED_CITIES}
         serviceType={title}
         description={schemaDescription ?? subtitle}
       />
@@ -118,7 +121,7 @@ export default function ServicePageTemplate({
                 className="font-display font-bold text-charcoal leading-[1.05] mb-4"
                 style={{ fontSize: 'var(--text-h1)' }}
               >
-                {title}
+                {h1 ?? title}
               </h1>
               <p className="font-body text-warm-gray leading-relaxed mb-7" style={{ fontSize: '1.05rem' }}>
                 {subtitle}
@@ -196,7 +199,7 @@ export default function ServicePageTemplate({
                 ) : (
                   <Image
                     src={heroImage}
-                    alt={`${title} – ${heroDisclosure?.toLocaleLowerCase('bg-BG') || 'илюстрация'}`}
+                    alt={heroDisclosure ? `${title} – ${heroDisclosure.toLocaleLowerCase('bg-BG')}` : title}
                     fill
                     className="object-cover"
                     priority

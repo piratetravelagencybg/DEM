@@ -7,17 +7,17 @@ import { completePageMetadata } from '@/lib/seo'
 const service = services.find((s) => s.id === 'garderob')!
 
 export const metadata: Metadata = completePageMetadata({
-  title: { absolute: 'Гардероби по поръчка Благоевград | Dom Expert Мебел' },
+  title: { absolute: 'Гардероби по поръчка Благоевград | Дом Експерт Мебел' },
   description: 'Вградени и корпусни гардероби по поръчка в Благоевград, София и региона. Оглед 50 €, приспадат се, индивидуално разпределение и 2 г. гаранция.',
   alternates: { canonical: 'https://domexpertmebel.com/услуги/гардероби-по-поръчка/' },
   openGraph: {
     type: 'website',
     locale: 'bg_BG',
-    siteName: 'Dom Expert Мебел',
+    siteName: 'Дом Експерт Мебел',
     url: 'https://domexpertmebel.com/услуги/гардероби-по-поръчка/',
-    title: 'Гардероби по поръчка Благоевград | Dom Expert Мебел',
+    title: 'Гардероби по поръчка Благоевград | Дом Експерт Мебел',
     description: 'Вградени и корпусни гардероби по поръчка в Благоевград, София и региона. Оглед 50 €, приспадат се и 2 години гаранция.',
-    images: [{ url: '/images/og/wardrobes.webp', width: 1200, height: 630, alt: 'Примерна визуализация на гардероб по поръчка' }],
+    images: [{ url: '/images/og/wardrobes.webp', width: 1200, height: 630, alt: 'Гардероб по поръчка' }],
   },
 })
 

@@ -10,6 +10,9 @@ const MobileMenu = dynamic(() => import('./MobileMenu'), { ssr: false })
 
 const navLinks = [
   { label: 'Услуги', href: '/услуги/' },
+  // Shown in the desktop bar from xl up; below that they fit only in the mobile menu.
+  { label: 'Интериорен дизайн', href: '/услуги/интериорен-дизайн/', wideOnly: true },
+  { label: 'София', href: '/софия/', wideOnly: true },
   { label: 'Блог', href: '/блог/' },
   { label: 'За нас', href: '/за-нас/' },
   { label: 'Контакти', href: '/контакти/' },
@@ -95,7 +98,7 @@ export default function Header() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="font-body text-sm transition-colors duration-200 relative group"
+                  className={`font-body text-sm whitespace-nowrap transition-colors duration-200 relative group ${link.wideOnly ? 'hidden xl:inline-block' : ''}`}
                   style={{ color: scrolled ? '#2C2C2C' : 'rgba(255,255,255,0.85)' }}
                 >
                   {link.label}

@@ -233,7 +233,7 @@ function buildOfferStructuredData(product: MbxVariant) {
     availability: getAvailabilitySchemaValue(product.availability),
     itemCondition: 'https://schema.org/NewCondition',
     url: getProductUrl(product),
-    seller: { '@type': 'Organization', name: 'Dom Expert Мебел' },
+    seller: { '@type': 'Organization', name: 'Дом Експерт Мебел' },
   }
 }
 
@@ -329,7 +329,7 @@ export function buildProductContent(product: MbxVariant) {
     ? 'Показаната цена е крайна клиентска цена'
     : 'Цената за този вариант се потвърждава при запитване'
   const productDetails = 'Каталожният номер на модела е ' + sku + '. ' + priceCopy + ', а текущият статус е „' + availability + '“. Снимките представят конкретния вариант; при избор сравнете наименованието, конфигурацията и посочените в него декор или размер.'
-  const orderingHelp = 'Преди поръчка препоръчваме да потвърдите подходящия вариант и размерите за вашето пространство. Екипът на Dom Expert Мебел може да помогне с проверка на актуалната наличност, съвместимите елементи от серията и организацията на поръчката.'
+  const orderingHelp = 'Преди поръчка препоръчваме да потвърдите подходящия вариант и размерите за вашето пространство. Екипът на Дом Експерт Мебел може да помогне с проверка на актуалната наличност, съвместимите елементи от серията и организацията на поръчката.'
 
   return {
     summary: sourceDescription || generatedIntro,
@@ -348,7 +348,8 @@ function buildProductTitle(product: MbxVariant) {
   const shortName = getShortProductName(product)
   const sku = normalizeCopy(product.productNo || '')
   const skuSuffix = sku ? ' – ' + sku : ''
-  const brandSuffix = ' | Dom Expert'
+  // Short brand: the full „Дом Експерт Мебел“ would cut 6 more characters from the product name.
+  const brandSuffix = ' | Дом Експерт'
   const availableNameLength = Math.max(18, 55 - skuSuffix.length - brandSuffix.length)
   return truncateAtWord(shortName, availableNameLength) + skuSuffix + brandSuffix
 }
@@ -359,7 +360,7 @@ function buildProductMetaDescription(product: MbxVariant) {
   const price = typeof product.priceVat !== 'number' || product.priceVat <= 0
     ? 'цена по запитване'
     : 'цена ' + formatPrice(product.priceVat)
-  const description = shortName + ' (' + content.sku + ') – ' + content.typeLabel.toLowerCase() + ' от ' + content.manufacturer + ', ' + price + '. Вижте снимки, варианти и актуална наличност. Поръчка с консултация от Dom Expert Мебел.'
+  const description = shortName + ' (' + content.sku + ') – ' + content.typeLabel.toLowerCase() + ' от ' + content.manufacturer + ', ' + price + '. Вижте снимки, варианти и актуална наличност. Поръчка с консултация от Дом Експерт Мебел.'
   return truncateAtWord(description, 155)
 }
 
@@ -382,7 +383,7 @@ export function buildProductMetadata(product: MbxVariant): Metadata {
     openGraph: {
       type: 'website',
       locale: 'bg_BG',
-      siteName: 'Dom Expert Мебел',
+      siteName: 'Дом Експерт Мебел',
       title,
       description,
       url: canonical,
@@ -391,7 +392,7 @@ export function buildProductMetadata(product: MbxVariant): Metadata {
         width: 1200,
         height: 630,
         type: 'image/webp',
-        alt: 'Примерна интериорна визуализация – Dom Expert Мебел',
+        alt: 'Готови мебели – Дом Експерт Мебел',
       }],
     },
     twitter: {
