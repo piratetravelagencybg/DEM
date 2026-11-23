@@ -96,6 +96,34 @@
     "status": "realized"
   },
   {
+    "id": "14",
+    "slug": "detska-staya-za-dve-momicheta",
+    "title": "Детска стая за две момичета",
+    "category": "detska",
+    "city": "",
+    "description": "3D проект на детска стая 3,40 × 3,10 м за две сестри: две легла с тапицирани табли и повдигащ механизъм с багажник, гардероб до тавана с открити рафтове, бюро с ниша за телевизор, клапи Blum Aventos, LED огледало и чекмеджета Legrabox.",
+    "materials": "Бяло мат, топъл светъл дъб, пудрово розово, Blum Aventos и Legrabox, LED",
+    "duration": "",
+    "images": [
+      "/portfolio/detska-staya-za-dve-momicheta/3d-vizualizatsiya-detska-staya-dve-momicheta-obsht-izgled-1.webp",
+      "/portfolio/detska-staya-za-dve-momicheta/3d-vizualizatsiya-detska-staya-dve-momicheta-garderob-2.webp",
+      "/portfolio/detska-staya-za-dve-momicheta/3d-vizualizatsiya-detska-staya-dve-momicheta-byuro-tv-ogledalo-3.webp",
+      "/portfolio/detska-staya-za-dve-momicheta/3d-vizualizatsiya-detska-staya-dve-momicheta-vecher-4.webp",
+      "/portfolio/detska-staya-za-dve-momicheta/3d-vizualizatsiya-detska-staya-dve-momicheta-leglo-s-bagazhnik-5.webp",
+      "/portfolio/detska-staya-za-dve-momicheta/3d-vizualizatsiya-detska-staya-dve-momicheta-klapi-nad-byuroto-6.webp"
+    ],
+    "imageType": "visualization",
+    "featured": false,
+    "status": "3d",
+    "video": {
+      "src": "/video/detska-staya-za-dve-momicheta/reel.mp4",
+      "poster": "/video/detska-staya-za-dve-momicheta/reel-poster.webp",
+      "width": 1080,
+      "height": 1920,
+      "uploadDate": "2026-11-23"
+    }
+  },
+  {
     "id": "7",
     "slug": "3d-proekt-salon-za-krasota",
     "title": "Салон за красота",

@@ -468,6 +468,48 @@
       "1024": "/images/responsive/portfolio/detska-staya-kolichki/3d-vizualizatsiya-detska-staya-obsht-izgled-1-1024w.webp"
     }
   },
+  "/portfolio/detska-staya-za-dve-momicheta/3d-vizualizatsiya-detska-staya-dve-momicheta-byuro-tv-ogledalo-3.webp": {
+    "width": 1504,
+    "variants": {
+      "640": "/images/responsive/portfolio/detska-staya-za-dve-momicheta/3d-vizualizatsiya-detska-staya-dve-momicheta-byuro-tv-ogledalo-3-640w.webp",
+      "1024": "/images/responsive/portfolio/detska-staya-za-dve-momicheta/3d-vizualizatsiya-detska-staya-dve-momicheta-byuro-tv-ogledalo-3-1024w.webp"
+    }
+  },
+  "/portfolio/detska-staya-za-dve-momicheta/3d-vizualizatsiya-detska-staya-dve-momicheta-garderob-2.webp": {
+    "width": 1536,
+    "variants": {
+      "640": "/images/responsive/portfolio/detska-staya-za-dve-momicheta/3d-vizualizatsiya-detska-staya-dve-momicheta-garderob-2-640w.webp",
+      "1024": "/images/responsive/portfolio/detska-staya-za-dve-momicheta/3d-vizualizatsiya-detska-staya-dve-momicheta-garderob-2-1024w.webp"
+    }
+  },
+  "/portfolio/detska-staya-za-dve-momicheta/3d-vizualizatsiya-detska-staya-dve-momicheta-klapi-nad-byuroto-6.webp": {
+    "width": 1080,
+    "variants": {
+      "640": "/images/responsive/portfolio/detska-staya-za-dve-momicheta/3d-vizualizatsiya-detska-staya-dve-momicheta-klapi-nad-byuroto-6-640w.webp",
+      "1024": "/images/responsive/portfolio/detska-staya-za-dve-momicheta/3d-vizualizatsiya-detska-staya-dve-momicheta-klapi-nad-byuroto-6-1024w.webp"
+    }
+  },
+  "/portfolio/detska-staya-za-dve-momicheta/3d-vizualizatsiya-detska-staya-dve-momicheta-leglo-s-bagazhnik-5.webp": {
+    "width": 1080,
+    "variants": {
+      "640": "/images/responsive/portfolio/detska-staya-za-dve-momicheta/3d-vizualizatsiya-detska-staya-dve-momicheta-leglo-s-bagazhnik-5-640w.webp",
+      "1024": "/images/responsive/portfolio/detska-staya-za-dve-momicheta/3d-vizualizatsiya-detska-staya-dve-momicheta-leglo-s-bagazhnik-5-1024w.webp"
+    }
+  },
+  "/portfolio/detska-staya-za-dve-momicheta/3d-vizualizatsiya-detska-staya-dve-momicheta-obsht-izgled-1.webp": {
+    "width": 1536,
+    "variants": {
+      "640": "/images/responsive/portfolio/detska-staya-za-dve-momicheta/3d-vizualizatsiya-detska-staya-dve-momicheta-obsht-izgled-1-640w.webp",
+      "1024": "/images/responsive/portfolio/detska-staya-za-dve-momicheta/3d-vizualizatsiya-detska-staya-dve-momicheta-obsht-izgled-1-1024w.webp"
+    }
+  },
+  "/portfolio/detska-staya-za-dve-momicheta/3d-vizualizatsiya-detska-staya-dve-momicheta-vecher-4.webp": {
+    "width": 1600,
+    "variants": {
+      "640": "/images/responsive/portfolio/detska-staya-za-dve-momicheta/3d-vizualizatsiya-detska-staya-dve-momicheta-vecher-4-640w.webp",
+      "1024": "/images/responsive/portfolio/detska-staya-za-dve-momicheta/3d-vizualizatsiya-detska-staya-dve-momicheta-vecher-4-1024w.webp"
+    }
+  },
   "/portfolio/garderob-byal-glants/3d-vizualizatsiya-garderob-byal-glants-agal-3.webp": {
     "width": 1920,
     "variants": {
