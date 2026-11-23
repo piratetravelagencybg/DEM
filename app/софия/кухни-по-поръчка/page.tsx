@@ -96,6 +96,16 @@ const sections = [
 
 const guideLinks = [
   {
+    href: '/блог/kolko-struva-kuhnya-po-poruchka-sofia-2026/',
+    label: 'Колко струва кухня в София през 2026',
+    description: 'Цени на л.м. с ДДС и примерни сметки.',
+  },
+  {
+    href: '/блог/kuhnya-panelen-apartament-sofia/',
+    label: 'Кухня за панелен апартамент',
+    description: 'Размери, подредба, щранг и вентилация.',
+  },
+  {
     href: '/блог/mdf-ili-pdch-za-kuhnya/',
     label: 'МДФ или ПДЧ за кухня',
     description: 'Кой материал къде работи по-добре.',
