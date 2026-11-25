@@ -16,6 +16,7 @@ const categoryLabels: Record<string, string> = {
   ofis: 'Офис',
   saloni: 'Салон за красота',
   detska: 'Детска стая',
+  antre: 'Антре',
 }
 
 /** Card grid of projects; labels follow each project's status. */
