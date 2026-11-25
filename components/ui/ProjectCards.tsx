@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { Camera } from 'lucide-react'
 import {
   projectHref,
   projectImageAlt,
@@ -8,7 +9,7 @@ import {
   type Project,
 } from '@/lib/projects'
 
-const categoryLabels: Record<string, string> = {
+export const categoryLabels: Record<string, string> = {
   kuhni: 'Кухня',
   garderob: 'Гардероб',
   spalni: 'Спалня',
@@ -47,6 +48,11 @@ export default function ProjectCards({
             {projectImageBadge(project) && (
               <span className="absolute left-3 top-3 z-10 rounded-full bg-charcoal/80 px-3 py-1 font-body text-[0.65rem] font-semibold uppercase tracking-wide text-white backdrop-blur-sm">
                 {projectImageBadge(project)}
+              </span>
+            )}
+            {project.images.length > 1 && (
+              <span className="absolute bottom-3 right-3 z-10 inline-flex items-center gap-1.5 rounded-full bg-black/55 px-2.5 py-1 font-body text-xs font-semibold text-white backdrop-blur-sm">
+                <Camera size={13} aria-hidden="true" /> {project.images.length}
               </span>
             )}
             <div className="absolute inset-0 bg-gradient-to-t from-charcoal/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />

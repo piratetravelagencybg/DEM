@@ -2,8 +2,10 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowLeft, ArrowRight, Clock, Hammer, Layers, MapPin, PencilRuler, Ruler } from 'lucide-react'
+import { ArrowLeft, ArrowRight, Clock, Expand, Hammer, Images, Layers, MapPin, PencilRuler, Ruler } from 'lucide-react'
 import QuoteForm from '@/components/ui/QuoteForm'
+import ProjectGallery, { ProjectGalleryTrigger } from '@/components/ui/ProjectGallery'
+import { categoryLabels } from '@/components/ui/ProjectCards'
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
 import {
   caseStudyProjects,
@@ -225,6 +227,18 @@ export default function ProjectPage({ params }: Props) {
               <h1 className="max-w-4xl font-display font-semibold text-white" style={{ fontSize: 'var(--text-h1)' }}>
                 {project.title}
               </h1>
+              <div className="mt-5 flex flex-wrap items-center gap-2">
+                <ProjectGalleryTrigger
+                  className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 font-body text-sm font-semibold text-charcoal shadow-lg transition-transform hover:scale-[1.03]"
+                >
+                  <Images size={17} aria-hidden="true" /> Разгледай снимките ({project.images.length})
+                </ProjectGalleryTrigger>
+                {[categoryLabels[project.category], project.city].filter(Boolean).map((label) => (
+                  <span key={label} className="rounded-full border border-white/30 bg-white/10 px-4 py-2 font-body text-sm text-white backdrop-blur-md">
+                    {label}
+                  </span>
+                ))}
+              </div>
             </div>
           </header>
 
@@ -233,33 +247,36 @@ export default function ProjectPage({ params }: Props) {
               <div className="space-y-10">
                 <div>
                   <p className="mb-3 font-body text-xs font-semibold uppercase tracking-[0.16em] text-walnut">{statusLabel}</p>
-                  <h2 id="project-overview-title" className="section-title mb-5 text-left">{is3d ? 'Задача и проектно решение' : 'Задача и изпълнено решение'}</h2>
-                  <div className="grid gap-5 sm:grid-cols-2">
-                    <div className="rounded-card border border-walnut/10 bg-warm-white p-6 shadow-sm">
-                      <h3 className="mb-3 font-display text-xl font-semibold text-charcoal">Задачата</h3>
-                      <p className="font-body text-sm leading-relaxed text-warm-gray sm:text-base">
-                        {is3d
-                          ? `3D проект на ${project.title.toLocaleLowerCase('bg-BG')}${project.city ? ` за обект в ${project.city}` : ''}, подготвен преди изработка. Проектът е част от портфолиото ни за ${service.title.toLocaleLowerCase('bg-BG')}.`
-                          : `Реализация на ${project.title.toLocaleLowerCase('bg-BG')} за обект в ${project.city}. Проектът е част от портфолиото ни за ${service.title.toLocaleLowerCase('bg-BG')}.`}
-                      </p>
+                  <h2 id="project-overview-title" className="section-title mb-6 text-left">{is3d ? 'Задача и проектно решение' : 'Задача и изпълнено решение'}</h2>
+                  <div className="grid items-start gap-8 md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
+                    <div className="space-y-6">
+                      <p className="font-body text-lg leading-relaxed text-charcoal/85 sm:text-xl sm:leading-relaxed">{project.description}</p>
+                      <div className="rounded-card border-l-4 border-walnut bg-warm-white p-5 shadow-sm">
+                        <h3 className="mb-1.5 font-body text-xs font-semibold uppercase tracking-[0.14em] text-walnut">Задачата</h3>
+                        <p className="font-body text-sm leading-relaxed text-warm-gray sm:text-base">
+                          {is3d
+                            ? `3D проект на ${project.title.toLocaleLowerCase('bg-BG')}${project.city ? ` за обект в ${project.city}` : ''}, подготвен преди изработка. Проектът е част от портфолиото ни за ${service.title.toLocaleLowerCase('bg-BG')}.`
+                            : `Реализация на ${project.title.toLocaleLowerCase('bg-BG')}${project.city ? ` за обект в ${project.city}` : ''}. Проектът е част от портфолиото ни за ${service.title.toLocaleLowerCase('bg-BG')}.`}
+                        </p>
+                      </div>
                     </div>
-                    <div className="rounded-card border border-walnut/10 bg-warm-white p-6 shadow-sm">
-                      <h3 className="mb-3 font-display text-xl font-semibold text-charcoal">Решението</h3>
-                      <p className="font-body text-sm leading-relaxed text-warm-gray sm:text-base">{project.description}</p>
-                    </div>
-                  </div>
-                  {isPhoto && (
-                    <a href={project.images[0]} target="_blank" rel="noopener" className="mx-auto mt-6 block max-w-xl overflow-hidden rounded-card shadow-sm">
+                    <ProjectGalleryTrigger
+                      className="group relative block w-full overflow-hidden rounded-card shadow-md"
+                      ariaLabel="Отвори основната снимка на цял екран"
+                    >
                       <Image
                         src={project.images[0]}
                         alt={projectImageAlt(project, 'основен изглед')}
                         width={1024}
                         height={1365}
-                        className="h-auto w-full"
-                        sizes="(max-width: 640px) 100vw, 576px"
+                        className="h-auto w-full transition-transform duration-500 group-hover:scale-[1.03]"
+                        sizes="(max-width: 768px) 100vw, 420px"
                       />
-                    </a>
-                  )}
+                      <span className="absolute bottom-3 right-3 inline-flex items-center gap-1.5 rounded-full bg-black/55 px-3 py-1.5 font-body text-xs font-semibold text-white backdrop-blur-md">
+                        <Expand size={13} aria-hidden="true" /> Увеличи
+                      </span>
+                    </ProjectGalleryTrigger>
+                  </div>
                 </div>
 
                 <div>
@@ -321,13 +338,13 @@ export default function ProjectPage({ params }: Props) {
             </div>
           </section>
 
-          {(project.images.length > 1 || project.video) && (
+          {project.images.length > 0 && (
             <section className="section-py bg-warm-white" aria-labelledby="project-gallery-title">
               <div className="container-main">
                 {projectImageBadge(project) && (
                   <p className="mb-3 font-body text-xs font-semibold uppercase tracking-[0.16em] text-walnut">{projectImageBadge(project)}</p>
                 )}
-                <h2 id="project-gallery-title" className="section-title mb-8 text-left">Всички изгледи от проекта</h2>
+                <h2 id="project-gallery-title" className="section-title mb-8 text-left">Всички снимки от проекта <span className="text-warm-gray">({project.images.length})</span></h2>
                 {project.video && (
                   <div className={`mb-6 ${project.video.height > project.video.width ? 'mx-auto max-w-sm' : 'max-w-4xl'}`}>
                     <video
@@ -344,39 +361,11 @@ export default function ProjectPage({ params }: Props) {
                     </video>
                   </div>
                 )}
-                {isPhoto ? (
-                  // Every photo uncropped and large, the main one included; a click opens the full-size file.
-                  <div className="columns-1 gap-5 sm:columns-2">
-                    {project.images.map((src, index) => (
-                      <figure key={src} className="mb-5 break-inside-avoid overflow-hidden rounded-card bg-cream">
-                        <a href={src} target="_blank" rel="noopener" className="block">
-                          <Image
-                            src={src}
-                            alt={projectImageAlt(project, `изглед ${index + 1}`)}
-                            width={1024}
-                            height={1365}
-                            className="h-auto w-full transition-opacity hover:opacity-90"
-                            sizes="(max-width: 640px) 100vw, 50vw"
-                          />
-                        </a>
-                      </figure>
-                    ))}
-                  </div>
-                ) : (
-                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                    {project.images.slice(1).map((src, index) => (
-                      <figure key={src} className="relative aspect-[4/3] overflow-hidden rounded-card bg-cream">
-                        <Image
-                          src={src}
-                          alt={projectImageAlt(project, `изглед ${index + 2}`)}
-                          fill
-                          className="object-cover"
-                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                        />
-                      </figure>
-                    ))}
-                  </div>
-                )}
+                <ProjectGallery
+                  images={project.images}
+                  alts={project.images.map((_, index) => projectImageAlt(project, `изглед ${index + 1}`))}
+                  title={project.title}
+                />
               </div>
             </section>
           )}

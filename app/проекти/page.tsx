@@ -4,7 +4,7 @@ import { ArrowRight, CheckCircle2 } from 'lucide-react'
 import SectionHeader from '@/components/ui/SectionHeader'
 import CTABar from '@/components/home/CTABar'
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
-import ProjectCards from '@/components/ui/ProjectCards'
+import ProjectFilter from '@/components/ui/ProjectFilter'
 import { projectHref, projects } from '@/lib/projects'
 import { createPageMetadata } from '@/lib/seo'
 
@@ -80,7 +80,7 @@ export default function ProjectsPage() {
             subtitle={`${realizedCount} реализирани проекта с данни за град, материали и срок и ${designCount} 3D проекта, подготвени преди изработка.`}
           />
 
-          <ProjectCards items={projects} headingLevel="h2" />
+          <ProjectFilter items={projects} />
 
           <section className="mt-16 rounded-2xl bg-warm-white p-6 md:p-10" style={{ border: '1px solid #E7DDCF' }}>
             <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-10">
