@@ -95,6 +95,7 @@ export default function ProjectPage({ params }: Props) {
   const project = caseStudyProjects.find((candidate) => candidate.slug === params.slug)
   if (!project) notFound()
   const is3d = project.status === '3d'
+  const isPhoto = project.imageType === 'photo'
   const statusLabel = projectStatusLabel(project)
 
   const service = getService(project.category)
@@ -182,15 +183,37 @@ export default function ProjectPage({ params }: Props) {
 
       <div className="pt-24">
         <article>
-          <header className="relative h-[430px] sm:h-[500px] lg:h-[600px]">
-            <Image
-              src={project.images[0]}
-              alt={projectImageAlt(project)}
-              fill
-              className="object-cover"
-              priority
-              sizes="100vw"
-            />
+          <header className="relative h-[430px] overflow-hidden bg-charcoal sm:h-[500px] lg:h-[600px]">
+            {isPhoto ? (
+              <>
+                {/* Real photos are often portrait: show the whole frame over a blurred copy instead of cropping it. */}
+                <Image
+                  src={project.images[0]}
+                  alt=""
+                  aria-hidden="true"
+                  fill
+                  className="scale-110 object-cover opacity-60 blur-2xl"
+                  sizes="640px"
+                />
+                <Image
+                  src={project.images[0]}
+                  alt={projectImageAlt(project)}
+                  fill
+                  className="object-contain"
+                  priority
+                  sizes="100vw"
+                />
+              </>
+            ) : (
+              <Image
+                src={project.images[0]}
+                alt={projectImageAlt(project)}
+                fill
+                className="object-cover"
+                priority
+                sizes="100vw"
+              />
+            )}
             <div className="absolute inset-0 bg-gradient-to-t from-charcoal/85 via-charcoal/25 to-transparent" />
             <div className="absolute inset-x-0 bottom-0 container-main pb-8 sm:pb-12">
               <Link href="/проекти/" className="mb-5 inline-flex items-center gap-2 font-body text-sm text-white/80 transition-colors hover:text-white">
@@ -225,6 +248,18 @@ export default function ProjectPage({ params }: Props) {
                       <p className="font-body text-sm leading-relaxed text-warm-gray sm:text-base">{project.description}</p>
                     </div>
                   </div>
+                  {isPhoto && (
+                    <a href={project.images[0]} target="_blank" rel="noopener" className="mx-auto mt-6 block max-w-xl overflow-hidden rounded-card shadow-sm">
+                      <Image
+                        src={project.images[0]}
+                        alt={projectImageAlt(project, 'основен изглед')}
+                        width={1024}
+                        height={1365}
+                        className="h-auto w-full"
+                        sizes="(max-width: 640px) 100vw, 576px"
+                      />
+                    </a>
+                  )}
                 </div>
 
                 <div>
@@ -232,7 +267,7 @@ export default function ProjectPage({ params }: Props) {
                   <p className="mb-5 max-w-3xl font-body leading-relaxed text-warm-gray">
                     {is3d
                       ? `Предвидени материали в 3D проекта: ${project.materials}. Материалите и детайлите се потвърждават преди изработка.`
-                      : `За тази реализация са използвани ${project.materials}. Проектът е изпълнен в ${project.city} за посочения срок от ${project.duration}.`}
+                      : `За тази реализация са използвани ${project.materials}.${project.city ? ` Проектът е изпълнен в ${project.city}${project.duration ? ` за посочения срок от ${project.duration}` : ''}.` : ''}`}
                   </p>
                   <ul className="flex flex-wrap gap-2" aria-label="Използвани материали">
                     {materials.map((material) => (
@@ -309,19 +344,39 @@ export default function ProjectPage({ params }: Props) {
                     </video>
                   </div>
                 )}
-                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                  {project.images.slice(1).map((src, index) => (
-                    <figure key={src} className="relative aspect-[4/3] overflow-hidden rounded-card bg-cream">
-                      <Image
-                        src={src}
-                        alt={projectImageAlt(project, `изглед ${index + 2}`)}
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      />
-                    </figure>
-                  ))}
-                </div>
+                {isPhoto ? (
+                  // Every photo uncropped and large, the main one included; a click opens the full-size file.
+                  <div className="columns-1 gap-5 sm:columns-2">
+                    {project.images.map((src, index) => (
+                      <figure key={src} className="mb-5 break-inside-avoid overflow-hidden rounded-card bg-cream">
+                        <a href={src} target="_blank" rel="noopener" className="block">
+                          <Image
+                            src={src}
+                            alt={projectImageAlt(project, `изглед ${index + 1}`)}
+                            width={1024}
+                            height={1365}
+                            className="h-auto w-full transition-opacity hover:opacity-90"
+                            sizes="(max-width: 640px) 100vw, 50vw"
+                          />
+                        </a>
+                      </figure>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                    {project.images.slice(1).map((src, index) => (
+                      <figure key={src} className="relative aspect-[4/3] overflow-hidden rounded-card bg-cream">
+                        <Image
+                          src={src}
+                          alt={projectImageAlt(project, `изглед ${index + 2}`)}
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        />
+                      </figure>
+                    ))}
+                  </div>
+                )}
               </div>
             </section>
           )}
