@@ -676,8 +676,9 @@ function glow(k, g, a, b, z) {
 
 // Остров: шкафове към стената, водопад, места за сядане, лампи над него.
 function buildIsland(k, r, s, role) {
-  const len = r.island, depth = s.island.depth/100;
-  const x0 = Math.max(.3, (r.A - len)/2), frontZ = D + AISLE, backZ = frontZ + D;
+  const depth = s.island.depth/100, minX = s.shape.startsWith("L") ? D + 1.0 : .3;
+  const x0 = Math.max(minX, (r.A - r.island)/2), len = Math.max(1.2, Math.min(r.island, r.A + .2 - x0));
+  const frontZ = D + AISLE, backZ = frontZ + D;
   const g = run(k, x0 + len, backZ, Math.PI);
   const items = role === "sink" ? [{type:"sink", w:.8}, ...(s.dishwasher ? [{type:"dish", w:.6}] : [])] : role === "hob" ? [{type:"cook", w:s.hob === "gas" ? .9 : .8}] : [];
   const itemsW = items.reduce((a, m) => a + m.w, 0);

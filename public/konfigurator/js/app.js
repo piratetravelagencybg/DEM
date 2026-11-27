@@ -35,8 +35,8 @@ const DEFAULT = {
 };
 // Граници на размерите (см): едни и същи за полетата, за паметта и за линка.
 const LIMITS = {
-  "walls.A":[180, 800], "walls.B":[120, 600], "walls.C":[120, 600], "island.len":[120, 400], "island.depth":[60, 140], height:[230, 320],
-  "furn.wardrobe.width":[120, 600], "furn.walkin.A":[150, 600], "furn.walkin.B":[120, 450], "furn.bedroom.width":[260, 550],
+  "walls.A":[240, 800], "walls.B":[150, 600], "walls.C":[150, 600], "island.len":[160, 400], "island.depth":[60, 140], height:[230, 320],
+  "furn.wardrobe.width":[120, 600], "furn.walkin.A":[150, 600], "furn.walkin.B":[120, 450], "furn.bedroom.width":[300, 550],
   "furn.tv.width":[160, 550], "furn.entry.width":[120, 400], "furn.office.width":[120, 450],
 };
 const isKitchen = () => state.type === "kitchen";
@@ -78,6 +78,10 @@ const icon = (paths, box = "0 0 44 30") => `<svg viewBox="${box}" fill="none" st
 let startAt = 0;
 let state = load();
 let step = startAt, maxStep = startAt;
+try {
+  const where = page(), params = new URLSearchParams(where.hash.slice(1));
+  if (params.has("p")) { params.delete("p"); (EMBED ? window.top : window).history.replaceState(null, "", where.pathname + where.search + (params.toString() ? `#${params}` : "")); }
+} catch { /* без достъп до адреса */ }
 let showroom = null;
 let quoteMode = "project";
 
@@ -167,6 +171,7 @@ function applyModel(s, id) {
     s.uppers = st.uppers; s.hood = st.hood; s.pantry = DEFAULT.pantry;
     Object.assign(s, structuredClone(m.set), {model:id});
     if (s.islandFunc !== "hob" && s.hood === "ceiling") s.hood = "integrated";
+    if (!s.shape.includes("island") && s.applyTo === "island") s.applyTo = "all";
   } else {
     const f = s.furn[s.type];
     Object.assign(f, structuredClone(FURN_DEFAULTS[s.type]), structuredClone(MODELS[s.type][id].set), {model:id, width:f.width, A:f.A, B:f.B});
@@ -467,12 +472,19 @@ function render() {
   }
 }
 
+function refreshPrice() {
+  if (SHOW_PRICES) {
+    showPrice(price(state).total);
+    $("#tier-label").textContent = `${isKitchen() ? "Кухня" : FURN_NAMES[state.type]} · ${MODELS[state.type][currentModel()]?.name || ""} · ${dimsText()}`;
+  }
+}
 // Цената „брои“ до новата сума, вместо да скача.
 let shownPrice = null, priceFrame = 0;
 function showPrice(total) {
   const el = $("#price");
   if (shownPrice === null || matchMedia("(prefers-reduced-motion: reduce)").matches) { shownPrice = total; el.textContent = money(total); return; }
-  if (Math.round(shownPrice) === total) return;
+  cancelAnimationFrame(priceFrame);
+  if (Math.round(shownPrice) === total) { shownPrice = total; el.textContent = money(total); return; }
   const from = shownPrice, start = performance.now(), dur = 750;
   el.classList.remove("up", "down");
   void el.offsetWidth;
@@ -497,9 +509,9 @@ function toPanelTop() {
 }
 
 let buildTimer = 0;
-function changed(rebuild = true) {
+function changed(rebuild = true, panel = true) {
   save();
-  render();
+  if (panel) render(); else refreshPrice();
   if (!rebuild || !showroom) return;
   clearTimeout(buildTimer);
   buildTimer = setTimeout(() => showroom.build(state), 30);
@@ -566,8 +578,10 @@ document.addEventListener("click", event => {
 $("#panel").addEventListener("change", event => {
   const input = event.target;
   if (!input.dataset.path) return;
-  set(input.dataset.path, clamp(input.dataset.path, input.value));
-  changed();
+  const value = clamp(input.dataset.path, input.value);
+  set(input.dataset.path, value);
+  if (String(value) !== input.value) input.value = value;
+  changed(true, false);
 });
 $("#panel").addEventListener("keydown", event => {
   if (event.key === "Enter" && event.target.dataset?.path) event.target.blur();

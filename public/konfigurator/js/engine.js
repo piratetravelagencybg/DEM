@@ -67,6 +67,7 @@ export class Showroom {
     Object.assign(this.sun.shadow, {bias:-.0002, normalBias:.025});
     const cam = this.sun.shadow.camera;
     Object.assign(cam, {left:-6, right:6, top:6, bottom:-6, near:.5, far:20});
+    cam.updateProjectionMatrix();
     // Мека запълваща светлина откъм зрителя: стената с прозореца и фасадите не потъмняват.
     this.fill = new THREE.DirectionalLight("#fff8f0", .45);
     this.fill.position.set(9, 4, 10);
@@ -187,6 +188,7 @@ export class Showroom {
     this.renderer.setSize(w, h, false);
     if (this.composer) {
       const ratio = this.renderer.getPixelRatio();
+      this.composer.setPixelRatio(ratio);
       this.composer.setSize(w, h);
       this.gtao.setSize(w*ratio, h*ratio);
     }
