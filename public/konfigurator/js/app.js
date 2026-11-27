@@ -1,5 +1,6 @@
 // Интерфейс на 3D конфигуратора: стил, форма, цветове, детайли и запитване.
 import {Showroom} from "./engine.js";
+import {texturesPending} from "./materials.js";
 import * as C from "./catalog.js";
 import {price, tierNames, hardwareNames, OFFER, FURN_NAMES} from "./pricing.js";
 import {FURN_DEFAULTS} from "./furniture.js";
@@ -11,6 +12,10 @@ const SHOW_PRICES = true;
 
 const $ = selector => document.querySelector(selector);
 const STORE = "dem-v2-kitchen-4";
+// Вграден в страницата на сайта (iframe): горната лента и логото са на сайта; адресът и връзките са на страницата.
+const EMBED = (() => { try { return window.self !== window.top; } catch { return true; } })();
+const page = () => { try { return EMBED ? window.top.location : location; } catch { return location; } };
+if (EMBED) document.documentElement.classList.add("embedded");
 const INQUIRY_ENDPOINT = "/api/inquiry";
 const INQUIRY_LIVE = /(^|\.)domexpertmebel\.com$/.test(location.hostname);
 const money = n => `${new Intl.NumberFormat("bg-BG",{maximumFractionDigits:0,useGrouping:"always"}).format(Math.round(n))} €`;
@@ -71,13 +76,20 @@ const baseIcons = {
 const icon = (paths, box = "0 0 44 30") => `<svg viewBox="${box}" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true">${paths}</svg>`;
 
 let state = load();
-let step = 0;
+let step = 0, maxStep = 0;
 let showroom = null;
 let quoteMode = "project";
 
 // --- Състояние: зареждане, проверка, стил, гама и материал ---
 function load() {
-  const hash = new URLSearchParams(location.hash.slice(1)).get("p");
+  const s = loadState();
+  // Връзка към конкретна мебел от сайта: /3d-калкулатор/#t=wardrobe
+  const t = new URLSearchParams(page().hash.slice(1)).get("t");
+  if (t && types.some(([id]) => id === t)) { s.type = t; s.applyTo = t === "kitchen" ? "all" : "lower"; }
+  return s;
+}
+function loadState() {
+  const hash = new URLSearchParams(page().hash.slice(1)).get("p");
   if (hash) try { return sanitize(JSON.parse(decodeURIComponent(escape(atob(hash.replace(/-/g, "+").replace(/_/g, "/")))))); } catch { /* лош линк */ }
   try { const saved = JSON.parse(localStorage.getItem(STORE)); if (saved?.front) return sanitize(saved); } catch { /* без памет */ }
   return applyStyle(structuredClone(DEFAULT), "modern");
@@ -124,7 +136,7 @@ function set(path, value, o = state) {
   const target = keys.reduce((a, k) => a?.[k], o);
   if (target) target[last] = value;
 }
-const shareUrl = () => `${location.origin}${location.pathname}#p=${btoa(unescape(encodeURIComponent(JSON.stringify(state)))).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "")}`;
+const shareUrl = () => `${page().origin}${page().pathname}#p=${btoa(unescape(encodeURIComponent(JSON.stringify(state)))).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "")}`;
 
 function setMaterial(s, material) {
   s.material = material;
@@ -391,7 +403,8 @@ const sendStep = ["Готово", () => `<h2>Вашият проект</h2><p cl
   ${SHOW_PRICES ? priceBlock() : ""}
   <ul class="facts"><li>Безплатна 2D картина на мебелта по снимка на Вашето помещение.</li><li>Платеният 3D проект и огледът на адрес се приспадат от цената на поръчката.</li>
     <li>Монтажът в София най-често е включен.</li><li>Срок ${OFFER.term} · гаранция ${OFFER.warranty}.</li></ul>
-  <div class="actions"><button type="button" class="primary wide" data-action="quote">Изпратете проекта</button>
+  <p class="hint">Готово! Натиснете „Изпратете проекта“ долу – ще Ви се обадим.</p>
+  <div class="actions">
     <button type="button" class="secondary" data-action="share">Копирайте линк към проекта</button>
     <button type="button" class="secondary" data-action="download">Свалете снимка</button>
     <button type="button" class="ghost" data-action="idea">Имате своя идея? Изпратете ни я</button></div>`];
@@ -406,14 +419,32 @@ const dimsText = () => {
 
 function render() {
   $("#types").innerHTML = types.map(([id, label, path]) => `<button type="button" class="type" data-furniture="${id}" aria-pressed="${state.type === id}">${icon(path, "0 0 24 24")}${label}</button>`).join("");
+  // Активната мебел да се вижда в лентата (на телефон тя се превърта хоризонтално).
+  const nav = $("#types"), activeType = nav.querySelector("[aria-pressed=true]");
+  if (activeType && nav.scrollWidth > nav.clientWidth) nav.scrollLeft = activeType.offsetLeft - nav.clientWidth/2 + activeType.offsetWidth/2;
   const steps = isKitchen() ? kitchenSteps : furnSteps;
   if (step >= steps.length) step = steps.length - 1;
-  $("#steps").innerHTML = steps.map(([label], i) => `<button type="button" data-step="${i}" ${i === step ? 'aria-current="step"' : ""}><b>${i + 1}</b>${label}</button>`).join("");
+  maxStep = Math.max(maxStep, step);
+  $("#steps").innerHTML = steps.map(([label], i) => `<button type="button" data-step="${i}" class="${i < step ? "done" : ""}" ${i === step ? 'aria-current="step"' : ""} ${i > maxStep ? "disabled" : ""}><b>${i < step ? "✓" : i + 1}</b><span>${label}</span></button>`).join("");
   const body = $("#panel");
   const scroll = body.scrollTop;
   body.innerHTML = steps[step][1]();
   body.scrollTop = scroll;
-  $("#panel-foot").innerHTML = `${step ? `<button type="button" data-step="${step - 1}">← Назад</button>` : "<span></span>"}${step < steps.length - 1 ? `<button type="button" class="primary" data-step="${step + 1}">Напред →</button>` : `<button type="button" class="primary" data-action="quote">Изпратете проекта</button>`}`;
+  // Долната лента: Назад · цена · Напред. На последната стъпка „Напред“ става „Изпратете проекта“.
+  const back = $("#step-back"), next = $("#step-next");
+  back.style.visibility = step ? "visible" : "hidden";
+  back.dataset.step = String(Math.max(0, step - 1));
+  if (step < steps.length - 1) {
+    next.dataset.step = String(step + 1);
+    delete next.dataset.action;
+    next.innerHTML = `Напред <span aria-hidden="true">→</span>`;
+    next.classList.remove("send");
+  } else {
+    delete next.dataset.step;
+    next.dataset.action = "quote";
+    next.textContent = "Изпратете проекта";
+    next.classList.add("send");
+  }
   const st = C.styles[state.style], pal = C.palettes[state.palette];
   $("#stage-name").textContent = st.name;
   $("#stage-text").textContent = `${pal ? pal.name : "Собствена гама"} · ${C.materials[state.material].name}`;
@@ -447,6 +478,15 @@ function showPrice(total) {
   priceFrame = requestAnimationFrame(tick);
 }
 
+// Нова стъпка: панелът започва отначало. На телефон страницата се връща точно под лентата със стъпките.
+function toPanelTop() {
+  const panel = $("#panel");
+  panel.scrollTop = 0;
+  if (!matchMedia("(max-width: 820px)").matches) return;
+  const y = panel.getBoundingClientRect().top + scrollY - $(".stage").offsetHeight - $("#steps").offsetHeight;
+  if (scrollY > y) window.scrollTo({top:y, behavior:"smooth"});
+}
+
 let buildTimer = 0;
 function changed(rebuild = true) {
   save();
@@ -462,9 +502,9 @@ const UI_KEYS = ["applyTo", "tier", "hardware"];
 document.addEventListener("click", event => {
   const el = event.target.closest("button,[data-action]");
   if (!el) return;
-  if (el.dataset.step !== undefined) { step = Number(el.dataset.step); render(); $("#panel").scrollTop = 0; return; }
+  if (el.dataset.step !== undefined) { step = Number(el.dataset.step); render(); toPanelTop(); return; }
   if (el.dataset.furniture) {
-    if (state.type !== el.dataset.furniture) { state.type = el.dataset.furniture; step = 0; state.applyTo = isKitchen() ? "all" : "lower"; changed(); $("#panel").scrollTop = 0; }
+    if (state.type !== el.dataset.furniture) { state.type = el.dataset.furniture; step = 0; maxStep = 0; state.applyTo = isKitchen() ? "all" : "lower"; changed(); toPanelTop(); }
     return;
   }
   if (el.dataset.action === "all-palettes") { showAllPalettes = !showAllPalettes; render(); return; }
@@ -644,7 +684,13 @@ try {
   showroom = new Showroom($("#viewport"));
   showroom.build(state);
   window.DEM = {showroom, state:() => state, set:(patch) => { Object.assign(state, patch); changed(); }, style:id => { applyStyle(state, id); changed(); }};
-  setTimeout(() => { $("#loading").style.opacity = 0; setTimeout(() => $("#loading").remove(), 600); }, 350);
+  // Екранът за зареждане остава, докато дойдат текстурите на първия изглед (най-много 5 s).
+  const started = performance.now();
+  const reveal = () => {
+    if (texturesPending() > 0 && performance.now() - started < 5000) return setTimeout(reveal, 120);
+    setTimeout(() => { $("#loading").style.opacity = 0; setTimeout(() => $("#loading").remove(), 600); }, 150);
+  };
+  reveal();
   setTimeout(() => { $("#drag-hint").style.opacity = 0; }, 6000);
 } catch (error) {
   console.error(error);

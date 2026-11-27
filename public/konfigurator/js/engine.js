@@ -20,7 +20,7 @@ export class Showroom {
     this.container = container;
     this.mobile = matchMedia("(max-width: 760px), (pointer: coarse)").matches;
     const r = this.renderer = new THREE.WebGLRenderer({antialias:true, powerPreference:"high-performance"});
-    r.setPixelRatio(Math.min(devicePixelRatio, this.mobile ? 1.5 : 2));
+    r.setPixelRatio(Math.min(devicePixelRatio, 2));
     r.outputColorSpace = THREE.SRGBColorSpace;
     // Неутрален тон: цветовете на фасадите остават като в мострите, без сиво-жълто отместване.
     r.toneMapping = THREE.NeutralToneMapping;
@@ -121,7 +121,7 @@ export class Showroom {
     else {
       this.downgraded = 2;
       this.composer = null;
-      this.renderer.setPixelRatio(Math.min(devicePixelRatio, this.mobile ? 1 : 1.5));
+      this.renderer.setPixelRatio(Math.min(devicePixelRatio, 1.5));
       const {clientWidth:w, clientHeight:h} = this.container;
       this.renderer.setSize(w, h, false);
     }
@@ -192,7 +192,11 @@ export class Showroom {
     }
     this.camera.aspect = w/h;
     this.camera.updateProjectionMatrix();
-    if (this.kitchen) this.setView(this.view || "persp", false);
+    // На телефон адресната лента сменя височината при всяко превъртане: камерата се пренастройва само при
+    // истинска промяна на формата (завъртане на телефона), иначе завъртяният изглед би „скачал“ обратно.
+    const prev = this.frameAspect || 0, aspect = w/h;
+    if (this.kitchen && (!prev || Math.abs(aspect - prev)/prev > .25)) { this.setView(this.view || "persp", false); this.frameAspect = aspect; }
+    else if (!prev) this.frameAspect = aspect;
     this.invalidate();
   }
 
@@ -220,7 +224,7 @@ export class Showroom {
     this.sun.target.position.set(A*.45, .4, Math.min(2.4, depth*.5));
     this.applyLight();
     this.applyOpen(this.open);
-    if (!this.warmed) { this.warmed = true; setTimeout(() => this.warmup(), 1200); }
+    if (!this.warmed) { this.warmed = true; setTimeout(() => this.warmup(), this.mobile ? 7000 : 4000); }
     const shape = this.kitchen.roomState?.shape ?? state.shape, shapeChanged = shape !== this.frameShape;
     this.frameShape = shape;
     const changed = !previous || shapeChanged || Math.abs(previous.A - A) > .01 || Math.abs(previous.depth - depth) > .01 || previous.H !== this.kitchen.size.H;

@@ -19,13 +19,16 @@ function PM(params = {}) {
 }
 
 const loader = new THREE.TextureLoader();
+let pending = 0;
+export const texturesPending = () => pending;
 const textures = new Map();
 function texture(name, color, size = [1,1]) {
   const key = `${name}|${color}|${size}`;
   if (textures.has(key)) return textures.get(key);
   // Докато текстурата се зарежда: неутрален цвят вместо черно. Когато снимката дойде,
   // старата 2×2 текстура във видеокартата се изтрива (иначе истинската снимка не се показва никога).
-  const t = loader.load(`${TEX}${name}.webp`, tex => { tex.dispose(); tex.needsUpdate = true; onLoad(); });
+  pending++;
+  const t = loader.load(`${TEX}${name}.webp`, tex => { pending--; tex.dispose(); tex.needsUpdate = true; onLoad(); }, undefined, () => { pending--; });
   if (!t.image) { t.image = placeholder(name.includes("_nor") ? "#8080ff" : name.includes("_rough") ? "#c8c8c8" : "#d9cfc2"); t.needsUpdate = true; }
   t.wrapS = t.wrapT = THREE.RepeatWrapping;
   t.anisotropy = anisotropy;
