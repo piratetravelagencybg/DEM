@@ -80,6 +80,13 @@ export default function KitchenCalculatorPage() {
             <p className="font-body text-warm-gray leading-relaxed mt-5" style={{ fontSize: '1.05rem' }}>
               Изберете дължината, формата и фронтовете, за да видите ориентировъчна цена. Точната оферта идва след 3D проекта — той е от {kitchen.from} {kitchen.currency} и се приспада при поръчка.
             </p>
+            <a
+              href="/3d-конфигуратор/"
+              className="inline-flex items-center gap-2 mt-6 font-body font-semibold rounded-full px-5 py-3 text-white hover:opacity-90"
+              style={{ backgroundColor: '#7A5A33' }}
+            >
+              Новият 3D конфигуратор: кухня, гардероб, спалня и още →
+            </a>
           </div>
           <KitchenCalculator />
         </div>

@@ -4,6 +4,13 @@ const nextConfig = {
   // Middleware combines host, legacy-path and slash normalization into one
   // permanent redirect. Disable Next's automatic slash hop to avoid chains.
   skipTrailingSlashRedirect: true,
+  // 3D конфигураторът е статично приложение в public/konfigurator; адресът е на кирилица.
+  async rewrites() {
+    return [
+      { source: '/3d-конфигуратор/', destination: '/konfigurator/index.html' },
+      { source: '/' + encodeURIComponent('3d-конфигуратор') + '/', destination: '/konfigurator/index.html' },
+    ]
+  },
   async headers() {
     return [{
       source: '/images/:path*',
