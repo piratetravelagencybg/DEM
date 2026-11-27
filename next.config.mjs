@@ -4,12 +4,19 @@ const nextConfig = {
   // Middleware combines host, legacy-path and slash normalization into one
   // permanent redirect. Disable Next's automatic slash hop to avoid chains.
   skipTrailingSlashRedirect: true,
-  // 3D конфигураторът е статично приложение в public/konfigurator; адресът е на кирилица.
+  // 3D калкулаторът за мебели е статично приложение в public/konfigurator; адресът е на кирилица.
   async rewrites() {
     return [
-      { source: '/3d-конфигуратор/', destination: '/konfigurator/index.html' },
-      { source: '/' + encodeURIComponent('3d-конфигуратор') + '/', destination: '/konfigurator/index.html' },
+      { source: '/3d-калкулатор/', destination: '/konfigurator/index.html' },
+      { source: '/' + encodeURIComponent('3d-калкулатор') + '/', destination: '/konfigurator/index.html' },
     ]
+  },
+  async redirects() {
+    const old = ['3d-конфигуратор', encodeURIComponent('3d-конфигуратор')]
+    return old.flatMap((slug) => [
+      { source: `/${slug}/`, destination: '/3d-калкулатор/', permanent: true },
+      { source: `/${slug}`, destination: '/3d-калкулатор/', permanent: true },
+    ])
   },
   async headers() {
     return [{

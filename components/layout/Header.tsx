@@ -17,6 +17,9 @@ const wideLinks: NavLink[] = [
   { label: 'Интериорен дизайн', href: '/услуги/интериорен-дизайн/' },
   { label: 'София', href: '/софия/' },
 ]
+// 3D калкулаторът е в лентата от 1280px нагоре; под това е първи в „Услуги“ и в мобилното меню.
+const calculatorLink: NavLink = { label: '3D калкулатор', href: '/3d-калкулатор/' }
+const calculatorFull: NavLink = { label: '3D калкулатор за мебели по поръчка', href: '/3d-калкулатор/' }
 const trailLinks: NavLink[] = [
   { label: 'За нас', href: '/за-нас/' },
   { label: 'Контакти', href: '/контакти/' },
@@ -24,6 +27,7 @@ const trailLinks: NavLink[] = [
 
 const servicesLinks: NavLink[] = [
   { label: 'Всички услуги', href: '/услуги/' },
+  calculatorFull,
   { label: 'Кухни по поръчка', href: '/услуги/кухни-по-поръчка/' },
   { label: 'Гардероби по поръчка', href: '/услуги/гардероби-по-поръчка/' },
   { label: 'Спални по поръчка', href: '/услуги/спални-по-поръчка/' },
@@ -36,6 +40,7 @@ const servicesLinks: NavLink[] = [
 // The mobile menu keeps every page, including the blog.
 const mobileLinks: NavLink[] = [
   { label: 'Услуги', href: '/услуги/' },
+  calculatorFull,
   ...wideLinks,
   { label: 'Блог', href: '/блог/' },
   ...trailLinks,
@@ -212,6 +217,7 @@ export default function Header() {
             {/* Desktop nav */}
             <nav className="hidden lg:flex flex-1 min-w-0 items-center justify-center gap-5 xl:gap-6" aria-label="Основна навигация">
               <NavDropdown label="Услуги" href="/услуги/" items={servicesLinks} scrolled={scrolled} />
+              {navLink(calculatorLink, 'hidden xl:inline-block')}
               {wideLinks.map((link) => navLink(link, 'hidden min-[1440px]:inline-block'))}
               <NavDropdown label="Проекти" href="/проекти/" items={projectsLinks} scrolled={scrolled} />
               <NavDropdown label="Градове" href="/благоевград/" items={cities} scrolled={scrolled} />

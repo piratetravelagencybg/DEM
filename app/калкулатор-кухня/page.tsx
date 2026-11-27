@@ -81,11 +81,11 @@ export default function KitchenCalculatorPage() {
               Изберете дължината, формата и фронтовете, за да видите ориентировъчна цена. Точната оферта идва след 3D проекта — той е от {kitchen.from} {kitchen.currency} и се приспада при поръчка.
             </p>
             <a
-              href="/3d-конфигуратор/"
+              href="/3d-калкулатор/"
               className="inline-flex items-center gap-2 mt-6 font-body font-semibold rounded-full px-5 py-3 text-white hover:opacity-90"
               style={{ backgroundColor: '#7A5A33' }}
             >
-              Новият 3D конфигуратор: кухня, гардероб, спалня и още →
+              3D калкулатор за мебели по поръчка: кухня, гардероб, спалня и още →
             </a>
           </div>
           <KitchenCalculator />

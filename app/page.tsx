@@ -3,6 +3,7 @@ import Hero from '@/components/home/Hero'
 import ServicesGrid from '@/components/home/ServicesGrid'
 import AboutSection from '@/components/home/AboutSection'
 import Visualization3D from '@/components/home/Visualization3D'
+import Kalkulator3D from '@/components/home/Kalkulator3D'
 import ProcessSteps from '@/components/home/ProcessSteps'
 import ProjectsGallery from '@/components/home/ProjectsGallery'
 import CatalogPreview from '@/components/home/CatalogPreview'
@@ -33,6 +34,7 @@ export default function HomePage() {
       <LocalBusinessSchema />
       <Hero />
       <ServicesGrid />
+      <Kalkulator3D />
       <GoogleReviews />
       <ProcessSteps />
       <Visualization3D />

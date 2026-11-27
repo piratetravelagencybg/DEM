@@ -547,7 +547,7 @@ function toast(text) {
 function summary() {
   const lines = recap().map(([label, value]) => `${label}: ${value}`);
   if (SHOW_PRICES) lines.push(`Ориентировъчно: ${money(price(state).total)} с ДДС (ниво ${tierNames[state.tier][0]})`);
-  return ["3D конфигуратор", ...lines, `Линк към проекта: ${shareUrl()}`].join("\n");
+  return ["3D калкулатор за мебели по поръчка", ...lines, `Линк към проекта: ${shareUrl()}`].join("\n");
 }
 
 function openQuote(mode) {
@@ -557,7 +557,7 @@ function openQuote(mode) {
   $("#shot").hidden = !project;
   $("#quote-lead").textContent = mode === "project"
     ? "Снимката и всички избори стигат до нас заедно със запитването. Ще Ви се обадим, за да уточним детайлите и да Ви изпратим оферта."
-    : "Ако идеята Ви е по-сложна от конфигуратора, опишете я и прикачете скица, снимка или план. Ще Ви се обадим с предложение.";
+    : "Ако идеята Ви е по-сложна от калкулатора, опишете я и прикачете скица, снимка или план. Ще Ви се обадим с предложение.";
   $("#notes-text").textContent = mode === "project" ? "Бележки" : "Опишете идеята";
   $("#quote-status").textContent = "";
   $("#quote-status").classList.remove("ok");
@@ -610,7 +610,7 @@ $("#quote-form").addEventListener("submit", async event => {
   const picture = form.elements.picture.checked ? "Иска безплатна 2D картина по снимката.\n" : "";
   const head = quoteMode === "idea" ? "Идея от клиента (бутон „Имате своя идея?“)\n" : "";
   data.append("message", head + picture + (quoteMode === "project" ? summary() : "") + (notes ? `\n\n${quoteMode === "idea" ? "Идея" : "Бележки"}: ${notes}` : ""));
-  data.append("source_page", `3D конфигуратор (${location.pathname})`);
+  data.append("source_page", `3D калкулатор за мебели (${decodeURIComponent(location.pathname)})`);
   const submit = form.querySelector("[type=submit]");
   submit.disabled = true;
   status.textContent = "Изпращаме…";
@@ -621,7 +621,7 @@ $("#quote-form").addEventListener("submit", async event => {
     let total = 0;
     for (const photo of photos) { if (photo.size > PHOTO_LIMIT || total + photo.size > PHOTOS_TOTAL) continue; total += photo.size; data.append("photos", photo); }
     if (!INQUIRY_LIVE) {
-      console.info("[3D конфигуратор] Преглед, нищо не е изпратено:", Object.fromEntries([...data.entries()].filter(([k]) => k !== "photos")), data.getAll("photos").map(f => f.size));
+      console.info("[3D калкулатор] Преглед, нищо не е изпратено:", Object.fromEntries([...data.entries()].filter(([k]) => k !== "photos")), data.getAll("photos").map(f => f.size));
       status.textContent = "Това е преглед и запитването не е изпратено. На сайта то стига директно до нас.";
       status.classList.add("ok");
       return;

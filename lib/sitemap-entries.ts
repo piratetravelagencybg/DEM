@@ -77,7 +77,7 @@ export function getCoreSitemapEntries(): SitemapEntry[] {
     entry('/софия/интериорен-дизайн/', 0.85, 'monthly', [page('/софия/интериорен-дизайн/'), 'components/ui/LandingPage.tsx']),
     entry('/софия/3d-проект/', 0.85, 'monthly', [page('/софия/3d-проект/'), 'components/ui/LandingPage.tsx']),
     entry('/цени/', 0.8, 'monthly', [page('/цени/'), 'lib/site-config.ts']),
-    entry('/3d-конфигуратор/', 0.8, 'monthly', ['public/konfigurator/index.html', 'public/konfigurator/js/app.js']),
+    entry('/3d-калкулатор/', 0.8, 'monthly', ['public/konfigurator/index.html', 'public/konfigurator/js/app.js']),
     entry('/кухни-с-остров/', 0.8, 'monthly', [page('/кухни-с-остров/'), 'data/projects.json']),
     entry('/услуги/мебели-за-баня/', 0.8, 'monthly', [page('/услуги/мебели-за-баня/')]),
     entry('/услуги/обзавеждане-на-ваканционни-апартаменти/', 0.8, 'monthly', [page('/услуги/обзавеждане-на-ваканционни-апартаменти/')]),
