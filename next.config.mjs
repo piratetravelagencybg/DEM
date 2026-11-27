@@ -17,9 +17,6 @@ const nextConfig = {
       source: '/konfigurator/assets/:path*',
       headers: [{ key: 'Cache-Control', value: 'public, max-age=2592000, stale-while-revalidate=604800' }],
     }, {
-      source: '/konfigurator/:dir(js|css)/:path*',
-      headers: [{ key: 'Cache-Control', value: 'public, max-age=600, stale-while-revalidate=86400' }],
-    }, {
       source: '/images/:path*',
       headers: [{
         key: 'Cache-Control',
