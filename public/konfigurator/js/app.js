@@ -75,8 +75,9 @@ const baseIcons = {
 };
 const icon = (paths, box = "0 0 44 30") => `<svg viewBox="${box}" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true">${paths}</svg>`;
 
+let startAt = 0;
 let state = load();
-let step = 0, maxStep = 0;
+let step = startAt, maxStep = startAt;
 let showroom = null;
 let quoteMode = "project";
 
@@ -85,7 +86,7 @@ function load() {
   const s = loadState();
   // Връзка към конкретна мебел от сайта: /3d-калкулатор/#t=wardrobe
   const t = new URLSearchParams(page().hash.slice(1)).get("t");
-  if (t && types.some(([id]) => id === t)) { s.type = t; s.applyTo = t === "kitchen" ? "all" : "lower"; }
+  if (t && types.some(([id]) => id === t)) { s.type = t; s.applyTo = t === "kitchen" ? "all" : "lower"; startAt = 1; }
   return s;
 }
 function loadState() {
@@ -245,6 +246,12 @@ const styleStep = ["Стил", () => {
     <div class="switches" style="margin-top:8px">${toggle("crown", "Корниз отгоре", "Класически завършек на горните шкафове")}</div>`;
 }];
 
+// Стъпка 1: каква мебел (вместо лентата с мебели горе).
+const TYPE_TEXT = {kitchen:"Права, Г, П или с остров", wardrobe:"На панти, плъзгащ или стъклен", walkin:"По една, две или три стени", bedroom:"Табла, шкафове и нощни шкафчета", tv:"Холна секция и ТВ стена", entry:"Шкаф, пейка и закачалки", office:"Бюро, рафтове и шкафове"};
+const typeStep = ["Мебел", () => `<h2>Какво ще правим?</h2><p class="hint">Изберете мебелта. После модел, стил и размери – стъпка по стъпка.</p>
+  <div class="kinds">${types.map(([id, label, path]) => `<button type="button" class="kind" data-furniture="${id}" ${pressed(state.type, id)}>${icon(path, "0 0 24 24")}<strong>${label}</strong><small>${TYPE_TEXT[id]}</small></button>`).join("")}
+    <button type="button" class="kind idea" data-action="idea">${icon('<path d="M12 3a6 6 0 0 0-3.5 10.9V17h7v-3.1A6 6 0 0 0 12 3zM9.5 20h5"/>', "0 0 24 24")}<strong>Своя идея</strong><small>Изпратете скица или снимка</small></button></div>`];
+
 const modelStep = ["Модел", () => {
   const models = MODELS[state.type];
   return `<h2>Модел</h2><p class="hint">Изберете разпределението: кои шкафове има и къде са. Стила, цветовете и размерите променяте в следващите стъпки.</p>
@@ -255,12 +262,13 @@ const colorSwatches = (keys, current) => {
   const m = C.materials[state.material];
   return `<h3>${esc(m.name)} · ${esc(m.sub)}</h3>${named(materialColors(), f => `data-front="${f.id}"`, current)}
     <h3>Дървесни декори</h3>${named(woods(), f => `data-front="${f.id}"`, current)}
-    <p class="hint">Материалът се сменя в стъпка „Стил“. <button type="button" class="link" data-step="0">Сменете материала</button></p>`;
+    <p class="hint">Материалът се сменя в стъпка „Стил“. <button type="button" class="link" data-step="2">Сменете материала</button></p>`;
 };
 const metalsAndWalls = () => `<h3>Цвят на металите</h3>${named(Object.entries(C.finishes).map(([id, f]) => ({id, name:f.name, hex:f.hex})), f => `data-key="finish" data-value="${f.id}"`, state.finish)}
   <h3>Стени</h3>${named(Object.entries(C.walls).map(([h, name]) => ({id:h, name, hex:h})), w => `data-key="wall" data-value="${w.id}"`, state.wall)}`;
 
 const kitchenSteps = [
+  typeStep,
   modelStep,
   styleStep,
   ["Размери", () => {
@@ -335,6 +343,7 @@ const FURN_HINT = {
 };
 
 const furnSteps = [
+  typeStep,
   modelStep,
   styleStep,
   ["Размери", () => {
@@ -504,7 +513,7 @@ document.addEventListener("click", event => {
   if (!el) return;
   if (el.dataset.step !== undefined) { step = Number(el.dataset.step); render(); toPanelTop(); return; }
   if (el.dataset.furniture) {
-    if (state.type !== el.dataset.furniture) { state.type = el.dataset.furniture; step = 0; maxStep = 0; state.applyTo = isKitchen() ? "all" : "lower"; changed(); toPanelTop(); }
+    if (state.type !== el.dataset.furniture) { state.type = el.dataset.furniture; step = 0; maxStep = 0; state.applyTo = isKitchen() ? "all" : "lower"; changed(); }
     return;
   }
   if (el.dataset.action === "all-palettes") { showAllPalettes = !showAllPalettes; render(); return; }
@@ -546,6 +555,7 @@ document.addEventListener("click", event => {
     return;
   }
   if (el.id === "evening") { const on = el.getAttribute("aria-pressed") !== "true"; el.setAttribute("aria-pressed", String(on)); showroom?.setEvening(on); return; }
+  if (el.id === "expand") { const on = !$(".studio").classList.contains("full"); $(".studio").classList.toggle("full", on); el.setAttribute("aria-pressed", String(on)); return; }
   if (el.id === "open") { const on = showroom?.toggleOpen(); el.setAttribute("aria-pressed", String(!!on)); return; }
   const action = el.dataset.action || {"quote-open":"quote", "idea-open":"idea"}[el.id];
   if (action === "quote" || action === "idea") openQuote(action === "idea" ? "idea" : "project");

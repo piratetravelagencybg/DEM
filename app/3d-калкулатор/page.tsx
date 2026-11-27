@@ -40,11 +40,14 @@ export default function Kalkulator3DPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(appSchema) }} />
       <h1 className="sr-only">3D калкулатор за мебели по поръчка</h1>
       <p className="sr-only">{DESCRIPTION}</p>
-      <div className="pt-16 lg:pt-20" style={{ background: '#1F1914' }}>
+      {/* Калкулаторът запълва екрана под лентата на сайта; страницата не се превърта (иначе на телефон
+          се получават два скрола и 3D изгледът се скрива под лентата). */}
+      <style>{'html:has(#kalkulator-3d),body:has(#kalkulator-3d){overflow:hidden;height:100%;overscroll-behavior:none}body:has(#kalkulator-3d) footer{display:none}'}</style>
+      <div id="kalkulator-3d" className="pt-16 lg:pt-20" style={{ background: '#1F1914' }}>
         <iframe
           src="/konfigurator/index.html"
           title="3D калкулатор за мебели по поръчка"
-          className="block h-[calc(100vh-4rem)] w-full border-0 supports-[height:100svh]:h-[calc(100svh-4rem)] lg:h-[calc(100vh-5rem)] lg:supports-[height:100svh]:h-[calc(100svh-5rem)]"
+          className="block h-[calc(100vh-4rem)] w-full border-0 supports-[height:100dvh]:h-[calc(100dvh-4rem)] lg:h-[calc(100vh-5rem)] lg:supports-[height:100dvh]:h-[calc(100dvh-5rem)]"
           allow="clipboard-write; fullscreen"
         />
       </div>
